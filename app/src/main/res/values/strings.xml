@@ -43,6 +43,17 @@
     <string name="back_to_login"><u>Volver al login</u></string>
 
     <!--Strings Register-->
+
+    <string name="name_register">¿Cómo te llamas?</string>
+    <string name="lastname_register">¿Cuál es tu apellido?</string>
+    <string name="datebirth_register">¿Cuándo naciste?</string>
+    <string name="city_register">¿En qué ciudad estás?</string>
+    <string name="who_are_you_register">¿Cómo te identificas?</string>
+    <string name="nick_name_register">Ingresa un nombre de usuario</string>
+    <string name="email_register">Ingresa tu email</string>
+    <string name="password_register">Elige una contraseña</string>
+    <string name="confirm_password_register">Confirma tu contraseña</string>
+
     <string name="back_button">Volver</string>
     <string name="next_button">Siguiente</string>
     <string name="acept_terms">Acepto los</string>

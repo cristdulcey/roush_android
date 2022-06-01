@@ -32,7 +32,7 @@
         <LinearLayout
             android:id="@+id/linearlayout_form1"
             android:layout_width="match_parent"
-            android:layout_height="480dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/border_green_round"
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
@@ -84,12 +84,43 @@
                     android:id="@+id/name_field"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:hint="¿Cómo te llamas?"
+                    android:hint="@string/name_register"
+                    android:paddingLeft="8dp"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:background="@android:color/transparent"
                     android:textSize="14sp" />
             </LinearLayout>
+
+            <!--lastname-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_white_transpatent_round">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/icon_person"
+                    android:padding="8dp"/>
+                <EditText
+                    android:id="@+id/lastname_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="@string/lastname_register"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:background="@android:color/transparent"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
             <!--Date bitrh-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,7 +142,8 @@
                     android:id="@+id/date_birth_field"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:hint="¿Cuando naciste?"
+                    android:hint="@string/datebirth_register"
+                    android:paddingLeft="8dp"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:background="@android:color/transparent"
@@ -139,7 +171,8 @@
                     android:id="@+id/city_field"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:hint="¿En qué ciudad estás?"
+                    android:hint="@string/city_register"
+                    android:paddingLeft="8dp"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:background="@android:color/transparent"
@@ -167,18 +200,138 @@
                     android:id="@+id/who_are_you_field"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:hint="¿Cómo te identificas?"
+                    android:hint="@string/who_are_you_register"
+                    android:paddingLeft="8dp"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:background="@android:color/transparent"
                     android:textSize="14sp" />
             </LinearLayout>
 
+            <!--nickname-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_white_transpatent_round">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/icon_person"
+                    android:padding="8dp"/>
+                <EditText
+                    android:id="@+id/nickname_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="@string/nick_name_register"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:background="@android:color/transparent"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!--Email-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_white_transpatent_round">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/icon_email"
+                    android:padding="8dp"/>
+                <EditText
+                    android:id="@+id/email_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="@string/email_register"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:background="@android:color/transparent"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!--Password-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_white_transpatent_round">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/icon_password"
+                    android:padding="8dp"/>
+                <EditText
+                    android:id="@+id/password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="@string/password_register"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:background="@android:color/transparent"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!--Confirm Password-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_white_transpatent_round">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/icon_password"
+                    android:padding="8dp"/>
+                <EditText
+                    android:id="@+id/confirm_password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="@string/confirm_password_register"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:background="@android:color/transparent"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
             <!--Checks terms and privacy politics-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <CheckBox
@@ -216,6 +369,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
                 <CheckBox
