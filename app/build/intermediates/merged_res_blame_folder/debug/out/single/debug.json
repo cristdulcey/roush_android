@@ -1,0 +1,270 @@
+[
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_activity_recovery_password.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/activity_recovery_password.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_music_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/music_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_image_onboarding2.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/image_onboarding2.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_activity_main.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_background_color_app.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/background_color_app.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_mountain_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/mountain_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_sport_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/sport_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/navigation_nav_graph.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_logo_roush.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/logo_roush.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_icon_message.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/icon_message.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_market_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/market_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_fragment_register_1.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/fragment_register_1.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_camera_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/camera_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_icon_heart.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/icon_heart.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_fragment_register_4.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/fragment_register_4.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_background_register.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/background_register.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_icon_person.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/icon_person.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_image_onboarding1.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/image_onboarding1.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable-v24_border_white_green_round.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable-v24/border_white_green_round.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_activity_succes_register.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/activity_succes_register.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_water_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/water_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_instagram.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/instagram.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_tik_tok.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/tik_tok.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_border_white_round.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/border_white_round.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_activity_home.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/activity_home.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_fragment_onboarding3.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/fragment_onboarding3.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_icon_camera.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/icon_camera.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_wine_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/wine_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_border_white_transpatent_round.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/border_white_transpatent_round.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_background_login.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/background_login.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_activity_login.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_border_red_round.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/border_red_round.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_fragment_onboarding1.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/fragment_onboarding1.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_parachute_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/parachute_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_image_register.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/image_register.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_yoga_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/yoga_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_art_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/art_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_microphone.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/microphone.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_fragment_register_3.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/fragment_register_3.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_tennis_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/tennis_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_game_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/game_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_splash.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/splash.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_background_splash.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/background_splash.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_icon_calendar.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/icon_calendar.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_fragment_onboarding2.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/fragment_onboarding2.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_border_green_round.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/border_green_round.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_icon_location.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/icon_location.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_icon_users.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/icon_users.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/layout_fragment_register_2.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/layout/fragment_register_2.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_background_auth_final.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/background_auth_final.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_food_icon.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/food_icon.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable-v24_border_green_round2.xml.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable-v24/border_green_round2.xml"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/drawable_image_onboarding3.png.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/drawable/image_onboarding3.png"
+    },
+    {
+        "merged": "/Users/loducoderetina/Documents/roush-android/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/loducoderetina/Documents/roush-android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp"
+    }
+]
