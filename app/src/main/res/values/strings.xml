@@ -39,6 +39,10 @@
     <!--Strings Home_match-->
     <string name="match_header"><b>Descubrir</b></string>
     <string name="match_city">Bogotá, CO</string>
+    <string name="success_match">¡Wohoo! lo lograste..</string>
+    <string name="success_match_sub">Ahora es momento de empezar a hablar con ...</string>
+    <string name="button_chat">Quiero saludarl@</string>
+    <string name="button_later">Más tarde</string>
 
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>

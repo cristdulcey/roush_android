@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tinderroush">
         <activity
+            android:name=".MatchSuccess.MatchSuccess"
+            android:exported="false" />
+        <activity
             android:name=".MenuNavigation.MenuNavigation"
             android:exported="false" />
         <activity

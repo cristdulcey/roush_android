@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.tinder_roush.Home.MatchActivity;
 import com.example.tinder_roush.MenuNavigation.MenuNavigation;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.RecoveryPassword.RecoveryPasswordActivity;

@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.tinder_roush.Home.MatchActivity;
+import com.example.tinder_roush.Home.HomeActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.databinding.MenuNavigationBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -110,7 +110,7 @@ public class MenuNavigation extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         // define your fragments here
-          final Fragment fragment1 = new MatchActivity();
+          final Fragment fragment1 = new HomeActivity();
 //        final Fragment fragment2 = new YourTripsActivities();
 //        final Fragment fragment3 = new NotificationsActivities();
 //        final Fragment fragment4 = new PqrsFragment();
