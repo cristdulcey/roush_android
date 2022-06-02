@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/navigation_matchs"
-        android:icon="@drawable/active"
+        android:icon="@drawable/cards_blue"
         android:title="" />
 
     <item
