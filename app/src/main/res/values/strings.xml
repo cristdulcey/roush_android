@@ -36,6 +36,10 @@
     <string name="terms">Terminos de uso</string>
     <string name="politics">Política de privacidad</string>
 
+    <!--Strings Home_match-->
+    <string name="match_header"><b>Descubrir</b></string>
+    <string name="match_city">Bogotá, CO</string>
+
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
     <string name="text_recovery_password">Puedes recuperar tu contraseña ingresando estos datos y luego revisando tu correo electrónico</string>

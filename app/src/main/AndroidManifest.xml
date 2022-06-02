@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tinderroush">
         <activity
+            android:name=".MenuNavigation.MenuNavigation"
+            android:exported="false" />
+        <activity
             android:name=".Register.SuccesRegisterActivity"
             android:exported="false" />
         <activity
@@ -25,9 +28,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login.LoginActivities" />
-        <activity
-            android:name=".Home.HomeActivity"
-            android:exported="false" />
         <activity
             android:name=".RecoveryPassword.RecoveryPasswordActivity"
             android:exported="false" />

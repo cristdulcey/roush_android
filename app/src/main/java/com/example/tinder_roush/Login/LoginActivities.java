@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.tinder_roush.Home.HomeActivity;
+import com.example.tinder_roush.Home.MatchActivity;
+import com.example.tinder_roush.MenuNavigation.MenuNavigation;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.RecoveryPassword.RecoveryPasswordActivity;
 import com.example.tinder_roush.Register.FragmentRegister1;
@@ -76,7 +77,7 @@ public class LoginActivities extends AppCompatActivity {
     }
 
     public void performLoginHome(){
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, MenuNavigation.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
