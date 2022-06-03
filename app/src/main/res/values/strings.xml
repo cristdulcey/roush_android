@@ -44,6 +44,15 @@
     <string name="button_chat">Quiero saludarl@</string>
     <string name="button_later">Más tarde</string>
 
+    <!--Strings Filters-->
+    <string name="see_filter">Vista por:</string>
+    <string name="person_filter">Persona</string>
+    <string name="map_filter">Mapa</string>
+    <string name="save_filters">Guardar cambios</string>
+    <string name="you_are_here">Estás aquí...</string>
+    <string name="clear_filters">Limpiar filtros</string>
+    <string name="distance_filter">Rango distancia que quiero ver</string>
+
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
     <string name="text_recovery_password">Puedes recuperar tu contraseña ingresando estos datos y luego revisando tu correo electrónico</string>
