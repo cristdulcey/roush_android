@@ -88,11 +88,11 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="60dp"
-                android:background="@drawable/border_red_round"
+                android:background="@drawable/border_green_white_round"
                 android:padding="10dp"
                 android:text="@string/Login"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/green4"
                 android:textStyle="bold" />
 
             <!--Forgot Password-->
@@ -128,11 +128,11 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="60dp"
-                android:background="@drawable/border_white_round"
+                android:background="@drawable/border_green_white"
                 android:padding="10dp"
                 android:text="@string/make_account"
                 android:textAllCaps="false"
-                android:textColor="@color/red2"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <LinearLayout

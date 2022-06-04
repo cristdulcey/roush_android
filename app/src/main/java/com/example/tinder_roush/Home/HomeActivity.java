@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -17,8 +19,19 @@ import com.example.tinder_roush.MatchSuccess.MatchSuccess;
 
 import com.example.tinder_roush.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
+import com.yuyakaido.android.cardstackview.CardStackListener;
+import com.yuyakaido.android.cardstackview.CardStackView;
+import com.yuyakaido.android.cardstackview.Direction;
+import com.yuyakaido.android.cardstackview.StackFrom;
+import com.yuyakaido.android.cardstackview.SwipeableMethod;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends Fragment {
+
+
 
     ImageButton match, filter, swipe, like;
     Context context;
@@ -27,15 +40,74 @@ public class HomeActivity extends Fragment {
         // Required empty public constructor
     }
 
+    private CardStackLayoutManager managerCard;
+    private CardStackPersonAdapter adapterCardPerson;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_match_, container, false);
         context = view.getContext();
+
+        CardStackView cardStackView = view.findViewById(R.id.card_stack_view);
+        managerCard = new CardStackLayoutManager(context, new CardStackListener() {
+            @Override
+            public void onCardDragging(Direction direction, float ratio) {
+
+            }
+
+            @Override
+            public void onCardSwiped(Direction direction) {
+                
+            }
+
+            @Override
+            public void onCardRewound() {
+
+            }
+
+            @Override
+            public void onCardCanceled() {
+
+            }
+
+            @Override
+            public void onCardAppeared(View view, int position) {
+
+            }
+
+            @Override
+            public void onCardDisappeared(View view, int position) {
+
+            }
+        });
+        managerCard.setStackFrom(StackFrom.None);
+        managerCard.setVisibleCount(3);
+        managerCard.setTranslationInterval(8.0f);
+        managerCard.setScaleInterval(0.95f);
+        managerCard.setSwipeThreshold(0.3f);
+        managerCard.setMaxDegree(20.0f);
+        managerCard.setDirections(Direction.FREEDOM);
+        managerCard.setCanScrollHorizontal(true);
+        managerCard.setSwipeableMethod(SwipeableMethod.Manual);
+        managerCard.setOverlayInterpolator(new LinearInterpolator());
+        adapterCardPerson = new CardStackPersonAdapter(addList());
+        cardStackView.setLayoutManager(managerCard);
+        cardStackView.setAdapter(adapterCardPerson);
+        cardStackView.setItemAnimator(new DefaultItemAnimator());
+
         initObjets(view);
         listeners();
         return view;
+    }
+
+    private List<CardPersonItem> addList() {
+        List<CardPersonItem> cardPersonItems = new ArrayList<>();
+        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding1,"alguien","20"));
+        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding2,"otra persona","34"));
+        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding3,"este man","29"));
+        return cardPersonItems;
     }
 
     private void initObjets(View view) {

@@ -184,11 +184,11 @@
                 android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
                 android:padding="5dp"
-                android:background="@drawable/border_red_round"
+                android:background="@drawable/border_green_white_round"
                 android:text="@string/save_filters"
                 android:textSize="16sp"
                 android:textAllCaps="false"
-                android:textColor="@color/white"/>
+                android:textColor="@color/green4"/>
 
             <Button
                 android:id="@+id/clear_filter"

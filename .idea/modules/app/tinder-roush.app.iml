@@ -4,7 +4,7 @@
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":app" />
-        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" />
+        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="7.1.1" />
         <option name="LAST_KNOWN_AGP_VERSION" value="7.1.1" />
       </configuration>
     </facet>
@@ -118,5 +118,6 @@
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation-experimental:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout:2.1.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.pratikbutani:MultiSelectSpinner:1.0.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.yuyakaido.android:card-stack-view:2.3.4@aar" level="project" />
   </component>
 </module>
