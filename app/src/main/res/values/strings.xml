@@ -53,6 +53,11 @@
     <string name="clear_filters">Limpiar filtros</string>
     <string name="distance_filter">Rango distancia que quiero ver</string>
 
+    <!--Strings Likes-->
+    <string name="like_title">Me gusta</string>
+    <string name="given_likes">Dados</string>
+    <string name="received_likes">Recibidos</string>
+
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
     <string name="text_recovery_password">Puedes recuperar tu contraseña ingresando estos datos y luego revisando tu correo electrónico</string>

@@ -35,8 +35,6 @@ import java.util.List;
 
 public class HomeActivity extends Fragment {
 
-
-
     ImageButton match, filter, swipe, like;
     Context context;
 
