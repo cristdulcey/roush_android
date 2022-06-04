@@ -18,7 +18,8 @@ public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPerson
 
     private List<CardPersonItem> cardPersonItems;
 
-    public CardStackPersonAdapter(List<CardPersonItem> addList) {
+    public CardStackPersonAdapter(List<CardPersonItem> cardPersonItems) {
+        this.cardPersonItems = cardPersonItems;
     }
 
     @NonNull
@@ -55,5 +56,13 @@ public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPerson
             name_person.setText(data.getName());
             age_person.setText(data.getAge());
         }
+    }
+
+    public List<CardPersonItem> getCardPersonItems() {
+        return cardPersonItems;
+    }
+
+    public void setCardPersonItems(List<CardPersonItem> cardPersonItems) {
+        this.cardPersonItems = cardPersonItems;
     }
 }

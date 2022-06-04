@@ -6,7 +6,9 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DiffUtil;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
 
@@ -59,27 +63,34 @@ public class HomeActivity extends Fragment {
 
             @Override
             public void onCardSwiped(Direction direction) {
-                
+                if(direction == Direction.Right){
+                    Toast.makeText(context,"derecha",Toast.LENGTH_SHORT);
+                }
+                if(direction == Direction.Left){
+                    Toast.makeText(context,"izquierda",Toast.LENGTH_SHORT);
+                }
+
+                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
+                    paginate();
+                }
             }
 
             @Override
             public void onCardRewound() {
-
             }
 
             @Override
             public void onCardCanceled() {
-
             }
 
             @Override
             public void onCardAppeared(View view, int position) {
-
+                TextView tv = view.findViewById(R.id.card_person_name);
             }
 
             @Override
             public void onCardDisappeared(View view, int position) {
-
+                TextView tv = view.findViewById(R.id.card_person_name);
             }
         });
         managerCard.setStackFrom(StackFrom.None);
@@ -100,6 +111,17 @@ public class HomeActivity extends Fragment {
         initObjets(view);
         listeners();
         return view;
+    }
+
+    private void paginate() {
+
+        List<CardPersonItem> old = adapterCardPerson.getCardPersonItems();
+        List<CardPersonItem> fresh = new ArrayList<>(addList());
+        CardStackCallback callback = new CardStackCallback(old, fresh);
+        DiffUtil.DiffResult hasil = DiffUtil.calculateDiff(callback);
+        adapterCardPerson.setCardPersonItems(fresh);
+        hasil.dispatchUpdatesTo(adapterCardPerson);
+
     }
 
     private List<CardPersonItem> addList() {
@@ -147,9 +169,5 @@ public class HomeActivity extends Fragment {
         Intent intent = new Intent(context, MatchSuccess.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-    }
-
-    public void performFilter() {
-
     }
 }
