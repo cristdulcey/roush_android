@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> {
 
-    private ArrayList<LikesData> listLikes;
+//    private ArrayList<LikesData> listLikes;
 
-    public LikesAdapter(Context context, ArrayList<LikesData> listLikes) {
-        this.listLikes = listLikes;
-    }
+//    public LikesAdapter(Context context, ArrayList<LikesData> listLikes) {
+//        this.listLikes = listLikes;
+//    }
 
     @NonNull
     @Override

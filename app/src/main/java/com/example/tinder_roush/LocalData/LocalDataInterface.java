@@ -7,4 +7,5 @@ public interface LocalDataInterface {
     String getRefresh();
     String getAccess();
 
+    String getToken();
 }

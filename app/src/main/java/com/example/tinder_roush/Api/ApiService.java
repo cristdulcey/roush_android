@@ -1,7 +1,35 @@
 package com.example.tinder_roush.Api;
 
+import com.example.tinder_roush.Objects.AccessTokenData;
+import com.example.tinder_roush.Objects.TokenResponse;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
+
 public interface ApiService {
 
+
+    @FormUrlEncoded
+    @POST("api/token/")
+    Call<TokenResponse> login(
+            @Field("username") String username,
+            @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("/api/token/refresh/")
+    Call<AccessTokenData> refreshToken(
+            @Field("refresh") String refresh
+    );
+
+    @FormUrlEncoded
+    @POST("/api/token/verify/")
+    Call<ResponseBody> verifyToken(
+            @Field("token") String token
+    );
 
 
 }

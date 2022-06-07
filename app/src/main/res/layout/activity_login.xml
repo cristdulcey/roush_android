@@ -51,7 +51,7 @@
 
             <!--Formulario-->
             <EditText
-                android:id="@+id/field_email"
+                android:id="@+id/field_username"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
