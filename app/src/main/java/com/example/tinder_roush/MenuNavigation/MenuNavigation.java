@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.tinder_roush.Home.HomeActivity;
-import com.example.tinder_roush.LikesActivity;
+import com.example.tinder_roush.Likes.LikesActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.databinding.MenuNavigationBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

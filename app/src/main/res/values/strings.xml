@@ -57,6 +57,8 @@
     <string name="like_title">Me gusta</string>
     <string name="given_likes">Dados</string>
     <string name="received_likes">Recibidos</string>
+    <string name="your_given_likes">Le diste me gusta a</string>
+    <string name="your_received_likes">te dió me gusta</string>
 
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
