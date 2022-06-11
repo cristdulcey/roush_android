@@ -41,6 +41,18 @@ public class LocalData implements LocalDataInterface{
     }
 
     @Override
+    public void wizard() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putBoolean("WIZARD", true).apply();
+    }
+
+    @Override
+    public Boolean getwizard() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
+        return preferences.getBoolean("WIZARD", false);
+    }
+
+    @Override
     public String getToken() {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
         final String token = preferences.getString("TOKEN", null);
@@ -49,4 +61,6 @@ public class LocalData implements LocalDataInterface{
         }
         return "";
     }
+
+
 }

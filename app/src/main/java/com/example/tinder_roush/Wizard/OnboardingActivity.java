@@ -20,8 +20,10 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.R;
+import com.example.tinder_roush.Utils.BaseContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,8 @@ public class OnboardingActivity extends AppCompatActivity {
     private ViewPager pager;
     private PagerAdapter adapter;
     private LinearLayout layoutOnboardIndicator;
+    private LocalData localData;
+
     List<Fragment> list = new ArrayList<>();
 
     TextView[] indicator;
@@ -41,6 +45,11 @@ public class OnboardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         layoutOnboardIndicator = findViewById(R.id.layoutOnboardIndicator);
+        localData = new LocalData();
+        if (localData.getwizard() == true){
+            startActivity(new Intent(BaseContext.getContext(), LoginActivities.class));
+            finish();
+        }
 
         list.add(new Onboarding1());
         list.add(new Onboarding2());
@@ -88,6 +97,7 @@ public class OnboardingActivity extends AppCompatActivity {
         public void onPageScrollStateChanged(int state) {
             if (state == pager.SCROLL_STATE_DRAGGING) {
                 if (pagePosition == list.size()-1) {
+                    localData.wizard();
                     Intent intent = new Intent(OnboardingActivity.this, LoginActivities.class);
                     startActivity(intent);
                     finish();
