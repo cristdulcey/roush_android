@@ -60,6 +60,10 @@
     <string name="your_given_likes">Le diste me gusta a</string>
     <string name="your_received_likes">te dió me gusta</string>
 
+    <!--Strings Chats-->
+    <string name="title_chats"><b>Chats</b></string>
+    <string name="messages"><b>Mensajes</b></string>
+
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
     <string name="text_recovery_password">Puedes recuperar tu contraseña ingresando estos datos y luego revisando tu correo electrónico</string>
