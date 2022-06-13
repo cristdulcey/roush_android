@@ -15,12 +15,14 @@ import android.view.ViewGroup;
 
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
 
+import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
@@ -36,6 +38,7 @@ import java.util.List;
 public class HomeActivity extends Fragment {
 
     ImageButton match, filter, swipe, like;
+    ImageView goToProfile;
     Context context;
 
     public HomeActivity() {
@@ -133,10 +136,7 @@ public class HomeActivity extends Fragment {
     private void initObjets(View view) {
         match = view.findViewById(R.id.match_button);
         filter = view.findViewById(R.id.filter_home);
-//        register = findViewById(R.id.button_make_account);
-//        forgot_password = findViewById(R.id.button_forgot_password);
-//        email = findViewById(R.id.field_email);
-//        password = findViewById(R.id.field_password);
+        goToProfile = view.findViewById(R.id.profile_from_home);
     }
 
     private void listeners() {
@@ -161,10 +161,23 @@ public class HomeActivity extends Fragment {
                 bottomSheetDialog.show();
             }
         });
+
+        goToProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                performMyProfile();
+            }
+        });
     }
 
     public void performMatchSuccess() {
         Intent intent = new Intent(context, MatchSuccess.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void performMyProfile(){
+        Intent intent = new Intent(context, ProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

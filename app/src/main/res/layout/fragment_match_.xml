@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,24 +19,23 @@
 
         <!--Linear Layout Header-->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_marginTop="25dp"
+            android:layout_marginHorizontal="25dp"
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/filter_home"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="40dp"
+                android:padding="5dp"
                 android:src="@drawable/filter_button"/>
 
           <LinearLayout
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:layout_weight="10"
               android:layout_gravity="center"
               android:gravity="center"
               android:orientation="vertical">
@@ -44,6 +44,7 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:text="@string/match_header"
+                  android:gravity="center"
                   android:textColor="@color/green3"
                   android:textSize="30sp"
                   android:layout_gravity="center"/>
@@ -58,11 +59,19 @@
 
         </LinearLayout>
 
+            <!--Image profile-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="30dp">
+
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="40dp"
+                android:id="@+id/profile_from_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:src="@drawable/photo_main"/>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

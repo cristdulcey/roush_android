@@ -1,6 +1,8 @@
 package com.example.tinder_roush.Likes;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,8 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.tinder_roush.Objects.LikesData;
+import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 
@@ -24,8 +28,9 @@ public class LikesActivity extends Fragment {
 
     private ArrayList<LikesData> listLikes;
 
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerViewLikes;
     private LikesAdapter likesAdapter;
+    ImageView goProfile;
     Button given, received;
     public LikesActivity() {
         // Required empty public constructor
@@ -44,7 +49,8 @@ public class LikesActivity extends Fragment {
     private void initObjects(View view) {
         given = view.findViewById(R.id.given_likes_button);
         received = view.findViewById(R.id.received_likes_button);
-        recyclerView = view.findViewById(R.id.recycler_likes_received);
+        goProfile = view.findViewById(R.id.profile_from_likes);
+        recyclerViewLikes = view.findViewById(R.id.recycler_likes_received);
         listLikes = new ArrayList<>();
     }
 
@@ -76,6 +82,19 @@ public class LikesActivity extends Fragment {
                 transaction.commit();
             }
         });
+
+        goProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                performToMyProfile();
+            }
+        });
+    }
+
+    public void performToMyProfile(){
+        Intent intent = new Intent(BaseContext.getContext(), ProfileActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 //    public void recyclerLikes(ArrayList<LikesData> listLikes){

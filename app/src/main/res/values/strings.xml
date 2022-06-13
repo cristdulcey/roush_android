@@ -65,6 +65,9 @@
     <string name="messages"><b>Mensajes</b></string>
     <string name="search_hint">Buscar por nombre</string>
 
+    <!--Strings Profile-->
+    <string name="title_profile"><b>Perfil</b></string>
+
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
     <string name="text_recovery_password">Puedes recuperar tu contraseña ingresando estos datos y luego revisando tu correo electrónico</string>
