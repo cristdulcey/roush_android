@@ -6,12 +6,12 @@
     android:orientation="vertical"
     tools:context=".Chats.ChatsActivity">
 
+    <!--Title-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:gravity="center">
@@ -28,20 +28,46 @@
                 android:textStyle="bold"
                 android:textColor="@color/green3"/>
         </LinearLayout>
+
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="-40dp"
-            android:background="@color/gray"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="-50dp"
+            android:src="@drawable/photo_main"/>
     </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/border_white_transparent"/>
+    <!--Search by name-->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="35dp"
+        android:background="@drawable/border_gray_transparent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/search"
+            android:padding="8dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:layout_marginVertical="5dp"
+            android:background="@android:color/transparent"
+            android:textSize="20sp"
+            android:textColor="@color/gray1"
+            android:textColorHint="@color/gray1"
+            android:hint="@string/search_hint"/>
+    </LinearLayout>
+
+    <!--Chats-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -51,9 +77,16 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:text="@string/messages"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_chats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"/>
 
     </LinearLayout>
 

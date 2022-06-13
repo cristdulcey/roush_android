@@ -9,35 +9,42 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tinder_roush.Objects.LikesData;
 import com.example.tinder_roush.R;
 
 import java.util.ArrayList;
 
 public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> {
 
-//    private ArrayList<LikesData> listLikes;
+    private ArrayList<LikesData> listLikes;
+    Context context;
 
-//    public LikesAdapter(Context context, ArrayList<LikesData> listLikes) {
+    public LikesAdapter(Context context, ArrayList<LikesData> listLikes) {
+        this.context = context;
+        this.listLikes = listLikes;
+    }
+//    public LikesAdapter (ArrayList<LikesData> listLikes) {
 //        this.listLikes = listLikes;
 //    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_like_list,null, false));
+        View itemLikes = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_like_list,null, false);
+        return new ViewHolder(itemLikes);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.person_name.setText("Una persona");
-
+        String name = listLikes.get(position).getTextname();
+        holder.person_name.setText(name);
+        holder.liketo.setText("te dio me gusta");
     }
 
     @Override
     public int getItemCount() {
-        return 15;
+        return listLikes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

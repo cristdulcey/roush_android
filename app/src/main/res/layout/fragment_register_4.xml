@@ -81,7 +81,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/camera_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
                        android:layout_width="120dp"
                        android:layout_height="48dp"
@@ -91,7 +91,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/market_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
 
 
                </LinearLayout>
@@ -113,7 +113,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/microphone"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
                        android:layout_width="120dp"
                        android:layout_height="48dp"
@@ -123,7 +123,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/yoga_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                </LinearLayout>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -142,7 +142,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/food_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
                        android:layout_width="120dp"
                        android:layout_height="48dp"
@@ -152,7 +152,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/tennis_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                </LinearLayout>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/camera_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
                        android:layout_width="120dp"
                        android:layout_height="48dp"
@@ -182,7 +182,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/market_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                </LinearLayout>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -202,7 +202,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/art_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
                        android:layout_width="120dp"
                        android:layout_height="48dp"
@@ -212,7 +212,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/mountain_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                </LinearLayout>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -232,7 +232,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/parachute_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
                        android:layout_width="120dp"
                        android:layout_height="48dp"
@@ -242,7 +242,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/music_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                </LinearLayout>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -263,7 +263,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/wine_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
                        android:layout_width="120dp"
                        android:layout_height="48dp"
@@ -273,7 +273,7 @@
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
                        android:drawableLeft="@drawable/game_icon"
-                       android:background="@drawable/border_white_transpatent_round"/>
+                       android:background="@drawable/border_green_soft_transparent_round"/>
                </LinearLayout>
 
 

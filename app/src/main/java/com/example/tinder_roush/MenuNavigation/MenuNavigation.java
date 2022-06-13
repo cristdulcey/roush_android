@@ -73,11 +73,11 @@ public class MenuNavigation extends AppCompatActivity {
                         viewPager.setCurrentItem(2);
                         pager_before=2;
                         break;
-                    case R.id.navigation_chat:
+                    case R.id.navigation_notifications:
                         viewPager.setCurrentItem(3);
                         pager_before=3;
                         break;
-                    case R.id.navigation_account:
+                    case R.id.navigation_blogs:
                         viewPager.setCurrentItem(4);
                         pager_before=4;
                         break;

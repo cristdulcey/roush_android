@@ -63,6 +63,7 @@
     <!--Strings Chats-->
     <string name="title_chats"><b>Chats</b></string>
     <string name="messages"><b>Mensajes</b></string>
+    <string name="search_hint">Buscar por nombre</string>
 
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>

@@ -18,12 +18,12 @@
         android:title="" />
 
     <item
-        android:id="@+id/navigation_chat"
+        android:id="@+id/navigation_notifications"
         android:icon="@drawable/chat"
         android:title="" />
 
     <item
-        android:id="@+id/navigation_account"
+        android:id="@+id/navigation_blogs"
         android:icon="@drawable/category"
         android:title="" />
 

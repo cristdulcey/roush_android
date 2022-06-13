@@ -22,8 +22,6 @@ import com.example.tinder_roush.databinding.ActivityMainBinding;
 
 public class LoginActivities extends AppCompatActivity implements LoginInterfaces.activities{
 
-    ActivityMainBinding binding;
-
     Button login, register, forgot_password, terms, politics;
     EditText username, password;
     LoginPresenters presenter;
@@ -37,12 +35,11 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         AppCompatDelegate. setDefaultNightMode (AppCompatDelegate.MODE_NIGHT_NO);
         initObjects();
         listeners();
-//
-//        if (!localData.getAccess().isEmpty()){
-//            Log.e("token", localData.getAccess());
-//            presenter.verifyTokenPresenter();
-//
-//        }
+
+        if (!localData.getAccess().isEmpty()){
+            Log.e("token", localData.getAccess());
+            presenter.verifyTokenPresenter();
+        }
     }
 
     private void initObjects(){
@@ -52,6 +49,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         forgot_password = findViewById(R.id.button_forgot_password);
         username = findViewById(R.id.field_username);
         password = findViewById(R.id.field_password);
+        localData = new LocalData();
     }
 
     private void listeners(){
