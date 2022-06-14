@@ -69,6 +69,14 @@
     <string name="title_profile"><b>Perfil</b></string>
     <string name="profile_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
+    <!--Strings Notifications-->
+    <string name="title_notifications"><b>Notificaciones</b></string>
+    <string name="deactivate_notifications"><b>Desactivar todas</b></string>
+    <string name="message_receive_ntf">Cuando me llegue un mensaje</string>
+    <string name="match_done_ntf">Cuando haga un match</string>
+    <string name="like_received_ntf">Cuando me den \"Me gusta\"</string>
+    <string name="cross_with_ntf">Cuando me cruce con alguien con la app</string>
+
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
     <string name="text_recovery_password">Puedes recuperar tu contraseña ingresando estos datos y luego revisando tu correo electrónico</string>
