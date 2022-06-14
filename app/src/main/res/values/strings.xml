@@ -15,6 +15,10 @@
     <!--Server-->
     <string name="server">https://roush.loducode.com/</string>
 
+    <!--Errors-->
+    <string name="password_dont_match">Las contraseñas no coinciden</string>
+    <string name="message_empty_field">Campo vacío</string>
+
     <!--Strings Onboarding-->
     <string name="Title_onboarding1">Haz nuevos amigos</string>
     <string name="Txt_onboarding1">y encuentra a quien se ha cruzado en tu camino</string>
@@ -31,7 +35,6 @@
     <string name="Login">Iniciar sesión</string>
     <string name="forgot_password_link"><u>¿Olvidaste tu contraseña?</u></string>
     <string name="dont_have_an_account">------- ¿Aún no tienes cuenta? -------</string>
-    <string name="message_empty_field">Campo vacío</string>
     <string name="make_account">Crear cuenta</string>
     <string name="terms">Terminos de uso</string>
     <string name="politics">Política de privacidad</string>

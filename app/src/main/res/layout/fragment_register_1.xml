@@ -123,6 +123,7 @@
 
             <!--Date bitrh-->
             <LinearLayout
+                android:id="@+id/layout_date_calendar"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="48dp"
@@ -142,6 +143,7 @@
                     android:id="@+id/date_birth_field"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:gravity="center|left"
                     android:hint="@string/datebirth_register"
                     android:paddingLeft="8dp"
                     android:textColor="@color/white"
@@ -167,16 +169,27 @@
                     android:layout_marginLeft="4dp"
                     android:src="@drawable/icon_location"
                     android:padding="8dp"/>
-                <EditText
-                    android:id="@+id/city_field"
+                <com.example.tinder_roush.Utils.SpinnerCustom
+                    android:id="@+id/spinner_city_register"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="@string/city_register"
+                    android:layout_height="match_parent"
+                    app:hintText="@string/city_register"
                     android:paddingLeft="8dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:background="@android:color/transparent"
-                    android:textSize="14sp" />
+                    android:layout_gravity="top"
+                    app:textColor="@color/white"
+                    android:paddingHorizontal="8dp"
+                    app:highlightColor="@color/white"
+                    android:background="@android:color/transparent"/>
+<!--                <EditText-->
+<!--                    android:id="@+id/city_field"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:hint="@string/city_register"-->
+<!--                    android:paddingLeft="8dp"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textColorHint="@color/white"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:textSize="14sp" />-->
             </LinearLayout>
 
             <!--Who are you-->
@@ -196,16 +209,18 @@
                     android:layout_marginLeft="4dp"
                     android:src="@drawable/icon_users"
                     android:padding="8dp"/>
-                <EditText
-                    android:id="@+id/who_are_you_field"
+                <com.example.tinder_roush.Utils.SpinnerCustom
+                    android:id="@+id/spinner_identity_register"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="@string/who_are_you_register"
+                    android:layout_height="match_parent"
+                    app:hintText="@string/city_register"
                     android:paddingLeft="8dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:background="@android:color/transparent"
-                    android:textSize="14sp" />
+                    android:layout_gravity="top"
+                    app:textColor="@color/white"
+                    android:paddingHorizontal="8dp"
+                    app:highlightColor="@color/white"
+                    android:background="@android:color/transparent"/>
+
             </LinearLayout>
 
             <!--nickname-->

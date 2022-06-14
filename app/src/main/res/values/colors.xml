@@ -18,4 +18,8 @@
     <color name="green4">#039588</color>
     <color name="green2">#92DAD2</color>
     <color name="green3">#008C80</color>
+
+    <color name="list_even">#FFF5F5</color>
+    <color name="list_odd">#F3FFFF</color>
+    <color name="list_selected">#455FB6</color>
 </resources>
