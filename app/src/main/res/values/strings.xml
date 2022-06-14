@@ -67,6 +67,7 @@
 
     <!--Strings Profile-->
     <string name="title_profile"><b>Perfil</b></string>
+    <string name="profile_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
