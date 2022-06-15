@@ -1,7 +1,6 @@
 package com.example.tinder_roush.Register;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -9,15 +8,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Gravity;
-import android.view.KeyboardShortcutGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fragment1{
 
@@ -41,11 +41,13 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
     EditText name, lastname, username, email, password, confirm_password;
     LinearLayout layout_date_calendar;
     Register1Data register1Data;
-    SpinnerCustom spinnerCities, spinnerGender;
+    SpinnerCustom spinnerCities;
+    Spinner spinnerGender;
+    ArrayList<String> gender_list;
     Context context;
     RegisterPresenters presenter;
-    String date_select, city;
-    EditText date_birth;
+    String date_select, city, gender_select;
+    TextView date_birth;
 
     public FragmentRegister1() {
         // Required empty public constructor
@@ -57,8 +59,19 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             View view = inflater.inflate(R.layout.fragment_register_1, container, false);
             context = view.getContext();
             initObjets(view);
-            listeners();
+
+            //Add gender List
+            gender_list.add("Mujer");
+            gender_list.add("Hombre");
+            gender_list.add("Trans");
+            gender_list.add("No binario");
+            gender_list.add("Otro");
+            ArrayAdapter<String> genderArrayAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_custom_textview_gender, gender_list);
+            genderArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_gender);
+            spinnerGender.setAdapter(genderArrayAdapter);
+
             addSpinnerBefore();
+            listeners();
             presenter.citiesPresenter();
 
             return view;
@@ -72,12 +85,16 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             username = view.findViewById(R.id.nickname_field);
             email = view.findViewById(R.id.email_register);
             password = view.findViewById(R.id.password_register);
+            spinnerGender = view.findViewById(R.id.spinner_identity_register);
             spinnerCities = view.findViewById(R.id.spinner_city_register);
             layout_date_calendar = view.findViewById(R.id.layout_date_calendar);
             confirm_password = view.findViewById(R.id.confirm_password_register);
             date_select = "";
             presenter = new RegisterPresenters(this);
             city = "";
+            gender_list = new ArrayList<>();
+            gender_select = "";
+
         }
 
         public void listeners(){
@@ -94,6 +111,21 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
                         lastname.requestFocus();
                         return;
                     }
+                    if (date_birth.getText().toString().isEmpty()){
+                        date_birth.setError(BaseContext.getContext().getString(R.string.message_empty_field));
+                        date_birth.requestFocus();
+                        return;
+                    }
+                    if (spinnerCities.getSelectedIdsCustom().isEmpty()){
+                        Toast.makeText(BaseContext.getContext(), R.string.message_empty_field_city, Toast.LENGTH_SHORT).show();
+                        spinnerCities.requestFocus();
+                        return;
+                    }
+                    if (gender_select.isEmpty()){
+                        Toast.makeText(BaseContext.getContext(), R.string.message_empty_field, Toast.LENGTH_SHORT).show();
+                        spinnerGender.requestFocus();
+                        return;
+                    }
                     if (username.getText().toString().isEmpty()){
                         username.setError(BaseContext.getContext().getString(R.string.message_empty_field));
                         username.requestFocus();
@@ -102,6 +134,11 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
                     if (email.getText().toString().isEmpty()){
                         email.setError(BaseContext.getContext().getString(R.string.message_empty_field));
                         email.requestFocus();
+                        return;
+                    }
+                    if (date_birth.getText().toString().isEmpty()){
+                        date_birth.setError(BaseContext.getContext().getString(R.string.message_empty_field));
+                        date_birth.requestFocus();
                         return;
                     }
                     if (password.getText().toString().isEmpty()){
@@ -127,6 +164,17 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
                 public void onClick(View v) {
                     date_birth.setError(null);
                     calendario();
+                }
+            });
+            spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    gender_select = spinnerGender.getSelectedItem().toString();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
                 }
             });
         }
@@ -197,9 +245,10 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             addItemsSpinnerCity(listArray1);
         }
 
+        //Spinner Ciudades
         public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities){
             spinnerCities.setSearchEnabled(true);
-            spinnerCities.setSearchHint("Seleccione un origen");
+            spinnerCities.setSearchHint("Selecciona tu ciudad");
             spinnerCities.setItems(cities, new SpinnerListener() {
                 @Override
                 public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {

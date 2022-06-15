@@ -38,16 +38,6 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
             h.setSelected(false);
             listArray0.add(h);
         }
-//        List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
-//        for (int i = 0; i < cities.size(); i++) {
-//            CityData destinationList = cities.get(i);
-//            KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
-//            h.setId(destinationList.getId());
-//            h.setExtra("otra cosa");
-//            h.setName(destinationList.getName());
-//            h.setSelected(false);
-//            listArray1.add(h);
-//        }
         view.addItemsSpinnerCity(listArray0);
     }
 

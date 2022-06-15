@@ -18,6 +18,7 @@
     <!--Errors-->
     <string name="password_dont_match">Las contraseñas no coinciden</string>
     <string name="message_empty_field">Campo vacío</string>
+    <string name="message_empty_field_city">Campo ciudad vacío</string>
 
     <!--Strings Onboarding-->
     <string name="Title_onboarding1">Haz nuevos amigos</string>
