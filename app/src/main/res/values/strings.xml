@@ -34,7 +34,7 @@
     <string name="hint2">Ingresa tu contraseña</string>
     <string name="Login">Iniciar sesión</string>
     <string name="forgot_password_link"><u>¿Olvidaste tu contraseña?</u></string>
-    <string name="dont_have_an_account">------- ¿Aún no tienes cuenta? -------</string>
+    <string name="dont_have_an_account">¿Aún no tienes cuenta?</string>
     <string name="make_account">Crear cuenta</string>
     <string name="terms">Terminos de uso</string>
     <string name="politics">Política de privacidad</string>

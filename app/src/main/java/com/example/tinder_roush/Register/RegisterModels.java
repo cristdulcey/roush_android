@@ -1,0 +1,50 @@
+package com.example.tinder_roush.Register;
+
+import com.example.tinder_roush.Api.ApiAdapter;
+import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Objects.CityResponse;
+import com.example.tinder_roush.Utils.CustomErrorResponse;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class RegisterModels implements RegisterInterfaces.models{
+
+    ApiAdapter apiAdapter;
+    LocalData localData;
+
+    public RegisterModels() {
+        this.apiAdapter = new ApiAdapter();
+        this.localData = new LocalData();
+    }
+    public void citiesModels(RegisterInterfaces.presenters presenter) {
+        Call<CityResponse> call = apiAdapter.getApiService().cities();
+        call.enqueue(new Callback<CityResponse>() {
+            @Override
+            public void onResponse(Call<CityResponse> call, Response<CityResponse> response) {
+                if (response.isSuccessful()){
+                    CityResponse cities = null;
+                    cities = response.body();
+                    presenter.citiesSuccessful(cities.getCities());
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.citiesError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CityResponse> call, Throwable t) {
+
+            }
+        });
+    }
+}

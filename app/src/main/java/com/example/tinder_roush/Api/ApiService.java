@@ -1,12 +1,14 @@
 package com.example.tinder_roush.Api;
 
 import com.example.tinder_roush.Objects.AccessTokenData;
+import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiService {
@@ -31,5 +33,7 @@ public interface ApiService {
             @Field("token") String token
     );
 
-
+    @GET("/api/cities/")
+    Call<CityResponse> cities(
+    );
 }
