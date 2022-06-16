@@ -99,6 +99,15 @@
     <string name="password_register">Elige una contraseña</string>
     <string name="confirm_password_register">Confirma tu contraseña</string>
 
+    <!--Register 2-->
+
+    <string name="describe_you">Descríbete</string>
+    <string name="looking_for">¿Qué estás buscando?</string>
+    <string name="whats_your_job">¿A qué te dedicas?</string>
+    <string name="integrate_accounts">Integrar mis cuentas</string>
+
+    <!--Register Buttons-->
+
     <string name="back_button">Volver</string>
     <string name="next_button">Siguiente</string>
     <string name="acept_terms">Acepto los</string>

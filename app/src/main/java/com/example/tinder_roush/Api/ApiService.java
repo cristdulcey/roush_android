@@ -4,8 +4,10 @@ import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
 
+import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -36,4 +38,9 @@ public interface ApiService {
     @GET("/api/cities/")
     Call<CityResponse> cities(
     );
+
+//    @POST("/api/persons/")
+//    Call<RegisterNewUser> registerPerson(
+//            @Body MultipartBody file
+//    );
 }
