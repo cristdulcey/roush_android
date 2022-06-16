@@ -40,6 +40,14 @@ public class LocalData implements LocalDataInterface{
         return "";
     }
 
+
+    @Override
+    public void register(String data, String key) {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putString(key, data).apply();
+    }
+
+
     @Override
     public void wizard() {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);

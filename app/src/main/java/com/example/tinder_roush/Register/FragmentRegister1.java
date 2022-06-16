@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Patterns;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tinder_roush.Objects.Register1Data;
+import com.example.tinder_roush.Objects.UserData;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
@@ -34,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fragment1{
 
@@ -41,6 +44,7 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
     EditText name, lastname, username, email, password, confirm_password;
     LinearLayout layout_date_calendar;
     Register1Data register1Data;
+    UserData userData;
     SpinnerCustom spinnerCities;
     Spinner spinnerGender;
     ArrayList<String> gender_list;
@@ -61,11 +65,11 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             initObjets(view);
 
             //Add gender List
-            gender_list.add("Mujer");
-            gender_list.add("Hombre");
-            gender_list.add("Trans");
-            gender_list.add("No binario");
-            gender_list.add("Otro");
+            gender_list.add("MAN");
+            gender_list.add("WOMAN");
+            gender_list.add("TRANS");
+            gender_list.add("NOBINARY");
+            gender_list.add("OTHER");
             ArrayAdapter<String> genderArrayAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_custom_textview_gender, gender_list);
             genderArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_gender);
             spinnerGender.setAdapter(genderArrayAdapter);
@@ -136,6 +140,10 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
                         email.requestFocus();
                         return;
                     }
+                    if (!validarEmail(email.getText().toString())){
+                        email.setError("Email no válido");
+                        return;
+                    }
                     if (date_birth.getText().toString().isEmpty()){
                         date_birth.setError(BaseContext.getContext().getString(R.string.message_empty_field));
                         date_birth.requestFocus();
@@ -156,7 +164,8 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
                         confirm_password.requestFocus();
                         return;
                     }
-                    performSecondRegister();
+                  //  performSecondRegister();
+                    register1();
                 }
             });
             layout_date_calendar.setOnClickListener(new View.OnClickListener() {
@@ -174,6 +183,18 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+            spinnerCities.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    city = spinnerCities.getSelectedItem().toString();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
                 }
             });
@@ -233,6 +254,10 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             dialog.getWindow().setAttributes(wmlp);
         }
 
+        private boolean validarEmail(String email) {
+            Pattern pattern = Patterns.EMAIL_ADDRESS;
+            return pattern.matcher(email).matches();
+        }
 
         public void addSpinnerBefore(){
             List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
@@ -263,7 +288,9 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
 
     @Override
     public void register1() {
-
+        register1Data = new Register1Data(username.getText().toString(),name.getText().toString(),lastname.getText().toString(),email.getText().toString(),password.getText().toString(),city,date_birth.getText().toString(),
+                gender_select);
+        presenter.register1Presenters(register1Data);
     }
 
     public void performSecondRegister(){

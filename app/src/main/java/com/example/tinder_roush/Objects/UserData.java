@@ -13,6 +13,10 @@ public class UserData {
     @Expose
     private String username;
 
+    @SerializedName("first_name")
+    @Expose
+    private String first_name;
+
     @SerializedName("last_name")
     @Expose
     private String last_name;
@@ -32,6 +36,10 @@ public class UserData {
     @SerializedName("email")
     @Expose
     private String email;
+
+    @SerializedName("password")
+    @Expose
+    private String password;
 
     @SerializedName("address")
     @Expose
@@ -81,15 +89,15 @@ public class UserData {
     @Expose
     private String interesting;
 
-    public UserData(String id, String username, String last_name, String email, String address, String date_birth, String gender, String search) {
-        this.id = id;
+    public UserData(String username, String first_name, String last_name, String email, String password, String address, String date_birth, String gender) {
         this.username = username;
+        this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
+        this.password = password;
         this.address = address;
         this.date_birth = date_birth;
         this.gender = gender;
-        this.search = search;
     }
 
     public String getId() {
@@ -106,6 +114,14 @@ public class UserData {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getLast_name() {
@@ -146,6 +162,14 @@ public class UserData {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAddress() {

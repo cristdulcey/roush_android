@@ -6,6 +6,9 @@ public interface LocalDataInterface {
     void saveToken(String refresh, String access);
     String getRefresh();
     String getAccess();
+
+    void register(String data, String key);
+
     void wizard();
     Boolean getwizard();
     String getToken();

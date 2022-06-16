@@ -25,6 +25,7 @@ public interface RegisterInterfaces {
 
     interface models{
         void citiesModels(presenters presenter);
+        void register1Model(Register1Data register1Data, RegisterInterfaces.presenters presenters);
     }
 
     interface presenters{
@@ -32,6 +33,7 @@ public interface RegisterInterfaces {
         void citiesPresenter();
         void citiesSuccessful(ArrayList<CityData> cities);
         void citiesError(String message);
+        void sendRegister2();
     //    void register2Presenters(Register2Data register2Data);
     }
 

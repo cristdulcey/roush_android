@@ -18,7 +18,7 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     }
     @Override
     public void register1Presenters(Register1Data register1Data) {
-
+        model.register1Model(register1Data, this);
     }
 
     @Override
@@ -44,5 +44,10 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     @Override
     public void citiesError(String message) {
 
+    }
+
+    @Override
+    public void sendRegister2() {
+        view.performSecondRegister();
     }
 }

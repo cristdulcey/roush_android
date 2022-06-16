@@ -3,6 +3,7 @@ package com.example.tinder_roush.Register;
 import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.CityResponse;
+import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
 import java.io.IOException;
@@ -46,5 +47,18 @@ public class RegisterModels implements RegisterInterfaces.models{
 
             }
         });
+    }
+
+    @Override
+    public void register1Model(Register1Data register1Data, RegisterInterfaces.presenters presenter) {
+        localData.register(register1Data.getUsername(),"USERNAME");
+        localData.register(register1Data.getFirst_name(),"FIRST_NAME");
+        localData.register(register1Data.getLast_name(),"LAST_NAME");
+        localData.register(register1Data.getDate_birth(),"DATE_BIRTH");
+        localData.register(register1Data.getAddress(),"ADDRESS");
+        localData.register(register1Data.getGender(),"GENDER");
+        localData.register(register1Data.getEmail(),"EMAIL");
+        localData.register(register1Data.getPassword(),"PASSWORD");
+        presenter.sendRegister2();
     }
 }
