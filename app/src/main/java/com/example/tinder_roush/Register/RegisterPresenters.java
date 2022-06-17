@@ -67,4 +67,9 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     public void sendRegister3() {
         view2.performRegister3();
     }
+
+    @Override
+    public void onErrorPresenterRegister(String response_user) {
+
+    }
 }

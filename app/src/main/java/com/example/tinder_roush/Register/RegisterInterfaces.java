@@ -42,7 +42,9 @@ public interface RegisterInterfaces {
         void citiesError(String message);
         void sendRegister2();
         void sendRegister3();
-    //    void register2Presenters(Register2Data register2Data);
+
+        void onErrorPresenterRegister(String response_user);
+        //    void register2Presenters(Register2Data register2Data);
     }
 
 }

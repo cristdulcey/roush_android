@@ -3,6 +3,7 @@ package com.example.tinder_roush.Api;
 import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
+import com.example.tinder_roush.Objects.UserData;
 
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
@@ -40,7 +41,9 @@ public interface ApiService {
     );
 
 //    @POST("/api/persons/")
-//    Call<RegisterNewUser> registerPerson(
-//            @Body MultipartBody file
-//    );
+    @POST("/api/persons/")
+    Call<UserData> sendInfo(
+            @Body MultipartBody body
+    );
+
 }

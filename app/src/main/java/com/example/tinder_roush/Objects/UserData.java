@@ -57,25 +57,25 @@ public class UserData {
     @Expose
     private String search;
 
-    @SerializedName("match")
-    @Expose
-    private String match;
+//    @SerializedName("match")
+//    @Expose
+//    private String match;
+//
+//    @SerializedName("year_start")
+//    @Expose
+//    private String year_start;
+//
+//    @SerializedName("year_finish")
+//    @Expose
+//    private String year_finish;
 
-    @SerializedName("year_start")
-    @Expose
-    private String year_start;
+//    @SerializedName("distance")
+//    @Expose
+//    private String distance;
 
-    @SerializedName("year_finish")
-    @Expose
-    private String year_finish;
-
-    @SerializedName("distance")
-    @Expose
-    private String distance;
-
-    @SerializedName("position")
-    @Expose
-    private String position;
+//    @SerializedName("position")
+//    @Expose
+//    private String position;
 
     @SerializedName("about")
     @Expose
@@ -204,45 +204,45 @@ public class UserData {
         this.search = search;
     }
 
-    public String getMatch() {
-        return match;
-    }
-
-    public void setMatch(String match) {
-        this.match = match;
-    }
-
-    public String getYear_start() {
-        return year_start;
-    }
-
-    public void setYear_start(String year_start) {
-        this.year_start = year_start;
-    }
-
-    public String getYear_finish() {
-        return year_finish;
-    }
-
-    public void setYear_finish(String year_finish) {
-        this.year_finish = year_finish;
-    }
-
-    public String getDistance() {
-        return distance;
-    }
-
-    public void setDistance(String distance) {
-        this.distance = distance;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
+//    public String getMatch() {
+//        return match;
+//    }
+//
+//    public void setMatch(String match) {
+//        this.match = match;
+//    }
+//
+//    public String getYear_start() {
+//        return year_start;
+//    }
+//
+//    public void setYear_start(String year_start) {
+//        this.year_start = year_start;
+//    }
+//
+//    public String getYear_finish() {
+//        return year_finish;
+//    }
+//
+//    public void setYear_finish(String year_finish) {
+//        this.year_finish = year_finish;
+//    }
+//
+//    public String getDistance() {
+//        return distance;
+//    }
+//
+//    public void setDistance(String distance) {
+//        this.distance = distance;
+//    }
+//
+//    public String getPosition() {
+//        return position;
+//    }
+//
+//    public void setPosition(String position) {
+//        this.position = position;
+//    }
 
     public String getAbout() {
         return about;
