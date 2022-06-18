@@ -45,10 +45,11 @@ public class FragmentRegister2 extends Fragment implements RegisterInterfaces.fr
         context = view.getContext();
         initObjets(view);
 
-        search_list.add("MAN");
-        search_list.add("WOMAN");
-        search_list.add("BOTH");
-        search_list.add("OTHER");
+        search_list.add(0,"¿Qué estás buscando?");
+        search_list.add("Hombres");
+        search_list.add("Mujeres");
+        search_list.add("Ambos");
+        search_list.add("Otr@");
         ArrayAdapter<String> searchArrayAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_custom_textview_gender, search_list);
         searchArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_gender);
         spinnerLookingFor.setAdapter(searchArrayAdapter);

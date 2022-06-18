@@ -11,6 +11,7 @@ import com.example.tinder_roush.Objects.UserData;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -58,12 +59,30 @@ public class RegisterModels implements RegisterInterfaces.models{
 
     @Override
     public void register1Model(Register1Data register1Data, RegisterInterfaces.presenters presenter) {
+
+        ArrayList<String> genero = new ArrayList<>();
+        genero.add("Hombre");
+        genero.add("Mujer");
+        genero.add("Trans");
+        genero.add("No binario");
+        genero.add("Otr@");
+
         localData.register(register1Data.getUsername(),"USERNAME");
         localData.register(register1Data.getFirst_name(),"FIRST_NAME");
         localData.register(register1Data.getLast_name(),"LAST_NAME");
-        localData.register(register1Data.getDate_birth(),"DATE_BIRTH");
         localData.register(register1Data.getAddress(),"ADDRESS");
-        localData.register(register1Data.getGender(),"GENDER");
+        localData.register(register1Data.getDate_birth(),"DATE_BIRTH");
+        if(register1Data.getGender()== genero.get(0)){
+            localData.register("MAN","GENDER");
+        }if(register1Data.getGender()==genero.get(1)){
+            localData.register("WOMAN","GENDER");
+        }if(register1Data.getGender()==genero.get(2)){
+            localData.register("TRANS","GENDER");
+        }if(register1Data.getGender()==genero.get(3)){
+            localData.register("NOBINARY","GENDER");
+        }if(register1Data.getGender()==genero.get(4)){
+            localData.register("OTHER","GENDER"); }
+        //localData.register(register1Data.getGender(),"GENDER");
         localData.register(register1Data.getEmail(),"EMAIL");
         localData.register(register1Data.getPassword(),"PASSWORD");
         presenter.sendRegister2();
@@ -71,37 +90,53 @@ public class RegisterModels implements RegisterInterfaces.models{
 
     @Override
     public void register2Model(Register2Data register2Data, RegisterInterfaces.presenters presenter) {
-        localData.register(register2Data.getJob(),"JOB");
-        localData.register(register2Data.getAbout(),"ABOUT");
-        localData.register(register2Data.getSearch(),"SEARCH");
-      //  presenter.sendRegister3();
 
-        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
-        request.addFormDataPart("user.username", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("USERNAME")));
-        request.addFormDataPart("user.email", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("EMAIL")));
-        request.addFormDataPart("user.password", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("PASSWORD")));
-        request.addFormDataPart("user.gender", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("GENDER")));
-        request.addFormDataPart("user.first_name", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("FIRST_NAME")));
-        request.addFormDataPart("user.last_name", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("LAST_NAME")));
-        request.addFormDataPart("user.date_birth", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("DATE_BIRTH")));
-        request.addFormDataPart("user.address", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("ADDRESS")));
-        request.addFormDataPart("user.job", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("JOB")));
-        request.addFormDataPart("user.about", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("ABOUT")));
-        request.addFormDataPart("user.search", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("SEARCH")));
+        ArrayList<String> busqueda = new ArrayList<>();
+        busqueda.add("Hombres");
+        busqueda.add("Mujeres");
+        busqueda.add("Ambos");
+        busqueda.add("Otr@");
 
-        MultipartBody body=request.build();
-        Call<UserData> call = apiAdapter.getApiService().sendInfo(body);
+        localData.register(register2Data.getJob(), "JOB");
+        localData.register(register2Data.getAbout(), "ABOUT");
+        if (register2Data.getSearch() == busqueda.get(0)) {
+            localData.register("MAN", "SEARCH");
+        }
+        if (register2Data.getSearch() == busqueda.get(1)) {
+            localData.register("WOMAN", "SEARCH");
+        }
+        if (register2Data.getSearch() == busqueda.get(2)) {
+            localData.register("BOTH", "SEARCH");
+        }
+        if (register2Data.getSearch() == busqueda.get(3)) {
+            localData.register("OTHER", "SEARCH");}
+
+            final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+            request.addFormDataPart("username", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("USERNAME")));
+            request.addFormDataPart("first_name", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("FIRST_NAME")));
+            request.addFormDataPart("last_name", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("LAST_NAME")));
+            request.addFormDataPart("address", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("ADDRESS")));
+            request.addFormDataPart("date_birth", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("DATE_BIRTH")));
+            request.addFormDataPart("gender", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("GENDER")));
+            request.addFormDataPart("email", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("EMAIL")));
+            request.addFormDataPart("password", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("PASSWORD")));
+            request.addFormDataPart("job", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("JOB")));
+            request.addFormDataPart("about", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("ABOUT")));
+            request.addFormDataPart("search", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("SEARCH")));
+
+            MultipartBody body = request.build();
+            Call<UserData> call = apiAdapter.getApiService().sendInfo(body);
             call.enqueue(new Callback<UserData>() {
                 @Override
                 public void onResponse(Call<UserData> call, Response<UserData> response) {
                     Log.d("tag", "onResponse: " + response.message().toString());
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
 //                        localData.CreateUser();
                         presenter.sendRegister3();
-                    }else {
+                    } else {
                         CustomErrorResponse custom_error = new CustomErrorResponse();
                         String response_user = "Intentalo nuevamente";
-                        if (response.raw().code()==400){
+                        if (response.raw().code() == 400) {
                             Log.d("tag", "apns");
                         }
                         try {
@@ -112,10 +147,12 @@ public class RegisterModels implements RegisterInterfaces.models{
                         presenter.onErrorPresenterRegister(response_user);
                     }
                 }
+
                 @Override
                 public void onFailure(Call<UserData> call, Throwable t) {
                     Log.d("tag", "onResponse: " + t.getMessage());
                 }
             });
+        }
     }
-}
+

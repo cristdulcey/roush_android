@@ -70,11 +70,12 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             initObjets(view);
 
             //Add gender List
-            gender_list.add("MAN");
-            gender_list.add("WOMAN");
-            gender_list.add("TRANS");
-            gender_list.add("NOBINARY");
-            gender_list.add("OTHER");
+            gender_list.add(0,"¿Cómo te identificas?");
+            gender_list.add("Hombre");
+            gender_list.add("Mujer");
+            gender_list.add("Trans");
+            gender_list.add("No binary");
+            gender_list.add("Otr@");
             ArrayAdapter<String> genderArrayAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_custom_textview_gender, gender_list);
             genderArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_gender);
             spinnerGender.setAdapter(genderArrayAdapter);
@@ -202,7 +203,7 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             spinnerCities.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    city = spinnerCities.getSelectedItem().toString();
+//                    city = spinnerCities.getSelectedItem().toString();
                 }
 
                 @Override
@@ -307,8 +308,7 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
 
         @Override
         public void register1() {
-            register1Data = new Register1Data(username.getText().toString(),name.getText().toString(),lastname.getText().toString(),email.getText().toString(),password.getText().toString(),city,date_birth.getText().toString(),
-                    gender_select);
+            register1Data = new Register1Data(name.getText().toString(),lastname.getText().toString(),username.getText().toString(),date_birth.getText().toString(),city,gender_select,email.getText().toString(),password.getText().toString());
             presenter.register1Presenters(register1Data);
         }
 
