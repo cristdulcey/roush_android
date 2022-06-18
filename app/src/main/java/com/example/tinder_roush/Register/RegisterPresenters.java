@@ -3,6 +3,7 @@ package com.example.tinder_roush.Register;
 import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Objects.Register2Data;
+import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
@@ -31,6 +32,11 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     @Override
     public void register2Presenters(Register2Data register2Data) {
         model.register2Model(register2Data,this);
+    }
+
+    @Override
+    public void register3Presenters(Register3Data register3Data) {
+        model.register3Model(register3Data, this);
     }
 
     @Override

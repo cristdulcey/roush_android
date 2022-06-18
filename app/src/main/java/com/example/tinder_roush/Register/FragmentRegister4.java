@@ -37,7 +37,7 @@ public class FragmentRegister4 extends Fragment {
 
     public void initObjets(View view){
         create_account = view.findViewById(R.id.create_account_final);
-        photo = view.findViewById(R.id.button_photography);
+        photo = view.findViewById(R.id.button_photo_preference);
     }
 
     public void listeners(){

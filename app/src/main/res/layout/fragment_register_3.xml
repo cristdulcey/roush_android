@@ -74,15 +74,16 @@
                 android:gravity="center">
 
                 <ImageButton
+                    android:id="@+id/photo_1_register"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_marginRight="8dp"
                     android:padding="40dp"
                     android:background="@drawable/border_white_green_round"
-                    android:src="@drawable/icon_camera"
-                    android:clickable="true"/>
+                    android:src="@drawable/icon_camera" />
 
                 <ImageButton
+                    android:id="@+id/photo_2_register"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_marginLeft="8dp"
@@ -103,6 +104,7 @@
                     android:gravity="center">
 
                     <ImageButton
+                        android:id="@+id/photo_3_register"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
@@ -111,6 +113,7 @@
                         android:src="@drawable/icon_camera"/>
 
                     <ImageButton
+                        android:id="@+id/photo_4_register"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
@@ -132,6 +135,7 @@
                     android:gravity="center">
 
                     <ImageButton
+                        android:id="@+id/photo_5_register"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
@@ -140,6 +144,7 @@
                         android:src="@drawable/icon_camera"/>
 
                     <ImageButton
+                        android:id="@+id/photo_6_register"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"

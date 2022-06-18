@@ -46,4 +46,9 @@ public interface ApiService {
             @Body MultipartBody body
     );
 
+    @POST("/api/persons-photo/")
+    Call<UserData> addPhoto(
+            @Body MultipartBody body
+    );
+
 }

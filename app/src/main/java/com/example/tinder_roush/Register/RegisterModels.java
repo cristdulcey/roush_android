@@ -7,6 +7,7 @@ import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Objects.Register2Data;
+import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.UserData;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
@@ -154,5 +155,10 @@ public class RegisterModels implements RegisterInterfaces.models{
                 }
             });
         }
+
+    @Override
+    public void register3Model(Register3Data register3Data, RegisterInterfaces.presenters presenters) {
+
     }
+}
 
