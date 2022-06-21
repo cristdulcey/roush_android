@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutm"
+    android:orientation="vertical"
+    android:background="@color/white"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+    <CalendarView
+        android:id="@+id/calendar_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxDate="12/31/2005"
+        android:minDate="09/01/1950"
+        android:weekNumberColor="@color/white"
+        android:selectedWeekBackgroundColor="@color/white"
+        android:tag="my tag" />
+    <Button
+        android:id="@+id/calendar_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green4"
+        android:textAllCaps="false"
+        android:background="@drawable/border_green_transparent_round"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="8dp"/>
+</LinearLayout>
