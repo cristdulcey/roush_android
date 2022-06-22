@@ -46,12 +46,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
+                        android:layout_marginRight="-60dp"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="@string/title_profile"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
+
+                    <Button
+                        android:id="@+id/log_out"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:text="@string/log_out_text"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:background="@android:color/transparent"/>
                 </LinearLayout>
 
                 <!--Photo profile-->

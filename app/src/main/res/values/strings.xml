@@ -84,6 +84,7 @@
     <string name="max_distance"><b>Rango distancia que quiero ver</b></string>
     <string name="max_age"><b>Rango edad que quiero ver</b></string>
     <string name="upload_photos"><b>Sube tus fotos</b></string>
+    <string name="log_out_text">Cerrar sesión</string>
 
     <!--Strings Notifications-->
     <string name="title_notifications"><b>Notificaciones</b></string>
