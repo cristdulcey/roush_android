@@ -85,6 +85,11 @@
     <string name="max_age"><b>Rango edad que quiero ver</b></string>
     <string name="upload_photos"><b>Sube tus fotos</b></string>
     <string name="log_out_text">Cerrar sesión</string>
+    <string name="title_interestings"><b>Edita tus intereses</b></string>
+    <string name="subtitle_interestings">y deja que sepan lo que te apasiona</string>
+    <string name="exclusive_content"><b>Contenido exclusivo</b></string>
+    <string name="active_exclusive_content"><b>Activar contenido</b></string>
+    <string name="text_exclusive_content">Si te gustaría publicar contenido exclusivo y ganar dinero extra.</string>
 
     <!--Strings Notifications-->
     <string name="title_notifications"><b>Notificaciones</b></string>
