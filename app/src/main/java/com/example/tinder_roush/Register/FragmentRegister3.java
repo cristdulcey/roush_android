@@ -25,8 +25,14 @@ import android.widget.Toast;
 
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.Register3Data;
+import com.example.tinder_roush.Objects.RegisterResponse;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fragment3{
@@ -97,27 +103,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
                     Toast.makeText(BaseContext.getContext(),"Agrega una foto para tu perfil",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (UrlPhoto2.isEmpty()){
-                    Toast.makeText(BaseContext.getContext(),"Agrega una foto",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (UrlPhoto3.isEmpty()){
-                    Toast.makeText(BaseContext.getContext(),"Agrega una foto",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (UrlPhoto4.isEmpty()){
-                    Toast.makeText(BaseContext.getContext(),"Agrega una foto",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (UrlPhoto5.isEmpty()){
-                    Toast.makeText(BaseContext.getContext(),"Agrega una foto",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (UrlPhoto6.isEmpty()){
-                    Toast.makeText(BaseContext.getContext(),"Agrega una foto",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
+//                register3();
             }
         });
         photo1.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +111,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             public void onClick(View v) {
                 RESULT_PHOTO = RESULT_PHOTO_1;
                 getImageFromAlbum();
+
             }
         });
         photo2.setOnClickListener(new View.OnClickListener() {
@@ -177,14 +164,14 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
 
         if (requestCode == RESULT_PHOTO_1 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
-
+           // File  = new File(localData.getRegister("SELFIE"));
             currentPhotoPath = getPath(selectedImage);
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo1.setImageBitmap(bitmap);
             UrlPhoto1 = currentPhotoPath;
-
+            localData.register(currentPhotoPath, "Image1");
+            register3();
             Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
-
         }
         if (requestCode == RESULT_PHOTO_2 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -193,7 +180,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo2.setImageBitmap(bitmap);
             UrlPhoto2 = currentPhotoPath;
-
+            localData.register(currentPhotoPath, "Image2");
             Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
 
         }
@@ -204,7 +191,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo3.setImageBitmap(bitmap);
             UrlPhoto3 = currentPhotoPath;
-
+            localData.register(currentPhotoPath, "Image3");
             Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
 
         }
@@ -215,7 +202,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo4.setImageBitmap(bitmap);
             UrlPhoto4 = currentPhotoPath;
-
+            localData.register(currentPhotoPath, "Image4");
             Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
 
         }
@@ -226,7 +213,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo5.setImageBitmap(bitmap);
             UrlPhoto5 = currentPhotoPath;
-
+            localData.register(currentPhotoPath, "Image5");
             Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
 
         }
@@ -237,7 +224,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo6.setImageBitmap(bitmap);
             UrlPhoto6 = currentPhotoPath;
-
+            localData.register(currentPhotoPath, "Image6");
             Log.e("PATH PICKED IMAGE_6", currentPhotoPath);
 
         }
@@ -264,7 +251,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
 
     @Override
     public void register3() {
-        register3Data = new Register3Data(UrlPhoto1,UrlPhoto2,UrlPhoto3,UrlPhoto4,UrlPhoto5,UrlPhoto6);
+        register3Data = new Register3Data(currentPhotoPath);
         presenter.register3Presenters(register3Data);
     }
 }

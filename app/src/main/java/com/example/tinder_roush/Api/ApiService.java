@@ -2,6 +2,8 @@ package com.example.tinder_roush.Api;
 
 import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.CityResponse;
+import com.example.tinder_roush.Objects.Register3Data;
+import com.example.tinder_roush.Objects.RegisterResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
 import com.example.tinder_roush.Objects.UserData;
 
@@ -13,6 +15,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiService {
 
@@ -47,7 +50,7 @@ public interface ApiService {
     );
 
     @POST("/api/persons-photo/")
-    Call<UserData> addPhoto(
+    Call<Register3Data> addPhoto(
             @Body MultipartBody body
     );
 

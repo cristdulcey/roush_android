@@ -19,11 +19,11 @@ public class CityData {
 
     @SerializedName("created_by")
     @Expose
-    private Integer created_by;
+    private String created_by;
 
     @SerializedName("modified_by")
     @Expose
-    private Integer modified_by;
+    private String modified_by;
 
     @SerializedName("name")
     @Expose
@@ -33,7 +33,7 @@ public class CityData {
     @Expose
     private String state;
 
-    public CityData(String id, String created_at, String modified_at, Integer created_by, Integer modified_by, String name, String state) {
+    public CityData(String id, String created_at, String modified_at, String created_by, String  modified_by, String name, String state) {
         this.id = id;
         this.created_at = created_at;
         this.modified_at = modified_at;
@@ -67,19 +67,19 @@ public class CityData {
         this.modified_at = modified_at;
     }
 
-    public Integer getCreated_by() {
+    public String  getCreated_by() {
         return created_by;
     }
 
-    public void setCreated_by(Integer created_by) {
+    public void setCreated_by(String created_by) {
         this.created_by = created_by;
     }
 
-    public Integer getModified_by() {
+    public String  getModified_by() {
         return modified_by;
     }
 
-    public void setModified_by(Integer modified_by) {
+    public void setModified_by(String modified_by) {
         this.modified_by = modified_by;
     }
 

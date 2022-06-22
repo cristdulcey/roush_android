@@ -64,6 +64,7 @@
         <entry key="app/src/main/res/layout/spinner_custom_textview_gender.xml" value="0.4391727493917275" />
         <entry key="app/src/main/res/layout/support_simple_spinner_dropdown_item.xml" value="2.0130813953488373" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/xml/provider_path.xml" value="0.1" />
       </map>
     </option>
   </component>

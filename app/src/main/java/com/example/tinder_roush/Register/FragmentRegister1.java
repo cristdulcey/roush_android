@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.util.Patterns;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -292,6 +293,7 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
 
         //Spinner Ciudades
         public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities){
+
             spinnerCities.setSearchEnabled(true);
             spinnerCities.setSearchHint("Selecciona tu ciudad");
             spinnerCities.setItems(cities, new SpinnerListener() {

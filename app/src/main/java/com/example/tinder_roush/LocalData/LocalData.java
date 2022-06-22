@@ -80,4 +80,8 @@ public class LocalData implements LocalDataInterface{
     }
 
 
+    public void CreateUser() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putString("Image", "").apply();
+    }
 }

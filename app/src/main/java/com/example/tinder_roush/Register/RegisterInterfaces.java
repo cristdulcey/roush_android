@@ -1,6 +1,8 @@
 package com.example.tinder_roush.Register;
 
+import com.example.tinder_roush.Login.LoginInterfaces;
 import com.example.tinder_roush.Objects.CityData;
+import com.example.tinder_roush.Objects.LoginData;
 import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Objects.Register2Data;
 import com.example.tinder_roush.Objects.Register3Data;
@@ -35,6 +37,9 @@ public interface RegisterInterfaces {
         void register1Model(Register1Data register1Data, RegisterInterfaces.presenters presenters);
         void register2Model(Register2Data register2Data, RegisterInterfaces.presenters presenters);
         void register3Model(Register3Data register3Data, RegisterInterfaces.presenters presenters);
+        void registerPhotos(RegisterInterfaces.presenters presenter);
+        void loginModel(RegisterInterfaces.presenters presenter, Register1Data data);
+        void verifyTokenModel(RegisterInterfaces.presenters presenter);
     }
 
     interface presenters{
@@ -45,8 +50,12 @@ public interface RegisterInterfaces {
         void citiesSuccessful(ArrayList<CityData> cities);
         void citiesError(String message);
         void sendRegister2();
-        void sendRegister3();
-
+//        void sendRegister3();
+        void loginPresenter(Register1Data data);
+        void loginSuccessful();
+        void loginError(String message);
+        void sendRegisterFinal();
+        void onPhotosCheckPoint();
         void onErrorPresenterRegister(String response_user);
         //    void register2Presenters(Register2Data register2Data);
     }
