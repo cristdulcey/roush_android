@@ -79,6 +79,7 @@
     <string name="gender_profile"><b>Género:</b></string>
     <string name="location_profile"><b>Ubicación:</b></string>
     <string name="description"><b>Descripción:</b></string>
+    <string name="edit_data_profile">Editar</string>
     <string name="search_location"><b>Quiero ver personas en...</b></string>
     <string name="gender_preferences"><b>Preferencia de género</b></string>
     <string name="max_distance"><b>Rango distancia que quiero ver</b></string>
@@ -90,6 +91,9 @@
     <string name="exclusive_content"><b>Contenido exclusivo</b></string>
     <string name="active_exclusive_content"><b>Activar contenido</b></string>
     <string name="text_exclusive_content">Si te gustaría publicar contenido exclusivo y ganar dinero extra.</string>
+    <string name="your_information_is_saved_success">Tu información ha sido guardada <b>exitosamente</b></string>
+    <string name="view_content_">Ver contenido</string>
+    <string name="ok">Ok</string>
 
     <!--Strings Notifications-->
     <string name="title_notifications"><b>Notificaciones</b></string>
