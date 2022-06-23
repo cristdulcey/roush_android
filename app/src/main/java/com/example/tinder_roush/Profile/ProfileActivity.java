@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
@@ -21,7 +23,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     ImageButton backHome;
     LocalData localData;
-    Button buttonLogout;
+    Button buttonLogout, editDataProfile, viewContentExcl;
+    Switch activateContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,9 @@ public class ProfileActivity extends AppCompatActivity {
         backHome = findViewById(R.id.back_to_home);
         localData = new LocalData();
         buttonLogout = findViewById(R.id.log_out);
+        activateContent = findViewById(R.id.switch_activate_content);
+        editDataProfile = findViewById(R.id.edit_profile_data);
+        viewContentExcl = findViewById(R.id.view_content_button);
     }
 
     public void listeners(){
@@ -49,13 +55,37 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        editDataProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BaseContext.getContext(), ProfileSuccessChange.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         backHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     backToHome();
                 }
             });
-        }
+
+        activateContent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                boolean valor;
+                if(isChecked){
+                    viewContentExcl.setVisibility(View.VISIBLE);
+                    valor = true;
+                } else {
+                    viewContentExcl.setVisibility(View.INVISIBLE);
+                    valor = false;
+                }
+            }
+        });
+    }
+
+    //Methods
 
         public void backToHome(){
             Intent intent = new Intent(this, MenuNavigation.class);
