@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.tinder_roush.Blog.BlogActivity;
 import com.example.tinder_roush.Chats.ChatsActivity;
 import com.example.tinder_roush.Home.HomeActivity;
 import com.example.tinder_roush.Likes.LikesActivity;
@@ -117,12 +118,12 @@ public class MenuNavigation extends AppCompatActivity {
           final Fragment fragment2 = new LikesActivity();
           final Fragment fragment3 = new ChatsActivity();
           final Fragment fragment4 = new NotificationsConfigActivity();
-//        final Fragment fragment5 = new ContainerFragment();
+          final Fragment fragment5 = new BlogActivity();
           adapter.addFragment(fragment1);
           adapter.addFragment(fragment2);
           adapter.addFragment(fragment3);
           adapter.addFragment(fragment4);
-//        adapter.addFragment(fragment5);
+          adapter.addFragment(fragment5);
           viewPager.setAdapter(adapter);
     }
 
