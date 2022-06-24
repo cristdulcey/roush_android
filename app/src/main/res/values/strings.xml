@@ -110,6 +110,8 @@
     <string name="history_2">Algo random</string>
     <string name="history_3">Érase una vez...</string>
     <string name="history_4">WTF?</string>
+    <string name="write_by">Escrito por Jesica</string>
+    <string name="write_in">23/06/2022</string>
 
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>
