@@ -37,7 +37,7 @@ public interface RegisterInterfaces {
         void register1Model(Register1Data register1Data, RegisterInterfaces.presenters presenters);
         void register2Model(Register2Data register2Data, RegisterInterfaces.presenters presenters);
         void register3Model(Register3Data register3Data, RegisterInterfaces.presenters presenters);
-        void registerPhotos(RegisterInterfaces.presenters presenter);
+       // void registerPhotos(RegisterInterfaces.presenters presenter);
         void loginModel(RegisterInterfaces.presenters presenter, Register1Data data);
         void verifyTokenModel(RegisterInterfaces.presenters presenter);
     }
@@ -55,7 +55,7 @@ public interface RegisterInterfaces {
         void loginSuccessful();
         void loginError(String message);
         void sendRegisterFinal();
-        void onPhotosCheckPoint();
+     //   void onPhotosCheckPoint();
         void onErrorPresenterRegister(String response_user);
         //    void register2Presenters(Register2Data register2Data);
     }

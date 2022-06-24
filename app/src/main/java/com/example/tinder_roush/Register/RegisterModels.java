@@ -216,7 +216,7 @@ public class RegisterModels implements RegisterInterfaces.models{
                     Log.d("tag", "onResponse: " + response.message().toString());
                     if (response.isSuccessful()){
                         localData.CreateUser();
-                        presenter.onPhotosCheckPoint();
+                        presenter.sendRegisterFinal();
                     }else {
                         CustomErrorResponse custom_error = new CustomErrorResponse();
                         String response_user = "Intentalo nuevamente";
@@ -241,49 +241,50 @@ public class RegisterModels implements RegisterInterfaces.models{
         }
     }
 
-    @Override
-    public void registerPhotos(RegisterInterfaces.presenters presenter) {
-
-        for (int photo = 2;photo<=6;photo++) {
-            File fileImage = new File(localData.getRegister("Image"));
-            final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
-            request.addFormDataPart("id", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("Id")));
-            request.addFormDataPart("image", fileImage.getName(), RequestBody.create(MediaType.parse("image/*"), fileImage));
-            MultipartBody body = request.build();
-
-            Call<Register3Data> call = apiAdapter.getApiService2().addPhoto(body);
-            try {
-                call.enqueue(new Callback<Register3Data>() {
-                    @Override
-                    public void onResponse(Call<Register3Data> call, Response<Register3Data> response) {
-                        Log.d("tag", "onResponse: " + response.message().toString());
-                        if (response.isSuccessful()) {
-                            localData.CreateUser();
-                            presenter.onPhotosCheckPoint();
-                        } else {
-                            CustomErrorResponse custom_error = new CustomErrorResponse();
-                            String response_user = "Intentalo nuevamente";
-                            if (response.raw().code() == 400) {
-                                Log.d("tag", "apns");
-                            }
-                            try {
-                                response_user = custom_error.returnMessageError(response.errorBody().string());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            presenter.onErrorPresenterRegister(response_user);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Register3Data> call, Throwable t) {
-                        Log.d("tag", "onResponse: " + t.getMessage());
-                    }
-                });
-            } catch (Exception e) {
-                Log.d("tag", "onCreate: " + e.getMessage());
-            }
-        }
-    }
+//    @Override
+//    public void registerPhotos(RegisterInterfaces.presenters presenter) {
+//
+//        for (int photo = 2;photo<=6;photo++) {
+//            File fileImage = new File(localData.getRegister("Image2"));
+//            final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+//            request.addFormDataPart("id", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("Id")));
+//            request.addFormDataPart("image", fileImage.getName(), RequestBody.create(MediaType.parse("image/*"), fileImage));
+//            MultipartBody body = request.build();
+//
+//            Call<Register3Data> call = apiAdapter.getApiService2().addPhoto(body);
+//            try {
+//                call.enqueue(new Callback<Register3Data>() {
+//                    @Override
+//                    public void onResponse(Call<Register3Data> call, Response<Register3Data> response) {
+//                        Log.d("tag", "onResponse: " + response.message().toString());
+//                        if (response.isSuccessful()) {
+//                            localData.CreateUser();
+//                            presenter.onPhotosCheckPoint();
+//                        } else {
+//                            CustomErrorResponse custom_error = new CustomErrorResponse();
+//                            String response_user = "Intentalo nuevamente";
+//                            if (response.raw().code() == 400) {
+//                                Log.d("tag", "apns");
+//                            }
+//                            try {
+//                                response_user = custom_error.returnMessageError(response.errorBody().string());
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                            presenter.onErrorPresenterRegister(response_user);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Register3Data> call, Throwable t) {
+//                        Log.d("tag", "onResponse: " + t.getMessage());
+//                    }
+//                });
+//            } catch (Exception e) {
+//                Log.d("tag", "onCreate: " + e.getMessage());
+//            }
+//        }
+//        presenter.sendRegisterFinal();
+//    }
 }
 

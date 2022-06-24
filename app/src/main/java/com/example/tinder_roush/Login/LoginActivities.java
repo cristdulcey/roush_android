@@ -107,6 +107,5 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.login_view, Register1);
         transaction.commit();
-        finish();
     }
 }

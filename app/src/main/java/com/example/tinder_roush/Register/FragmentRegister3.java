@@ -103,7 +103,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
                     Toast.makeText(BaseContext.getContext(),"Agrega una foto para tu perfil",Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                register3();
+                register3();
             }
         });
         photo1.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +170,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo1.setImageBitmap(bitmap);
             UrlPhoto1 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image1");
-            register3();
+//            register3();
             Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_2 && resultCode == RESULT_OK) {
