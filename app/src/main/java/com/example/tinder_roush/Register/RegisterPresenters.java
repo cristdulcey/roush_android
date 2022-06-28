@@ -102,11 +102,6 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
      view3.performRegisterFinal();
     }
 
-//    @Override
-//    public void onPhotosCheckPoint() {
-//        model.registerPhotos(this);
-//    }
-
     @Override
     public void onErrorPresenterRegister(String response_user) {
 
