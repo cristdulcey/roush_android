@@ -21,9 +21,9 @@ public class Register1Data {
     @Expose
     private String date_birth;
 
-    @SerializedName("address")
+    @SerializedName("city")
     @Expose
-    private String address;
+    private String city;
 
     @SerializedName("gender")
     @Expose
@@ -37,14 +37,20 @@ public class Register1Data {
     @Expose
     private String password;
 
-    public Register1Data(String first_name, String last_name, String username, String date_birth, String address, String gender, String email, String password) {
+
+    public Register1Data(String first_name, String last_name, String username, String date_birth, String city, String gender, String email, String password) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
         this.date_birth = date_birth;
-        this.address = address;
+        this.city = city;
         this.gender = gender;
         this.email = email;
+        this.password = password;
+    }
+
+    public Register1Data(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
@@ -80,12 +86,12 @@ public class Register1Data {
         this.date_birth = date_birth;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCity() {
+        return city;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getGender() {

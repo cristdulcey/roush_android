@@ -13,7 +13,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Server-->
-    <string name="server">https://roush.loducode.com/</string>
+    <string name="server">https://roush.loducode.com</string>
 
     <!--Errors-->
     <string name="password_dont_match">Las contraseñas no coinciden</string>
@@ -79,11 +79,21 @@
     <string name="gender_profile"><b>Género:</b></string>
     <string name="location_profile"><b>Ubicación:</b></string>
     <string name="description"><b>Descripción:</b></string>
+    <string name="edit_data_profile">Editar</string>
     <string name="search_location"><b>Quiero ver personas en...</b></string>
     <string name="gender_preferences"><b>Preferencia de género</b></string>
     <string name="max_distance"><b>Rango distancia que quiero ver</b></string>
     <string name="max_age"><b>Rango edad que quiero ver</b></string>
     <string name="upload_photos"><b>Sube tus fotos</b></string>
+    <string name="log_out_text">Cerrar sesión</string>
+    <string name="title_interestings"><b>Edita tus intereses</b></string>
+    <string name="subtitle_interestings">y deja que sepan lo que te apasiona</string>
+    <string name="exclusive_content"><b>Contenido exclusivo</b></string>
+    <string name="active_exclusive_content"><b>Activar contenido</b></string>
+    <string name="text_exclusive_content">Si te gustaría publicar contenido exclusivo y ganar dinero extra.</string>
+    <string name="your_information_is_saved_success">Tu información ha sido guardada <b>exitosamente</b></string>
+    <string name="view_content_">Ver contenido</string>
+    <string name="ok">Ok</string>
 
     <!--Strings Notifications-->
     <string name="title_notifications"><b>Notificaciones</b></string>
@@ -92,6 +102,16 @@
     <string name="match_done_ntf">Cuando haga un match</string>
     <string name="like_received_ntf">Cuando me den \"Me gusta\"</string>
     <string name="cross_with_ntf">Cuando me cruce con alguien con la app</string>
+
+    <!--Strings Blogs-->
+    <string name="title_blog">Historias</string>
+    <string name="tell_us_your_history">Cuéntanos tu historia</string>
+    <string name="history_1">Top 10 mejores playas</string>
+    <string name="history_2">Algo random</string>
+    <string name="history_3">Érase una vez...</string>
+    <string name="history_4">WTF?</string>
+    <string name="write_by">Escrito por Jesica</string>
+    <string name="write_in">23/06/2022</string>
 
     <!--Strings RecoveryPassword-->
     <string name="keep_calm">Tranquil@</string>

@@ -96,6 +96,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     public void performRecoveryPass(){
         Intent intent = new Intent(this, RecoveryPasswordActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void performRegister(){
@@ -106,6 +107,5 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.login_view, Register1);
         transaction.commit();
-
     }
 }

@@ -41,9 +41,9 @@ public class UserData {
     @Expose
     private String password;
 
-    @SerializedName("address")
+    @SerializedName("city")
     @Expose
-    private String address;
+    private String city;
 
     @SerializedName("date_birth")
     @Expose
@@ -57,26 +57,6 @@ public class UserData {
     @Expose
     private String search;
 
-//    @SerializedName("match")
-//    @Expose
-//    private String match;
-//
-//    @SerializedName("year_start")
-//    @Expose
-//    private String year_start;
-//
-//    @SerializedName("year_finish")
-//    @Expose
-//    private String year_finish;
-
-//    @SerializedName("distance")
-//    @Expose
-//    private String distance;
-
-//    @SerializedName("position")
-//    @Expose
-//    private String position;
-
     @SerializedName("about")
     @Expose
     private String about;
@@ -89,13 +69,13 @@ public class UserData {
     @Expose
     private String interesting;
 
-    public UserData(String username, String first_name, String last_name, String email, String password, String address, String date_birth, String gender) {
+    public UserData(String username, String first_name, String last_name, String email, String password, String city, String date_birth, String gender) {
         this.username = username;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.password = password;
-        this.address = address;
+        this.city = city;
         this.date_birth = date_birth;
         this.gender = gender;
     }
@@ -172,12 +152,12 @@ public class UserData {
         this.password = password;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCity() {
+        return city;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCity(String address) {
+        this.city = address;
     }
 
     public String getDate_birth() {
