@@ -10,6 +10,7 @@ import com.example.tinder_roush.Objects.LoginData;
 import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Objects.Register2Data;
 import com.example.tinder_roush.Objects.Register3Data;
+import com.example.tinder_roush.Objects.Register4Data;
 import com.example.tinder_roush.Objects.RegisterResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
 import com.example.tinder_roush.Objects.UserData;
@@ -256,5 +257,38 @@ public class RegisterModels implements RegisterInterfaces.models{
         }
         presenter.sendRegisterFinal();
     }
+
+    @Override
+    public void register4Model(Register4Data register4Data, RegisterInterfaces.presenters presenter) {
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("interesting", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("PREFERENCE")));
+        
+        MultipartBody body = request.build();
+        Call<Register4Data> call = apiAdapter.getApiService2().addInterest(localData.getRegister("ID_USERCURRENT"),body);
+
+        call.enqueue(new Callback<Register4Data>() {
+            @Override
+            public void onResponse(Call<Register4Data> call, Response<Register4Data> response) {
+                if (response.isSuccessful()){
+                    presenter.registerSuccesful();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.registerError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Register4Data> call, Throwable t) {
+
+            }
+        });
+    }
 }
+
 

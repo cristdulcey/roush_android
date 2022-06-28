@@ -83,6 +83,7 @@
                        android:drawableLeft="@drawable/camera_icon"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
+                       android:id="@+id/button_shop_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginLeft="5dp"
@@ -105,6 +106,7 @@
                    android:orientation="horizontal">
 
                    <Button
+                       android:id="@+id/button_karaoke_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginRight="5dp"
@@ -115,6 +117,7 @@
                        android:drawableLeft="@drawable/microphone"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
+                       android:id="@+id/button_yoga_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginLeft="5dp"
@@ -134,6 +137,7 @@
                    android:layout_height="60dp"
                    android:orientation="horizontal">
                    <Button
+                       android:id="@+id/button_cooking_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginRight="5dp"
@@ -144,6 +148,7 @@
                        android:drawableLeft="@drawable/food_icon"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
+                       android:id="@+id/button_tennis_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginLeft="5dp"
@@ -164,6 +169,7 @@
                    android:orientation="horizontal">
 
                    <Button
+                       android:id="@+id/button_sports_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginRight="5dp"
@@ -174,6 +180,7 @@
                        android:drawableLeft="@drawable/camera_icon"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
+                       android:id="@+id/button_swim_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginLeft="5dp"
@@ -194,6 +201,7 @@
                    android:orientation="horizontal">
 
                    <Button
+                       android:id="@+id/button_art_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginRight="5dp"
@@ -204,6 +212,7 @@
                        android:drawableLeft="@drawable/art_icon"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
+                       android:id="@+id/button_travel_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginLeft="5dp"
@@ -224,6 +233,7 @@
                    android:orientation="horizontal">
 
                    <Button
+                       android:id="@+id/button_extreme_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginRight="5dp"
@@ -234,6 +244,7 @@
                        android:drawableLeft="@drawable/parachute_icon"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
+                       android:id="@+id/button_music_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginLeft="5dp"
@@ -255,6 +266,7 @@
                    android:orientation="horizontal">
 
                    <Button
+                       android:id="@+id/button_drink_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginRight="5dp"
@@ -265,6 +277,7 @@
                        android:drawableLeft="@drawable/wine_icon"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
+                       android:id="@+id/button_game_preference"
                        android:layout_width="120dp"
                        android:layout_height="48dp"
                        android:layout_marginLeft="5dp"

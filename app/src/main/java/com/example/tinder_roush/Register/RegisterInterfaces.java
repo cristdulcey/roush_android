@@ -6,6 +6,7 @@ import com.example.tinder_roush.Objects.LoginData;
 import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Objects.Register2Data;
 import com.example.tinder_roush.Objects.Register3Data;
+import com.example.tinder_roush.Objects.Register4Data;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
@@ -29,7 +30,8 @@ public interface RegisterInterfaces {
         void register3();
     }
     interface fragment4 {
-
+        void register4();
+        void performSuccessRegister();
     }
 
     interface models{
@@ -37,6 +39,7 @@ public interface RegisterInterfaces {
         void register1Model(Register1Data register1Data, RegisterInterfaces.presenters presenters);
         void register2Model(Register2Data register2Data, RegisterInterfaces.presenters presenters);
         void register3Model(Register3Data register3Data, RegisterInterfaces.presenters presenters);
+        void register4Model(Register4Data register4Data, RegisterInterfaces.presenters presenters);
         void loginModel(RegisterInterfaces.presenters presenter, Register1Data data);
         void verifyTokenModel(RegisterInterfaces.presenters presenter);
     }
@@ -45,6 +48,7 @@ public interface RegisterInterfaces {
         void register1Presenters(Register1Data register1Data);
         void register2Presenters(Register2Data register2Data);
         void register3Presenters(Register3Data register3Data);
+        void register4Presenters(Register4Data register4Data);
         void citiesPresenter();
         void citiesSuccessful(ArrayList<CityData> cities);
         void citiesError(String message);
@@ -53,6 +57,8 @@ public interface RegisterInterfaces {
         void loginSuccessful();
         void loginError(String message);
         void sendRegisterFinal();
+        void registerSuccesful();
+        void registerError(String response_user);
         void onErrorPresenterRegister(String response_user);
     }
 
