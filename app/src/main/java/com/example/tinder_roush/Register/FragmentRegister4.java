@@ -10,12 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.RecoveryPassword.RecoveryPasswordActivity;
+import com.example.tinder_roush.Utils.BaseContext;
 
 public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fragment4{
 
@@ -30,8 +32,7 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_register_4, container, false);
 
@@ -67,16 +68,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String photoPreferenceText = (String) photo_preference.getText();
                 if(check == 1){
                     photo_preference.setBackgroundResource(R.drawable.border_green_round2);
-                    String photoPreferenceText = (String) photo_preference.getText();
-                    localData.register(photoPreferenceText,"PREFERENCE_PHOTO");
-                    interesting = localData.getRegister("PREFERENCE_PHOTO");
-                    localData.register(interesting,"PREFERENCE");
+                    interesting = photoPreferenceText;
+                    localData.register(interesting,"PREFERENCE_PHOTO");
                     check = 0;
                 }else{
                     photo_preference.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_PHOTO");
                     check = 1;
                 }
             }
@@ -85,17 +86,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String shopPreferenceText = (String) shop.getText();
                 if(check == 1){
                     shop.setBackgroundResource(R.drawable.border_green_round2);
-                    interesting = (String) shop.getText();
-                    String shopPreferenceText = (String) shop.getText();
-                    localData.register(shopPreferenceText,"PREFERENCE_SHOP");
-                    interesting = localData.getRegister("PREFERENCE_SHOP");
-                    localData.register(interesting,"PREFERENCE");
+                    interesting = shopPreferenceText;
+                    localData.register(interesting,"PREFERENCE_SHOP");
                     check = 0;
                 }else{
                     shop.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_SHOP");
                     check = 1;
                 }
             }
@@ -104,16 +104,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String karaokePreferenceText = (String) karaoke.getText();
                 if(check == 1){
                     karaoke.setBackgroundResource(R.drawable.border_green_round2);
-                    String karaokePreferenceText = (String) karaoke.getText();
-                    localData.register(karaokePreferenceText,"PREFERENCE_KARAOKE");
-                    interesting = localData.getRegister("PREFERENCE_KARAOKE");
-                    localData.register(interesting,"PREFERENCE");
+                    interesting = karaokePreferenceText;
+                    localData.register(interesting,"PREFERENCE_KARAOKE");
                     check = 0;
                 }else{
                     karaoke.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_KARAOKE");
                     check = 1;
                 }
             }
@@ -122,17 +122,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String yogaPreferenceText = (String) yoga.getText();
                 if(check == 1){
                     yoga.setBackgroundResource(R.drawable.border_green_round2);
-                    interesting = (String) yoga.getText();
-                    String yogaPreferenceText = (String) yoga.getText();
-                    localData.register(yogaPreferenceText,"PREFERENCE_YOGA");
-                    interesting = localData.getRegister("PREFERENCE_YOGA");
-                    localData.register(interesting,"PREFERENCE");
+                    interesting = yogaPreferenceText;
+                    localData.register(interesting,"PREFERENCE_YOGA");
                     check = 0;
                 }else{
                     yoga.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_YOGA");
                     check = 1;
                 }
             }
@@ -141,16 +140,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String cookPreferenceText = (String) cook.getText();
                 if(check == 1){
                     cook.setBackgroundResource(R.drawable.border_green_round2);
-                    String cookPreferenceText = (String) cook.getText();
-                    localData.register(cookPreferenceText,"PREFERENCE_COOK");
-                    interesting = localData.getRegister("PREFERENCE_COOK");
-                    localData.register(interesting,"PREFERENCE");
+                    interesting = cookPreferenceText;
+                    localData.register(interesting,"PREFERENCE_COOK");
                     check = 0;
                 }else{
                     cook.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_COOK");
                     check = 1;
                 }
             }
@@ -159,14 +158,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String tennisPreferenceText = (String) tennis.getText();
                 if(check == 1){
                     tennis.setBackgroundResource(R.drawable.border_green_round2);
-                    String tennisPreferenceText = (String) tennis.getText();
-                    localData.register(tennisPreferenceText,"PREFERENCE_TENNIS");
+                    interesting = tennisPreferenceText;
+                    localData.register(interesting,"PREFERENCE_TENNIS");
                     check = 0;
                 }else{
                     tennis.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_TENNIS");
                     check = 1;
                 }
             }
@@ -175,14 +176,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String sportPreferenceText = (String) sports.getText();
                 if(check == 1){
                     sports.setBackgroundResource(R.drawable.border_green_round2);
-                    String sportPreferenceText = (String) sports.getText();
-                    localData.register(sportPreferenceText,"PREFERENCE_SPORTS");
+                    interesting = sportPreferenceText;
+                    localData.register(interesting,"PREFERENCE_SPORTS");
                     check = 0;
                 }else{
                     sports.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_SPORTS");
                     check = 1;
                 }
             }
@@ -191,14 +194,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String swimPreferenceText = (String) swim.getText();
                 if(check == 1){
                     swim.setBackgroundResource(R.drawable.border_green_round2);
-                    String swimPreferenceText = (String) swim.getText();
-                    localData.register(swimPreferenceText,"PREFERENCE_SWIM");
+                    interesting = swimPreferenceText;
+                    localData.register(interesting,"PREFERENCE_SWIM");
                     check = 0;
                 }else{
                     swim.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_SWIM");
                     check = 1;
                 }
             }
@@ -207,14 +212,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String artPreferenceText = (String) art.getText();
                 if(check == 1){
                     art.setBackgroundResource(R.drawable.border_green_round2);
-                    String artPreferenceText = (String) art.getText();
-                    localData.register(artPreferenceText,"PREFERENCE_ART");
+                    interesting = artPreferenceText;
+                    localData.register(interesting,"PREFERENCE_ART");
                     check = 0;
                 }else{
                     art.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_ART");
                     check = 1;
                 }
             }
@@ -223,14 +230,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String travelPreferenceText = (String) travel.getText();
                 if(check == 1){
                     travel.setBackgroundResource(R.drawable.border_green_round2);
-                    String travelPreferenceText = (String) travel.getText();
-                    localData.register(travelPreferenceText,"PREFERENCE_TRAVEL");
+                    interesting = travelPreferenceText;
+                    localData.register(interesting,"PREFERENCE_TRAVEL");
                     check = 0;
                 }else{
                     travel.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_TRAVEL");
                     check = 1;
                 }
             }
@@ -239,14 +248,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String extremePreferenceText = (String) extreme.getText();
                 if(check == 1){
                     extreme.setBackgroundResource(R.drawable.border_green_round2);
-                    String extremePreferenceText = (String) extreme.getText();
-                    localData.register(extremePreferenceText,"PREFERENCE_EXTREME");
+                    interesting = extremePreferenceText;
+                    localData.register(interesting,"PREFERENCE_EXTREME");
                     check = 0;
                 }else{
                     extreme.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_EXTREME");
                     check = 1;
                 }
             }
@@ -255,14 +266,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String musicPreferenceText = (String) music.getText();
                 if(check == 1){
                     music.setBackgroundResource(R.drawable.border_green_round2);
-                    String musicPreferenceText = (String) music.getText();
-                    localData.register(musicPreferenceText,"PREFERENCE_MUSIC");
+                    interesting = musicPreferenceText;
+                    localData.register(interesting,"PREFERENCE_MUSIC");
                     check = 0;
                 }else{
                     music.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_MUSIC");
                     check = 1;
                 }
             }
@@ -271,14 +284,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String drinkPreferenceText = (String) drink.getText();
                 if(check == 1){
                     drink.setBackgroundResource(R.drawable.border_green_round2);
-                    String drinkPreferenceText = (String) drink.getText();
-                    localData.register(drinkPreferenceText,"PREFERENCE_DRINK");
+                    interesting = drinkPreferenceText;
+                    localData.register(interesting,"PREFERENCE_DRINK");
                     check = 0;
                 }else{
                     drink.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = "";
+                    localData.register(interesting,"PREFERENCE_DRINK");
                     check = 1;
                 }
             }
@@ -287,14 +302,16 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
             int check = 1;
             @Override
             public void onClick(View view) {
+                String gamesPreferenceText = (String) games.getText();
                 if(check == 1){
                     games.setBackgroundResource(R.drawable.border_green_round2);
-                    String gamesPreferenceText = (String) games.getText();
-                    localData.register(gamesPreferenceText,"PREFERENCE_GAMES");
+                    interesting = gamesPreferenceText;
+                    localData.register(interesting,"PREFERENCE_GAMES");
                     check = 0;
                 }else{
                     games.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    localData.getRegister("");
+                    interesting = gamesPreferenceText;
+                    localData.register(interesting,"PREFERENCE_GAMES");
                     check = 1;
                 }
             }
@@ -304,7 +321,11 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                register4();
+                if (interesting == "") {
+                    Toast.makeText(BaseContext.getContext(), "Elige un interés", Toast.LENGTH_SHORT).show();
+                } else {
+                    register4();
+                }
             }
         });
     }

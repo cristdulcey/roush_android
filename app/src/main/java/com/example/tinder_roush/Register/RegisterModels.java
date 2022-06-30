@@ -260,11 +260,35 @@ public class RegisterModels implements RegisterInterfaces.models{
 
     @Override
     public void register4Model(Register4Data register4Data, RegisterInterfaces.presenters presenter) {
+        String interest1 = localData.getRegister("PREFERENCE_PHOTO");
+        String interest2 = localData.getRegister("PREFERENCE_SHOP");
+        String interest3 = localData.getRegister("PREFERENCE_KARAOKE");
+        String interest4 = localData.getRegister("PREFERENCE_YOGA");
+        String interest5 = localData.getRegister("PREFERENCE_COOK");
+        String interest6 = localData.getRegister("PREFERENCE_TENNIS");
+        String interest7 = localData.getRegister("PREFERENCE_SPORTS");
+        String interest8 = localData.getRegister("PREFERENCE_SWIM");
+        String interest9 = localData.getRegister("PREFERENCE_ART");
+        String interest10 = localData.getRegister("PREFERENCE_TRAVEL");
+        String interest11 = localData.getRegister("PREFERENCE_EXTREME");
+        String interest12 = localData.getRegister("PREFERENCE_MUSIC");
+        String interest13 = localData.getRegister("PREFERENCE_DRINK");
+        String interest14 = localData.getRegister("PREFERENCE_GAMES");
+
+        String interest = interest1+","+interest2+","+interest3+","+interest4+","+interest5+","+interest6+","+
+                interest7+","+interest8+","+interest9+","+interest10+","+interest11+","+interest12+","+interest13+","+interest14;
+
+
+        String interestSend = interest.replace(",,",",");
+        interestSend = interestSend.replaceAll("(.)\\1", "$1");
+
+
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
-        request.addFormDataPart("interesting", null, RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("PREFERENCE")));
-        
+
+        request.addFormDataPart("interesting", null, RequestBody.create(MediaType.parse("text/plain"), interestSend));
+
         MultipartBody body = request.build();
-        Call<Register4Data> call = apiAdapter.getApiService2().addInterest(localData.getRegister("ID_USERCURRENT"),body);
+        Call<Register4Data> call = apiAdapter.getApiService2().addInterest(localData.getRegister("id"),body);
 
         call.enqueue(new Callback<Register4Data>() {
             @Override
@@ -282,10 +306,8 @@ public class RegisterModels implements RegisterInterfaces.models{
                     presenter.registerError(response_user);
                 }
             }
-
             @Override
             public void onFailure(Call<Register4Data> call, Throwable t) {
-
             }
         });
     }
