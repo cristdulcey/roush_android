@@ -1,9 +1,14 @@
 package com.example.tinder_roush.Register;
 
+import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.Login.LoginInterfaces;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.LoginData;
@@ -14,6 +19,7 @@ import com.example.tinder_roush.Objects.Register4Data;
 import com.example.tinder_roush.Objects.RegisterResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
 import com.example.tinder_roush.Objects.UserData;
+import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
 import java.io.File;
@@ -258,6 +264,7 @@ public class RegisterModels implements RegisterInterfaces.models{
         presenter.sendRegisterFinal();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void register4Model(Register4Data register4Data, RegisterInterfaces.presenters presenter) {
         String interest1 = localData.getRegister("PREFERENCE_PHOTO");
@@ -279,14 +286,17 @@ public class RegisterModels implements RegisterInterfaces.models{
                 interest7+","+interest8+","+interest9+","+interest10+","+interest11+","+interest12+","+interest13+","+interest14;
 
 
-        String interestSend = interest.replace(",,",",");
-        interestSend = interestSend.replaceAll("(.)\\1", "$1");
 
-
+        //remove commas at the beginning and end of the String, and the commas repeated within the same String
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
-
-        request.addFormDataPart("interesting", null, RequestBody.create(MediaType.parse("text/plain"), interestSend));
-
+        int n = interest.length();
+        for(int i = 0; i < n; i++){
+            interest = interest.startsWith(",") ? interest.substring(1) : interest;
+            interest = interest.endsWith(",") ? interest.substring(0, interest.length() -1) : interest;
+            interest = interest.replaceAll("(.)\\1", "$1");
+        }
+        localData.register(interest,"INTEREST_USER");
+        request.addFormDataPart("interesting", null, RequestBody.create(MediaType.parse("text/plain"), interest));
         MultipartBody body = request.build();
         Call<Register4Data> call = apiAdapter.getApiService2().addInterest(localData.getRegister("id"),body);
 
@@ -294,7 +304,8 @@ public class RegisterModels implements RegisterInterfaces.models{
             @Override
             public void onResponse(Call<Register4Data> call, Response<Register4Data> response) {
                 if (response.isSuccessful()){
-                    presenter.registerSuccesful();
+                        localData.deleteInterest();
+                        presenter.registerSuccesful();
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";

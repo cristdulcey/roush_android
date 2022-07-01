@@ -1,7 +1,10 @@
 package com.example.tinder_roush.Register;
 
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.LoginData;
@@ -46,6 +49,7 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
         model.register3Model(register3Data, this);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void register4Presenters(Register4Data register4Data) {
         model.register4Model(register4Data, this);

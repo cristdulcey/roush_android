@@ -1,9 +1,14 @@
 package com.example.tinder_roush.Register;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -35,7 +40,6 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_register_4, container, false);
-
         context = view.getContext();
         initObjets(view);
         listeners();
@@ -319,6 +323,7 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
 
 
         create_account.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 if (interesting == "") {
@@ -330,6 +335,7 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void register4() {
         register4Data = new Register4Data(interesting);
@@ -340,5 +346,4 @@ public class FragmentRegister4 extends Fragment implements RegisterInterfaces.fr
         Intent intent = new Intent(context, SuccesRegisterActivity.class);
         startActivity(intent);
     }
-
 }

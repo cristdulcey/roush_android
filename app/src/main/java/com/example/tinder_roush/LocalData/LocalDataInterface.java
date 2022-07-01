@@ -5,6 +5,7 @@ public interface LocalDataInterface {
     void LogOutApp();
 
     void deleteUserCurrent();
+    void deleteInterest();
 
     void saveToken(String refresh, String access);
     String getRefresh();
