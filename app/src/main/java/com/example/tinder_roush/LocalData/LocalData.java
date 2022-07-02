@@ -16,14 +16,37 @@ public class LocalData implements LocalDataInterface{
     @Override
     public void deleteUserCurrent() {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
-        preferences.edit().putString("INTEREST_USER", "").apply();
+        preferences.edit().putString("REFRESH", "").apply();
+        preferences.edit().putString("ACCESS", "").apply();
     }
 
     @Override
     public void deleteInterest() {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
-        preferences.edit().putString("REFRESH", "").apply();
-        preferences.edit().putString("ACCESS", "").apply();
+        preferences.edit().putString("PREFERENCE_PHOTO", "").apply();
+        preferences.edit().putString("PREFERENCE_SHOP", "").apply();
+        preferences.edit().putString("PREFERENCE_KARAOKE", "").apply();
+        preferences.edit().putString("PREFERENCE_YOGA", "").apply();
+        preferences.edit().putString("PREFERENCE_COOK", "").apply();
+        preferences.edit().putString("PREFERENCE_TENNIS", "").apply();
+        preferences.edit().putString("PREFERENCE_SPORTS", "").apply();
+        preferences.edit().putString("PREFERENCE_SWIM", "").apply();
+        preferences.edit().putString("PREFERENCE_ART", "").apply();
+        preferences.edit().putString("PREFERENCE_TRAVEL", "").apply();
+        preferences.edit().putString("PREFERENCE_EXTREME", "").apply();
+        preferences.edit().putString("PREFERENCE_MUSIC", "").apply();
+        preferences.edit().putString("PREFERENCE_DRINK", "").apply();
+        preferences.edit().putString("PREFERENCE_GAMES", "").apply();
+    }
+
+    public void deletePhoto(){
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putString("Image1", "").apply();
+        preferences.edit().putString("Image2", "").apply();
+        preferences.edit().putString("Image3", "").apply();
+        preferences.edit().putString("Image4", "").apply();
+        preferences.edit().putString("Image5", "").apply();
+        preferences.edit().putString("Image6", "").apply();
     }
 
     @Override

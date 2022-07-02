@@ -236,6 +236,7 @@ public class RegisterModels implements RegisterInterfaces.models{
                     public void onResponse(Call<Register3Data> call, Response<Register3Data> response) {
                         Log.d("tag", "onResponse: " + response.message().toString());
                         if (response.isSuccessful()){
+                            localData.deletePhoto();
                             localData.CreateUser();
                             //presenter.sendRegisterFinal();
                         }else {
@@ -285,8 +286,6 @@ public class RegisterModels implements RegisterInterfaces.models{
         String interest = interest1+","+interest2+","+interest3+","+interest4+","+interest5+","+interest6+","+
                 interest7+","+interest8+","+interest9+","+interest10+","+interest11+","+interest12+","+interest13+","+interest14;
 
-
-
         //remove commas at the beginning and end of the String, and the commas repeated within the same String
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         int n = interest.length();
@@ -295,7 +294,7 @@ public class RegisterModels implements RegisterInterfaces.models{
             interest = interest.endsWith(",") ? interest.substring(0, interest.length() -1) : interest;
             interest = interest.replaceAll("(.)\\1", "$1");
         }
-        localData.register(interest,"INTEREST_USER");
+
         request.addFormDataPart("interesting", null, RequestBody.create(MediaType.parse("text/plain"), interest));
         MultipartBody body = request.build();
         Call<Register4Data> call = apiAdapter.getApiService2().addInterest(localData.getRegister("id"),body);
