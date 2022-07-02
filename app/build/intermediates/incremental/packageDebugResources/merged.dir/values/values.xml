@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <attr format="string" name="clearText"/>
+    <attr format="color" name="highlightColor"/>
+    <attr format="boolean" name="highlightSelected"/>
+    <attr format="string" name="hintText"/>
+    <attr format="color" name="textColor"/>
+    <color name="black">#FF000000</color>
+    <color name="gray">#808B96</color>
+    <color name="gray1">#CCCCCC</color>
+    <color name="green1">#005952</color>
+    <color name="green2">#92DAD2</color>
+    <color name="green3">#008C80</color>
+    <color name="green4">#039588</color>
+    <color name="green5">#6BBCB5</color>
+    <color name="list_even">#FFF5F5</color>
+    <color name="list_odd">#F3FFFF</color>
+    <color name="list_selected">#455FB6</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="red">#D9272D</color>
+    <color name="red1">#FC5555</color>
+    <color name="red2">#E94057</color>
+    <color name="selected">#FFFFFFFF</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="unselected">#808B96</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="fab_margin">16dp</dimen>
+    <string name="Login">Iniciar sesión</string>
+    <string name="Title_onboarding1">Haz nuevos amigos</string>
+    <string name="Title_onboarding2">Conecta</string>
+    <string name="Title_onboarding3">Da el primer paso</string>
+    <string name="Txt_onboarding1">y encuentra a quien se ha cruzado en tu camino</string>
+    <string name="Txt_onboarding2">con las personas que se ajusten a tu perfil</string>
+    <string name="Txt_onboarding3">y comienza a conocer a esa persona</string>
+    <string name="acept_politic">Acepto la</string>
+    <string name="acept_terms">Acepto los</string>
+    <string name="active_exclusive_content"><b>Activar contenido</b></string>
+    <string name="app_name">tinder-roush</string>
+    <string name="back_button">Volver</string>
+    <string name="back_to_login"><u>Volver al login</u></string>
+    <string name="button_art">Arte</string>
+    <string name="button_chat">Quiero saludarl@</string>
+    <string name="button_cooking">Cocina</string>
+    <string name="button_drink">Bebida</string>
+    <string name="button_extreme">Extreme</string>
+    <string name="button_karaoke">Karaoke</string>
+    <string name="button_later">Más tarde</string>
+    <string name="button_music">Música</string>
+    <string name="button_photography">Fotografía</string>
+    <string name="button_shopping">Compras</string>
+    <string name="button_sports">Deportes</string>
+    <string name="button_swimming">Natación</string>
+    <string name="button_tennis">Tenis</string>
+    <string name="button_travel">Viajar</string>
+    <string name="button_video_games">Videojuegos</string>
+    <string name="button_yoga">Yoga</string>
+    <string name="city_register">¿En qué ciudad estás?</string>
+    <string name="clear_filters">Limpiar filtros</string>
+    <string name="confirm_password_register">Confirma tu contraseña</string>
+    <string name="create_account_success">Tu cuenta ha sido creada <b>exitosamente</b></string>
+    <string name="cross_with_ntf">Cuando me cruce con alguien con la app</string>
+    <string name="date_birth_profile"><b>Fecha de nacimiento:</b></string>
+    <string name="datebirth_register">¿Cuándo naciste?</string>
+    <string name="deactivate_notifications"><b>Desactivar todas</b></string>
+    <string name="describe_you">Descríbete</string>
+    <string name="description"><b>Descripción:</b></string>
+    <string name="distance_filter">Rango distancia que quiero ver</string>
+    <string name="dont_have_an_account">¿Aún no tienes cuenta?</string>
+    <string name="edit_data_profile">Editar</string>
+    <string name="email_profile"><b>Correo:</b></string>
+    <string name="email_register">Ingresa tu email</string>
+    <string name="exclusive_content"><b>Contenido exclusivo</b></string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="forgot_password_link"><u>¿Olvidaste tu contraseña?</u></string>
+    <string name="gender_preferences"><b>Preferencia de género</b></string>
+    <string name="gender_profile"><b>Género:</b></string>
+    <string name="given_likes">Dados</string>
+    <string name="greet_login">Bienvenid@</string>
+    <string name="greet_login2">Inicia sesión en tu cuenta</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hint1">Ingresa tu nombre de usuario</string>
+    <string name="hint2">Ingresa tu contraseña</string>
+    <string name="history_1">Top 10 mejores playas</string>
+    <string name="history_2">Algo random</string>
+    <string name="history_3">Érase una vez...</string>
+    <string name="history_4">WTF?</string>
+    <string name="integrate_accounts">Integrar mis cuentas</string>
+    <string name="keep_calm">Tranquil@</string>
+    <string name="lastname_register">¿Cuál es tu apellido?</string>
+    <string name="like_received_ntf">Cuando me den \"Me gusta\"</string>
+    <string name="like_title">Me gusta</string>
+    <string name="link_politics"><u>Política de privacidad</u></string>
+    <string name="link_terms"><u>Términos y condiciones</u></string>
+    <string name="location_profile"><b>Ubicación:</b></string>
+    <string name="log_out_text">Cerrar sesión</string>
+    <string name="looking_for">¿Qué estás buscando?</string>
+    <string name="make_account">Crear cuenta</string>
+    <string name="map_filter">Mapa</string>
+    <string name="match_city">Bogotá, CO</string>
+    <string name="match_done_ntf">Cuando haga un match</string>
+    <string name="match_header"><b>Descubrir</b></string>
+    <string name="max_age"><b>Rango edad que quiero ver</b></string>
+    <string name="max_distance"><b>Rango distancia que quiero ver</b></string>
+    <string name="message_empty_field">Campo vacío</string>
+    <string name="message_empty_field_city">Campo ciudad vacío</string>
+    <string name="message_receive_ntf">Cuando me llegue un mensaje</string>
+    <string name="messages"><b>Mensajes</b></string>
+    <string name="name_register">¿Cómo te llamas?</string>
+    <string name="next">Next</string>
+    <string name="next_button">Siguiente</string>
+    <string name="nick_name_register">Ingresa un nombre de usuario</string>
+    <string name="ok">Ok</string>
+    <string name="password_dont_match">Las contraseñas no coinciden</string>
+    <string name="password_profile"><b>Contraseña:</b></string>
+    <string name="password_register">Elige una contraseña</string>
+    <string name="person_filter">Persona</string>
+    <string name="politics">Política de privacidad</string>
+    <string name="previous">Previous</string>
+    <string name="profession"><b>Profesión:</b></string>
+    <string name="profile_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="received_likes">Recibidos</string>
+    <string name="save_filters">Guardar cambios</string>
+    <string name="search_hint">Buscar por nombre</string>
+    <string name="search_location"><b>Quiero ver personas en...</b></string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="see_filter">Vista por:</string>
+    <string name="send_new_password">Enviar</string>
+    <string name="server">https://roush.loducode.com</string>
+    <string name="subtitle_interestings">y deja que sepan lo que te apasiona</string>
+    <string name="success_match">¡Wohoo! lo lograste..</string>
+    <string name="success_match_sub">Ahora es momento de empezar a hablar con ...</string>
+    <string name="tell_us_your_history">Cuéntanos tu historia</string>
+    <string name="terms">Terminos de uso</string>
+    <string name="text_exclusive_content">Si te gustaría publicar contenido exclusivo y ganar dinero extra.</string>
+    <string name="text_recovery_password">Puedes recuperar tu contraseña ingresando estos datos y luego revisando tu correo electrónico</string>
+    <string name="text_register1">debes ingresar los siguientes datos</string>
+    <string name="text_register2">un poco más de ti y tus gustos</string>
+    <string name="text_register3">a tu perfil</string>
+    <string name="text_register4">y deja que sepan lo que te apasiona</string>
+    <string name="title_activity_onboarding">OnboardingActivity</string>
+    <string name="title_blog">Historias</string>
+    <string name="title_chats"><b>Chats</b></string>
+    <string name="title_interestings"><b>Edita tus intereses</b></string>
+    <string name="title_notifications"><b>Notificaciones</b></string>
+    <string name="title_profile"><b>Perfil</b></string>
+    <string name="title_register1">Para crear tu cuenta</string>
+    <string name="title_register2">Ahora cuentanos</string>
+    <string name="title_register3">Sube tus fotos</string>
+    <string name="title_register4">Selecciona tus intereses</string>
+    <string name="upload_photos"><b>Sube tus fotos</b></string>
+    <string name="view_content_">Ver contenido</string>
+    <string name="whats_your_job">¿A qué te dedicas?</string>
+    <string name="who_are_you_register">¿Cómo te identificas?</string>
+    <string name="write_by">Escrito por Jesica</string>
+    <string name="write_in">23/06/2022</string>
+    <string name="you_are_here">Estás aquí...</string>
+    <string name="your_given_likes">Le diste me gusta a</string>
+    <string name="your_information_is_saved_success">Tu información ha sido guardada <b>exitosamente</b></string>
+    <string name="your_received_likes">te dió me gusta</string>
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_background</item>
+    </style>
+    <style name="SplashScreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">
+            @drawable/splash
+        </item>
+    </style>
+    <style name="Theme.Tinderroush" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="Theme.Tinderroush.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.Tinderroush.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Tinderroush.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <declare-styleable name="MultiSpinnerSearch">
+        <attr name="hintText"/>
+        <attr name="highlightSelected"/>
+        <attr name="highlightColor"/>
+        <attr name="textColor"/>
+        <attr name="clearText"/>
+    </declare-styleable>
+    <declare-styleable name="SingleSpinnerSearch">
+        <attr name="hintText"/>
+        <attr name="highlightSelected"/>
+        <attr name="highlightColor"/>
+        <attr name="textColor"/>
+        <attr name="clearText"/>
+    </declare-styleable>
+</resources>
