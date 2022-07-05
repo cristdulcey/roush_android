@@ -2,14 +2,19 @@ package com.example.tinder_roush.Register;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -51,17 +56,19 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
     public final int RESULT_PHOTO_5 = 105;
     public final int RESULT_PHOTO_6 = 106;
     LocalData localData;
+    int REQUEST_CODE = 200;
 
     public FragmentRegister3() {
         // Required empty public constructor
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_register_3, container, false);
         context = view.getContext();
         initObjets(view);
-
+        ActivatePermissions();
         listener();
         return view;
     }
@@ -254,4 +261,17 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
         register3Data = new Register3Data(currentPhotoPath);
         presenter.register3Presenters(register3Data);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void ActivatePermissions(){
+        int storagePermission = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int storagePermission2 = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        if (storagePermission == PackageManager.PERMISSION_GRANTED && storagePermission2 == PackageManager.PERMISSION_GRANTED){
+            Log.e("Permiso", String.valueOf(storagePermission));
+        }else {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
+        }
+    }
+
 }

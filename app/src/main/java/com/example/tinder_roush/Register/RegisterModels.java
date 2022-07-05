@@ -1,18 +1,25 @@
 package com.example.tinder_roush.Register;
 
+import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.Login.LoginInterfaces;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.LoginData;
 import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Objects.Register2Data;
 import com.example.tinder_roush.Objects.Register3Data;
+import com.example.tinder_roush.Objects.Register4Data;
 import com.example.tinder_roush.Objects.RegisterResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
 import com.example.tinder_roush.Objects.UserData;
+import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
 import java.io.File;
@@ -229,6 +236,7 @@ public class RegisterModels implements RegisterInterfaces.models{
                     public void onResponse(Call<Register3Data> call, Response<Register3Data> response) {
                         Log.d("tag", "onResponse: " + response.message().toString());
                         if (response.isSuccessful()){
+                            localData.deletePhoto();
                             localData.CreateUser();
                             //presenter.sendRegisterFinal();
                         }else {
@@ -256,5 +264,63 @@ public class RegisterModels implements RegisterInterfaces.models{
         }
         presenter.sendRegisterFinal();
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void register4Model(Register4Data register4Data, RegisterInterfaces.presenters presenter) {
+        String interest1 = localData.getRegister("PREFERENCE_PHOTO");
+        String interest2 = localData.getRegister("PREFERENCE_SHOP");
+        String interest3 = localData.getRegister("PREFERENCE_KARAOKE");
+        String interest4 = localData.getRegister("PREFERENCE_YOGA");
+        String interest5 = localData.getRegister("PREFERENCE_COOK");
+        String interest6 = localData.getRegister("PREFERENCE_TENNIS");
+        String interest7 = localData.getRegister("PREFERENCE_SPORTS");
+        String interest8 = localData.getRegister("PREFERENCE_SWIM");
+        String interest9 = localData.getRegister("PREFERENCE_ART");
+        String interest10 = localData.getRegister("PREFERENCE_TRAVEL");
+        String interest11 = localData.getRegister("PREFERENCE_EXTREME");
+        String interest12 = localData.getRegister("PREFERENCE_MUSIC");
+        String interest13 = localData.getRegister("PREFERENCE_DRINK");
+        String interest14 = localData.getRegister("PREFERENCE_GAMES");
+
+        String interest = interest1+","+interest2+","+interest3+","+interest4+","+interest5+","+interest6+","+
+                interest7+","+interest8+","+interest9+","+interest10+","+interest11+","+interest12+","+interest13+","+interest14;
+
+        //remove commas at the beginning and end of the String, and the commas repeated within the same String
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        int n = interest.length();
+        for(int i = 0; i < n; i++){
+            interest = interest.startsWith(",") ? interest.substring(1) : interest;
+            interest = interest.endsWith(",") ? interest.substring(0, interest.length() -1) : interest;
+            interest = interest.replaceAll("(.)\\1", "$1");
+        }
+
+        request.addFormDataPart("interesting", null, RequestBody.create(MediaType.parse("text/plain"), interest));
+        MultipartBody body = request.build();
+        Call<Register4Data> call = apiAdapter.getApiService2().addInterest(localData.getRegister("id"),body);
+
+        call.enqueue(new Callback<Register4Data>() {
+            @Override
+            public void onResponse(Call<Register4Data> call, Response<Register4Data> response) {
+                if (response.isSuccessful()){
+                        localData.deleteInterest();
+                        presenter.registerSuccesful();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.registerError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<Register4Data> call, Throwable t) {
+            }
+        });
+    }
 }
+
 

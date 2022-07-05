@@ -1,13 +1,17 @@
 package com.example.tinder_roush.Register;
 
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.LoginData;
 import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Objects.Register2Data;
 import com.example.tinder_roush.Objects.Register3Data;
+import com.example.tinder_roush.Objects.Register4Data;
 import com.example.tinder_roush.Objects.RegisterResponse;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
@@ -45,6 +49,12 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
         model.register3Model(register3Data, this);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void register4Presenters(Register4Data register4Data) {
+        model.register4Model(register4Data, this);
+    }
+
     @Override
     public void citiesPresenter() {
         model.citiesModels(this);
@@ -67,18 +77,12 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
 
     @Override
     public void citiesError(String message) {
-
     }
 
     @Override
     public void sendRegister2() {
         view.performSecondRegister();
     }
-
-//    @Override
-//    public void sendRegister3() {
-//        view2.performRegister3();
-//    }
 
     @Override
     public void loginPresenter(Register1Data data) {
@@ -96,10 +100,18 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
         Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-
     @Override
     public void sendRegisterFinal() {
      view3.performRegisterFinal();
+    }
+
+    @Override
+    public void registerSuccesful() {
+        view4.performSuccessRegister();
+    }
+    @Override
+    public void registerError(String response_user) {
+        Toast.makeText(BaseContext.getContext(), "Error, vuelve a intentar", Toast.LENGTH_SHORT).show();
     }
 
     @Override
