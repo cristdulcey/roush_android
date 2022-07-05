@@ -177,7 +177,7 @@
                        android:text="@string/button_sports"
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
-                       android:drawableLeft="@drawable/camera_icon"
+                       android:drawableLeft="@drawable/sport_icon"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                    <Button
                        android:id="@+id/button_swim_preference"
@@ -188,7 +188,7 @@
                        android:text="@string/button_swimming"
                        android:textAllCaps="false"
                        android:textColor="@color/green2"
-                       android:drawableLeft="@drawable/market_icon"
+                       android:drawableLeft="@drawable/water_icon"
                        android:background="@drawable/border_green_soft_transparent_round"/>
                </LinearLayout>
                <LinearLayout

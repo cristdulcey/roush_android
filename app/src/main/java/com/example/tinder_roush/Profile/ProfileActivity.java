@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
@@ -26,6 +27,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     LocalData localData;
     Button buttonLogout, editDataProfile, viewContentExcl;
     Switch activateContent;
+    TextView first_name, last_name, date_birth, job, email, password, about, address;
+    ProfilePresenters presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +36,23 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         setContentView(R.layout.activity_profile);
         initObjects();
         listeners();
+        presenter.ProfilePresenter();
     }
 
     private void initObjects() {
         backHome = findViewById(R.id.back_to_home);
         localData = new LocalData();
+        first_name = findViewById(R.id.user_profile_name);
+        last_name = findViewById(R.id.user_profile_lastname);
+        job = findViewById(R.id.profile_job);
+        about = findViewById(R.id.text_description_profile);
+        email = findViewById(R.id.profile_email);
+        password = findViewById(R.id.profile_password);
         buttonLogout = findViewById(R.id.log_out);
         activateContent = findViewById(R.id.switch_activate_content);
         editDataProfile = findViewById(R.id.edit_profile_data);
         viewContentExcl = findViewById(R.id.view_content_button);
+        presenter = new ProfilePresenters(this, null);
     }
 
     public void listeners(){
@@ -61,7 +72,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             public void onClick(View view) {
                 Intent intent = new Intent(BaseContext.getContext(), ProfileEditActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -96,6 +106,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     @Override
     public void showData1(ProfileData data) {
-
+        first_name.setText(data.getFirst_name());
+        last_name.setText(data.getLast_name());
+        date_birth.setText(data.getDate_birth());
+        email.setText(data.getEmail());
+        job.setText(data.getJob());
+        about.setText(data.getAbout());
     }
 }

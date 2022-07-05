@@ -421,7 +421,7 @@
                         android:text="@string/max_distance"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="20sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -469,7 +469,7 @@
                         android:text="@string/max_age"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="20sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -518,7 +518,7 @@
                         android:text="@string/with_children"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="20sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -565,7 +565,7 @@
                         android:text="@string/with_children"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="20sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -612,7 +612,7 @@
                         android:text="@string/smoker"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="20sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -659,7 +659,7 @@
                         android:text="@string/zodiac_preferences"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="20sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -958,7 +958,7 @@
                         android:text="@string/button_sports"
                         android:textAllCaps="false"
                         android:textColor="@color/green2"
-                        android:drawableLeft="@drawable/camera_icon"
+                        android:drawableLeft="@drawable/sport_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
                         android:id="@+id/button_swim_preference_profile"
@@ -1125,7 +1125,7 @@
                         android:id="@+id/switch_activate_content"
                         android:layout_width="60dp"
                         android:layout_gravity="center|right"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="50dp"/>
 
                 </LinearLayout>
 
@@ -1166,6 +1166,21 @@
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:background="@drawable/border_green_round"/>
+
+                <!--Kill account-->
+                <Button
+                    android:id="@+id/kill_account_from_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:text="@string/kill_account_text"
+                    android:textColor="@color/green3"
+                    android:textSize="15sp"
+                    android:background="@drawable/border_green_transparent_round"/>
 
             </LinearLayout>
 

@@ -90,7 +90,16 @@
                             android:id="@+id/user_profile_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
                             android:text="Jesica"
+                            android:textSize="25sp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/user_profile_lastname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mendoza"
                             android:textSize="25sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
@@ -952,7 +961,7 @@
                         android:text="@string/button_sports"
                         android:textAllCaps="false"
                         android:textColor="@color/green2"
-                        android:drawableLeft="@drawable/camera_icon"
+                        android:drawableLeft="@drawable/sport_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
                         android:id="@+id/button_swim_preference_profile"
@@ -1160,6 +1169,21 @@
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:background="@drawable/border_green_round"/>
+
+                <!--Kill account-->
+                <Button
+                    android:id="@+id/kill_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:text="@string/kill_account_text"
+                    android:textColor="@color/green3"
+                    android:textSize="15sp"
+                    android:background="@drawable/border_green_transparent_round"/>
 
             </LinearLayout>
 

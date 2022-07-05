@@ -13,11 +13,10 @@ public interface ProfileInterfaces {
         void successChangeProfile();
     }
 
-
     interface presenters{
-        void getProfilePresenter();
-        void getProfileSuccessful(ProfileData data);
-        void getProfileError(String message);
+        void ProfilePresenter();
+        void ProfileSuccessful(ProfileData data);
+        void ProfileError(String message);
 
         void changeDataPresenter(ProfileData data, String id_person, String photo);
         void changeDataSuccessful();
@@ -25,7 +24,7 @@ public interface ProfileInterfaces {
     }
 
     interface models{
-        void getProfileModel(presenters presenter);
+        void ProfileModel(presenters presenter);
         void changeDataModel(presenters presenter, ProfileData data, String id_person, String photo);
     }
 

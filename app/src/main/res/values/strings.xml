@@ -92,6 +92,7 @@
     <string name="smoker"><b>¿Que sea fumador?</b></string>
     <string name="upload_photos"><b>Sube tus fotos</b></string>
     <string name="log_out_text">Cerrar sesión</string>
+    <string name="kill_account_text">Darme de baja de la app</string>
     <string name="title_interestings"><b>Edita tus intereses</b></string>
     <string name="subtitle_interestings">y deja que sepan lo que te apasiona</string>
     <string name="exclusive_content"><b>Contenido exclusivo</b></string>

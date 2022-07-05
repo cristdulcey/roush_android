@@ -3,18 +3,29 @@ package com.example.tinder_roush.Profile;
 import com.example.tinder_roush.Objects.ProfileData;
 
 public class ProfilePresenters implements ProfileInterfaces.presenters{
-    @Override
-    public void getProfilePresenter() {
 
+    private ProfileInterfaces.activities1 view;
+    private ProfileInterfaces.activities2 view2;
+    private ProfileModels model;
+
+    public ProfilePresenters(ProfileInterfaces.activities1 view, ProfileInterfaces.activities2 view2) {
+        this.view = view;
+        this.view2 = view2;
+        this.model = new ProfileModels();
     }
 
     @Override
-    public void getProfileSuccessful(ProfileData data) {
-
+    public void ProfilePresenter() {
+        model.ProfileModel(this);
     }
 
     @Override
-    public void getProfileError(String message) {
+    public void ProfileSuccessful(ProfileData data) {
+        view.showData1(data);
+    }
+
+    @Override
+    public void ProfileError(String message) {
 
     }
 

@@ -2,6 +2,7 @@ package com.example.tinder_roush.Api;
 
 import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.CityResponse;
+import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
 import com.example.tinder_roush.Objects.RegisterResponse;
@@ -60,6 +61,10 @@ public interface ApiService {
     Call<Register4Data> addInterest(
             @Path("id") String id,
             @Body MultipartBody body
+    );
+
+    @GET("/api/persons/{id}/")
+    Call<ProfileData> current_user(
     );
 
 }

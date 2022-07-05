@@ -36,6 +36,9 @@
             android:name=".Profile.ProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".Profile.ProfileEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".MatchSuccess.MatchSuccess"
             android:exported="false" />
         <activity
