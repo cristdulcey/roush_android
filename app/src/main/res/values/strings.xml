@@ -80,10 +80,16 @@
     <string name="location_profile"><b>Ubicación:</b></string>
     <string name="description"><b>Descripción:</b></string>
     <string name="edit_data_profile">Editar</string>
+    <string name="save_data_profile">Guardar</string>
     <string name="search_location"><b>Quiero ver personas en...</b></string>
-    <string name="gender_preferences"><b>Preferencia de género</b></string>
+    <string name="my_orientation_text"><b>Mi orientación sexual es</b></string>
+    <string name="gender_preferences"><b>Mi preferencia de género es</b></string>
+    <string name="zodiac_preferences"><b>Preferencia de signo zodiacal</b></string>
     <string name="max_distance"><b>Rango distancia que quiero ver</b></string>
     <string name="max_age"><b>Rango edad que quiero ver</b></string>
+    <string name="with_children"><b>¿Con hijos?</b></string>
+    <string name="with_pets"><b>¿Con mascotas?</b></string>
+    <string name="smoker"><b>¿Que sea fumador?</b></string>
     <string name="upload_photos"><b>Sube tus fotos</b></string>
     <string name="log_out_text">Cerrar sesión</string>
     <string name="title_interestings"><b>Edita tus intereses</b></string>
@@ -93,7 +99,13 @@
     <string name="text_exclusive_content">Si te gustaría publicar contenido exclusivo y ganar dinero extra.</string>
     <string name="your_information_is_saved_success">Tu información ha sido guardada <b>exitosamente</b></string>
     <string name="view_content_">Ver contenido</string>
+    <string name="men">Hombre</string>
+    <string name="women">Mujer</string>
+    <string name="other">Otr@</string>
     <string name="ok">Ok</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="indiferent">Indiferente</string>
 
     <!--Strings Notifications-->
     <string name="title_notifications"><b>Notificaciones</b></string>

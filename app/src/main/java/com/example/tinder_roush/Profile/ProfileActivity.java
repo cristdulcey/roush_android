@@ -14,12 +14,13 @@ import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.Login.LoginInterfaces;
 import com.example.tinder_roush.MenuNavigation.MenuNavigation;
+import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 
 import java.util.ArrayList;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements ProfileInterfaces.activities1{
 
     ImageButton backHome;
     LocalData localData;
@@ -58,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
         editDataProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BaseContext.getContext(), ProfileSuccessChange.class);
+                Intent intent = new Intent(BaseContext.getContext(), ProfileEditActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -92,4 +93,9 @@ public class ProfileActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
+
+    @Override
+    public void showData1(ProfileData data) {
+
+    }
 }
