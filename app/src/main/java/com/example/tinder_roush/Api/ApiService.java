@@ -2,6 +2,8 @@ package com.example.tinder_roush.Api;
 
 import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.CityResponse;
+import com.example.tinder_roush.Objects.HomeData;
+import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
@@ -63,8 +65,16 @@ public interface ApiService {
             @Body MultipartBody body
     );
 
-    @GET("/api/persons/{id}/")
+    @GET("/api/persons/get-data-person/")
     Call<ProfileData> current_user(
+    );
+
+    @POST("/api/persons-match/")
+    Call<HomeData> persons_match(
+    );
+
+    @GET("/api/persons-photo/")
+    Call<HomeResponse> persons_photo(
     );
 
 }

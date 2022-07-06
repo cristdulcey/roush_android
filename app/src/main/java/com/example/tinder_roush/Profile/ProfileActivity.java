@@ -98,19 +98,20 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     //Methods
 
-        public void backToHome(){
-            Intent intent = new Intent(this, MenuNavigation.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        }
+    public void backToHome(){
+        Intent intent = new Intent(this, MenuNavigation.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 
     @Override
     public void showData1(ProfileData data) {
         first_name.setText(data.getFirst_name());
-        last_name.setText(data.getLast_name());
+        //last_name.append(data.getLast_name());
         date_birth.setText(data.getDate_birth());
-        email.setText(data.getEmail());
-        job.setText(data.getJob());
-        about.setText(data.getAbout());
+//        date_birth.append(data.getDate_birth());
+//        email.append(data.getEmail());
+//        job.append(data.getJob());
+//        about.append(data.getAbout());
     }
 }
