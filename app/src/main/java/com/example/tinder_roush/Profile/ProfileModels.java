@@ -1,5 +1,6 @@
 package com.example.tinder_roush.Profile;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.tinder_roush.Api.ApiAdapter;

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -19,7 +20,13 @@ import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class ProfileActivity extends AppCompatActivity implements ProfileInterfaces.activities1{
 
@@ -27,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     LocalData localData;
     Button buttonLogout, editDataProfile, viewContentExcl;
     Switch activateContent;
-    TextView first_name, last_name, date_birth, job, email, password, about, address;
+    TextView first_name, last_name, date_birth, job, email, password, about, address, ageUser;
     ProfilePresenters presenter;
 
     @Override
@@ -44,6 +51,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         localData = new LocalData();
         first_name = findViewById(R.id.user_profile_name);
         last_name = findViewById(R.id.user_profile_lastname);
+        date_birth = findViewById(R.id.date_birth_profile);
+        ageUser = findViewById(R.id.user_profile_age);
         job = findViewById(R.id.profile_job);
         about = findViewById(R.id.text_description_profile);
         email = findViewById(R.id.profile_email);
@@ -104,14 +113,35 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         startActivity(intent);
     }
 
+    public  int getEdad(Date fechaNacimiento, Date fechaActual) {
+        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        int dIni = Integer.parseInt(formatter.format(fechaNacimiento));
+        int dEnd = Integer.parseInt(formatter.format(fechaActual));
+        int age = (dEnd-dIni)/10000;
+        return age;
+    }
+
     @Override
     public void showData1(ProfileData data) {
+
+        DateFormat dateFormat = dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date fechaNacimiento = null;
+        try {
+            fechaNacimiento = dateFormat.parse(data.getDate_birth());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Log.e("EDAD", String.valueOf(fechaNacimiento));
+        Calendar cal = Calendar.getInstance();
+        Date fechaActual = cal.getTime();
+
         first_name.setText(data.getFirst_name());
-        //last_name.append(data.getLast_name());
+        last_name.setText(data.getLast_name());
         date_birth.setText(data.getDate_birth());
-//        date_birth.append(data.getDate_birth());
-//        email.append(data.getEmail());
-//        job.append(data.getJob());
-//        about.append(data.getAbout());
+        email.setText(data.getEmail());
+        job.setText(data.getJob());
+        about.setText(data.getAbout());
+        ageUser.setText(String.valueOf(getEdad(fechaNacimiento,fechaActual)));
+
     }
 }

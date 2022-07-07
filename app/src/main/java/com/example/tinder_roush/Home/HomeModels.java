@@ -35,6 +35,8 @@ public class HomeModels implements HomeInterfaces.models{
                 if (response.isSuccessful()){
                     localData.register(response.body().getPerson1(),"PERSON1");
                     localData.register(response.body().getPerson2(),"PERSON2");
+                    Log.e("ID_PERSON1",localData.getRegister("PERSON1"));
+                    Log.e("ID_PERSON2",localData.getRegister("PERSON2"));
                     presenter.HomePresenterGetPhotos(response.body());
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
@@ -63,7 +65,6 @@ public class HomeModels implements HomeInterfaces.models{
             @Override
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
                 if (response.isSuccessful()){
-                    Log.e("PERSONA 2 ID", localData.getRegister("PERSON2"));
                     HomeResponse home_card_list = null;
                     home_card_list = response.body();
                     presenter.HomePresenterSuccess(home_card_list.getImage());

@@ -75,6 +75,6 @@ public interface ApiService {
 
     @GET("/api/persons-photo/")
     Call<HomeResponse> persons_photo(
-    );
+            );
 
 }

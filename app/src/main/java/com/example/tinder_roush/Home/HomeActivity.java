@@ -35,11 +35,12 @@ import com.yuyakaido.android.cardstackview.SwipeableMethod;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends Fragment {
+public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
 
     ImageButton match, filter, swipe, like;
     ImageView goToProfile;
     Context context;
+    HomePresenters presenter;
 
     public HomeActivity() {
         // Required empty public constructor
@@ -111,6 +112,7 @@ public class HomeActivity extends Fragment {
 
         initObjets(view);
         listeners();
+        presenter.HomePresenterGetMatch();
         return view;
     }
 
@@ -125,7 +127,7 @@ public class HomeActivity extends Fragment {
 
     }
 
-    private List<CardPersonItem> addList() {
+    public List<CardPersonItem> addList() {
         List<CardPersonItem> cardPersonItems = new ArrayList<>();
         cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding1,"alguien","20"));
         cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding2,"otra persona","34"));
@@ -134,6 +136,7 @@ public class HomeActivity extends Fragment {
     }
 
     private void initObjets(View view) {
+        presenter = new HomePresenters(this);
         match = view.findViewById(R.id.match_button);
         filter = view.findViewById(R.id.filter_home);
         goToProfile = view.findViewById(R.id.profile_from_home);
