@@ -20,7 +20,7 @@ public interface ProfileInterfaces {
         void ProfileEditSuccessful(ProfileData data);
         void ProfileError(String message);
 
-        void changeDataPresenter(ProfileData data, String id_person, String photo);
+        void changeDataPresenter(ProfileData data);
         void changeDataSuccessful();
         void changeDataError(String message);
     }
@@ -28,7 +28,7 @@ public interface ProfileInterfaces {
     interface models{
         void ProfileModel(presenters presenter);
         void ProfileEditModel(presenters presenter);
-        void changeDataModel(presenters presenter, ProfileData data, String id_person, String photo);
+        void changeDataModel(presenters presenter, ProfileData data);
     }
 
 }

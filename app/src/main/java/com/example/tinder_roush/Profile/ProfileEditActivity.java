@@ -81,7 +81,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         saveDataProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               successChangeProfile();
+                changeProfileData();
             }
         });
 
@@ -105,11 +105,8 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
     public void showData2(ProfileData data) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date birth_date = null;
-        try {
-            birth_date = dateFormat.parse(data.getDate_birth());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        try { birth_date = dateFormat.parse(data.getDate_birth()); }
+        catch (ParseException e) { e.printStackTrace(); }
         Calendar cal = Calendar.getInstance();
         Date current_date = cal.getTime();
 
@@ -120,11 +117,14 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         job.setText(data.getJob());
         about.setText(data.getAbout());
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
+        localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
     }
 
     @Override
     public void changeProfileData() {
-
+        //String id, String first_name, String last_name, String email, String date_birth, String about, String job)
+        ProfileData data = new ProfileData(localData.getRegister("ID_USERCURRENT"),first_name.getText().toString(), last_name.getText().toString(), email.getText().toString(),date_birth.getText().toString(),about.getText().toString(),job.getText().toString());
+        presenter.changeDataPresenter(data);
     }
 
     public void successChangeProfile(){

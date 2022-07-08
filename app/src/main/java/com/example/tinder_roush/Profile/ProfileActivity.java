@@ -6,11 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
@@ -34,6 +38,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     LocalData localData;
     Button buttonLogout, editDataProfile, viewContentExcl;
     Switch activateContent;
+    ArrayList<String> orientation_list, zodiac_list;
+    Spinner orientation_spinner, zodiac_spinner;
+    String orientation_select, zodiac_select;
     TextView first_name, last_name, date_birth, job, email, password, about, address, ageUser;
     ProfilePresenters presenter;
 
@@ -43,10 +50,14 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         setContentView(R.layout.activity_profile);
         initObjects();
         listeners();
+        orientationList();
+        zodiacList();
         presenter.ProfilePresenter();
     }
 
     private void initObjects() {
+        orientation_spinner = findViewById(R.id.spinner_my_orientation);
+        zodiac_spinner = findViewById(R.id.spinner_zodiac);
         backHome = findViewById(R.id.back_to_home);
         localData = new LocalData();
         first_name = findViewById(R.id.user_profile_name);
@@ -61,6 +72,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         activateContent = findViewById(R.id.switch_activate_content);
         editDataProfile = findViewById(R.id.edit_profile_data);
         viewContentExcl = findViewById(R.id.view_content_button);
+        orientation_list = new ArrayList<>();
+        zodiac_list = new ArrayList<>();
+        orientation_select = "";
+        zodiac_select = "";
         presenter = new ProfilePresenters(this, null);
     }
 
@@ -86,22 +101,39 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
         backHome.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                    backToHome();
-                }
+            public void onClick(View view) { backToHome(); }
             });
 
         activateContent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                boolean valor;
-                if(isChecked){
-                    viewContentExcl.setVisibility(View.VISIBLE);
-                    valor = true;
-                } else {
-                    viewContentExcl.setVisibility(View.INVISIBLE);
-                    valor = false;
-                }
+                Toast.makeText(ProfileActivity.this, "Disponible próximamente", Toast.LENGTH_SHORT).show();
+//                boolean valor;
+//                if(isChecked){
+//                    viewContentExcl.setVisibility(View.VISIBLE);
+//                    valor = true;
+//                } else {
+//                    viewContentExcl.setVisibility(View.INVISIBLE);
+//                    valor = false;
+//                }
             }
+        });
+
+        orientation_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                orientation_select = orientation_spinner.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) { }
+        });
+
+        zodiac_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                zodiac_select = zodiac_spinner.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) { }
         });
     }
 
@@ -126,11 +158,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date birth_date = null;
-        try {
-            birth_date = dateFormat.parse(data.getDate_birth());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        try { birth_date = dateFormat.parse(data.getDate_birth()); }
+        catch (ParseException e) { e.printStackTrace(); }
         Calendar cal = Calendar.getInstance();
         Date current_date = cal.getTime();
 
@@ -141,6 +170,36 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         job.setText(data.getJob());
         about.setText(data.getAbout());
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
+        localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
+    }
 
+    public void orientationList(){
+        orientation_list.add("Heterosexual");
+        orientation_list.add("Gay");
+        orientation_list.add("Lesbiana");
+        orientation_list.add("Bisexual");
+        orientation_list.add("Otr@");
+        ArrayAdapter<String> orientationArrayAdapter = new ArrayAdapter<>(BaseContext.getContext(), R.layout.spinner_custom_textview_orientation, orientation_list);
+        orientationArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_orientation);
+        orientation_spinner.setAdapter(orientationArrayAdapter);
+    }
+
+    private void zodiacList() {
+        zodiac_list.add(0,"Es indiferente");
+        zodiac_list.add("Aries");
+        zodiac_list.add("Tauro");
+        zodiac_list.add("Géminis");
+        zodiac_list.add("Cáncer");
+        zodiac_list.add("Leo");
+        zodiac_list.add("Virgo");
+        zodiac_list.add("Libra");
+        zodiac_list.add("Escorpio");
+        zodiac_list.add("Sagitario");
+        zodiac_list.add("Capricornio");
+        zodiac_list.add("Acuario");
+        zodiac_list.add("Piscis");
+        ArrayAdapter<String> zodiacArrayAdapter = new ArrayAdapter<>(BaseContext.getContext(), R.layout.spinner_custom_textview_orientation, zodiac_list);
+        zodiacArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_orientation);
+        zodiac_spinner.setAdapter(zodiacArrayAdapter);
     }
 }

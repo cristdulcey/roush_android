@@ -114,7 +114,7 @@
                             android:id="@+id/user_profile_age"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="26"
+                            android:text=""
                             android:textSize="25sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
@@ -269,7 +269,6 @@
                     android:text="@string/edit_data_profile"
                     android:textSize="18sp"
                     android:textAllCaps="false"/>
-
             </LinearLayout>
 
             <!--Preferences match search-->
@@ -283,6 +282,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -297,7 +297,6 @@
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:layout_height="48dp"
-                        android:layout_marginTop="20dp"
                         android:layout_marginRight="38dp"
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
@@ -325,6 +324,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -372,6 +372,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -386,7 +387,6 @@
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:layout_height="48dp"
-                        android:layout_marginTop="20dp"
                         android:layout_marginRight="38dp"
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
@@ -504,7 +504,6 @@
                                 android:layout_marginLeft="110dp"
                                 android:text="60 años"/>
                         </LinearLayout>
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -512,6 +511,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -559,13 +559,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
-                        android:text="@string/with_children"
+                        android:text="@string/with_pets"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="20dp"/>
@@ -606,6 +607,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -649,7 +651,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!--My orientation-->
+                <!--Zodiac sign-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -667,7 +669,7 @@
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:layout_height="48dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginRight="38dp"
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
@@ -682,7 +684,6 @@
                             android:background="@android:color/transparent"/>
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
 
             <!--Divider-->
@@ -811,7 +812,90 @@
                         android:src="@drawable/icon_camera" />
 
                 </LinearLayout>
+            </LinearLayout>
 
+            <!--Divider-->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginHorizontal="40dp"
+                android:background="@color/gray1"/>
+
+            <!--Exclusive content-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--title exclusive content-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="18sp"
+                    android:text="@string/exclusive_content"
+                    android:textColor="@color/black" />
+                <!--switch exclusive content-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/active_exclusive_content"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="40dp"
+                            android:text="@string/text_exclusive_content"
+                            android:textColor="@color/black"/>
+
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/switch_activate_content"
+                        android:layout_width="60dp"
+                        android:layout_gravity="center|right"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <!--button view exclusive content-->
+                <Button
+                    android:id="@+id/view_content_button"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
+                    android:text="@string/view_content_"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:visibility="invisible"
+                    android:background="@drawable/border_green_round"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginHorizontal="40dp"
+                    android:background="@color/gray1"/>
             </LinearLayout>
 
             <!--Interestings-->
@@ -820,7 +904,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/border_green_soft_green_round"
+                android:background="@drawable/border_green_soft_round"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
@@ -972,7 +1056,7 @@
                         android:text="@string/button_swimming"
                         android:textAllCaps="false"
                         android:textColor="@color/green2"
-                        android:drawableLeft="@drawable/market_icon"
+                        android:drawableLeft="@drawable/water_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                 </LinearLayout>
                 <LinearLayout
@@ -1078,115 +1162,46 @@
                 android:layout_marginVertical="20dp"
                 android:layout_marginHorizontal="40dp"
                 android:background="@color/gray1"/>
-            <!--Exclusive content-->
-            <LinearLayout
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_longer_interested"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <!--Logout-->
+            <Button
+                android:id="@+id/log_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="@string/log_out_text"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:background="@drawable/border_green_round"/>
 
-                <!--title exclusive content-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="18sp"
-                    android:text="@string/exclusive_content"
-                    android:textColor="@color/black" />
-                <!--switch exclusive content-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="20dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/active_exclusive_content"
-                            android:textColor="@color/black"/>
-
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="40dp"
-                            android:text="@string/text_exclusive_content"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-
-                    <Switch
-                        android:id="@+id/switch_activate_content"
-                        android:layout_width="60dp"
-                        android:layout_gravity="center|right"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-                <!--button view exclusive content-->
-
-                <Button
-                    android:id="@+id/view_content_button"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:padding="10dp"
-                    android:layout_gravity="center"
-                    android:text="@string/view_content_"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
-                    android:visibility="invisible"
-                    android:background="@drawable/border_green_round"/>
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="2dp"
-                    android:layout_marginVertical="20dp"
-                    android:layout_marginHorizontal="40dp"
-                    android:background="@color/gray1"/>
-
-                <!--Logout-->
-                <Button
-                    android:id="@+id/log_out"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginVertical="20dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textAllCaps="false"
-                    android:text="@string/log_out_text"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:background="@drawable/border_green_round"/>
-
-                <!--Kill account-->
-                <Button
-                    android:id="@+id/kill_account"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textAllCaps="false"
-                    android:text="@string/kill_account_text"
-                    android:textColor="@color/green3"
-                    android:textSize="15sp"
-                    android:background="@drawable/border_green_transparent_round"/>
-
-            </LinearLayout>
-
+            <!--Kill account-->
+            <Button
+                android:id="@+id/kill_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="@string/kill_account_text"
+                android:textColor="@color/green3"
+                android:textSize="15sp"
+                android:background="@drawable/border_green_transparent_round"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

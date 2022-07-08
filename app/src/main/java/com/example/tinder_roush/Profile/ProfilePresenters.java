@@ -40,13 +40,13 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
-    public void changeDataPresenter(ProfileData data, String id_person, String photo) {
-
+    public void changeDataPresenter(ProfileData data) {
+        model.changeDataModel(this,data);
     }
 
     @Override
     public void changeDataSuccessful() {
-
+        view2.successChangeProfile();
     }
 
     @Override

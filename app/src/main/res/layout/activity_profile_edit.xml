@@ -296,6 +296,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -310,7 +311,6 @@
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:layout_height="48dp"
-                        android:layout_marginTop="20dp"
                         android:layout_marginRight="38dp"
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
@@ -338,6 +338,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -399,7 +400,6 @@
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:layout_height="48dp"
-                        android:layout_marginTop="20dp"
                         android:layout_marginRight="38dp"
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
@@ -619,6 +619,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -680,7 +681,6 @@
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:layout_height="48dp"
-                        android:layout_marginTop="20dp"
                         android:layout_marginRight="38dp"
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
@@ -833,7 +833,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/border_green_soft_green_round"
+                android:background="@drawable/border_green_soft_round"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
@@ -985,7 +985,7 @@
                         android:text="@string/button_swimming"
                         android:textAllCaps="false"
                         android:textColor="@color/green2"
-                        android:drawableLeft="@drawable/market_icon"
+                        android:drawableLeft="@drawable/water_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                 </LinearLayout>
                 <LinearLayout
@@ -1151,7 +1151,6 @@
                     android:id="@+id/view_content_button"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:padding="10dp"
                     android:layout_gravity="center"
                     android:text="@string/view_content_"
@@ -1168,37 +1167,47 @@
                     android:layout_marginHorizontal="40dp"
                     android:background="@color/gray1"/>
 
-                <!--Logout-->
-                <Button
-                    android:id="@+id/log_out_from_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginVertical="20dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textAllCaps="false"
-                    android:text="@string/log_out_text"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:background="@drawable/border_green_round"/>
-
-                <!--Kill account-->
-                <Button
-                    android:id="@+id/kill_account_from_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textAllCaps="false"
-                    android:text="@string/kill_account_text"
-                    android:textColor="@color/green3"
-                    android:textSize="15sp"
-                    android:background="@drawable/border_green_transparent_round"/>
-
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_longer_interested"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <!--Logout-->
+            <Button
+                android:id="@+id/log_out_from_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="@string/log_out_text"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:background="@drawable/border_green_round"/>
+
+            <!--Kill account-->
+            <Button
+                android:id="@+id/kill_account_from_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="@string/kill_account_text"
+                android:textColor="@color/green3"
+                android:textSize="15sp"
+                android:background="@drawable/border_green_transparent_round"/>
 
         </LinearLayout>
     </ScrollView>
