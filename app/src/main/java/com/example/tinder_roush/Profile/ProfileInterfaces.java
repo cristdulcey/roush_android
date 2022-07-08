@@ -15,7 +15,9 @@ public interface ProfileInterfaces {
 
     interface presenters{
         void ProfilePresenter();
+        void ProfileEditPresenter();
         void ProfileSuccessful(ProfileData data);
+        void ProfileEditSuccessful(ProfileData data);
         void ProfileError(String message);
 
         void changeDataPresenter(ProfileData data, String id_person, String photo);
@@ -25,6 +27,7 @@ public interface ProfileInterfaces {
 
     interface models{
         void ProfileModel(presenters presenter);
+        void ProfileEditModel(presenters presenter);
         void changeDataModel(presenters presenter, ProfileData data, String id_person, String photo);
     }
 

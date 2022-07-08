@@ -41,6 +41,8 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     ImageView goToProfile;
     Context context;
     HomePresenters presenter;
+    List<CardPersonItem> cardPersonItems = new ArrayList<>();
+    CardStackView cardStackView;
 
     public HomeActivity() {
         // Required empty public constructor
@@ -55,8 +57,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_match_, container, false);
         context = view.getContext();
-
-        CardStackView cardStackView = view.findViewById(R.id.card_stack_view);
         managerCard = new CardStackLayoutManager(context, new CardStackListener() {
             @Override
             public void onCardDragging(Direction direction, float ratio) {
@@ -105,10 +105,8 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         managerCard.setCanScrollHorizontal(true);
         managerCard.setSwipeableMethod(SwipeableMethod.Manual);
         managerCard.setOverlayInterpolator(new LinearInterpolator());
-        adapterCardPerson = new CardStackPersonAdapter(addList());
-        cardStackView.setLayoutManager(managerCard);
-        cardStackView.setAdapter(adapterCardPerson);
-        cardStackView.setItemAnimator(new DefaultItemAnimator());
+      //  adapterCardPerson = new CardStackPersonAdapter(addList());
+
 
         initObjets(view);
         listeners();
@@ -119,23 +117,24 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     private void paginate() {
 
         List<CardPersonItem> old = adapterCardPerson.getCardPersonItems();
-        List<CardPersonItem> fresh = new ArrayList<>(addList());
-        CardStackCallback callback = new CardStackCallback(old, fresh);
+//        List<CardPersonItem> fresh = new ArrayList<>(addList());
+        CardStackCallback callback = new CardStackCallback(old, cardPersonItems);
         DiffUtil.DiffResult hasil = DiffUtil.calculateDiff(callback);
-        adapterCardPerson.setCardPersonItems(fresh);
+        adapterCardPerson.setCardPersonItems(cardPersonItems);
         hasil.dispatchUpdatesTo(adapterCardPerson);
 
     }
 
-    public List<CardPersonItem> addList() {
-        List<CardPersonItem> cardPersonItems = new ArrayList<>();
-        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding1,"alguien","20"));
-        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding2,"otra persona","34"));
-        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding3,"este man","29"));
-        return cardPersonItems;
+    public void addList(ArrayList<CardPersonItem> person) {
+        adapterCardPerson = new CardStackPersonAdapter(person);
+        cardStackView.setLayoutManager(managerCard);
+        cardStackView.setAdapter(adapterCardPerson);
+        cardStackView.setItemAnimator(new DefaultItemAnimator());
+//        return cardPersonItems;
     }
 
     private void initObjets(View view) {
+        cardStackView = view.findViewById(R.id.card_stack_view);
         presenter = new HomePresenters(this);
         match = view.findViewById(R.id.match_button);
         filter = view.findViewById(R.id.filter_home);

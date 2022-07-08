@@ -1,50 +1,65 @@
 package com.example.tinder_roush.Objects;
 
+import com.example.tinder_roush.Home.CardPersonItem;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
 public class HomeResponse {
-    @SerializedName("id")
+
+    @SerializedName("count")
     @Expose
-    private String id;
+    private String count;
 
-    @SerializedName("person")
+    @SerializedName("next")
     @Expose
-    private String person;
+    private String next;
 
-    @SerializedName("image")
+    @SerializedName("previous")
     @Expose
-    private String image;
+    private String previous;
 
-    public HomeResponse(String id, String person, String image) {
-        this.id = id;
-        this.person = person;
-        this.image = image;
+    @SerializedName("results")
+    @Expose
+    private ArrayList<CardPersonItem> results;
+
+    public HomeResponse(String count, String next, String previous, ArrayList<CardPersonItem> results) {
+        this.count = count;
+        this.next = next;
+        this.previous = previous;
+        this.results = results;
     }
 
-    public String getId() {
-        return id;
+    public String getCount() {
+        return count;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCount(String count) {
+        this.count = count;
     }
 
-    public String getPerson() {
-        return person;
+    public String getNext() {
+        return next;
     }
 
-    public void setPerson(String person) {
-        this.person = person;
+    public void setNext(String next) {
+        this.next = next;
     }
 
-    public String getImage() {
-        return image;
+    public String getPrevious() {
+        return previous;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setPrevious(String previous) {
+        this.previous = previous;
+    }
+
+    public ArrayList<CardPersonItem> getResults() {
+        return results;
+    }
+
+    public void setResults(ArrayList<CardPersonItem> results) {
+        this.results = results;
     }
 }

@@ -1,9 +1,5 @@
 package com.example.tinder_roush.Home;
 
-import android.view.View;
-
-import com.example.tinder_roush.Login.LoginInterfaces;
-import com.example.tinder_roush.Login.LoginModels;
 import com.example.tinder_roush.Objects.HomeData;
 
 import java.util.ArrayList;
@@ -29,8 +25,9 @@ public class HomePresenters implements HomeInterfaces.presenters{
     }
 
     @Override
-    public void HomePresenterSuccess(String homeData) {
-        view.addList();
+    public void HomePresenterSuccess(ArrayList<CardPersonItem> person) {
+
+        view.addList(person);
     }
 
     @Override

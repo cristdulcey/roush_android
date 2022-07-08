@@ -2,23 +2,22 @@ package com.example.tinder_roush.Home;
 
 public class CardPersonItem {
 
-    private int image;
     private String name, age;
-
+    private String image;
     public CardPersonItem() {
     }
 
-    public CardPersonItem(int image, String name, String age) {
+    public CardPersonItem(String image, String name, String age) {
         this.image = image;
         this.name = name;
         this.age = age;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

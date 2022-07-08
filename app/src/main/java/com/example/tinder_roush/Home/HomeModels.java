@@ -60,14 +60,15 @@ public class HomeModels implements HomeInterfaces.models{
     @Override
     public void HomeModelPhoto(HomeInterfaces.presenters presenter) {
 
-        Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo();
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("PERSON2"));
+        Log.e("SI OBTUVO I2",localData.getRegister("PERSON2"));
         call.enqueue(new Callback<HomeResponse>() {
             @Override
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
                 if (response.isSuccessful()){
                     HomeResponse home_card_list = null;
                     home_card_list = response.body();
-                    presenter.HomePresenterSuccess(home_card_list.getImage());
+                    presenter.HomePresenterSuccess(home_card_list.getResults());
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";

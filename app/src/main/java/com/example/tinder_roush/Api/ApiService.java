@@ -7,7 +7,6 @@ import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
-import com.example.tinder_roush.Objects.RegisterResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
 import com.example.tinder_roush.Objects.UserData;
 
@@ -21,6 +20,7 @@ import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
 
@@ -75,6 +75,7 @@ public interface ApiService {
 
     @GET("/api/persons-photo/")
     Call<HomeResponse> persons_photo(
+            @Query("person") String person
             );
 
 }

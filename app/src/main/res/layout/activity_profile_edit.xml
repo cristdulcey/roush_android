@@ -90,10 +90,20 @@
                             android:id="@+id/edit_user_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="2dp"
                             android:background="@android:color/transparent"
-                            android:text="Jesica"
+                            android:text=""
                             android:textSize="25sp"
                             android:textColor="@color/white"
+                            android:textStyle="bold"/>
+                        <EditText
+                            android:id="@+id/edit_profile_lastname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="25sp"
+                            android:textColor="@color/white"
+                            android:background="@android:color/transparent"
                             android:textStyle="bold"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -103,7 +113,7 @@
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
                         <TextView
-                            android:id="@+id/user_profile_age"
+                            android:id="@+id/user_edit_profile_age"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="26"
@@ -121,6 +131,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="2dp"
                             android:textColor="@color/white"
                             android:text="@string/profession"
                             android:textSize="18sp"/>
@@ -143,6 +154,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="2dp"
                             android:textColor="@color/white"
                             android:text="@string/email_profile"
                             android:textSize="18sp"/>
@@ -165,11 +177,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="2dp"
                             android:textColor="@color/white"
                             android:text="@string/password_profile"
                             android:textSize="18sp"/>
                         <EditText
-                            android:id="@+id/profile_password"
+                            android:id="@+id/edit_profile_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -188,6 +201,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="2dp"
                             android:textColor="@color/white"
                             android:text="@string/date_birth_profile"
                             android:textSize="18sp"/>
@@ -196,7 +210,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:text="2000-12-23"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="16sp"/>
                     </LinearLayout>
@@ -210,6 +224,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="2dp"
                             android:textColor="@color/white"
                             android:text="@string/location_profile"
                             android:textSize="18sp"/>
@@ -246,11 +261,12 @@
                         android:text="@string/description"
                         android:textColor="@color/white"
                         android:textSize="18dp"/>
-                    <TextView
-                        android:id="@+id/text_description_profile"
+                    <EditText
+                        android:id="@+id/edit_description_profile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:background="@android:color/transparent"
                         android:text="@string/profile_description"
                         android:textSize="16sp"/>
                 </LinearLayout>

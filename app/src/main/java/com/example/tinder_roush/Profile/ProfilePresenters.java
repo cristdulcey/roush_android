@@ -20,8 +20,18 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
+    public void ProfileEditPresenter() {
+        model.ProfileEditModel(this);
+    }
+
+    @Override
     public void ProfileSuccessful(ProfileData data) {
         view.showData1(data);
+    }
+
+    @Override
+    public void ProfileEditSuccessful(ProfileData data) {
+        view2.showData2(data);
     }
 
     @Override

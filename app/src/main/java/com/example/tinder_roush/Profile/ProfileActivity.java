@@ -113,10 +113,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         startActivity(intent);
     }
 
-    public  int getEdad(Date fechaNacimiento, Date fechaActual) {
+    public  int getEdad(Date birth_date, Date current_date) {
         DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        int dIni = Integer.parseInt(formatter.format(fechaNacimiento));
-        int dEnd = Integer.parseInt(formatter.format(fechaActual));
+        int dIni = Integer.parseInt(formatter.format(birth_date));
+        int dEnd = Integer.parseInt(formatter.format(current_date));
         int age = (dEnd-dIni)/10000;
         return age;
     }
@@ -124,16 +124,15 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     @Override
     public void showData1(ProfileData data) {
 
-        DateFormat dateFormat = dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        Date fechaNacimiento = null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date birth_date = null;
         try {
-            fechaNacimiento = dateFormat.parse(data.getDate_birth());
+            birth_date = dateFormat.parse(data.getDate_birth());
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Log.e("EDAD", String.valueOf(fechaNacimiento));
         Calendar cal = Calendar.getInstance();
-        Date fechaActual = cal.getTime();
+        Date current_date = cal.getTime();
 
         first_name.setText(data.getFirst_name());
         last_name.setText(data.getLast_name());
@@ -141,7 +140,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         email.setText(data.getEmail());
         job.setText(data.getJob());
         about.setText(data.getAbout());
-        ageUser.setText(String.valueOf(getEdad(fechaNacimiento,fechaActual)));
+        ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
 
     }
 }
