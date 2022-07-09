@@ -1,5 +1,6 @@
 package com.example.tinder_roush.Api;
 
+import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
@@ -77,10 +78,20 @@ public interface ApiService {
     Call<HomeResponse> persons_photo(
             @Query("person") String person
     );
+         //   @Query("person") String person
+            );
 
     @PATCH("api/persons/{id}/")
     Call<ProfileData> changeProfile(
             @Path("id") String id,
             @Body MultipartBody profile
+    );
+    @GET("/api/persons-photo/")
+    Call<CardPersonItem> persons_photo_id(
+               @Query("person") String person
+    );
+    @GET("/api/persons-photo/{id}")
+    Call<CardPersonItem> profile_photo(
+            @Path("id") String id
     );
 }

@@ -12,7 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tinder_roush.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPersonAdapter.ViewHolder> {
 
@@ -41,20 +47,34 @@ public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPerson
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         ImageView image_person;
-        TextView name_person, age_person;
+        TextView name_person, job, age_person;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image_person = itemView.findViewById(R.id.card_image_person);
             name_person = itemView.findViewById(R.id.card_person_name);
+            job = itemView.findViewById(R.id.card_person_job);
             age_person = itemView.findViewById(R.id.card_person_age);
         }
 
         public void setData(CardPersonItem data) {
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date birth_date = null;
+            try {
+                birth_date = dateFormat.parse(data.getPerson().getDate_birth());
+            } catch (
+                    ParseException e) {
+                e.printStackTrace();
+            }
+            Calendar cal = Calendar.getInstance();
+            Date current_date = cal.getTime();
             Picasso.get().load(data.getImage()).fit().centerCrop().into(image_person);
-            name_person.setText(data.getName());
-            age_person.setText(data.getAge());
+            name_person.setText(data.getPerson().getFirst_name());
+            job.setText(data.getPerson().getJob());
+            age_person.setText(String.valueOf(getEdad(birth_date,current_date)));
         }
     }
 
@@ -64,5 +84,13 @@ public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPerson
 
     public void setCardPersonItems(List<CardPersonItem> cardPersonItems) {
         this.cardPersonItems = cardPersonItems;
+    }
+
+    public  int getEdad(Date birth_date, Date current_date) {
+        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        int dIni = Integer.parseInt(formatter.format(birth_date));
+        int dEnd = Integer.parseInt(formatter.format(current_date));
+        int age = (dEnd-dIni)/10000;
+        return age;
     }
 }

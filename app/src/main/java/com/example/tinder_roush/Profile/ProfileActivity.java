@@ -12,10 +12,12 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.Login.LoginInterfaces;
@@ -23,6 +25,7 @@ import com.example.tinder_roush.MenuNavigation.MenuNavigation;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -41,6 +44,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     ArrayList<String> orientation_list, zodiac_list;
     Spinner orientation_spinner, zodiac_spinner;
     String orientation_select, zodiac_select;
+    ImageView profile_photo;
+    String idImage;
     TextView first_name, last_name, date_birth, job, email, password, about, address, ageUser;
     ProfilePresenters presenter;
 
@@ -53,13 +58,16 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         orientationList();
         zodiacList();
         presenter.ProfilePresenter();
+        presenter.ProfileGetPhotoPresenter();
     }
 
     private void initObjects() {
         orientation_spinner = findViewById(R.id.spinner_my_orientation);
         zodiac_spinner = findViewById(R.id.spinner_zodiac);
+        idImage ="";
         backHome = findViewById(R.id.back_to_home);
         localData = new LocalData();
+        profile_photo = findViewById(R.id.profile_photo);
         first_name = findViewById(R.id.user_profile_name);
         last_name = findViewById(R.id.user_profile_lastname);
         date_birth = findViewById(R.id.date_birth_profile);
@@ -151,6 +159,17 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         int dEnd = Integer.parseInt(formatter.format(current_date));
         int age = (dEnd-dIni)/10000;
         return age;
+    }
+
+    public void showPhoto(CardPersonItem data){
+        Picasso.get().load(data.getImage()).into(profile_photo);
+    }
+
+    @Override
+    public void getPhoto(CardPersonItem data) {
+        idImage = data.getId();
+        localData.register(idImage, "Id_Image_1");
+        presenter.ProfileShowPhotoPresenter();
     }
 
     @Override

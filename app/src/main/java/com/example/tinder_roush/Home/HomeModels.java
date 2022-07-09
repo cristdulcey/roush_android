@@ -59,8 +59,9 @@ public class HomeModels implements HomeInterfaces.models{
 
     @Override
     public void HomeModelPhoto(HomeInterfaces.presenters presenter) {
+        //Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("PERSON2"));
 
-        Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("PERSON2"));
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo();
         Log.e("SI OBTUVO I2",localData.getRegister("PERSON2"));
         call.enqueue(new Callback<HomeResponse>() {
             @Override

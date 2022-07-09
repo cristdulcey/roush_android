@@ -1,5 +1,6 @@
 package com.example.tinder_roush.Profile;
 
+import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.ProfileData;
 
 public class ProfilePresenters implements ProfileInterfaces.presenters{
@@ -20,6 +21,16 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
+    public void ProfileGetPhotoPresenter() {
+        model.ProfilePhotoModel(this);
+    }
+
+    @Override
+    public void ProfileShowPhotoPresenter() {
+        model.ProfileShowPhotoModel(this);
+    }
+
+    @Override
     public void ProfileEditPresenter() {
         model.ProfileEditModel(this);
     }
@@ -32,6 +43,16 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     @Override
     public void ProfileEditSuccessful(ProfileData data) {
         view2.showData2(data);
+    }
+
+    @Override
+    public void ProfileGetPhotoSuccessful(CardPersonItem data) {
+        view.getPhoto(data);
+    }
+
+    @Override
+    public void ProfileShowPhotoSuccessful(CardPersonItem data) {
+        view.showPhoto(data);
     }
 
     @Override
