@@ -76,10 +76,8 @@ public interface ApiService {
 
     @GET("/api/persons-photo/")
     Call<HomeResponse> persons_photo(
-            @Query("person") String person
+           // @Query("person") String person
     );
-         //   @Query("person") String person
-            );
 
     @PATCH("api/persons/{id}/")
     Call<ProfileData> changeProfile(

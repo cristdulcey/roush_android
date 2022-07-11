@@ -38,7 +38,6 @@ public interface ProfileInterfaces {
     interface models{
         void ProfileModel(presenters presenter);
         void ProfileEditModel(presenters presenter);
-        void changeDataModel(presenters presenter, ProfileData data);
         void ProfilePhotoModel(presenters presenter);
         void ProfileShowPhotoModel(presenters presenter);
         void changeDataModel(presenters presenter, ProfileData data);
