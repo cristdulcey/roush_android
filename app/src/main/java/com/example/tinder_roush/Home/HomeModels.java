@@ -12,6 +12,9 @@ import com.example.tinder_roush.Utils.CustomErrorResponse;
 
 import java.io.IOException;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,10 +36,9 @@ public class HomeModels implements HomeInterfaces.models{
             @Override
             public void onResponse(Call<HomeData> call, Response<HomeData> response) {
                 if (response.isSuccessful()){
+                    localData.register(response.body().getId(),"ID_MATCH");
                     localData.register(response.body().getPerson1(),"PERSON1");
                     localData.register(response.body().getPerson2(),"PERSON2");
-                    Log.e("ID_PERSON1",localData.getRegister("PERSON1"));
-                    Log.e("ID_PERSON2",localData.getRegister("PERSON2"));
                     presenter.HomePresenterGetPhotos(response.body());
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
@@ -49,7 +51,6 @@ public class HomeModels implements HomeInterfaces.models{
                     presenter.HomeError(response_user);
                 }
             }
-
             @Override
             public void onFailure(Call<HomeData> call, Throwable t) {
                 Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
@@ -60,9 +61,7 @@ public class HomeModels implements HomeInterfaces.models{
     @Override
     public void HomeModelPhoto(HomeInterfaces.presenters presenter) {
         //Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("PERSON2"));
-
-        Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo();
-        Log.e("SI OBTUVO I2",localData.getRegister("PERSON2"));
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("PERSON2"));
         call.enqueue(new Callback<HomeResponse>() {
             @Override
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
@@ -84,6 +83,39 @@ public class HomeModels implements HomeInterfaces.models{
 
             @Override
             public void onFailure(Call<HomeResponse> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void HomeModelResponseMatch(HomeInterfaces.presenters presenter, HomeData data) {
+
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("response_person1", null, RequestBody.create(MediaType.parse("text/plain"),data.isResponse_person1()));
+        request.addFormDataPart("response_person2", null, RequestBody.create(MediaType.parse("text/plain"),data.isResponse_person2()));
+        MultipartBody body=request.build();
+
+        Call<HomeData> call = apiAdapter.getApiService2().match_response(localData.getRegister("ID_MATCH"),body);
+        call.enqueue(new Callback<HomeData>() {
+            @Override
+            public void onResponse(Call<HomeData> call, Response<HomeData> response) {
+                if (response.isSuccessful()){
+                    presenter.HomeResponseMatchSuccess();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.HomeError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HomeData> call, Throwable t) {
                 Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -113,7 +113,7 @@ public class ProfileModels implements ProfileInterfaces.models{
 
     @Override
     public void ProfileShowPhotoModel(ProfileInterfaces.presenters presenter) {
-        Call<CardPersonItem> call = apiAdapter.getApiService2().persons_photo_id(localData.getRegister("Id_Image_1"));
+        Call<CardPersonItem> call = apiAdapter.getApiService2().profile_photo(localData.getRegister("Id_Image_1"));
         call.enqueue(new Callback<CardPersonItem>() {
             @Override
             public void onResponse(Call<CardPersonItem> call, Response<CardPersonItem> response) {

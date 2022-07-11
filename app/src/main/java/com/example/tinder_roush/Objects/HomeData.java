@@ -19,16 +19,20 @@ public class HomeData {
 
     @SerializedName("response_person1")
     @Expose
-    private boolean response_person1;
+    private String response_person1;
 
     @SerializedName("response_person2")
     @Expose
-    private boolean response_person2;
+    private String response_person2;
 
-    public HomeData(String id, String person1, String person2, boolean response_person1, boolean response_person2) {
+    public HomeData(String id, String person1, String person2, String response_person1, String response_person2) {
         this.id = id;
         this.person1 = person1;
         this.person2 = person2;
+        this.response_person1 = response_person1;
+        this.response_person2 = response_person2;
+    }
+    public HomeData(String response_person1, String response_person2) {
         this.response_person1 = response_person1;
         this.response_person2 = response_person2;
     }
@@ -57,19 +61,19 @@ public class HomeData {
         this.person2 = person2;
     }
 
-    public boolean isResponse_person1() {
+    public String isResponse_person1() {
         return response_person1;
     }
 
-    public void setResponse_person1(boolean response_person1) {
+    public void setResponse_person1(String response_person1) {
         this.response_person1 = response_person1;
     }
 
-    public boolean isResponse_person2() {
+    public String isResponse_person2() {
         return response_person2;
     }
 
-    public void setResponse_person2(boolean response_person2) {
+    public void setResponse_person2(String response_person2) {
         this.response_person2 = response_person2;
     }
 }
