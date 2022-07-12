@@ -74,7 +74,7 @@ public interface ApiService {
     Call<HomeData> persons_match(
     );
 
-    @GET("/api/persons-photo/")
+    @GET("/api/persons-photo/?limit=1")
     Call<HomeResponse> persons_photo(
             @Query("person") String person
     );
@@ -96,7 +96,7 @@ public interface ApiService {
     @PATCH("api/persons-match/{id}/")
     Call<HomeData> match_response(
             @Path("id") String id,
-            @Body MultipartBody response_1
+            @Body MultipartBody response
 
     );
 

@@ -23,7 +23,7 @@ public class HomePresenters implements HomeInterfaces.presenters{
     }
 
     @Override
-    public void HomePresenterGetPhotos(HomeData data) {
+    public void HomePresenterGetPhotos() {
         model.HomeModelPhoto(this);
     }
 
@@ -38,8 +38,13 @@ public class HomePresenters implements HomeInterfaces.presenters{
     }
 
     @Override
+    public void HomeBackResponseMatch(HomeData homeData) {
+        model.HomeModelResponseMatch(this, homeData);
+    }
+
+    @Override
     public void HomeResponseMatchSuccess() {
-        Toast.makeText(BaseContext.getContext(), "Match request", Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(BaseContext.getContext(), "Match request", Toast.LENGTH_SHORT).show();
     }
 
     @Override

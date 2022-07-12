@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DiffUtil;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +17,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+
+import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
 
 import com.example.tinder_roush.Objects.HomeData;
-import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -37,7 +36,6 @@ import com.yuyakaido.android.cardstackview.SwipeableMethod;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Response;
 
 public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
 
@@ -47,7 +45,8 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     HomePresenters presenter;
     List<CardPersonItem> cardPersonItems = new ArrayList<>();
     CardStackView cardStackView;
-
+    LocalData localData;
+    Boolean wait_response = false;
     public HomeActivity() {
         // Required empty public constructor
     }
@@ -60,26 +59,42 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_match_, container, false);
         context = view.getContext();
+      //  adapterCardPerson = new CardStackPersonAdapter(addList());
+        initObjets(view);
+        listeners();
+        swipeCards();
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (wait_response == false){
+            presenter.HomePresenterGetMatch();
+            wait_response = true;
+        }
+    }
+
+    public void swipeCards(){
         managerCard = new CardStackLayoutManager(context, new CardStackListener() {
             @Override
-            public void onCardDragging(Direction direction, float ratio) {
-
-            }
+            public void onCardDragging(Direction direction, float ratio) { }
 
             @Override
             public void onCardSwiped(Direction direction) {
                 if(direction == Direction.Right){
-                    Toast.makeText(context,"derecha",Toast.LENGTH_SHORT);
-                    matchResponseSuccess();
+                    matchResponse1Success();
+                    paginate();
+                    presenter.HomePresenterGetMatch();
                 }
                 if(direction == Direction.Left){
-                    Toast.makeText(context,"izquierda",Toast.LENGTH_SHORT);
-                    matchResponseDeny();
-                }
-                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
+                    matchResponse1Deny();
                     paginate();
+                    presenter.HomePresenterGetMatch();
                 }
-                presenter.HomePresenterGetMatch();
+//                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
+//                    paginate();
+//                }
             }
             @Override
             public void onCardRewound() { }
@@ -100,11 +115,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         managerCard.setCanScrollHorizontal(true);
         managerCard.setSwipeableMethod(SwipeableMethod.Manual);
         managerCard.setOverlayInterpolator(new LinearInterpolator());
-      //  adapterCardPerson = new CardStackPersonAdapter(addList());
-        initObjets(view);
-        listeners();
-        presenter.HomePresenterGetMatch();
-        return view;
     }
 
     private void paginate() {
@@ -125,15 +135,27 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
 
     @Override
-    public void matchResponseSuccess() {
+    public void matchResponse1Success() {
         HomeData dataresponse = new HomeData("true","");
         presenter.HomeResponseMatch(dataresponse);
     }
 
     @Override
-    public void matchResponseDeny() {
+    public void matchResponse1Deny() {
         HomeData dataresponse = new HomeData("false","");
         presenter.HomeResponseMatch(dataresponse);
+    }
+
+    @Override
+    public void matchResponse2Success() {
+        HomeData dataResponse = new HomeData(localData.getRegister("RESPONSE_PERSON1"),"true");
+        presenter.HomeBackResponseMatch(dataResponse);
+    }
+
+    @Override
+    public void matchResponse2Deny() {
+        HomeData dataResponse = new HomeData(localData.getRegister("RESPONSE_PERSON1"),"false");
+        presenter.HomeBackResponseMatch(dataResponse);
     }
 
     private void initObjets(View view) {
@@ -142,6 +164,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         match = view.findViewById(R.id.match_button);
         filter = view.findViewById(R.id.filter_home);
         goToProfile = view.findViewById(R.id.profile_from_home);
+        localData = new LocalData();
     }
 
     private void listeners() {

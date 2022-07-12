@@ -42,8 +42,6 @@ public class MenuNavigation extends AppCompatActivity {
             if (extras.containsKey("home")) {
                 openFragment(0);
             }
-        }
-        if (extras!=null) {
             if (extras.containsKey("account")) {
                 openFragment(3);
             }

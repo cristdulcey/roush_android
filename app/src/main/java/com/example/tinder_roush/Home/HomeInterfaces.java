@@ -8,18 +8,20 @@ public interface HomeInterfaces {
 
     interface fragment{
        void addList(ArrayList<CardPersonItem> person);
+        void matchResponse1Success();
+        void matchResponse1Deny();
 
-        void matchResponseSuccess();
-
-        void matchResponseDeny();
+        void matchResponse2Success();
+        void matchResponse2Deny();
         //  List<CardPersonItem> addList(String homeData);
     }
 
     interface presenters{
         void HomePresenterGetMatch();
-        void HomePresenterGetPhotos(HomeData homeData);
+        void HomePresenterGetPhotos();
         void HomePresenterSuccess(ArrayList<CardPersonItem> person);
         void HomeResponseMatch(HomeData homeData);
+        void HomeBackResponseMatch(HomeData homeData);
         void HomeResponseMatchSuccess();
 
 
