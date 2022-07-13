@@ -17,12 +17,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
-
-import com.example.tinder_roush.Objects.HomeData;
+import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -56,11 +53,11 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_match_, container, false);
         context = view.getContext();
-      //  adapterCardPerson = new CardStackPersonAdapter(addList());
+        //  adapterCardPerson = new CardStackPersonAdapter(addList());
         initObjets(view);
+        presenter.HomePersonCurrent();
         listeners();
         swipeCards();
         return view;
@@ -83,12 +80,12 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
             @Override
             public void onCardSwiped(Direction direction) {
                 if(direction == Direction.Right){
-                    matchResponse1Success();
+                    presenter.HomeResponseMatchTrue();
                     paginate();
                     presenter.HomePresenterGetMatch();
                 }
                 if(direction == Direction.Left){
-                    matchResponse1Deny();
+                    presenter.HomeResponseMatchFalse();
                     paginate();
                     presenter.HomePresenterGetMatch();
                 }
@@ -135,33 +132,17 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
 
     @Override
-    public void matchResponse1Success() {
-        HomeData dataresponse = new HomeData("true","");
-        presenter.HomeResponseMatch(dataresponse);
+    public void getUser(ProfileData data) {
+        String userCurrent = data.getId();
+        localData.register(userCurrent,"ID_USERCURRENT");
     }
 
-    @Override
-    public void matchResponse1Deny() {
-        HomeData dataresponse = new HomeData("false","");
-        presenter.HomeResponseMatch(dataresponse);
-    }
-
-    @Override
-    public void matchResponse2Success() {
-        HomeData dataResponse = new HomeData(localData.getRegister("RESPONSE_PERSON1"),"true");
-        presenter.HomeBackResponseMatch(dataResponse);
-    }
-
-    @Override
-    public void matchResponse2Deny() {
-        HomeData dataResponse = new HomeData(localData.getRegister("RESPONSE_PERSON1"),"false");
-        presenter.HomeBackResponseMatch(dataResponse);
-    }
 
     private void initObjets(View view) {
         cardStackView = view.findViewById(R.id.card_stack_view);
         presenter = new HomePresenters(this);
         match = view.findViewById(R.id.match_button);
+        swipe = view.findViewById(R.id.swipe_button);
         filter = view.findViewById(R.id.filter_home);
         goToProfile = view.findViewById(R.id.profile_from_home);
         localData = new LocalData();
@@ -171,7 +152,17 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         match.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                performMatchSuccess();
+                presenter.HomeResponseMatchTrue();
+                paginate();
+                presenter.HomePresenterGetMatch();
+            }
+        });
+        swipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.HomeResponseMatchFalse();
+                paginate();
+                presenter.HomePresenterGetMatch();
             }
         });
         filter.setOnClickListener(new View.OnClickListener() {

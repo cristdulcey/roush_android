@@ -1,6 +1,7 @@
 package com.example.tinder_roush.Home;
 
 import com.example.tinder_roush.Objects.HomeData;
+import com.example.tinder_roush.Objects.ProfileData;
 
 import java.util.ArrayList;
 
@@ -8,11 +9,10 @@ public interface HomeInterfaces {
 
     interface fragment{
        void addList(ArrayList<CardPersonItem> person);
-        void matchResponse1Success();
-        void matchResponse1Deny();
-
-        void matchResponse2Success();
-        void matchResponse2Deny();
+       void getUser(ProfileData data);
+//        void matchResponseSuccess();
+//        void matchResponseDeny();
+        void performMatchSuccess();
         //  List<CardPersonItem> addList(String homeData);
     }
 
@@ -20,10 +20,12 @@ public interface HomeInterfaces {
         void HomePresenterGetMatch();
         void HomePresenterGetPhotos();
         void HomePresenterSuccess(ArrayList<CardPersonItem> person);
-        void HomeResponseMatch(HomeData homeData);
-        void HomeBackResponseMatch(HomeData homeData);
+        void HomeResponseMatchTrue();
+        void HomeResponseMatchFalse();
         void HomeResponseMatchSuccess();
-
+        void HomeBackResponseMatchSuccess();
+        void HomePersonCurrent();
+        void HomePersonCurrentSuccess(ProfileData data);
 
         void HomeError(String message);
     }
@@ -32,7 +34,11 @@ public interface HomeInterfaces {
 
         void HomeModelMatch(presenters presenter);
         void HomeModelPhoto(presenters presenter);
-        void HomeModelResponseMatch(presenters presenter, HomeData data);
+       // void HomeModelResponseMatch(presenters presenter, HomeData data);
+        void HomeModelResponseMatchTrue(presenters presenter);
+        void HomeModelResponseMatchFalse(presenters presenter);
+        void HomeModelPersonCurrent(presenters presenter);
+
     }
 
 }
