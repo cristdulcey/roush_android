@@ -31,7 +31,6 @@ public class HomeModels implements HomeInterfaces.models{
         this.apiAdapter = new ApiAdapter();
         this.localData = new LocalData();
     }
-
     //POST MATCH
     @Override
     public void HomeModelMatch(HomeInterfaces.presenters presenter) {
