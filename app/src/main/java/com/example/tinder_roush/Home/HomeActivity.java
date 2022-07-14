@@ -23,6 +23,7 @@ import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.squareup.picasso.Picasso;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
 import com.yuyakaido.android.cardstackview.CardStackView;
@@ -58,6 +59,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         //  adapterCardPerson = new CardStackPersonAdapter(addList());
         initObjets(view);
         presenter.HomePersonCurrent();
+        presenter.HomePhotoUser();
         listeners();
         swipeCards();
         return view;
@@ -137,6 +139,10 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         localData.register(userCurrent,"ID_USERCURRENT");
     }
 
+    @Override
+    public void getUserPhoto(CardPersonItem person) {
+        Picasso.get().load(person.getImage()).fit().centerCrop().into(goToProfile);
+    }
 
     private void initObjets(View view) {
         cardStackView = view.findViewById(R.id.card_stack_view);

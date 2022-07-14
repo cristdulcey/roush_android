@@ -13,6 +13,7 @@ import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -31,6 +32,7 @@ public class HomeModels implements HomeInterfaces.models{
         this.localData = new LocalData();
     }
 
+    //POST MATCH
     @Override
     public void HomeModelMatch(HomeInterfaces.presenters presenter) {
         Call<HomeData> call = apiAdapter.getApiService2().persons_match();
@@ -60,6 +62,7 @@ public class HomeModels implements HomeInterfaces.models{
         });
     }
 
+    //GET PHOTOS MATCH
     @Override
     public void HomeModelPhoto(HomeInterfaces.presenters presenter) {
             if (localData.getRegister("ID_USERCURRENT").equals(localData.getRegister("PERSON2"))){
@@ -115,6 +118,62 @@ public class HomeModels implements HomeInterfaces.models{
             }
     }
 
+    //GET PHOTOS CURRENT USER
+    @Override
+    public void HomeModelPhotoUser(HomeInterfaces.presenters presenter) {
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("ID_USERCURRENT"));
+        call.enqueue(new Callback<HomeResponse>() {
+            @Override
+            public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
+                if (response.isSuccessful()) {
+                    ArrayList<CardPersonItem> home_card_list = response.body().getResults();
+                    presenter.HomePhotoUserId(home_card_list.get(0));
+                } else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.HomeError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<HomeResponse> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void HomeModelPhotoUserSuccess(HomeInterfaces.presenters presenter, CardPersonItem data) {
+        Call<CardPersonItem> call = apiAdapter.getApiService2().profile_photo(data.getId());
+        call.enqueue(new Callback<CardPersonItem>() {
+            @Override
+            public void onResponse(Call<CardPersonItem> call, Response<CardPersonItem> response) {
+                if (response.isSuccessful()){
+                    presenter.HomePhotoUserSuccess(response.body());
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.HomeError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CardPersonItem> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    //RESPONSE MATCH
     @Override
     public void HomeModelResponseMatchTrue(HomeInterfaces.presenters presenter) {
         Log.e("user_current",localData.getRegister("ID_USERCURRENT"));

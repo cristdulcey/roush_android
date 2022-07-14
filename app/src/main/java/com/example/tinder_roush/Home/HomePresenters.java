@@ -34,6 +34,21 @@ public class HomePresenters implements HomeInterfaces.presenters{
     }
 
     @Override
+    public void HomePhotoUser() {
+        model.HomeModelPhotoUser(this);
+    }
+
+    @Override
+    public void HomePhotoUserId(CardPersonItem person) {
+       model.HomeModelPhotoUserSuccess(this, person);
+    }
+
+    @Override
+    public void HomePhotoUserSuccess(CardPersonItem person) {
+        view.getUserPhoto(person);
+    }
+
+    @Override
     public void HomeResponseMatchTrue() {
         model.HomeModelResponseMatchTrue(this);
     }
@@ -42,11 +57,6 @@ public class HomePresenters implements HomeInterfaces.presenters{
     public void HomeResponseMatchFalse() {
         model.HomeModelResponseMatchFalse(this);
     }
-
-//    @Override
-//    public void HomeResponseMatch(HomeData data) {
-//        model.HomeModelResponseMatch(this, data);
-//    }
 
     @Override
     public void HomeResponseMatchSuccess() {
