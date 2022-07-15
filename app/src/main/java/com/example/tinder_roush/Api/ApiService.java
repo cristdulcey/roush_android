@@ -84,20 +84,21 @@ public interface ApiService {
             @Path("id") String id,
             @Body MultipartBody profile
     );
-    @GET("/api/persons-photo/")
-    Call<CardPersonItem> persons_photo_id(
-               @Query("person") String person
-    );
+
     @GET("/api/persons-photo/{id}")
     Call<CardPersonItem> profile_photo(
             @Path("id") String id
+    );
+
+    @PATCH("/api/persons-photo/{id}/")
+    Call<CardPersonItem> changePhoto(
+            @Path("id") String id,
+            @Body MultipartBody body
     );
 
     @PATCH("api/persons-match/{id}/")
     Call<HomeData> match_response(
             @Path("id") String id,
             @Body MultipartBody response
-
     );
-
 }

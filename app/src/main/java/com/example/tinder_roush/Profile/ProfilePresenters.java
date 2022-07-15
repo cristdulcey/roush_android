@@ -2,6 +2,7 @@ package com.example.tinder_roush.Profile;
 
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.ProfileData;
+import com.example.tinder_roush.Objects.Register3Data;
 
 public class ProfilePresenters implements ProfileInterfaces.presenters{
 
@@ -20,14 +21,36 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
         model.ProfileModel(this);
     }
 
+    //GET PHOTO
     @Override
-    public void ProfileGetPhotoPresenter() {
+    public void ProfilePhotoUserPresenter() {
         model.ProfilePhotoModel(this);
     }
 
     @Override
-    public void ProfileShowPhotoPresenter() {
-        model.ProfileShowPhotoModel(this);
+    public void ProfilePhotoUserId(CardPersonItem person) {
+        model.ProfileModelPhotoUser(this, person);
+    }
+
+    @Override
+    public void ProfilePhotoUserSuccess(CardPersonItem person) {
+        view.getPhoto(person);
+    }
+
+    //GET EDIT PHOTO
+    @Override
+    public void ProfilePhotoEditPresenter() {
+        model.ProfileGetEditPhotoModel(this);
+    }
+
+    @Override
+    public void ProfilePhotoUserEdit(CardPersonItem person) {
+        model.ProfileModelGetEditPhoto(this,person);
+    }
+
+    @Override
+    public void ProfilePhotoGetSuccess(CardPersonItem person) {
+        view2.getPhoto(person);
     }
 
     @Override
@@ -46,18 +69,11 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
-    public void ProfileGetPhotoSuccessful(CardPersonItem data) {
-        view.getPhoto(data);
-    }
+    public void ProfileError(String message) { }
 
     @Override
-    public void ProfileShowPhotoSuccessful(CardPersonItem data) {
-        view.showPhoto(data);
-    }
-
-    @Override
-    public void ProfileError(String message) {
-
+    public void ProfileChangePhotoPresenters(CardPersonItem data) {
+        model.changePhotoModel(this,data);
     }
 
     @Override

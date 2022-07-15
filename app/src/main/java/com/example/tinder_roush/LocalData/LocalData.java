@@ -91,6 +91,17 @@ public class LocalData implements LocalDataInterface{
         return "";
     }
 
+    @Override
+    public void registerPhoto(Boolean data, String key) {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putBoolean(key, data).apply();
+    }
+
+    public Boolean getRegisterPhoto(String key) {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
+        return preferences.getBoolean("Profile", false);
+    }
+
 
     @Override
     public void wizard() {

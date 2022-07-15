@@ -13,9 +13,14 @@ public class Register3Data {
     @Expose
     private String image;
 
-    public Register3Data(String id, String image) {
+    @SerializedName("principal")
+    @Expose
+    private boolean principal;
+
+    public Register3Data(String id, String image, boolean principal) {
         this.id = id;
         this.image = image;
+        this.principal = principal;
     }
 
     public Register3Data(String image) {
@@ -35,4 +40,11 @@ public class Register3Data {
         this.image = image;
     }
 
+    public boolean isPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(boolean principal) {
+        this.principal = principal;
+    }
 }

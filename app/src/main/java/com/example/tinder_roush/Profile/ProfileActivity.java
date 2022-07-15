@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         orientationList();
         zodiacList();
         presenter.ProfilePresenter();
-        presenter.ProfileGetPhotoPresenter();
+        presenter.ProfilePhotoUserPresenter();
     }
 
     private void initObjects() {
@@ -161,15 +161,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         return age;
     }
 
-    public void showPhoto(CardPersonItem data){
-        Picasso.get().load(data.getImage()).into(profile_photo);
-    }
-
     @Override
     public void getPhoto(CardPersonItem data) {
-        idImage = data.getId();
-        localData.register(idImage, "Id_Image_1");
-        presenter.ProfileShowPhotoPresenter();
+        Picasso.get().load(data.getImage()).fit().centerCrop().into(profile_photo);
     }
 
     @Override
