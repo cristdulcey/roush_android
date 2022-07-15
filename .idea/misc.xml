@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable-v24/border_gray_round.xml" value="0.315" />
         <entry key="app/src/main/res/drawable-v24/border_gray_transparent.xml" value="0.315" />
         <entry key="app/src/main/res/drawable-v24/border_green_round2.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable-v24/border_green_soft_round.xml" value="0.3365" />
         <entry key="app/src/main/res/drawable-v24/border_white_green_round.xml" value="0.248" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.315" />
         <entry key="app/src/main/res/drawable/border_bottom_green.xml" value="0.3765" />
@@ -33,7 +34,8 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33968231643455615" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3292572463768116" />
         <entry key="app/src/main/res/layout/activity_match_success.xml" value="0.27355072463768115" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.32464028776978415" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.26770485724879495" />
+        <entry key="app/src/main/res/layout/activity_profile_edit.xml" value="0.24334344455679138" />
         <entry key="app/src/main/res/layout/activity_profile_succes_change.xml" value="0.3619791666666667" />
         <entry key="app/src/main/res/layout/activity_recovery_password.xml" value="0.3292572463768116" />
         <entry key="app/src/main/res/layout/activity_succes_register.xml" value="0.27355072463768115" />
@@ -66,6 +68,7 @@
         <entry key="app/src/main/res/layout/menu_navigation.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/layout/spinner_custom_textview.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/spinner_custom_textview_gender.xml" value="0.4391727493917275" />
+        <entry key="app/src/main/res/layout/spinner_custom_textview_orientation.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/support_simple_spinner_dropdown_item.xml" value="2.0130813953488373" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/xml/provider_path.xml" value="0.1" />

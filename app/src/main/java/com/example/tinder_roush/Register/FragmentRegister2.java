@@ -16,12 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.tinder_roush.Objects.Register1Data;
 import com.example.tinder_roush.Objects.Register2Data;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
-import com.example.tinder_roush.databinding.FragmentRegister1Binding;
-import com.example.tinder_roush.databinding.FragmentRegister2Binding;
 
 import java.util.ArrayList;
 

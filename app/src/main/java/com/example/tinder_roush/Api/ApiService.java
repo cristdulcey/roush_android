@@ -1,10 +1,13 @@
 package com.example.tinder_roush.Api;
 
+import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.CityResponse;
+import com.example.tinder_roush.Objects.HomeData;
+import com.example.tinder_roush.Objects.HomeResponse;
+import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
-import com.example.tinder_roush.Objects.RegisterResponse;
 import com.example.tinder_roush.Objects.TokenResponse;
 import com.example.tinder_roush.Objects.UserData;
 
@@ -18,6 +21,7 @@ import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
 
@@ -60,6 +64,40 @@ public interface ApiService {
     Call<Register4Data> addInterest(
             @Path("id") String id,
             @Body MultipartBody body
+    );
+
+    @GET("/api/persons/get-data-person/")
+    Call<ProfileData> current_user(
+    );
+
+    @POST("/api/persons-match/")
+    Call<HomeData> persons_match(
+    );
+
+    @GET("/api/persons-photo/?limit=1")
+    Call<HomeResponse> persons_photo(
+            @Query("person") String person
+    );
+
+    @PATCH("api/persons/{id}/")
+    Call<ProfileData> changeProfile(
+            @Path("id") String id,
+            @Body MultipartBody profile
+    );
+    @GET("/api/persons-photo/")
+    Call<CardPersonItem> persons_photo_id(
+               @Query("person") String person
+    );
+    @GET("/api/persons-photo/{id}")
+    Call<CardPersonItem> profile_photo(
+            @Path("id") String id
+    );
+
+    @PATCH("api/persons-match/{id}/")
+    Call<HomeData> match_response(
+            @Path("id") String id,
+            @Body MultipartBody response
+
     );
 
 }

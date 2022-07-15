@@ -320,6 +320,7 @@
                     android:maxLength="20"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    android:inputType="textPassword"
                     android:background="@android:color/transparent"
                     android:textSize="14sp"/>
             </LinearLayout>
@@ -350,6 +351,7 @@
                     android:maxLength="20"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    android:inputType="textPassword"
                     android:background="@android:color/transparent"
                     android:textSize="14sp"/>
             </LinearLayout>

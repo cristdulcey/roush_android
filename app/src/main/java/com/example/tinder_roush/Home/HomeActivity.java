@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DiffUtil;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +17,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
+import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
-
+import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.squareup.picasso.Picasso;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
 import com.yuyakaido.android.cardstackview.CardStackView;
@@ -35,12 +34,17 @@ import com.yuyakaido.android.cardstackview.SwipeableMethod;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends Fragment {
+
+public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
 
     ImageButton match, filter, swipe, like;
     ImageView goToProfile;
     Context context;
-
+    HomePresenters presenter;
+    List<CardPersonItem> cardPersonItems = new ArrayList<>();
+    CardStackView cardStackView;
+    LocalData localData;
+    Boolean wait_response = false;
     public HomeActivity() {
         // Required empty public constructor
     }
@@ -49,50 +53,56 @@ public class HomeActivity extends Fragment {
     private CardStackPersonAdapter adapterCardPerson;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_match_, container, false);
         context = view.getContext();
+        //  adapterCardPerson = new CardStackPersonAdapter(addList());
+        initObjets(view);
+        presenter.HomePersonCurrent();
+        presenter.HomePhotoUser();
+        listeners();
+        swipeCards();
+        return view;
+    }
 
-        CardStackView cardStackView = view.findViewById(R.id.card_stack_view);
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (wait_response == false){
+            presenter.HomePresenterGetMatch();
+            wait_response = true;
+        }
+    }
+
+    public void swipeCards(){
         managerCard = new CardStackLayoutManager(context, new CardStackListener() {
             @Override
-            public void onCardDragging(Direction direction, float ratio) {
-
-            }
+            public void onCardDragging(Direction direction, float ratio) { }
 
             @Override
             public void onCardSwiped(Direction direction) {
                 if(direction == Direction.Right){
-                    Toast.makeText(context,"derecha",Toast.LENGTH_SHORT);
+                    presenter.HomeResponseMatchTrue();
+                    paginate();
+                    presenter.HomePresenterGetMatch();
                 }
                 if(direction == Direction.Left){
-                    Toast.makeText(context,"izquierda",Toast.LENGTH_SHORT);
-                }
-
-                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
+                    presenter.HomeResponseMatchFalse();
                     paginate();
+                    presenter.HomePresenterGetMatch();
                 }
+//                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
+//                    paginate();
+//                }
             }
-
             @Override
-            public void onCardRewound() {
-            }
-
+            public void onCardRewound() { }
             @Override
-            public void onCardCanceled() {
-            }
-
+            public void onCardCanceled() { }
             @Override
-            public void onCardAppeared(View view, int position) {
-                TextView tv = view.findViewById(R.id.card_person_name);
-            }
-
+            public void onCardAppeared(View view, int position) { TextView tv = view.findViewById(R.id.card_person_name); }
             @Override
-            public void onCardDisappeared(View view, int position) {
-                TextView tv = view.findViewById(R.id.card_person_name);
-            }
+            public void onCardDisappeared(View view, int position) { TextView tv = view.findViewById(R.id.card_person_name); }
         });
         managerCard.setStackFrom(StackFrom.None);
         managerCard.setVisibleCount(3);
@@ -104,46 +114,61 @@ public class HomeActivity extends Fragment {
         managerCard.setCanScrollHorizontal(true);
         managerCard.setSwipeableMethod(SwipeableMethod.Manual);
         managerCard.setOverlayInterpolator(new LinearInterpolator());
-        adapterCardPerson = new CardStackPersonAdapter(addList());
-        cardStackView.setLayoutManager(managerCard);
-        cardStackView.setAdapter(adapterCardPerson);
-        cardStackView.setItemAnimator(new DefaultItemAnimator());
-
-        initObjets(view);
-        listeners();
-        return view;
     }
 
     private void paginate() {
-
         List<CardPersonItem> old = adapterCardPerson.getCardPersonItems();
-        List<CardPersonItem> fresh = new ArrayList<>(addList());
-        CardStackCallback callback = new CardStackCallback(old, fresh);
+//        List<CardPersonItem> fresh = new ArrayList<>(addList());
+        CardStackCallback callback = new CardStackCallback(old, cardPersonItems);
         DiffUtil.DiffResult hasil = DiffUtil.calculateDiff(callback);
-        adapterCardPerson.setCardPersonItems(fresh);
+        adapterCardPerson.setCardPersonItems(cardPersonItems);
         hasil.dispatchUpdatesTo(adapterCardPerson);
-
     }
 
-    private List<CardPersonItem> addList() {
-        List<CardPersonItem> cardPersonItems = new ArrayList<>();
-        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding1,"alguien","20"));
-        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding2,"otra persona","34"));
-        cardPersonItems.add(new CardPersonItem(R.drawable.image_onboarding3,"este man","29"));
-        return cardPersonItems;
+    public void addList(ArrayList<CardPersonItem> person) {
+        adapterCardPerson = new CardStackPersonAdapter(person);
+        cardStackView.setLayoutManager(managerCard);
+        cardStackView.setAdapter(adapterCardPerson);
+        cardStackView.setItemAnimator(new DefaultItemAnimator());
+//        return cardPersonItems;
+    }
+
+    @Override
+    public void getUser(ProfileData data) {
+        String userCurrent = data.getId();
+        localData.register(userCurrent,"ID_USERCURRENT");
+    }
+
+    @Override
+    public void getUserPhoto(CardPersonItem person) {
+        Picasso.get().load(person.getImage()).fit().centerCrop().into(goToProfile);
     }
 
     private void initObjets(View view) {
+        cardStackView = view.findViewById(R.id.card_stack_view);
+        presenter = new HomePresenters(this);
         match = view.findViewById(R.id.match_button);
+        swipe = view.findViewById(R.id.swipe_button);
         filter = view.findViewById(R.id.filter_home);
         goToProfile = view.findViewById(R.id.profile_from_home);
+        localData = new LocalData();
     }
 
     private void listeners() {
         match.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                performMatchSuccess();
+                presenter.HomeResponseMatchTrue();
+                paginate();
+                presenter.HomePresenterGetMatch();
+            }
+        });
+        swipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.HomeResponseMatchFalse();
+                paginate();
+                presenter.HomePresenterGetMatch();
             }
         });
         filter.setOnClickListener(new View.OnClickListener() {
@@ -170,12 +195,12 @@ public class HomeActivity extends Fragment {
         });
     }
 
+    //Methods
     public void performMatchSuccess() {
         Intent intent = new Intent(context, MatchSuccess.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-
     public void performMyProfile(){
         Intent intent = new Intent(context, ProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -16,8 +16,7 @@ public class LocalData implements LocalDataInterface{
     @Override
     public void deleteUserCurrent() {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);
-        preferences.edit().putString("REFRESH", "").apply();
-        preferences.edit().putString("ACCESS", "").apply();
+        preferences.edit().putString("ID_USERCURRENT", "").apply();
     }
 
     @Override

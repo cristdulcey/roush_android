@@ -35,8 +35,6 @@ public class ProfileSuccessChange extends AppCompatActivity {
         okProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                localData.LogOutApp();
-                localData.deleteUserCurrent();
                 Intent intent = new Intent(BaseContext.getContext(), ProfileActivity.class);
                 startActivity(intent);
                 finish();

@@ -1,40 +1,42 @@
 package com.example.tinder_roush.Home;
 
+import com.example.tinder_roush.Objects.ProfileData;
+
 public class CardPersonItem {
 
-    private int image;
-    private String name, age;
+    private String id, image;
+    private ProfileData person;
 
     public CardPersonItem() {
     }
 
-    public CardPersonItem(int image, String name, String age) {
+    public CardPersonItem(String id, ProfileData person, String image) {
+        this.id = id;
+        this.person = person;
         this.image = image;
-        this.name = name;
-        this.age = age;
     }
 
-    public int getImage() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public String getName() {
-        return name;
+    public ProfileData getPerson() {
+        return person;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
+    public void setPerson(ProfileData person) {
+        this.person = person;
     }
 }
