@@ -241,7 +241,7 @@ public class ProfileModels implements ProfileInterfaces.models{
         request.addFormDataPart("image", fileImage.getName(),RequestBody.create(MediaType.parse("image/*"), fileImage));
         MultipartBody body=request.build();
 
-        Call<CardPersonItem> call = apiAdapter.getApiService2().changePhoto(localData.getRegister("ID_PHOTO"),body);
+        Call<CardPersonItem> call = apiAdapter.getApiService2().changePhoto(localData.getRegister("ID_PHOTO"),body,true);
         try {
             call.enqueue(new Callback<CardPersonItem>() {
                 @Override

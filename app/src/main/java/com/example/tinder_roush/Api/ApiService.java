@@ -57,7 +57,8 @@ public interface ApiService {
 
     @POST("/api/persons-photo/")
     Call<Register3Data> addPhoto(
-            @Body MultipartBody body
+            @Body MultipartBody body,
+            @Path("principal") boolean principal
     );
 
     @PATCH("/api/persons/{id}/")
@@ -93,7 +94,8 @@ public interface ApiService {
     @PATCH("/api/persons-photo/{id}/")
     Call<CardPersonItem> changePhoto(
             @Path("id") String id,
-            @Body MultipartBody body
+            @Body MultipartBody body,
+            @Path("principal") boolean principal
     );
 
     @PATCH("api/persons-match/{id}/")

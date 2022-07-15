@@ -227,9 +227,10 @@ public class RegisterModels implements RegisterInterfaces.models{
             final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
             request.addFormDataPart("person", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("id")));
             request.addFormDataPart("image", files.get(i).getName(),RequestBody.create(MediaType.parse("image/*"),  files.get(i)));
+       //     request.addFormDataPart("pricipal",null,RequestBody.,localData.getRegisterPhoto("profile"));
             MultipartBody body=request.build();
 
-            Call<Register3Data> call = apiAdapter.getApiService2().addPhoto(body);
+            Call<Register3Data> call = apiAdapter.getApiService2().addPhoto(body, localData.getRegisterPhoto("profile"));
             try {
                 call.enqueue(new Callback<Register3Data>() {
                     @Override
