@@ -178,7 +178,6 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo1.setImageBitmap(bitmap);
             UrlPhoto1 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image1");
-            localData.registerPhoto(true,"profile");
             Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_2 && resultCode == RESULT_OK) {
@@ -188,7 +187,6 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo2.setImageBitmap(bitmap);
             UrlPhoto2 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image2");
-            localData.registerPhoto(false,"profile");
             Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_3 && resultCode == RESULT_OK) {
@@ -198,7 +196,6 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo3.setImageBitmap(bitmap);
             UrlPhoto3 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image3");
-            localData.registerPhoto(false,"profile");
             Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_4 && resultCode == RESULT_OK) {
@@ -208,7 +205,6 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo4.setImageBitmap(bitmap);
             UrlPhoto4 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image4");
-            localData.registerPhoto(false,"profile");
             Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_5 && resultCode == RESULT_OK) {
@@ -218,7 +214,6 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo5.setImageBitmap(bitmap);
             UrlPhoto5 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image5");
-            localData.registerPhoto(false,"profile");
             Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_6 && resultCode == RESULT_OK) {
@@ -228,7 +223,6 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo6.setImageBitmap(bitmap);
             UrlPhoto6 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image6");
-            localData.registerPhoto(false,"profile");
             Log.e("PATH PICKED IMAGE_6", currentPhotoPath);
 
         }

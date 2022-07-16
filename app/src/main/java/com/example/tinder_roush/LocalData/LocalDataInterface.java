@@ -13,8 +13,6 @@ public interface LocalDataInterface {
     void register(String data, String key);
     void CreateUser();
 
-    void registerPhoto(Boolean data, String key);
-
     void wizard();
     Boolean getwizard();
     String getToken();

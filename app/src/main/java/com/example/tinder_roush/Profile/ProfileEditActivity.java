@@ -141,7 +141,6 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             photo_profile.setImageBitmap(bitmap);
             UrlPhotoProfile = currentPhotoPath;
             localData.register(currentPhotoPath, "Image1");
-            localData.registerPhoto(true,"Profile");
             changePhoto();
             Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
         }
