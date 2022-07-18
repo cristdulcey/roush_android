@@ -4,27 +4,27 @@
 
     <item
         android:id="@+id/navigation_matchs"
-        android:icon="@drawable/cards_blue"
+        android:icon="@drawable/menu_home_icon"
         android:title="" />
 
     <item
         android:id="@+id/navigation_likes"
-        android:icon="@drawable/menu_heart"
+        android:icon="@drawable/menu_likes_icon"
         android:title="" />
 
     <item
         android:id="@+id/navigation_chats_list"
-        android:icon="@drawable/info"
+        android:icon="@drawable/menu_chat_icon"
         android:title="" />
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/chat"
+        android:icon="@drawable/menu_notification_icon"
         android:title="" />
 
     <item
         android:id="@+id/navigation_blogs"
-        android:icon="@drawable/category"
+        android:icon="@drawable/menu_blog_icon"
         android:title="" />
 
 </menu>

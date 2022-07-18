@@ -79,6 +79,11 @@ public interface ApiService {
             @Query("person") String person
     );
 
+    @GET("/api/persons-photo/")
+    Call<HomeResponse> persons_user_photo(
+            @Query("person") String person
+    );
+
     @PATCH("api/persons/{id}/")
     Call<ProfileData> changeProfile(
             @Path("id") String id,
@@ -87,7 +92,8 @@ public interface ApiService {
 
     @GET("/api/persons-photo/{id}")
     Call<CardPersonItem> profile_photo(
-            @Path("id") String id
+            @Path("id") String id,
+            @Query("search") boolean principal
     );
 
     @PATCH("/api/persons-photo/{id}/")

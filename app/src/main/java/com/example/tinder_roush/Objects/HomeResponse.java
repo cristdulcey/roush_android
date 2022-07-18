@@ -10,7 +10,7 @@ public class HomeResponse {
 
     @SerializedName("count")
     @Expose
-    private String count;
+    private int count;
 
     @SerializedName("next")
     @Expose
@@ -24,18 +24,18 @@ public class HomeResponse {
     @Expose
     private ArrayList<CardPersonItem> results;
 
-    public HomeResponse(String count, String next, String previous, ArrayList<CardPersonItem> results) {
+    public HomeResponse(int count, String next, String previous, ArrayList<CardPersonItem> results) {
         this.count = count;
         this.next = next;
         this.previous = previous;
         this.results = results;
     }
 
-    public String getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(String count) {
+    public void setCount(int count) {
         this.count = count;
     }
 

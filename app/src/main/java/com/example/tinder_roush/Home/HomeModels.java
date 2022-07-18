@@ -120,13 +120,20 @@ public class HomeModels implements HomeInterfaces.models{
     //GET PHOTOS CURRENT USER
     @Override
     public void HomeModelPhotoUser(HomeInterfaces.presenters presenter) {
-        Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("ID_USERCURRENT"));
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
         call.enqueue(new Callback<HomeResponse>() {
             @Override
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
                 if (response.isSuccessful()) {
+                    int total_photos = response.body().getCount();
                     ArrayList<CardPersonItem> home_card_list = response.body().getResults();
-                    presenter.HomePhotoUserId(home_card_list.get(0));
+                    for (int i=0; i<=total_photos;i++){
+                        if (!home_card_list.get(i).getPrincipal()) {
+                            continue;
+                        }
+                        presenter.HomePhotoUserSuccess(home_card_list.get(i));
+                        break;
+                    }
                 } else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -147,7 +154,7 @@ public class HomeModels implements HomeInterfaces.models{
 
     @Override
     public void HomeModelPhotoUserSuccess(HomeInterfaces.presenters presenter, CardPersonItem data) {
-        Call<CardPersonItem> call = apiAdapter.getApiService2().profile_photo(data.getId());
+        Call<CardPersonItem> call = apiAdapter.getApiService2().profile_photo(data.getId(), data.getPrincipal());
         call.enqueue(new Callback<CardPersonItem>() {
             @Override
             public void onResponse(Call<CardPersonItem> call, Response<CardPersonItem> response) {
