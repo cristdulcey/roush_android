@@ -33,6 +33,7 @@ public class ProfileModels implements ProfileInterfaces.models{
         this.localData = new LocalData();
     }
 
+    //DATA USER
     @Override
     public void ProfileModel(ProfileInterfaces.presenters presenter) {
         Call<ProfileData> call = apiAdapter.getApiService2().current_user();
@@ -60,6 +61,35 @@ public class ProfileModels implements ProfileInterfaces.models{
         });
     }
 
+    //INTERESTING USER
+    @Override
+    public void ProfileInterestModel(ProfileInterfaces.presenters presenter) {
+        Call<ProfileData> call = apiAdapter.getApiService2().current_user();
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    presenter.ProfileInterestSuccessful(response.body());
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    //GET EDIT DATA USER
     @Override
     public void ProfileEditModel(ProfileInterfaces.presenters presenter) {
         Call<ProfileData> call = apiAdapter.getApiService2().current_user();
@@ -87,6 +117,34 @@ public class ProfileModels implements ProfileInterfaces.models{
         });
     }
 
+    @Override
+    public void ProfileModelPhotos(ProfileInterfaces.presenters presenter) {
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
+        call.enqueue(new Callback<HomeResponse>() {
+            @Override
+            public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
+                if (response.isSuccessful()) {
+                    HomeResponse home_card_list = null;
+                    home_card_list = response.body();
+                    presenter.ProfileSuccessGetPhotos(home_card_list.getResults());
+                } else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<HomeResponse> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     //GET PHOTO USER
     @Override
     public void ProfilePhotoModel(ProfileInterfaces.presenters presenter) {
@@ -104,6 +162,32 @@ public class ProfileModels implements ProfileInterfaces.models{
                         presenter.ProfilePhotoUserSuccess(home_card_list.get(i));
                         break;
                     }
+                } else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<HomeResponse> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void ProfileAllPhotosModel(ProfileInterfaces.presenters presenter) {
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
+        call.enqueue(new Callback<HomeResponse>() {
+            @Override
+            public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
+                if (response.isSuccessful()) {
+                        presenter.ProfilePhotoUserId(response.body().getResults().get(0));
                 } else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -148,7 +232,6 @@ public class ProfileModels implements ProfileInterfaces.models{
                 }
             });
         }
-
 
     //GET EDIT PHOTO USER
     @Override

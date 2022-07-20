@@ -736,8 +736,9 @@
                         android:id="@+id/photo_1_profile"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 
@@ -746,7 +747,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
@@ -767,7 +769,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
@@ -776,7 +779,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:src="@drawable/icon_camera"
                         android:background="@drawable/border_white_green_soft_round"
                         />
@@ -799,7 +803,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
@@ -808,7 +813,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 

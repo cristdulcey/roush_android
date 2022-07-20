@@ -75,7 +75,7 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             gender_list.add("Hombre");
             gender_list.add("Mujer");
             gender_list.add("Trans");
-            gender_list.add("No binary");
+            gender_list.add("No binario");
             gender_list.add("Otr@");
             ArrayAdapter<String> genderArrayAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_custom_textview_gender, gender_list);
             genderArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_gender);

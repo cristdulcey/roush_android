@@ -4,6 +4,8 @@ import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 
+import java.util.ArrayList;
+
 public class ProfilePresenters implements ProfileInterfaces.presenters{
 
     private ProfileInterfaces.activities1 view;
@@ -21,6 +23,11 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
         model.ProfileModel(this);
     }
 
+    @Override
+    public void ProfileInterestPresenter() {
+        model.ProfileInterestModel(this);
+    }
+
     //GET PHOTO
     @Override
     public void ProfilePhotoUserPresenter() {
@@ -28,13 +35,22 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
-    public void ProfilePhotoUserId(CardPersonItem person) {
-        model.ProfileModelPhotoUser(this, person);
+    public void ProfilePhotoUserSuccess(CardPersonItem person) {
+        view.getPhoto(person);
     }
 
     @Override
-    public void ProfilePhotoUserSuccess(CardPersonItem person) {
-        view.getPhoto(person);
+    public void ProfileSuccessGetPhotos(ArrayList<CardPersonItem> person) {
+        view.showPhotos(person);
+    }
+
+    @Override
+    public void ProfilePhotosPresenter() {
+
+    }
+
+    public void ProfilePhotoUserId(CardPersonItem person) {
+        model.ProfileModelPhotoUser(this, person);
     }
 
     //GET EDIT PHOTO
@@ -59,8 +75,18 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
+    public void ProfileInterestSuccessful(ProfileData data) {
+        view.showInterest(data);
+    }
+
+    @Override
     public void ProfileSuccessful(ProfileData data) {
         view.showData1(data);
+    }
+
+    @Override
+    public void ProfilePresenterGetPhotos() {
+        model.ProfileModelPhotos(this);
     }
 
     @Override
