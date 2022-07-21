@@ -38,8 +38,6 @@ public interface ProfileInterfaces {
         void ProfileSuccessGetPhotos(ArrayList<CardPersonItem> person);
 
         //EDIT PHOTO PROFILE
-        void ProfilePhotosPresenter();
-        void ProfilePhotoUserId(CardPersonItem person);
         void ProfilePhotoEditPresenter();
         void ProfilePhotoUserEdit(CardPersonItem person);
         void ProfilePhotoGetSuccess(CardPersonItem person);
@@ -55,6 +53,11 @@ public interface ProfileInterfaces {
 
         void changeDataPresenter(ProfileData data);
         void changeDataSuccessful();
+
+        void changeProfilePhotosPresenter(int i);
+        void changeGetPhotosUserId(CardPersonItem person);
+        void changeProfilePhotosUserId(CardPersonItem person);
+
         void changeDataError(String message);
     }
 
@@ -66,8 +69,6 @@ public interface ProfileInterfaces {
 
         //Get photo current user
         void ProfilePhotoModel(ProfileInterfaces.presenters presenter);
-        void ProfileAllPhotosModel(ProfileInterfaces.presenters presenter);
-        void ProfileModelPhotoUser(ProfileInterfaces.presenters presenter, CardPersonItem data);
 
         //Edit get photo current user
         void ProfileGetEditPhotoModel(ProfileInterfaces.presenters presenter);
@@ -75,6 +76,10 @@ public interface ProfileInterfaces {
 
         void changeDataModel(presenters presenter, ProfileData data);
         void changePhotoModel(presenters presenter, CardPersonItem data);
+
+        void changeGetAllPhotosModel(presenters presenter, int i);
+        void changeGetIdAllPhotosModel(presenters presenter, CardPersonItem data);
+        void changeAllPhotosModel(presenters presenter, CardPersonItem data);
     }
 
 }

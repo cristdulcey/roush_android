@@ -84,6 +84,11 @@ public interface ApiService {
             @Query("person") String person
     );
 
+    @GET("/api/persons-photo/?ordering=created_at")
+    Call<HomeResponse> photos_user(
+            @Query("person") String person
+    );
+
     @PATCH("api/persons/{id}/")
     Call<ProfileData> changeProfile(
             @Path("id") String id,

@@ -180,59 +180,6 @@ public class ProfileModels implements ProfileInterfaces.models{
         });
     }
 
-    @Override
-    public void ProfileAllPhotosModel(ProfileInterfaces.presenters presenter) {
-        Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
-        call.enqueue(new Callback<HomeResponse>() {
-            @Override
-            public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
-                if (response.isSuccessful()) {
-                        presenter.ProfilePhotoUserId(response.body().getResults().get(0));
-                } else {
-                    CustomErrorResponse custom_error = new CustomErrorResponse();
-                    String response_user = "Intentalo nuevamente";
-                    try {
-                        response_user = custom_error.returnMessageError(response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    presenter.ProfileError(response_user);
-                }
-            }
-            @Override
-            public void onFailure(Call<HomeResponse> call, Throwable t) {
-                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    @Override
-    public void ProfileModelPhotoUser(ProfileInterfaces.presenters presenter, CardPersonItem data) {
-            Call<CardPersonItem> call = apiAdapter.getApiService2().profile_photo(data.getId(), data.getPrincipal());
-            call.enqueue(new Callback<CardPersonItem>() {
-                @Override
-                public void onResponse(Call<CardPersonItem> call, Response<CardPersonItem> response) {
-                    if (response.isSuccessful()) {
-                        presenter.ProfilePhotoUserSuccess(response.body());
-                    } else {
-                        CustomErrorResponse custom_error = new CustomErrorResponse();
-                        String response_user = "Intentalo nuevamente";
-                        try {
-                            response_user = custom_error.returnMessageError(response.errorBody().string());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        presenter.ProfileError(response_user);
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<CardPersonItem> call, Throwable t) {
-                    Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-
     //GET EDIT PHOTO USER
     @Override
     public void ProfileGetEditPhotoModel(ProfileInterfaces.presenters presenter) {
@@ -341,6 +288,112 @@ public class ProfileModels implements ProfileInterfaces.models{
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("image", fileImage.getName(),RequestBody.create(MediaType.parse("image/*"), fileImage));
         request.addFormDataPart("principal",null,RequestBody.create(MediaType.parse("text/plain"), String.valueOf(true)));
+        MultipartBody body=request.build();
+
+        Call<CardPersonItem> call = apiAdapter.getApiService2().changePhoto(localData.getRegister("ID_PHOTO"),body);
+        try {
+            call.enqueue(new Callback<CardPersonItem>() {
+                @Override
+                public void onResponse(Call<CardPersonItem> call, Response<CardPersonItem> response) {
+                    Log.d("tag", "onResponse: " + response.message().toString());
+                    if (response.isSuccessful()){
+                        presenter.ProfilePhotoUserPresenter();
+                        presenter.ProfilePhotoEditPresenter();
+                    }else {
+                        CustomErrorResponse custom_error = new CustomErrorResponse();
+                        String response_user = "Intentalo nuevamente";
+                        if (response.raw().code()==400){
+                            Log.d("tag", "apns");
+                        }
+                        try {
+                            response_user = custom_error.returnMessageError(response.errorBody().string());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        presenter.ProfileError(response_user);
+                    }
+                }
+                @Override
+                public void onFailure(Call<CardPersonItem> call, Throwable t) {
+                    Log.d("tag", "onResponse: " + t.getMessage());
+                }
+            });
+        } catch (Exception e) {
+            Log.d("tag", "onCreate: " + e.getMessage());
+        }
+    }
+
+
+    //CHANGE ALL PHOTOS
+    @Override
+    public void changeGetAllPhotosModel(ProfileInterfaces.presenters presenter, int i) {
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
+        call.enqueue(new Callback<HomeResponse>() {
+            @Override
+            public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
+                if (response.isSuccessful()) {
+                    int total_photos = response.body().getCount();
+//                    int cont = i;
+                    ArrayList<CardPersonItem> home_card_list = response.body().getResults();
+//                    for (int i1=i; i1 < total_photos; i1++){
+//                        if (cont==total_photos){
+//                            presenter.changeGetPhotosUserId(home_card_list.get(i1));
+//                        }else {
+//                            cont = +1;
+//                        }
+//                    }
+                } else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<HomeResponse> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    @Override
+    public void changeGetIdAllPhotosModel(ProfileInterfaces.presenters presenter, CardPersonItem data) {
+        Call<CardPersonItem> call = apiAdapter.getApiService2().profile_photo(data.getId(), data.getPrincipal());
+            localData.register(data.getId(),"ID_PHOTO");
+            call.enqueue(new Callback<CardPersonItem>() {
+                @Override
+                public void onResponse(Call<CardPersonItem> call, Response<CardPersonItem> response) {
+                    if (response.isSuccessful()) {
+                        presenter.changeProfilePhotosUserId(response.body());
+                    } else {
+                        CustomErrorResponse custom_error = new CustomErrorResponse();
+                        String response_user = "Intentalo nuevamente";
+                        try {
+                            response_user = custom_error.returnMessageError(response.errorBody().string());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        presenter.ProfileError(response_user);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<CardPersonItem> call, Throwable t) {
+                    Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+    }
+
+    @Override
+    public void changeAllPhotosModel(ProfileInterfaces.presenters presenter, CardPersonItem data) {
+        File fileImage = new File(localData.getRegister("Image"));
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("image", fileImage.getName(),RequestBody.create(MediaType.parse("image/*"), fileImage));
         MultipartBody body=request.build();
 
         Call<CardPersonItem> call = apiAdapter.getApiService2().changePhoto(localData.getRegister("ID_PHOTO"),body);

@@ -29,6 +29,7 @@ import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.Login.LoginInterfaces;
 import com.example.tinder_roush.MenuNavigation.MenuNavigation;
 import com.example.tinder_roush.Objects.ProfileData;
+import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.squareup.picasso.Picasso;
@@ -45,6 +46,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     ImageButton backHome;
     LocalData localData;
+    CardPersonItem cardPersonItem;
     Button buttonLogout, editDataProfile, viewContentExcl;
     Button photo_preference, shop, karaoke, yoga, cook, tennis, sports, swim, art, travel, extreme, music, drink, games;
     Switch activateContent;
@@ -201,7 +203,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.ProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_1;
                 getImageFromAlbum();
             }
@@ -209,7 +210,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.ProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_2;
                 getImageFromAlbum();
             }
@@ -217,7 +217,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.ProfilePhotosPresenter();
+           //     presenter.changeProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_3;
                 getImageFromAlbum();
             }
@@ -225,7 +225,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.ProfilePhotosPresenter();
+         //       presenter.changeProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_4;
                 getImageFromAlbum();
             }
@@ -233,7 +233,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.ProfilePhotosPresenter();
+            //    presenter.changeProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_5;
                 getImageFromAlbum();
             }
@@ -241,7 +241,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.ProfilePhotosPresenter();
+            //    presenter.changeProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_6;
                 getImageFromAlbum();
             }
@@ -587,8 +587,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
             photo1.setImageBitmap(bitmap);
             UrlPhoto1 = currentPhotoPath;
-            localData.register(currentPhotoPath, "Image1");
+            localData.register(currentPhotoPath, "Image");
             Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
+            int i = 0;
+            presenter.changeProfilePhotosPresenter(i);
         }
         if (requestCode == RESULT_PHOTO_2 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -596,8 +598,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
             photo2.setImageBitmap(bitmap);
             UrlPhoto2 = currentPhotoPath;
-            localData.register(currentPhotoPath, "Image2");
+            localData.register(currentPhotoPath, "Image");
             Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
+            int i = 1;
+            presenter.changeProfilePhotosPresenter(i);
         }
         if (requestCode == RESULT_PHOTO_3 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -605,8 +609,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
             photo3.setImageBitmap(bitmap);
             UrlPhoto3 = currentPhotoPath;
-            localData.register(currentPhotoPath, "Image3");
+            localData.register(currentPhotoPath, "Image");
             Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
+            int i = 2;
+            presenter.changeProfilePhotosPresenter(i);
         }
         if (requestCode == RESULT_PHOTO_4 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -614,7 +620,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
             photo4.setImageBitmap(bitmap);
             UrlPhoto4 = currentPhotoPath;
-            localData.register(currentPhotoPath, "Image4");
+            localData.register(currentPhotoPath, "Image");
+            int i = 3;
+            presenter.changeProfilePhotosPresenter(i);
             Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_5 && resultCode == RESULT_OK) {
@@ -623,7 +631,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
             photo5.setImageBitmap(bitmap);
             UrlPhoto5 = currentPhotoPath;
-            localData.register(currentPhotoPath, "Image5");
+            localData.register(currentPhotoPath, "Image");
+            int i = 4;
+            presenter.changeProfilePhotosPresenter(i);
             Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_6 && resultCode == RESULT_OK) {
@@ -632,9 +642,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
             photo6.setImageBitmap(bitmap);
             UrlPhoto6 = currentPhotoPath;
-            localData.register(currentPhotoPath, "Image6");
+            localData.register(currentPhotoPath, "Image");
+            int i = 5;
+            presenter.changeProfilePhotosPresenter(i);
             Log.e("PATH PICKED IMAGE_6", currentPhotoPath);
-
         }
     }
 

@@ -18,6 +18,7 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
         this.model = new ProfileModels();
     }
 
+    //GET DATA
     @Override
     public void ProfilePresenter() {
         model.ProfileModel(this);
@@ -40,18 +41,7 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
-    public void ProfileSuccessGetPhotos(ArrayList<CardPersonItem> person) {
-        view.showPhotos(person);
-    }
-
-    @Override
-    public void ProfilePhotosPresenter() {
-
-    }
-
-    public void ProfilePhotoUserId(CardPersonItem person) {
-        model.ProfileModelPhotoUser(this, person);
-    }
+    public void ProfileSuccessGetPhotos(ArrayList<CardPersonItem> person) { view.showPhotos(person); }
 
     //GET EDIT PHOTO
     @Override
@@ -60,9 +50,7 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
-    public void ProfilePhotoUserEdit(CardPersonItem person) {
-        model.ProfileModelGetEditPhoto(this,person);
-    }
+    public void ProfilePhotoUserEdit(CardPersonItem person) { model.ProfileModelGetEditPhoto(this,person); }
 
     @Override
     public void ProfilePhotoGetSuccess(CardPersonItem person) {
@@ -97,10 +85,9 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     @Override
     public void ProfileError(String message) { }
 
+    //CHANGE DATA AND PHOTOS
     @Override
-    public void ProfileChangePhotoPresenters(CardPersonItem data) {
-        model.changePhotoModel(this,data);
-    }
+    public void ProfileChangePhotoPresenters(CardPersonItem data) { model.changePhotoModel(this,data); }
 
     @Override
     public void changeDataPresenter(ProfileData data) {
@@ -111,6 +98,24 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     public void changeDataSuccessful() {
         view2.successChangeProfile();
     }
+
+
+    //CHANGE ALL PHOTOS
+    @Override
+    public void changeProfilePhotosPresenter(int i) {
+        model.changeGetAllPhotosModel(this,i);
+    }
+
+    @Override
+    public void changeGetPhotosUserId(CardPersonItem person) {
+        model.changeGetIdAllPhotosModel(this, person);
+    }
+
+    @Override
+    public void changeProfilePhotosUserId(CardPersonItem person) {
+        model.changeAllPhotosModel(this,person);
+    }
+
 
     @Override
     public void changeDataError(String message) {
