@@ -118,4 +118,12 @@ public interface ApiService {
             @Path("id") String id,
             @Body MultipartBody response
     );
+
+    @FormUrlEncoded
+    @PATCH("api/recovery-password/")
+    Call<ResponseBody> recoveryPassword(
+            @Field("username") String username
+    );
+
+
 }
