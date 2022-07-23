@@ -260,12 +260,14 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                 if(check_pht == 1){
                     photo_preference.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = photoPreferenceText;
-                    check_pht = 0;
                     localData.register(interesting,"PREFERENCE_PHOTO");
+                    check_pht = 0;
+                    presenter.changeInteresting();
                 }else{
                     photo_preference.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_PHOTO");
+                    presenter.changeInteresting();
                     check_pht = 1;
                 }
             }
@@ -278,11 +280,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     shop.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = shopPreferenceText;
                     localData.register(interesting,"PREFERENCE_SHOP");
+                    presenter.changeInteresting();
                     check_shop = 0;
                 }else{
                     shop.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_SHOP");
+                    presenter.changeInteresting();
                     check_shop = 1;
                 }
             }
@@ -295,11 +299,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     karaoke.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = karaokePreferenceText;
                     localData.register(interesting,"PREFERENCE_KARAOKE");
+                    presenter.changeInteresting();
                     check_kar = 0;
                 }else{
                     karaoke.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_KARAOKE");
+                    presenter.changeInteresting();
                     check_kar = 1;
                 }
             }
@@ -312,11 +318,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     yoga.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = yogaPreferenceText;
                     localData.register(interesting,"PREFERENCE_YOGA");
+                    presenter.changeInteresting();
                     check_yoga = 0;
                 }else{
                     yoga.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_YOGA");
+                    presenter.changeInteresting();
                     check_yoga = 1;
                 }
             }
@@ -329,11 +337,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     cook.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = cookPreferenceText;
                     localData.register(interesting,"PREFERENCE_COOK");
+                    presenter.changeInteresting();
                     check_cook = 0;
                 }else{
                     cook.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_COOK");
+                    presenter.changeInteresting();
                     check_cook = 1;
                 }
             }
@@ -346,11 +356,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     tennis.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = tennisPreferenceText;
                     localData.register(interesting,"PREFERENCE_TENNIS");
+                    presenter.changeInteresting();
                     check_tennis = 0;
                 }else{
                     tennis.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_TENNIS");
+                    presenter.changeInteresting();
                     check_tennis = 1;
                 }
             }
@@ -363,11 +375,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     sports.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = sportPreferenceText;
                     localData.register(interesting,"PREFERENCE_SPORTS");
+                    presenter.changeInteresting();
                     check_sport = 0;
                 }else{
                     sports.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_SPORTS");
+                    presenter.changeInteresting();
                     check_sport = 1;
                 }
             }
@@ -380,11 +394,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     swim.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = swimPreferenceText;
                     localData.register(interesting,"PREFERENCE_SWIM");
+                    presenter.changeInteresting();
                     check_swim = 0;
                 }else{
                     swim.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_SWIM");
+                    presenter.changeInteresting();
                     check_swim = 1;
                 }
             }
@@ -397,11 +413,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     art.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = artPreferenceText;
                     localData.register(interesting,"PREFERENCE_ART");
+                    presenter.changeInteresting();
                     check_art = 0;
                 }else{
                     art.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_ART");
+                    presenter.changeInteresting();
                     check_art = 1;
                 }
             }
@@ -414,11 +432,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     travel.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = travelPreferenceText;
                     localData.register(interesting,"PREFERENCE_TRAVEL");
+                    presenter.changeInteresting();
                     check_travel = 0;
                 }else{
                     travel.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_TRAVEL");
+                    presenter.changeInteresting();
                     check_travel = 1;
                 }
             }
@@ -431,11 +451,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     extreme.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = extremePreferenceText;
                     localData.register(interesting,"PREFERENCE_EXTREME");
+                    presenter.changeInteresting();
                     check_extr = 0;
                 }else{
                     extreme.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_EXTREME");
+                    presenter.changeInteresting();
                     check_extr = 1;
                 }
             }
@@ -448,11 +470,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     music.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = musicPreferenceText;
                     localData.register(interesting,"PREFERENCE_MUSIC");
+                    presenter.changeInteresting();
                     check_music = 0;
                 }else{
                     music.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_MUSIC");
+                    presenter.changeInteresting();
                     check_music = 1;
                 }
             }
@@ -465,11 +489,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     drink.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = drinkPreferenceText;
                     localData.register(interesting,"PREFERENCE_DRINK");
+                    presenter.changeInteresting();
                     check_drink = 0;
                 }else{
                     drink.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = "";
                     localData.register(interesting,"PREFERENCE_DRINK");
+                    presenter.changeInteresting();
                     check_drink = 1;
                 }
             }
@@ -482,11 +508,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     games.setBackgroundResource(R.drawable.border_green_round2);
                     interesting = gamesPreferenceText;
                     localData.register(interesting,"PREFERENCE_GAMES");
+                    presenter.changeInteresting();
                     check_game = 0;
                 }else{
                     games.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
                     interesting = gamesPreferenceText;
                     localData.register(interesting,"PREFERENCE_GAMES");
+                    presenter.changeInteresting();
                     check_game = 1;
                 }
             }
@@ -536,39 +564,98 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
     }
 
+
+
     @Override
-    public void showInterest(ProfileData data) {
+    public void showInterest(ProfileData data)  {
         String currentInterest = data.getInteresting();
         String[] interestArray = currentInterest.split(",");
         for (String s : interestArray) {
             if (s.equals("Fotografía")) { check_pht = 0;
-                photo_preference.setBackgroundResource(R.drawable.border_green_round2); }
+                photo_preference.setBackgroundResource(R.drawable.border_green_round2);
+            }
+//            else {
+//                check_pht =1;
+//                photo_preference.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Compras")) { check_shop = 0;
                 shop.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_shop =1;
+//                shop.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Karaoke")) { check_kar = 0;
                 karaoke.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_kar =1;
+//                karaoke.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Yoga")) { check_yoga = 0;
                 yoga.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_yoga =1;
+//                yoga.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Cocina")) { check_cook = 0;
                 cook.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_cook =1;
+//                cook.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Tenis")) { check_tennis = 0;
                 tennis.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_tennis =1;
+//                tennis.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Deportes")) { check_sport = 0;
                 sports.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_sport =1;
+//                sports.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Natación")) { check_swim = 0;
                 swim.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_swim =1;
+//                swim.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Arte")) { check_art = 0;
                 art.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_art =1;
+//                art.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Viajar")) { check_travel = 0;
                 travel.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_travel =1;
+//                travel.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Extremo")) { check_extr = 0;
                 extreme.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_extr =1;
+//                extreme.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Música")) { check_music = 0;
                 music.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_music =1;
+//                music.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Bebida")) { check_drink = 0;
                 drink.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_drink =1;
+//                drink.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
             if (s.equals("Videojuegos")) { check_game = 0;
                 games.setBackgroundResource(R.drawable.border_green_round2);}
+//            else {
+//                check_game =1;
+//                games.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
+//            }
         }
     }
 

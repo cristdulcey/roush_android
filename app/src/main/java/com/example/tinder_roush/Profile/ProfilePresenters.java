@@ -111,6 +111,11 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
+    public void changeInteresting() {
+        model.changeInteresting(this);
+    }
+
+    @Override
     public void changeDataError(String message) {
 
     }

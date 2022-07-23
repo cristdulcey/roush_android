@@ -34,6 +34,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         setContentView(R.layout.activity_login);
         AppCompatDelegate. setDefaultNightMode (AppCompatDelegate.MODE_NIGHT_NO);
         initObjects();
+        username.requestFocus();
         listeners();
 
         if (!localData.getAccess().isEmpty()){

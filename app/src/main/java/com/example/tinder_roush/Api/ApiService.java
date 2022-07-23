@@ -66,6 +66,12 @@ public interface ApiService {
             @Body MultipartBody body
     );
 
+    @PATCH("/api/persons/{id}/")
+    Call<ProfileData> updateInterest(
+            @Path("id") String id,
+            @Body MultipartBody body
+    );
+
     @GET("/api/persons/get-data-person/")
     Call<ProfileData> current_user(
     );
