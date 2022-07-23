@@ -120,7 +120,7 @@ public interface ApiService {
     );
 
     @FormUrlEncoded
-    @PATCH("api/recovery-password/")
+    @PATCH("api/persons/recovery-password/")
     Call<ResponseBody> recoveryPassword(
             @Field("username") String username
     );
