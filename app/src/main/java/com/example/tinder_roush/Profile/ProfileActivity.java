@@ -46,11 +46,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     ImageButton backHome;
     LocalData localData;
-    CardPersonItem cardPersonItem;
     Button buttonLogout, editDataProfile, viewContentExcl;
     Button photo_preference, shop, karaoke, yoga, cook, tennis, sports, swim, art, travel, extreme, music, drink, games;
     Switch activateContent;
-    String interesting, currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6;
+    String interesting, currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6, IdPhoto1, IdPhoto2, IdPhoto3,IdPhoto4, IdPhoto5, IdPhoto6;
     int check_pht, check_shop,check_kar,check_yoga,check_cook,check_tennis, check_sport, check_swim, check_art,
             check_travel, check_extr, check_music,check_drink, check_game;
     ArrayList<String> orientation_list, zodiac_list;
@@ -100,6 +99,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         UrlPhoto4 = "";
         UrlPhoto5 = "";
         UrlPhoto6 = "";
+        IdPhoto1 = "";
+        IdPhoto2 = "";
+        IdPhoto3 = "";
+        IdPhoto4 = "";
+        IdPhoto5 = "";
+        IdPhoto6 = "";
         backHome = findViewById(R.id.back_to_home);
         localData = new LocalData();
         profile_photo = findViewById(R.id.profile_photo);
@@ -501,7 +506,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     @Override
     public void getPhoto(CardPersonItem data) {
         Picasso.get().load(data.getImage()).fit().centerCrop().into(profile_photo);
-        Picasso.get().load(data.getImage()).fit().centerCrop().into(photo1);
     }
 
     //GET BASIC DATA
@@ -589,8 +593,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             UrlPhoto1 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
             Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
-            int i = 0;
-            presenter.changeProfilePhotosPresenter(i);
+            presenter.changeProfilePhotosPresenter(IdPhoto1);
         }
         if (requestCode == RESULT_PHOTO_2 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -600,8 +603,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             UrlPhoto2 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
             Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
-            int i = 1;
-            presenter.changeProfilePhotosPresenter(i);
+            presenter.changeProfilePhotosPresenter(IdPhoto2);
         }
         if (requestCode == RESULT_PHOTO_3 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -611,8 +613,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             UrlPhoto3 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
             Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
-            int i = 2;
-            presenter.changeProfilePhotosPresenter(i);
+            presenter.changeProfilePhotosPresenter(IdPhoto3);
         }
         if (requestCode == RESULT_PHOTO_4 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -621,8 +622,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             photo4.setImageBitmap(bitmap);
             UrlPhoto4 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
-            int i = 3;
-            presenter.changeProfilePhotosPresenter(i);
+            presenter.changeProfilePhotosPresenter(IdPhoto4);
             Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_5 && resultCode == RESULT_OK) {
@@ -632,8 +632,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             photo5.setImageBitmap(bitmap);
             UrlPhoto5 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
-            int i = 4;
-            presenter.changeProfilePhotosPresenter(i);
+            presenter.changeProfilePhotosPresenter(IdPhoto5);
             Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_6 && resultCode == RESULT_OK) {
@@ -643,8 +642,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             photo6.setImageBitmap(bitmap);
             UrlPhoto6 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
-            int i = 5;
-            presenter.changeProfilePhotosPresenter(i);
+            presenter.changeProfilePhotosPresenter(IdPhoto6);
             Log.e("PATH PICKED IMAGE_6", currentPhotoPath);
         }
     }
@@ -660,12 +658,31 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     @Override
     public void showPhotos(ArrayList<CardPersonItem> person) {
-        ImageButton[] photos = {photo2,photo3,photo4,photo5,photo6};
-            for (int i = 0; i< person.size()-1; i++){
+
+        ImageButton[] photos = {photo1,photo2,photo3,photo4,photo5,photo6};
+            for (int i = 0; i< person.size(); i++){
                 String url = person.get(i).getImage();
-                Picasso.get().load(url).into(photos[i]);
-                if(i==person.size()){
-                    break;
+                Picasso.get().load(url).fit().centerCrop().into(photos[i]);
+
+                switch (i){
+                    case 0:
+                        IdPhoto1 = person.get(i).getId();
+                        break;
+                    case 1:
+                        IdPhoto2 = person.get(i).getId();
+                        break;
+                    case 2:
+                        IdPhoto3 = person.get(i).getId();
+                        break;
+                    case 3:
+                        IdPhoto4 = person.get(i).getId();
+                        break;
+                    case 4:
+                        IdPhoto5 = person.get(i).getId();
+                        break;
+                    case 5:
+                        IdPhoto6 = person.get(i).getId();
+                        break;
                 }
             }
     }

@@ -102,20 +102,13 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
 
     //CHANGE ALL PHOTOS
     @Override
-    public void changeProfilePhotosPresenter(int i) {
-        model.changeGetAllPhotosModel(this,i);
+    public void changeProfilePhotosPresenter(String id) {
+        if (id.equals("")){
+            model.postOtherPhotos(this);
+        }else {
+            model.changeGetAllPhotosModel(this,id);
+        }
     }
-
-    @Override
-    public void changeGetPhotosUserId(CardPersonItem person) {
-        model.changeGetIdAllPhotosModel(this, person);
-    }
-
-    @Override
-    public void changeProfilePhotosUserId(CardPersonItem person) {
-        model.changeAllPhotosModel(this,person);
-    }
-
 
     @Override
     public void changeDataError(String message) {

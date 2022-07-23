@@ -79,13 +79,8 @@ public interface ApiService {
             @Query("person") String person
     );
 
-    @GET("/api/persons-photo/")
+    @GET("/api/persons-photo/?ordering=-principal")
     Call<HomeResponse> persons_user_photo(
-            @Query("person") String person
-    );
-
-    @GET("/api/persons-photo/?ordering=created_at")
-    Call<HomeResponse> photos_user(
             @Query("person") String person
     );
 
@@ -104,6 +99,11 @@ public interface ApiService {
     @PATCH("/api/persons-photo/{id}/")
     Call<CardPersonItem> changePhoto(
             @Path("id") String id,
+            @Body MultipartBody body
+    );
+
+    @POST("/api/persons-photo/")
+    Call<CardPersonItem> addAllPhotos(
             @Body MultipartBody body
     );
 

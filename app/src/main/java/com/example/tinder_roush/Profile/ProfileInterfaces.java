@@ -54,9 +54,7 @@ public interface ProfileInterfaces {
         void changeDataPresenter(ProfileData data);
         void changeDataSuccessful();
 
-        void changeProfilePhotosPresenter(int i);
-        void changeGetPhotosUserId(CardPersonItem person);
-        void changeProfilePhotosUserId(CardPersonItem person);
+        void changeProfilePhotosPresenter(String id);
 
         void changeDataError(String message);
     }
@@ -77,9 +75,8 @@ public interface ProfileInterfaces {
         void changeDataModel(presenters presenter, ProfileData data);
         void changePhotoModel(presenters presenter, CardPersonItem data);
 
-        void changeGetAllPhotosModel(presenters presenter, int i);
-        void changeGetIdAllPhotosModel(presenters presenter, CardPersonItem data);
-        void changeAllPhotosModel(presenters presenter, CardPersonItem data);
+        void changeGetAllPhotosModel(presenters presenter, String id);
+        void postOtherPhotos(presenters presenter);
     }
 
 }
