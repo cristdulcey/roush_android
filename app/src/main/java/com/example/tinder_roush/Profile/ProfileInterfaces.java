@@ -24,6 +24,8 @@ public interface ProfileInterfaces {
         void showData2(ProfileData data);
         void changeProfileData();
         void successChangeProfile();
+        void showInterest2(ProfileData data);
+        void showPhotos2(ArrayList<CardPersonItem> person);
     }
 
     interface presenters{
@@ -31,6 +33,7 @@ public interface ProfileInterfaces {
         void ProfileInterestPresenter();
         void ProfileSuccessful(ProfileData data);
         void ProfilePresenterGetPhotos();
+        void ProfileInterestSuccessful(ProfileData data);
 
         //GET PHOTO
         void ProfilePhotoUserPresenter();
@@ -44,7 +47,10 @@ public interface ProfileInterfaces {
 
         //EDIT PROFILE
         void ProfileEditPresenter();
-        void ProfileInterestSuccessful(ProfileData data);
+        void ProfileEditInterestPresenter();
+        void ProfileEditPresenterGetPhotos();
+        void ProfileEditSuccessGetPhotos(ArrayList<CardPersonItem> person);
+        void ProfileEditInterestSuccessful(ProfileData data);
         void ProfileEditSuccessful(ProfileData data);
         void ProfileError(String message);
 
@@ -54,6 +60,7 @@ public interface ProfileInterfaces {
         void changeDataSuccessful();
         void changeProfilePhotosPresenter(String id);
         void changeInteresting();
+        void changePreferencesSearch();
         void changeDataError(String message);
     }
 
@@ -69,14 +76,16 @@ public interface ProfileInterfaces {
         //Edit get photo current user
         void ProfileGetEditPhotoModel(ProfileInterfaces.presenters presenter);
         void ProfileModelGetEditPhoto(ProfileInterfaces.presenters presenter, CardPersonItem data);
+        void ProfileEditInterestModel(presenters presenter);
+        void ProfileEditGetPhotosModel(presenters presenter);
 
+       //Changes
         void changeDataModel(presenters presenter, ProfileData data);
         void changePhotoModel(presenters presenter, CardPersonItem data);
-
         void changeGetAllPhotosModel(presenters presenter, String id);
         void postOtherPhotos(presenters presenter);
-
         void changeInteresting(presenters presenter);
+        void changePreferencesSearch(presenters presenter);
     }
 
 }

@@ -62,7 +62,8 @@ public class ProfileModels implements ProfileInterfaces.models{
         });
     }
 
-    //INTERESTING USER
+
+    // GET INTERESTING USER
     @Override
     public void ProfileInterestModel(ProfileInterfaces.presenters presenter) {
         Call<ProfileData> call = apiAdapter.getApiService2().current_user();
@@ -71,6 +72,7 @@ public class ProfileModels implements ProfileInterfaces.models{
             public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
                 if (response.isSuccessful()){
                     presenter.ProfileInterestSuccessful(response.body());
+                   // presenter.ProfileEditInterestSuccessful(response.body());
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -89,6 +91,7 @@ public class ProfileModels implements ProfileInterfaces.models{
             }
         });
     }
+
 
     //GET EDIT DATA USER
     @Override
@@ -128,6 +131,7 @@ public class ProfileModels implements ProfileInterfaces.models{
                     HomeResponse home_card_list = null;
                     home_card_list = response.body();
                     presenter.ProfileSuccessGetPhotos(home_card_list.getResults());
+                 //   presenter.ProfileEditSuccessGetPhotos(home_card_list.getResults());
                 } else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -146,7 +150,8 @@ public class ProfileModels implements ProfileInterfaces.models{
         });
     }
 
-    //GET PHOTO USER
+
+    //GET PROFILE PHOTO USER
     @Override
     public void ProfilePhotoModel(ProfileInterfaces.presenters presenter) {
         Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
@@ -181,7 +186,8 @@ public class ProfileModels implements ProfileInterfaces.models{
         });
     }
 
-    //GET EDIT PHOTO USER
+
+    //GET PROFILE EDIT PHOTO USER
     @Override
     public void ProfileGetEditPhotoModel(ProfileInterfaces.presenters presenter) {
         Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
@@ -246,6 +252,66 @@ public class ProfileModels implements ProfileInterfaces.models{
         }
     }
 
+
+
+    //GET PHOTOS AND INTERESTING ON PROFILE EDIT ACTIVITY
+    @Override
+    public void ProfileEditInterestModel(ProfileInterfaces.presenters presenter) {
+        Call<ProfileData> call = apiAdapter.getApiService2().current_user();
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    presenter.ProfileEditInterestSuccessful(response.body());
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void ProfileEditGetPhotosModel(ProfileInterfaces.presenters presenter) {
+        Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
+        call.enqueue(new Callback<HomeResponse>() {
+            @Override
+            public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
+                if (response.isSuccessful()) {
+                    HomeResponse home_card_list = null;
+                    home_card_list = response.body();
+                    presenter.ProfileEditSuccessGetPhotos(home_card_list.getResults());
+                } else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<HomeResponse> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
     //CHANGE DATA
     public void changeDataModel(ProfileInterfaces.presenters presenter, ProfileData data) {
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
@@ -285,7 +351,7 @@ public class ProfileModels implements ProfileInterfaces.models{
 
     @Override
     public void changePhotoModel(ProfileInterfaces.presenters presenter, CardPersonItem data) {
-        File fileImage = new File(localData.getRegister("Image1"));
+        File fileImage = new File(localData.getRegister("Image"));
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("image", fileImage.getName(),RequestBody.create(MediaType.parse("image/*"), fileImage));
         request.addFormDataPart("principal",null,RequestBody.create(MediaType.parse("text/plain"), String.valueOf(true)));
@@ -407,6 +473,7 @@ public class ProfileModels implements ProfileInterfaces.models{
         }
     }
 
+
     //CHANGE INTERESTING
     @Override
     public void changeInteresting(ProfileInterfaces.presenters presenter) {
@@ -445,7 +512,49 @@ public class ProfileModels implements ProfileInterfaces.models{
             @Override
             public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(BaseContext.getContext(), "Update interesting", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BaseContext.getContext(), "Intereses actualizados", Toast.LENGTH_SHORT).show();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
+            }
+        });
+    }
+
+    @Override
+    public void changePreferencesSearch(ProfileInterfaces.presenters presenter) {
+        String preferenceGender = localData.getRegister("GENDER_PREFERENCE");
+        String sexualOrientation = localData.getRegister("SEXUAL_ORIENTATION");
+        String withChildren = localData.getRegister("CHILDREN_PREFERENCE");
+        String withPets = localData.getRegister("PETS_PREFERENCE");
+      //  String smoker = localData.getRegister("GENDER_PREFERENCE");
+        String zodiacSign = localData.getRegister("ZODIAC_SIGN");
+
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("search", null, RequestBody.create(MediaType.parse("text/plain"), preferenceGender));
+        request.addFormDataPart("sexual_orientation", null, RequestBody.create(MediaType.parse("text/plain"), sexualOrientation));
+        request.addFormDataPart("with_children", null, RequestBody.create(MediaType.parse("text/plain"), withChildren));
+        request.addFormDataPart("with_pets", null, RequestBody.create(MediaType.parse("text/plain"), withPets));
+      //  request.addFormDataPart("smoker", null, RequestBody.create(MediaType.parse("text/plain"), smoker));
+        request.addFormDataPart("zodiac_sign", null, RequestBody.create(MediaType.parse("text/plain"), zodiacSign));
+        MultipartBody body = request.build();
+
+        Call<ProfileData> call = apiAdapter.getApiService2().updateInterest(localData.getRegister("ID_USERCURRENT"),body);
+
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(BaseContext.getContext(), "Intereses actualizados", Toast.LENGTH_SHORT).show();
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";

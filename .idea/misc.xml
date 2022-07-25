@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.315" />
         <entry key="app/src/main/res/drawable/border_bottom_green.xml" value="0.3765" />
         <entry key="app/src/main/res/drawable/border_gray_transparent.xml" value="0.3765" />
+        <entry key="app/src/main/res/drawable/border_green.xml" value="0.335" />
         <entry key="app/src/main/res/drawable/border_green_round.xml" value="0.3765" />
         <entry key="app/src/main/res/drawable/border_green_soft_green_round.xml" value="0.276" />
         <entry key="app/src/main/res/drawable/border_green_soft_transparent_round.xml" value="0.315" />
@@ -34,6 +35,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33968231643455615" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3292572463768116" />
         <entry key="app/src/main/res/layout/activity_match_success.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/activity_notification_settings.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.26770485724879495" />
         <entry key="app/src/main/res/layout/activity_profile_edit.xml" value="0.24334344455679138" />
         <entry key="app/src/main/res/layout/activity_profile_succes_change.xml" value="0.3619791666666667" />
@@ -43,6 +45,7 @@
         <entry key="app/src/main/res/layout/bottom_dialog_filter.xml" value="0.3279495239257812" />
         <entry key="app/src/main/res/layout/card_person.xml" value="0.3292572463768116" />
         <entry key="app/src/main/res/layout/dialog_calendar.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/dialog_settings.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_blog.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_chats.xml" value="0.3328804347826087" />
         <entry key="app/src/main/res/layout/fragment_given_likes.xml" value="0.3292572463768116" />

@@ -14,7 +14,7 @@ import com.example.tinder_roush.Blog.BlogActivity;
 import com.example.tinder_roush.Chats.ChatsActivity;
 import com.example.tinder_roush.Home.HomeActivity;
 import com.example.tinder_roush.Likes.LikesActivity;
-import com.example.tinder_roush.NotificationsConfiguration.NotificationsConfigActivity;
+import com.example.tinder_roush.Notifications.NotificationsActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.databinding.MenuNavigationBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -115,7 +115,7 @@ public class MenuNavigation extends AppCompatActivity {
           final Fragment fragment1 = new HomeActivity();
           final Fragment fragment2 = new LikesActivity();
           final Fragment fragment3 = new ChatsActivity();
-          final Fragment fragment4 = new NotificationsConfigActivity();
+          final Fragment fragment4 = new NotificationsActivity();
           final Fragment fragment5 = new BlogActivity();
           adapter.addFragment(fragment1);
           adapter.addFragment(fragment2);

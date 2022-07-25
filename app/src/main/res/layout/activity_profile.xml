@@ -53,6 +53,14 @@
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
 
+                    <ImageButton
+                        android:id="@+id/config_notifications"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/setting"/>
+
                 </LinearLayout>
 
                 <!--Photo profile-->
@@ -344,15 +352,18 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_man_profile"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_left_green"
                             android:text="@string/men"
+                            android:textColor="@color/white"
                             android:textSize="16sp"/>
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_woman_profile"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
@@ -360,7 +371,17 @@
                             android:textSize="16sp"/>
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_both_profile"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:textAllCaps="false"
+                            android:background="@drawable/border_gray_transparent"
+                            android:text="@string/both"
+                            android:textSize="16sp"/>
+
+                        <Button
+                            android:id="@+id/search_other_profile"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
@@ -531,14 +552,17 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/children_yes_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
+                            android:textColor="@color/white"
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/children_no_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -547,6 +571,7 @@
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/children_indifferent_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -579,14 +604,17 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/pets_yes_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/pets_no_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -595,6 +623,7 @@
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/pets_indifferent_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -625,24 +654,25 @@
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="40dp"
                         android:orientation="horizontal">
-
                         <Button
+                            android:id="@+id/smoker_yes_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
                             android:textSize="16sp"/>
-
                         <Button
+                            android:id="@+id/smoker_no_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
                             android:textSize="16sp"/>
-
                         <Button
+                            android:id="@+id/smoker_indifferent_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"

@@ -57,6 +57,26 @@ public class ProfileData {
     @Expose
     private String city;
 
+    @SerializedName("sexual_orientation")
+    @Expose
+    private String sexual_orientation;
+
+    @SerializedName("with_children")
+    @Expose
+    private String with_children;
+
+    @SerializedName("with_pets")
+    @Expose
+    private String with_pets;
+
+    @SerializedName("zodiac_sign")
+    @Expose
+    private String zodiac_sign;
+
+    @SerializedName("smoker")
+    @Expose
+    private String smoker;
+
     public ProfileData(String id, String username, String first_name, String last_name, String email, String address, String date_birth, String gender, String search, String about, String job, String interesting, String city) {
         this.id = id;
         this.username = username;
@@ -71,6 +91,29 @@ public class ProfileData {
         this.job = job;
         this.interesting = interesting;
         this.city = city;
+    }
+
+    public ProfileData(String id, String username, String first_name, String last_name, String email, String address,
+                       String date_birth, String gender, String search, String about, String job, String interesting, String city,
+                       String sexual_orientation, String with_children, String with_pets, String zodiac_sign, String smoker) {
+        this.id = id;
+        this.username = username;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.address = address;
+        this.date_birth = date_birth;
+        this.gender = gender;
+        this.search = search;
+        this.about = about;
+        this.job = job;
+        this.interesting = interesting;
+        this.city = city;
+        this.sexual_orientation = sexual_orientation;
+        this.with_children = with_children;
+        this.with_pets = with_pets;
+        this.zodiac_sign = zodiac_sign;
+        this.smoker = smoker;
     }
 
     public ProfileData(String id, String first_name, String last_name, String email, String date_birth, String about, String job) {
@@ -185,5 +228,45 @@ public class ProfileData {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getSexual_orientation() {
+        return sexual_orientation;
+    }
+
+    public void setSexual_orientation(String sexual_orientation) {
+        this.sexual_orientation = sexual_orientation;
+    }
+
+    public String getWith_children() {
+        return with_children;
+    }
+
+    public void setWith_children(String with_children) {
+        this.with_children = with_children;
+    }
+
+    public String getWith_pets() {
+        return with_pets;
+    }
+
+    public void setWith_pets(String with_pets) {
+        this.with_pets = with_pets;
+    }
+
+    public String getZodiac_sign() {
+        return zodiac_sign;
+    }
+
+    public void setZodiac_sign(String zodiac_sign) {
+        this.zodiac_sign = zodiac_sign;
+    }
+
+    public String getSmoker() {
+        return smoker;
+    }
+
+    public void setSmoker(String smoker) {
+        this.smoker = smoker;
     }
 }

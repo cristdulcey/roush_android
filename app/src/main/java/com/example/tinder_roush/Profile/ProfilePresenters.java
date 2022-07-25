@@ -41,9 +41,15 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     }
 
     @Override
-    public void ProfileSuccessGetPhotos(ArrayList<CardPersonItem> person) { view.showPhotos(person); }
+    public void ProfileSuccessGetPhotos(ArrayList<CardPersonItem> person) {
+        view.showPhotos(person);
+    }
+    @Override
+    public void ProfileEditSuccessGetPhotos(ArrayList<CardPersonItem> person) {
+        view2.showPhotos2(person);
+    }
 
-    //GET EDIT PHOTO
+    //GET PROFILE EDIT PHOTO
     @Override
     public void ProfilePhotoEditPresenter() {
         model.ProfileGetEditPhotoModel(this);
@@ -62,9 +68,26 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
         model.ProfileEditModel(this);
     }
 
+
+
+    //GET PHOTOS AND INTERESTING ON PROFILE EDIT ACTIVITY
+    @Override
+    public void ProfileEditInterestPresenter() {
+        model.ProfileEditInterestModel(this);
+    }
+
+    @Override
+    public void ProfileEditPresenterGetPhotos() {
+        model.ProfileEditGetPhotosModel(this);
+    }
+
     @Override
     public void ProfileInterestSuccessful(ProfileData data) {
         view.showInterest(data);
+    }
+    @Override
+    public void ProfileEditInterestSuccessful(ProfileData data) {
+        view2.showInterest2(data);
     }
 
     @Override
@@ -113,6 +136,11 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     @Override
     public void changeInteresting() {
         model.changeInteresting(this);
+    }
+
+    @Override
+    public void changePreferencesSearch() {
+        model.changePreferencesSearch(this);
     }
 
     @Override
