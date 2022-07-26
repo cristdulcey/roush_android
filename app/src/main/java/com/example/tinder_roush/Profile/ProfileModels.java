@@ -7,10 +7,12 @@ import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Home.HomeInterfaces;
 import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
+import com.example.tinder_roush.Register.RegisterInterfaces;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
@@ -32,6 +34,33 @@ public class ProfileModels implements ProfileInterfaces.models{
     public ProfileModels() {
         this.apiAdapter = new ApiAdapter();
         this.localData = new LocalData();
+    }
+    @Override
+    public void citiesModels(ProfileInterfaces.presenters presenter) {
+        Call<CityResponse> call = apiAdapter.getApiService().cities();
+        call.enqueue(new Callback<CityResponse>() {
+            @Override
+            public void onResponse(Call<CityResponse> call, Response<CityResponse> response) {
+                if (response.isSuccessful()){
+                    CityResponse cities = response.body();
+                    presenter.citiesSuccessful(cities.getCities());
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CityResponse> call, Throwable t) {
+                Log.e("error ciudades",call.toString());
+            }
+        });
     }
 
     //DATA USER
@@ -536,16 +565,18 @@ public class ProfileModels implements ProfileInterfaces.models{
         String sexualOrientation = localData.getRegister("SEXUAL_ORIENTATION");
         String withChildren = localData.getRegister("CHILDREN_PREFERENCE");
         String withPets = localData.getRegister("PETS_PREFERENCE");
-      //  String smoker = localData.getRegister("GENDER_PREFERENCE");
+        String smoker = localData.getRegister("SMOKER_PREFERENCE");
         String zodiacSign = localData.getRegister("ZODIAC_SIGN");
+      //  String distance = localData.getRegister("DISTANCE_RANGE");
 
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("search", null, RequestBody.create(MediaType.parse("text/plain"), preferenceGender));
         request.addFormDataPart("sexual_orientation", null, RequestBody.create(MediaType.parse("text/plain"), sexualOrientation));
         request.addFormDataPart("with_children", null, RequestBody.create(MediaType.parse("text/plain"), withChildren));
         request.addFormDataPart("with_pets", null, RequestBody.create(MediaType.parse("text/plain"), withPets));
-      //  request.addFormDataPart("smoker", null, RequestBody.create(MediaType.parse("text/plain"), smoker));
+        request.addFormDataPart("smoker", null, RequestBody.create(MediaType.parse("text/plain"), smoker));
         request.addFormDataPart("zodiac_sign", null, RequestBody.create(MediaType.parse("text/plain"), zodiacSign));
+       // request.addFormDataPart("distance", null, RequestBody.create(MediaType.parse("text/plain"), distance));
         MultipartBody body = request.build();
 
         Call<ProfileData> call = apiAdapter.getApiService2().updateInterest(localData.getRegister("ID_USERCURRENT"),body);
@@ -554,7 +585,7 @@ public class ProfileModels implements ProfileInterfaces.models{
             @Override
             public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(BaseContext.getContext(), "Intereses actualizados", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BaseContext.getContext(), "Datos actualizados", Toast.LENGTH_SHORT).show();
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";

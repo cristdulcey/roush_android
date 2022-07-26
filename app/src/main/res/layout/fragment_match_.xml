@@ -27,9 +27,11 @@
 
             <ImageButton
                 android:id="@+id/filter_home"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:padding="5dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/filter_button"/>
 
           <LinearLayout
@@ -61,9 +63,10 @@
 
             <!--Image profile-->
         <androidx.cardview.widget.CardView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:cardElevation="0dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            app:cardElevation="2dp"
             app:cardCornerRadius="30dp">
 
             <ImageView

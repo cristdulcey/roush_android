@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -39,7 +40,11 @@ import com.example.tinder_roush.NotificationSettings.NotificationSettingsActivit
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.R;
+import com.example.tinder_roush.Register.RegisterPresenters;
 import com.example.tinder_roush.Utils.BaseContext;
+import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
+import com.example.tinder_roush.Utils.SpinnerCustom;
+import com.example.tinder_roush.Utils.SpinnerListener;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -48,6 +53,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class ProfileActivity extends AppCompatActivity implements ProfileInterfaces.activities1{
@@ -55,14 +61,16 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     ImageButton backHome, settings;
     LocalData localData;
     Button buttonLogout, editDataProfile, viewContentExcl;
-    Button manPreference, womanPreference, bothPreference, otherPreference, children_y, children_n, children_idf ,pets_y, pets_n, pets_idf, smoker;
+    Button manPreference, womanPreference, bothPreference, otherPreference, children_y, children_n, children_idf ,pets_y, pets_n, pets_idf, smoker_y, smoker_n, smoker_idf;
     Button photo_preference, shop, karaoke, yoga, cook, tennis, sports, swim, art, travel, extreme, music, drink, games;
     Switch activateContent;
-    String interesting, currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6, IdPhoto1, IdPhoto2, IdPhoto3,IdPhoto4, IdPhoto5, IdPhoto6;
+    SeekBar distance_range;
+    String interesting, currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6, IdPhoto1, IdPhoto2, IdPhoto3,IdPhoto4, IdPhoto5, IdPhoto6, city;
     int check_pht, check_shop,check_kar,check_yoga,check_cook,check_tennis, check_sport, check_swim, check_art, check_travel, check_extr, check_music,check_drink, check_game,
-            check_man, check_woman, check_both, check_other, check_chy, check_chn, check_chidf, check_py,check_pn, check_pidf;
+            check_man, check_woman, check_both, check_other, check_chy, check_chn, check_chidf, check_py,check_pn, check_pidf, check_smy, check_smn, check_smidf;
     ArrayList<String> orientation_list, zodiac_list;
     Spinner orientation_spinner, zodiac_spinner;
+    SpinnerCustom spinnerCities;
     String orientation_select, zodiac_select;
     ImageView profile_photo;
     ImageButton photo1, photo2, photo3, photo4, photo5, photo6;
@@ -75,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     public final int RESULT_PHOTO_6 = 106;
    // int REQUEST_CODE = 200;
     String idImage;
-    TextView first_name, last_name, date_birth, job, email, password, about, address, ageUser;
+    TextView first_name, last_name, date_birth, job, email, password, about, address, ageUser, distance;
     ProfilePresenters presenter;
 
     @Override
@@ -83,6 +91,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         initObjects();
+        addSpinnerBefore();
         listeners();
         orientationList();
         zodiacList();
@@ -90,17 +99,21 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         presenter.ProfileInterestPresenter();
         presenter.ProfilePhotoUserPresenter();
         presenter.ProfilePresenterGetPhotos();
+        presenter.citiesPresenter();
     }
 
     private void initObjects() {
         check_pht = 1; check_shop = 1; check_kar = 1; check_yoga = 1; check_cook = 1; check_tennis = 1;check_sport = 1;
         check_swim=1; check_art=1; check_travel = 1; check_extr = 1; check_music = 1; check_drink=1; check_game=1;
         check_man =1; check_woman =1; check_both =1; check_other =1; check_chy =1; check_chn =1; check_chidf =1;
-        check_py =1; check_pn =1; check_pidf = 1;
+        check_py =1; check_pn =1; check_pidf = 1; check_smy =1; check_smn=1; check_smidf=1;
+        distance_range = findViewById(R.id.distance_range_profile);
+        distance_range.setMax(50);
+        distance = findViewById(R.id.max_range_profile);
         orientation_spinner = findViewById(R.id.spinner_my_orientation);
         zodiac_spinner = findViewById(R.id.spinner_zodiac);
-        idImage ="";
-        interesting = "";
+        spinnerCities = findViewById(R.id.spinner_city_profile);
+        idImage =""; interesting = ""; city ="";
         UrlPhoto1 = ""; UrlPhoto2 = ""; UrlPhoto3 = ""; UrlPhoto4 = ""; UrlPhoto5 = ""; UrlPhoto6 = "";
         IdPhoto1 = ""; IdPhoto2 = ""; IdPhoto3 = ""; IdPhoto4 = "";IdPhoto5 = ""; IdPhoto6 = "";
         backHome = findViewById(R.id.back_to_home);
@@ -112,6 +125,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         date_birth = findViewById(R.id.date_birth_profile);
         ageUser = findViewById(R.id.user_profile_age);
         job = findViewById(R.id.profile_job);
+        address = findViewById(R.id.profile_locations);
         about = findViewById(R.id.text_description_profile);
         email = findViewById(R.id.profile_email);
         password = findViewById(R.id.profile_password);
@@ -122,21 +136,16 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         //filters
         orientation_list = new ArrayList<>(); zodiac_list = new ArrayList<>();
         orientation_select = ""; zodiac_select = "";
-        manPreference = findViewById(R.id.search_man_profile);
-        womanPreference = findViewById(R.id.search_woman_profile);
-        bothPreference = findViewById(R.id.search_both_profile);
-        otherPreference = findViewById(R.id.search_other_profile);
-        children_y = findViewById(R.id.children_yes_profile);
-        children_n = findViewById(R.id.children_no_profile);
-        children_idf = findViewById(R.id.children_indifferent_profile);
-        pets_y = findViewById(R.id.pets_yes_profile);
-        pets_n = findViewById(R.id.pets_no_profile);
-        pets_idf = findViewById(R.id.pets_indifferent_profile);
+        manPreference = findViewById(R.id.search_man_profile); womanPreference = findViewById(R.id.search_woman_profile);
+        bothPreference = findViewById(R.id.search_both_profile); otherPreference = findViewById(R.id.search_other_profile);
+        children_y = findViewById(R.id.children_yes_profile); children_n = findViewById(R.id.children_no_profile); children_idf = findViewById(R.id.children_indifferent_profile);
+        pets_y = findViewById(R.id.pets_yes_profile); pets_n = findViewById(R.id.pets_no_profile); pets_idf = findViewById(R.id.pets_indifferent_profile);
+        smoker_y = findViewById(R.id.smoker_yes_profile); smoker_n = findViewById(R.id.smoker_no_profile); smoker_idf = findViewById(R.id.smoker_indifferent_profile);
         //Photos
         photo1 = findViewById(R.id.photo_1_profile); photo2 = findViewById(R.id.photo_2_profile);
         photo3 = findViewById(R.id.photo_3_profile); photo4 = findViewById(R.id.photo_4_profile);
         photo5 = findViewById(R.id.photo_5_profile); photo6 = findViewById(R.id.photo_6_profile);
-        //Interestings
+        //Interesting
         photo_preference = findViewById(R.id.button_photo_preference_profile); shop = findViewById(R.id.button_shopping_preference_profile);
         karaoke = findViewById(R.id.button_karaoke_preference_profile); yoga = findViewById(R.id.button_yoga_preference_profile);
         cook = findViewById(R.id.button_cooking_preference_profile); tennis = findViewById(R.id.button_tennis_preference_profile);
@@ -151,8 +160,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                localData.LogOutApp();
-                localData.deleteUserCurrent();
+                localData.LogOutApp(); localData.deleteUserCurrent(); localData.deleteInterest();
                 Intent intent = new Intent(BaseContext.getContext(), LoginActivities.class);
                 startActivity(intent);
                 finish();
@@ -161,23 +169,19 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                settingsProfile();
-            }
+            public void onClick(View v) { settingsProfile(); }
         });
 
         editDataProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BaseContext.getContext(), ProfileEditActivity.class);
-                startActivity(intent);
-            }
+                startActivity(intent); }
         });
 
         backHome.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { backToHome(); }
-            });
+            public void onClick(View view) { backToHome(); } });
 
         activateContent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -194,40 +198,37 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         });
 
         orientation_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            String textOrientation = "";
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 orientation_select = orientation_spinner.getSelectedItem().toString();
-                String textOrientation = "";
                 for (int o=0; o<5;o++){
                     if (orientation_select.equals("Heterosexual")) {
-                        textOrientation = "HETERO";
-                        break;
+                        textOrientation = "HETERO"; break;
                     } if (orientation_select.equals("Gay")) {
-                        textOrientation = "GAY";
-                        break;
+                        textOrientation = "GAY"; break;
                     } if (orientation_select.equals("Lesbiana")) {
-                        textOrientation = "LESBIAN";
-                        break;
+                        textOrientation = "LESBIAN"; break;
                     } if (orientation_select.equals("Bisexual")) {
-                        textOrientation = "BISEXUAL";
-                        break;
+                        textOrientation = "BISEXUAL"; break;
                     }  if (orientation_select.equals("Otr@")) {
-                        textOrientation = "OTHER";
-                        break;
+                        textOrientation = "OTHER"; break;
                     }
                 }
                 localData.register(textOrientation,"SEXUAL_ORIENTATION");
-                presenter.changePreferencesSearch();
+                if (!textOrientation.equals("")){
+                    presenter.changePreferencesSearch();
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
 
         zodiac_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            String textZodiac = "";
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 zodiac_select = zodiac_spinner.getSelectedItem().toString();
-                String textZodiac = "";
                 for (int o=0; o<11;o++){
                     if (zodiac_select.equals("Aries")) { textZodiac = "ARIES"; break; }
                     if (zodiac_select.equals("Tauro")) { textZodiac = "TAURUS"; break; }
@@ -243,10 +244,26 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     if (zodiac_select.equals("Piscis")) { textZodiac = "PISCES"; break; }
                 }
                 localData.register(textZodiac,"ZODIAC_SIGN");
-                presenter.changePreferencesSearch();
+                if (!textZodiac.equals("")){
+                    presenter.changePreferencesSearch();
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
+        });
+
+        distance_range.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                distance.setText(""+progress+"km" );
+                localData.register(String.valueOf(progress),"DISTANCE_RANGE");
+          //      presenter.changePreferencesSearch();
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
         //SEARCH
@@ -267,11 +284,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_man = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    manPreference.setBackgroundResource(R.drawable.border_left_white);
-                    manPreference.setTextColor(Color.GRAY);
-//                    String Text = "";
-//                    localData.register(Text,"GENDER_PREFERENCE");
-//                    presenter.changePreferencesSearch();
                     check_man = 1;
                 }
             }
@@ -293,11 +305,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_woman = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    womanPreference.setBackgroundResource(R.drawable.border_gray_transparent);
-                    womanPreference.setTextColor(Color.GRAY);
-//                    String Text = "";
-//                    localData.register(Text,"GENDER_PREFERENCE");
-//                    presenter.changePreferencesSearch();
                     check_woman = 1;
                 }
             }
@@ -319,11 +326,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_both = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    bothPreference.setBackgroundResource(R.drawable.border_gray_transparent);
-                    bothPreference.setTextColor(Color.GRAY);
-//                    String Text = "";
-//                    localData.register(Text,"GENDER_PREFERENCE");
-//                    presenter.changePreferencesSearch();
                     check_both = 1;
                 }
             }
@@ -345,11 +347,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_both = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    bothPreference.setBackgroundResource(R.drawable.border_rigth_white);
-                    bothPreference.setTextColor(Color.GRAY);
-//                    String Text = "";
-//                    localData.register(Text,"GENDER_PREFERENCE");
-//                    presenter.changePreferencesSearch();
                     check_both = 1;
                 }
             }
@@ -370,8 +367,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_chy = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    children_y.setBackgroundResource(R.drawable.border_left_white);
-                    children_y.setTextColor(Color.GRAY);
                     check_chy = 1;
                 }
             }
@@ -391,8 +386,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_chn = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    children_n.setBackgroundResource(R.drawable.border_left_white);
-                    children_n.setTextColor(Color.GRAY);
                     check_chn = 1;
                 }
             }
@@ -412,8 +405,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_chidf = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    children_y.setBackgroundResource(R.drawable.border_left_white);
-                    children_y.setTextColor(Color.GRAY);
                     check_chidf = 1;
                 }
             }
@@ -434,8 +425,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_py = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    pets_y.setBackgroundResource(R.drawable.border_left_white);
-                    pets_y.setTextColor(Color.GRAY);
                     check_py = 1;
                 }
             }
@@ -455,8 +444,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_pn = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    pets_n.setBackgroundResource(R.drawable.border_left_white);
-                    pets_n.setTextColor(Color.GRAY);
                     check_pn = 1;
                 }
             }
@@ -476,13 +463,68 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_pidf = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    pets_idf.setBackgroundResource(R.drawable.border_left_white);
-                    pets_idf.setTextColor(Color.GRAY);
                     check_pidf = 1;
                 }
             }
         });
         //SMOKER
+        smoker_y.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_smy == 1){
+                    smoker_y.setBackgroundResource(R.drawable.border_left_green);
+                    smoker_y.setTextColor(Color.WHITE);
+                    smoker_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                    smoker_n.setTextColor(Color.GRAY);
+                    smoker_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                    smoker_idf.setTextColor(Color.GRAY);
+                    String Text = "YES";
+                    localData.register(Text,"SMOKER_PREFERENCE");
+                    check_smy = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_smy = 1;
+                }
+            }
+        });
+        smoker_n.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_smn == 1){
+                    smoker_n.setBackgroundResource(R.drawable.border_green);
+                    smoker_n.setTextColor(Color.WHITE);
+                    smoker_y.setBackgroundResource(R.drawable.border_left_white);
+                    smoker_y.setTextColor(Color.GRAY);
+                    smoker_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                    smoker_idf.setTextColor(Color.GRAY);
+                    String Text = "NO";
+                    localData.register(Text,"SMOKER_PREFERENCE");
+                    check_smn = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_smn = 1;
+                }
+            }
+        });
+        smoker_idf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_smidf == 1){
+                    smoker_idf.setBackgroundResource(R.drawable.border_rigth_green);
+                    smoker_idf.setTextColor(Color.WHITE);
+                    smoker_y.setBackgroundResource(R.drawable.border_left_white);
+                    smoker_y.setTextColor(Color.GRAY);
+                    smoker_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                    smoker_n.setTextColor(Color.GRAY);
+                    String Text = "INDIFFERENT";
+                    localData.register(Text,"SMOKER_PREFERENCE");
+                    check_smidf = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_smidf = 1;
+                }
+            }
+        });
 
         //BUTTON PHOTOS
         photo1.setOnClickListener(new View.OnClickListener() {
@@ -792,7 +834,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     check_game = 0;
                 }else{
                     games.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    interesting = gamesPreferenceText;
+                    interesting = "";
                     localData.register(interesting,"PREFERENCE_GAMES");
                     presenter.changeInteresting();
                     check_game = 1;
@@ -825,7 +867,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         notifications_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent intent = new Intent(BaseContext.getContext(), NotificationSettingsActivity.class);
+                Intent intent = new Intent(BaseContext.getContext(), NotificationSettingsActivity.class);
                 startActivity(intent);
             }
         });
@@ -841,9 +883,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     //GET PROFILE PHOTO
     @Override
-    public void getPhoto(CardPersonItem data) {
-        Picasso.get().load(data.getImage()).fit().centerCrop().into(profile_photo);
-    }
+    public void getPhoto(CardPersonItem data) { Picasso.get().load(data.getImage()).fit().centerCrop().into(profile_photo); }
 
     //GET BASIC DATA
     public  int getEdad(Date birth_date, Date current_date) {
@@ -856,7 +896,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     @Override
     public void showData1(ProfileData data) {
-
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date birth_date = null;
         try { birth_date = dateFormat.parse(data.getDate_birth()); }
@@ -870,6 +909,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         email.setText(data.getEmail());
         job.setText(data.getJob());
         about.setText(data.getAbout());
+        address.setText(data.getAddress());
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
         //SEARCH
@@ -878,37 +918,41 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                 manPreference.setBackgroundResource(R.drawable.border_left_green);
                 manPreference.setTextColor(Color.WHITE);
                 localData.register("MAN","GENDER_PREFERENCE");
+                break;
             }else{
                 manPreference.setBackgroundResource(R.drawable.border_left_white);
                 manPreference.setTextColor(Color.GRAY);
-                localData.register("","GENDER_PREFERENCE");
+                //localData.register("","GENDER_PREFERENCE");
             }
             if (data.getSearch().equals("WOMAN")){
                 womanPreference.setBackgroundResource(R.drawable.border_green);
                 womanPreference.setTextColor(Color.WHITE);
                 localData.register("WOMAN","GENDER_PREFERENCE");
+                break;
             }else {
                 womanPreference.setBackgroundResource(R.drawable.border_gray_transparent);
                 womanPreference.setTextColor(Color.GRAY);
-                localData.register("","GENDER_PREFERENCE");
+             //   localData.register("","GENDER_PREFERENCE");
             }
             if (data.getSearch().equals("BOTH")){
                 bothPreference.setBackgroundResource(R.drawable.border_green);
                 bothPreference.setTextColor(Color.WHITE);
                 localData.register("BOTH","GENDER_PREFERENCE");
+                break;
             }else {
                 bothPreference.setBackgroundResource(R.drawable.border_gray_transparent);
                 bothPreference.setTextColor(Color.GRAY);
-                localData.register("","GENDER_PREFERENCE");
+               // localData.register("","GENDER_PREFERENCE");
             }
             if (data.getSearch().equals("OTHER")){
                 otherPreference.setBackgroundResource(R.drawable.border_rigth_green);
                 otherPreference.setTextColor(Color.WHITE);
                 localData.register("OTHER","GENDER_PREFERENCE");
+                break;
             }else {
                 otherPreference.setBackgroundResource(R.drawable.border_rigth_white);
                 otherPreference.setTextColor(Color.GRAY);
-                localData.register("","GENDER_PREFERENCE");
+               // localData.register("","GENDER_PREFERENCE");
             }
         }
         //CHILDREN
@@ -916,46 +960,104 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             if (data.getWith_children().equals("YES")){
                 children_y.setBackgroundResource(R.drawable.border_left_green);
                 children_y.setTextColor(Color.WHITE);
+                localData.register("YES","CHILDREN_PREFERENCE");
+                break;
             }else{
                 children_y.setBackgroundResource(R.drawable.border_left_white);
                 children_y.setTextColor(Color.GRAY); }
             if (data.getWith_children().equals("NO")){
                 children_n.setBackgroundResource(R.drawable.border_green);
                 children_n.setTextColor(Color.WHITE);
+                localData.register("NO","CHILDREN_PREFERENCE");
+                break;
             }else {
                 children_n.setBackgroundResource(R.drawable.border_gray_transparent);
                 children_n.setTextColor(Color.GRAY); }
             if (data.getWith_children().equals("INDIFFERENT")){
                 children_idf.setBackgroundResource(R.drawable.border_rigth_green);
                 children_idf.setTextColor(Color.WHITE);
+                localData.register("INDIFFERENT","CHILDREN_PREFERENCE");
+                break;
             }else {
                 children_idf.setBackgroundResource(R.drawable.border_rigth_white);
                 children_idf.setTextColor(Color.GRAY); }
         }
         //PETS
         for (int i =0; i<3; i++){
-            if (data.getWith_children().equals("YES")){
+            if (data.getWith_pets().equals("YES")){
                 pets_y.setBackgroundResource(R.drawable.border_left_green);
                 pets_y.setTextColor(Color.WHITE);
+                localData.register("YES","PETS_PREFERENCE");
+                break;
             }else{
                 pets_y.setBackgroundResource(R.drawable.border_left_white);
                 pets_y.setTextColor(Color.GRAY); }
-            if (data.getWith_children().equals("NO")){
+            if (data.getWith_pets().equals("NO")){
                 pets_n.setBackgroundResource(R.drawable.border_green);
                 pets_n.setTextColor(Color.WHITE);
+                localData.register("NO","PETS_PREFERENCE");
+                break;
             }else {
                 pets_n.setBackgroundResource(R.drawable.border_gray_transparent);
                 pets_n.setTextColor(Color.GRAY); }
-            if (data.getWith_children().equals("INDIFFERENT")){
+            if (data.getWith_pets().equals("INDIFFERENT")){
                 pets_idf.setBackgroundResource(R.drawable.border_rigth_green);
                 pets_idf.setTextColor(Color.WHITE);
+                localData.register("INDIFFERENT","PETS_PREFERENCE");
+                break;
             }else {
                 pets_idf.setBackgroundResource(R.drawable.border_rigth_white);
                 pets_idf.setTextColor(Color.GRAY);
             }
         }
-
         //SMOKER
+        for (int i =0; i<3; i++){
+            if (data.getSmoker().equals("YES")){
+                smoker_y.setBackgroundResource(R.drawable.border_left_green);
+                smoker_y.setTextColor(Color.WHITE);
+                localData.register("YES","SMOKER_PREFERENCE");
+                    break;
+            }else{
+                smoker_y.setBackgroundResource(R.drawable.border_left_white);
+                smoker_y.setTextColor(Color.GRAY); }
+            if (data.getSmoker().equals("NO")){
+                smoker_n.setBackgroundResource(R.drawable.border_green);
+                smoker_n.setTextColor(Color.WHITE);
+                localData.register("NO","SMOKER_PREFERENCE");
+         break;
+            }else {
+                smoker_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                smoker_n.setTextColor(Color.GRAY); }
+            if (data.getSmoker().equals("INDIFFERENT")){
+                smoker_idf.setBackgroundResource(R.drawable.border_rigth_green);
+                smoker_idf.setTextColor(Color.WHITE);
+                localData.register("INDIFFERENT","SMOKER_PREFERENCE");
+        break;
+            }else {
+                smoker_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                smoker_idf.setTextColor(Color.GRAY);
+            }
+        }
+
+        ArrayList<String> orientation = new ArrayList<>();
+        orientation.add(0,""); orientation.add("HETERO"); orientation.add("GAY"); orientation.add("LESBIAN"); orientation.add("BISEXUAL"); orientation.add("OTHER");
+        int posOrientation = 0;
+        for (int i = 0; i < orientation.size(); i++) {
+            if (orientation.get(i).equals(data.getSexual_orientation())) {
+                posOrientation = i; break; }
+        }
+        orientation_spinner.setSelection(posOrientation);
+
+        ArrayList<String> zodiac = new ArrayList<>();
+        zodiac.add(0,""); zodiac.add("ARIES"); zodiac.add("TAURUS"); zodiac.add("GEMINI"); zodiac.add("CANCER"); zodiac.add("LEO"); zodiac.add("VIRGO");
+        zodiac.add("LIBRA"); zodiac.add("SCORPIO"); zodiac.add("SAGITTARIUS"); zodiac.add("CAPRICORN"); zodiac.add("AQUARIUS"); zodiac.add("PISCES");
+        int posZodiac = 0;
+        for (int i = 0; i < zodiac.size(); i++) {
+            if (zodiac.get(i).equals(data.getZodiac_sign())) {
+                posZodiac = i; break; }
+        }
+        zodiac_spinner.setSelection(posZodiac);
+
     }
 
     @Override
@@ -964,13 +1066,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         String[] interestArray = currentInterest.split(",");
         for (String s : interestArray) {
             if (s.equals("Fotografía")) { check_pht = 0;
-                photo_preference.setBackgroundResource(R.drawable.border_green_round2);
-            }
+                photo_preference.setBackgroundResource(R.drawable.border_green_round2); }
             if (s.equals("Compras")) { check_shop = 0;
                 shop.setBackgroundResource(R.drawable.border_green_round2);}
             if (s.equals("Karaoke")) { check_kar = 0;
                 karaoke.setBackgroundResource(R.drawable.border_green_round2);}
-
             if (s.equals("Yoga")) { check_yoga = 0;
                 yoga.setBackgroundResource(R.drawable.border_green_round2);}
             if (s.equals("Cocina")) { check_cook = 0;
@@ -1090,34 +1190,26 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
                 switch (i){
                     case 0:
-                        IdPhoto1 = person.get(i).getId();
-                        break;
+                        IdPhoto1 = person.get(i).getId(); break;
                     case 1:
-                        IdPhoto2 = person.get(i).getId();
-                        break;
+                        IdPhoto2 = person.get(i).getId(); break;
                     case 2:
-                        IdPhoto3 = person.get(i).getId();
-                        break;
+                        IdPhoto3 = person.get(i).getId(); break;
                     case 3:
-                        IdPhoto4 = person.get(i).getId();
-                        break;
+                        IdPhoto4 = person.get(i).getId(); break;
                     case 4:
-                        IdPhoto5 = person.get(i).getId();
-                        break;
+                        IdPhoto5 = person.get(i).getId(); break;
                     case 5:
-                        IdPhoto6 = person.get(i).getId();
-                        break;
+                        IdPhoto6 = person.get(i).getId(); break;
                 }
             }
     }
 
-    //OTHER FILTERS
+    //SPINNERS
     public void orientationList(){
-        zodiac_list.add(0,"---");
-        orientation_list.add("Heterosexual");
-        orientation_list.add("Gay");
-        orientation_list.add("Lesbiana");
-        orientation_list.add("Bisexual");
+        orientation_list.add(0,"- - - -");
+        orientation_list.add("Heterosexual"); orientation_list.add("Gay");
+        orientation_list.add("Lesbiana"); orientation_list.add("Bisexual");
         orientation_list.add("Otr@");
         ArrayAdapter<String> orientationArrayAdapter = new ArrayAdapter<>(BaseContext.getContext(), R.layout.spinner_custom_textview_orientation, orientation_list);
         orientationArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_orientation);
@@ -1126,20 +1218,42 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     private void zodiacList() {
         zodiac_list.add(0,"Es indiferente");
-        zodiac_list.add("Aries");
-        zodiac_list.add("Tauro");
-        zodiac_list.add("Géminis");
-        zodiac_list.add("Cáncer");
-        zodiac_list.add("Leo");
-        zodiac_list.add("Virgo");
-        zodiac_list.add("Libra");
-        zodiac_list.add("Escorpio");
-        zodiac_list.add("Sagitario");
-        zodiac_list.add("Capricornio");
-        zodiac_list.add("Acuario");
-        zodiac_list.add("Piscis");
+        zodiac_list.add("Aries"); zodiac_list.add("Tauro");
+        zodiac_list.add("Géminis"); zodiac_list.add("Cáncer");
+        zodiac_list.add("Leo"); zodiac_list.add("Virgo");
+        zodiac_list.add("Libra"); zodiac_list.add("Escorpio");
+        zodiac_list.add("Sagitario"); zodiac_list.add("Capricornio");
+        zodiac_list.add("Acuario"); zodiac_list.add("Piscis");
         ArrayAdapter<String> zodiacArrayAdapter = new ArrayAdapter<>(BaseContext.getContext(), R.layout.spinner_custom_textview_orientation, zodiac_list);
         zodiacArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_orientation);
         zodiac_spinner.setAdapter(zodiacArrayAdapter);
+    }
+
+    public void addSpinnerBefore(){
+        List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
+        KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
+        h.setId("0");
+        h.setExtra("--");
+        h.setName("cargando");
+        h.setSelected(false);
+        listArray1.add(h);
+        addItemsSpinnerCity(listArray1);
+    }
+
+    //Spinner Ciudades
+    public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities){
+
+        spinnerCities.setSearchEnabled(true);
+        spinnerCities.setSearchHint("");
+        spinnerCities.setItems(cities, new SpinnerListener() {
+            @Override
+            public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
+                city=selectedItem.getId();
+            }
+            @Override
+            public void onClear() {
+
+            }
+        });
     }
 }

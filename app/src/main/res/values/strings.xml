@@ -120,6 +120,11 @@
     <string name="notifications_setting">Notificaciones</string>
     <string name="blocked_persons_sett">Personas bloqueadas</string>
 
+    <!--Strings Notifications-->
+    <string name="new_message_alert">Tienes un nuevo mensaje de</string>
+    <string name="new_match_alert">Hiciste match con</string>
+    <string name="new_cross_alert">Te cruzaste con</string>
+
     <!--Strings Blogs-->
     <string name="title_blog">Historias</string>
     <string name="tell_us_your_history">Cuéntanos tu historia</string>

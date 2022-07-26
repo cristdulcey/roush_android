@@ -420,16 +420,16 @@
                             android:layout_marginLeft="4dp"
                             android:src="@drawable/icon_location_green"
                             android:padding="8dp"/>
-                        <TextView
-                            android:id="@+id/city_field_profile"
+                        <com.example.tinder_roush.Utils.SpinnerCustom
+                            android:id="@+id/spinner_city_profile"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/match_city"
-                            android:textColor="@color/green1"
-                            android:textStyle="bold"
-                            android:background="@android:color/transparent"
-                            android:textSize="14sp" />
+                            android:layout_height="match_parent"
+                            android:paddingLeft="8dp"
+                            android:layout_gravity="top"
+                            app:textColor="@color/green2"
+                            android:paddingHorizontal="8dp"
+                            app:highlightColor="@color/green2"
+                            android:background="@android:color/transparent"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -456,6 +456,7 @@
                         android:orientation="vertical">
 
                         <SeekBar
+                            android:id="@+id/distance_range_profile"
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_marginTop="10dp"
@@ -469,13 +470,17 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="110dp"
                                 android:text="0km"/>
+                            <TextView
+                                android:id="@+id/max_range_profile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="110dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="110dp"
-                                android:text="40km"/>
+                                android:text="50km"/>
                         </LinearLayout>
 
                     </LinearLayout>

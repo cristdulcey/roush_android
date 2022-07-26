@@ -229,10 +229,11 @@
                             android:textColor="@color/white"
                             android:text="@string/location_profile"
                             android:textSize="18sp"/>
-                        <TextView
+                        <EditText
                             android:id="@+id/profile_locations"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
                             android:text="Chapinero"
                             android:textColor="@color/white"
                             android:textSize="18sp"/>
@@ -359,7 +360,7 @@
 
                         <Button
                             android:id="@+id/search_man_edit"
-                            android:layout_width="wrap_content"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_left_green"
@@ -369,7 +370,7 @@
 
                         <Button
                             android:id="@+id/search_woman_edit"
-                            android:layout_width="wrap_content"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
@@ -378,7 +379,7 @@
 
                         <Button
                             android:id="@+id/search_both_edit"
-                            android:layout_width="wrap_content"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
@@ -387,7 +388,7 @@
 
                         <Button
                             android:id="@+id/search_other_edit"
-                            android:layout_width="wrap_content"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"

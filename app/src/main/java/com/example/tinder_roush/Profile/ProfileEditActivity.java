@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 
 import android.os.Bundle;
@@ -48,14 +49,15 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
     ImageView photo_profile;
     Button buttonLogoutFE, saveDataProfile, viewContentExclFE;
     ProfilePresenters presenter;
+    Button manPreference, womanPreference, bothPreference, otherPreference, children_y, children_n, children_idf ,pets_y, pets_n, pets_idf, smoker_y, smoker_n, smoker_idf;
     Button photo_preference, shop, karaoke, yoga, cook, tennis, sports, swim, art, travel, extreme, music, drink, games;
     Switch activateContent;
     ArrayList<String> orientation_list, zodiac_list;
     Spinner orientation_spinner, zodiac_spinner;
     String orientation_select, zodiac_select;
     String interesting, currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6, IdPhoto1, IdPhoto2, IdPhoto3,IdPhoto4, IdPhoto5, IdPhoto6;
-    int check_pht, check_shop,check_kar,check_yoga,check_cook,check_tennis, check_sport, check_swim, check_art,
-            check_travel, check_extr, check_music,check_drink, check_game;
+    int check_pht, check_shop,check_kar,check_yoga,check_cook,check_tennis, check_sport, check_swim, check_art, check_travel, check_extr, check_music,check_drink,
+            check_game, check_man, check_woman, check_both, check_other, check_chy, check_chn, check_chidf, check_py,check_pn, check_pidf, check_smy, check_smn, check_smidf;
     ImageButton photo1, photo2, photo3, photo4, photo5, photo6;
     TextView ageUser;
     CardPersonItem cardPersonItem;
@@ -86,11 +88,10 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
     private void initObjects() {
         orientation_spinner = findViewById(R.id.spinner_my_orientation_edit);
         zodiac_spinner = findViewById(R.id.spinner_zodiac_edit);
-        check_pht = 1; check_shop = 1; check_kar = 1;
-        check_yoga = 1; check_cook = 1; check_tennis = 1;
-        check_sport = 1; check_swim=1; check_art=1;
-        check_travel = 1; check_extr = 1;
-        check_music = 1; check_drink=1; check_game=1;
+        check_pht = 1; check_shop = 1; check_kar = 1; check_yoga = 1; check_cook = 1; check_tennis = 1;check_sport = 1;
+        check_swim=1; check_art=1; check_travel = 1; check_extr = 1; check_music = 1; check_drink=1; check_game=1;
+        check_man =1; check_woman =1; check_both =1; check_other =1; check_chy =1; check_chn =1; check_chidf =1;
+        check_py =1; check_pn =1; check_pidf = 1; check_smy =1; check_smn=1; check_smidf=1;
         interesting = "";
         UrlPhoto1 = ""; UrlPhoto2 = ""; UrlPhoto3 = ""; UrlPhoto4 = ""; UrlPhoto5 = ""; UrlPhoto6 = "";
         IdPhoto1 = ""; IdPhoto2 = ""; IdPhoto3 = ""; IdPhoto4 = "";IdPhoto5 = ""; IdPhoto6 = "";
@@ -102,6 +103,17 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         orientation_list = new ArrayList<>();
         zodiac_list = new ArrayList<>();
         orientation_select = ""; zodiac_select = "";
+        manPreference = findViewById(R.id.search_man_edit); womanPreference = findViewById(R.id.search_woman_edit);
+        bothPreference = findViewById(R.id.search_both_edit); otherPreference = findViewById(R.id.search_other_edit);
+        children_y = findViewById(R.id.children_yes_edit);
+        children_n = findViewById(R.id.children_no_edit);
+        children_idf = findViewById(R.id.children_indifferent_edit);
+        pets_y = findViewById(R.id.pets_yes_edit);
+        pets_n = findViewById(R.id.pets_no_edit);
+        pets_idf = findViewById(R.id.pets_indifferent_edit);
+        smoker_y = findViewById(R.id.smoker_yes_edit);
+        smoker_n = findViewById(R.id.smoker_no_edit);
+        smoker_idf = findViewById(R.id.smoker_indifferent_edit);
         //INTERESTING
         photo_preference = findViewById(R.id.button_photo_preference_edit);
         shop = findViewById(R.id.button_shopping_preference_edit);
@@ -169,18 +181,318 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 orientation_select = orientation_spinner.getSelectedItem().toString();
+                String textOrientation = "";
+                for (int o=0; o<5;o++){
+                    if (orientation_select.equals("Heterosexual")) {
+                        textOrientation = "HETERO";
+                        break;
+                    } if (orientation_select.equals("Gay")) {
+                        textOrientation = "GAY";
+                        break;
+                    } if (orientation_select.equals("Lesbiana")) {
+                        textOrientation = "LESBIAN";
+                        break;
+                    } if (orientation_select.equals("Bisexual")) {
+                        textOrientation = "BISEXUAL";
+                        break;
+                    }  if (orientation_select.equals("Otr@")) {
+                        textOrientation = "OTHER";
+                        break;
+                    }
+                }
+                localData.register(textOrientation,"SEXUAL_ORIENTATION");
+                presenter.changePreferencesSearch();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
+
         zodiac_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 zodiac_select = zodiac_spinner.getSelectedItem().toString();
+                String textZodiac = "";
+                for (int o=0; o<11;o++){
+                    if (zodiac_select.equals("Aries")) { textZodiac = "ARIES"; break; }
+                    if (zodiac_select.equals("Tauro")) { textZodiac = "TAURUS"; break; }
+                    if (zodiac_select.equals("Gémisis")) { textZodiac = "GEMINI"; break; }
+                    if (zodiac_select.equals("Cáncer")) { textZodiac = "CANCER";break; }
+                    if (zodiac_select.equals("Leo")) { textZodiac = "LEO"; break; }
+                    if (zodiac_select.equals("Virgo")) { textZodiac = "VIRGO"; break; }
+                    if (zodiac_select.equals("Libra")) { textZodiac = "LIBRA"; break; }
+                    if (zodiac_select.equals("Escorpio")) { textZodiac = "SCORPIO"; break; }
+                    if (zodiac_select.equals("Sagitario")) { textZodiac = "SAGITTARIUS"; break; }
+                    if (zodiac_select.equals("Capricornio")) { textZodiac = "CAPRICORN"; break; }
+                    if (zodiac_select.equals("Acuario")) { textZodiac = "AQUARIUS"; break; }
+                    if (zodiac_select.equals("Piscis")) { textZodiac = "PISCES"; break; }
+                }
+                localData.register(textZodiac,"ZODIAC_SIGN");
+                presenter.changePreferencesSearch();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
+
+        //SEARCH
+        manPreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_man == 1){
+                    manPreference.setBackgroundResource(R.drawable.border_left_green);
+                    manPreference.setTextColor(Color.WHITE);
+                    womanPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                    womanPreference.setTextColor(Color.GRAY);
+                    bothPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                    bothPreference.setTextColor(Color.GRAY);
+                    otherPreference.setBackgroundResource(R.drawable.border_rigth_white);
+                    otherPreference.setTextColor(Color.GRAY);
+                    String Text = "MAN";
+                    localData.register(Text,"GENDER_PREFERENCE");
+                    check_man = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_man = 1;
+                }
+            }
+        });
+        womanPreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_woman == 1){
+                    womanPreference.setBackgroundResource(R.drawable.border_green);
+                    womanPreference.setTextColor(Color.WHITE);
+                    manPreference.setBackgroundResource(R.drawable.border_left_white);
+                    manPreference.setTextColor(Color.GRAY);
+                    bothPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                    bothPreference.setTextColor(Color.GRAY);
+                    otherPreference.setBackgroundResource(R.drawable.border_rigth_white);
+                    otherPreference.setTextColor(Color.GRAY);
+                    String Text = "WOMAN";
+                    localData.register(Text,"GENDER_PREFERENCE");
+                    check_woman = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_woman = 1;
+                }
+            }
+        });
+        bothPreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_both == 1){
+                    bothPreference.setBackgroundResource(R.drawable.border_green);
+                    bothPreference.setTextColor(Color.WHITE);
+                    manPreference.setBackgroundResource(R.drawable.border_left_white);
+                    manPreference.setTextColor(Color.GRAY);
+                    womanPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                    womanPreference.setTextColor(Color.GRAY);
+                    otherPreference.setBackgroundResource(R.drawable.border_rigth_white);
+                    otherPreference.setTextColor(Color.GRAY);
+                    String Text = "BOTH";
+                    localData.register(Text,"GENDER_PREFERENCE");
+                    check_both = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_both = 1;
+                }
+            }
+        });
+        otherPreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_both == 1){
+                    otherPreference.setBackgroundResource(R.drawable.border_rigth_green);
+                    otherPreference.setTextColor(Color.WHITE);
+                    manPreference.setBackgroundResource(R.drawable.border_left_white);
+                    manPreference.setTextColor(Color.GRAY);
+                    womanPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                    womanPreference.setTextColor(Color.GRAY);
+                    bothPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                    bothPreference.setTextColor(Color.GRAY);
+                    String Text = "BOTH";
+                    localData.register(Text,"GENDER_PREFERENCE");
+                    check_both = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_both = 1;
+                }
+            }
+        });
+        // CHILDREN
+        children_y.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_chy == 1){
+                    children_y.setBackgroundResource(R.drawable.border_left_green);
+                    children_y.setTextColor(Color.WHITE);
+                    children_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                    children_n.setTextColor(Color.GRAY);
+                    children_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                    children_idf.setTextColor(Color.GRAY);
+                    String Text = "YES";
+                    localData.register(Text,"CHILDREN_PREFERENCE");
+                    check_chy = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_chy = 1;
+                }
+            }
+        });
+        children_n.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_chn == 1){
+                    children_n.setBackgroundResource(R.drawable.border_green);
+                    children_n.setTextColor(Color.WHITE);
+                    children_y.setBackgroundResource(R.drawable.border_left_white);
+                    children_y.setTextColor(Color.GRAY);
+                    children_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                    children_idf.setTextColor(Color.GRAY);
+                    String Text = "NO";
+                    localData.register(Text,"CHILDREN_PREFERENCE");
+                    check_chn = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_chn = 1;
+                }
+            }
+        });
+        children_idf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_chidf == 1){
+                    children_idf.setBackgroundResource(R.drawable.border_rigth_green);
+                    children_idf.setTextColor(Color.WHITE);
+                    children_y.setBackgroundResource(R.drawable.border_left_white);
+                    children_y.setTextColor(Color.GRAY);
+                    children_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                    children_n.setTextColor(Color.GRAY);
+                    String Text = "INDIFFERENT";
+                    localData.register(Text,"CHILDREN_PREFERENCE");
+                    check_chidf = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_chidf = 1;
+                }
+            }
+        });
+        // PETS
+        pets_y.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_py == 1){
+                    pets_y.setBackgroundResource(R.drawable.border_left_green);
+                    pets_y.setTextColor(Color.WHITE);
+                    pets_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                    pets_n.setTextColor(Color.GRAY);
+                    pets_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                    pets_idf.setTextColor(Color.GRAY);
+                    String Text = "YES";
+                    localData.register(Text,"PETS_PREFERENCE");
+                    check_py = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_py = 1;
+                }
+            }
+        });
+        pets_n.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_pn == 1){
+                    pets_n.setBackgroundResource(R.drawable.border_green);
+                    pets_n.setTextColor(Color.WHITE);
+                    pets_y.setBackgroundResource(R.drawable.border_left_white);
+                    pets_y.setTextColor(Color.GRAY);
+                    pets_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                    pets_idf.setTextColor(Color.GRAY);
+                    String Text = "NO";
+                    localData.register(Text,"PETS_PREFERENCE");
+                    check_pn = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_pn = 1;
+                }
+            }
+        });
+        pets_idf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_pidf == 1){
+                    pets_idf.setBackgroundResource(R.drawable.border_rigth_green);
+                    pets_idf.setTextColor(Color.WHITE);
+                    pets_y.setBackgroundResource(R.drawable.border_left_white);
+                    pets_y.setTextColor(Color.GRAY);
+                    pets_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                    pets_n.setTextColor(Color.GRAY);
+                    String Text = "INDIFFERENT";
+                    localData.register(Text,"PETS_PREFERENCE");
+                    check_pidf = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_pidf = 1;
+                }
+            }
+        });
+        //SMOKER
+        smoker_y.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_smy == 1){
+                    smoker_y.setBackgroundResource(R.drawable.border_left_green);
+                    smoker_y.setTextColor(Color.WHITE);
+                    smoker_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                    smoker_n.setTextColor(Color.GRAY);
+                    smoker_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                    smoker_idf.setTextColor(Color.GRAY);
+                    String Text = "YES";
+                    localData.register(Text,"SMOKER_PREFERENCE");
+                    check_smy = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_smy = 1;
+                }
+            }
+        });
+        smoker_n.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_smn == 1){
+                    smoker_n.setBackgroundResource(R.drawable.border_green);
+                    smoker_n.setTextColor(Color.WHITE);
+                    smoker_y.setBackgroundResource(R.drawable.border_left_white);
+                    smoker_y.setTextColor(Color.GRAY);
+                    smoker_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                    smoker_idf.setTextColor(Color.GRAY);
+                    String Text = "NO";
+                    localData.register(Text,"SMOKER_PREFERENCE");
+                    check_smn = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_smn = 1;
+                }
+            }
+        });
+        smoker_idf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check_smidf == 1){
+                    smoker_idf.setBackgroundResource(R.drawable.border_rigth_green);
+                    smoker_idf.setTextColor(Color.WHITE);
+                    smoker_y.setBackgroundResource(R.drawable.border_left_white);
+                    smoker_y.setTextColor(Color.GRAY);
+                    smoker_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                    smoker_n.setTextColor(Color.GRAY);
+                    String Text = "INDIFFERENT";
+                    localData.register(Text,"SMOKER_PREFERENCE");
+                    check_smidf = 0;
+                    presenter.changePreferencesSearch();
+                }else{
+                    check_smidf = 1;
+                }
+            }
+        });
+
         //PHOTOS
         photo1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -488,7 +800,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
                     check_game = 0;
                 }else{
                     games.setBackgroundResource(R.drawable.border_green_soft_transparent_round);
-                    interesting = gamesPreferenceText;
+                    interesting = "";
                     localData.register(interesting,"PREFERENCE_GAMES");
                     presenter.changeInteresting();
                     check_game = 1;
@@ -616,6 +928,133 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         about.setText(data.getAbout());
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
+
+        //SEARCH
+        for (int i =0; i<4; i++){
+            if (data.getSearch().equals("MAN")){
+                manPreference.setBackgroundResource(R.drawable.border_left_green);
+                manPreference.setTextColor(Color.WHITE);
+                localData.register("MAN","GENDER_PREFERENCE");
+                break;
+            }else{
+                manPreference.setBackgroundResource(R.drawable.border_left_white);
+                manPreference.setTextColor(Color.GRAY);
+                //localData.register("","GENDER_PREFERENCE");
+            }
+            if (data.getSearch().equals("WOMAN")){
+                womanPreference.setBackgroundResource(R.drawable.border_green);
+                womanPreference.setTextColor(Color.WHITE);
+                localData.register("WOMAN","GENDER_PREFERENCE");
+                break;
+            }else {
+                womanPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                womanPreference.setTextColor(Color.GRAY);
+                //   localData.register("","GENDER_PREFERENCE");
+            }
+            if (data.getSearch().equals("BOTH")){
+                bothPreference.setBackgroundResource(R.drawable.border_green);
+                bothPreference.setTextColor(Color.WHITE);
+                localData.register("BOTH","GENDER_PREFERENCE");
+                break;
+            }else {
+                bothPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                bothPreference.setTextColor(Color.GRAY);
+                // localData.register("","GENDER_PREFERENCE");
+            }
+            if (data.getSearch().equals("OTHER")){
+                otherPreference.setBackgroundResource(R.drawable.border_rigth_green);
+                otherPreference.setTextColor(Color.WHITE);
+                localData.register("OTHER","GENDER_PREFERENCE");
+                break;
+            }else {
+                otherPreference.setBackgroundResource(R.drawable.border_rigth_white);
+                otherPreference.setTextColor(Color.GRAY);
+                // localData.register("","GENDER_PREFERENCE");
+            }
+        }
+        //CHILDREN
+        for (int i =0; i<3; i++){
+            if (data.getWith_children().equals("YES")){
+                children_y.setBackgroundResource(R.drawable.border_left_green);
+                children_y.setTextColor(Color.WHITE);
+                localData.register("YES","CHILDREN_PREFERENCE");
+                break;
+            }else{
+                children_y.setBackgroundResource(R.drawable.border_left_white);
+                children_y.setTextColor(Color.GRAY); }
+            if (data.getWith_children().equals("NO")){
+                children_n.setBackgroundResource(R.drawable.border_green);
+                children_n.setTextColor(Color.WHITE);
+                localData.register("NO","CHILDREN_PREFERENCE");
+                break;
+            }else {
+                children_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                children_n.setTextColor(Color.GRAY); }
+            if (data.getWith_children().equals("INDIFFERENT")){
+                children_idf.setBackgroundResource(R.drawable.border_rigth_green);
+                children_idf.setTextColor(Color.WHITE);
+                localData.register("INDIFFERENT","CHILDREN_PREFERENCE");
+                break;
+            }else {
+                children_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                children_idf.setTextColor(Color.GRAY); }
+        }
+        //PETS
+        for (int i =0; i<3; i++){
+            if (data.getWith_pets().equals("YES")){
+                pets_y.setBackgroundResource(R.drawable.border_left_green);
+                pets_y.setTextColor(Color.WHITE);
+                localData.register("YES","PETS_PREFERENCE");
+                break;
+            }else{
+                pets_y.setBackgroundResource(R.drawable.border_left_white);
+                pets_y.setTextColor(Color.GRAY); }
+            if (data.getWith_pets().equals("NO")){
+                pets_n.setBackgroundResource(R.drawable.border_green);
+                pets_n.setTextColor(Color.WHITE);
+                localData.register("NO","PETS_PREFERENCE");
+                break;
+            }else {
+                pets_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                pets_n.setTextColor(Color.GRAY); }
+            if (data.getWith_pets().equals("INDIFFERENT")){
+                pets_idf.setBackgroundResource(R.drawable.border_rigth_green);
+                pets_idf.setTextColor(Color.WHITE);
+                localData.register("INDIFFERENT","PETS_PREFERENCE");
+                break;
+            }else {
+                pets_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                pets_idf.setTextColor(Color.GRAY);
+            }
+        }
+        //SMOKER
+        for (int i =0; i<3; i++){
+            if (data.getSmoker().equals("YES")){
+                smoker_y.setBackgroundResource(R.drawable.border_left_green);
+                smoker_y.setTextColor(Color.WHITE);
+                localData.register("YES","SMOKER_PREFERENCE");
+                break;
+            }else{
+                smoker_y.setBackgroundResource(R.drawable.border_left_white);
+                smoker_y.setTextColor(Color.GRAY); }
+            if (data.getSmoker().equals("NO")){
+                smoker_n.setBackgroundResource(R.drawable.border_green);
+                smoker_n.setTextColor(Color.WHITE);
+                localData.register("NO","SMOKER_PREFERENCE");
+                break;
+            }else {
+                smoker_n.setBackgroundResource(R.drawable.border_gray_transparent);
+                smoker_n.setTextColor(Color.GRAY); }
+            if (data.getSmoker().equals("INDIFFERENT")){
+                smoker_idf.setBackgroundResource(R.drawable.border_rigth_green);
+                smoker_idf.setTextColor(Color.WHITE);
+                localData.register("INDIFFERENT","SMOKER_PREFERENCE");
+                break;
+            }else {
+                smoker_idf.setBackgroundResource(R.drawable.border_rigth_white);
+                smoker_idf.setTextColor(Color.GRAY);
+            }
+        }
     }
 
     @Override
@@ -644,23 +1083,17 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
 
             switch (i){
                 case 0:
-                    IdPhoto1 = person.get(i).getId();
-                    break;
+                    IdPhoto1 = person.get(i).getId(); break;
                 case 1:
-                    IdPhoto2 = person.get(i).getId();
-                    break;
+                    IdPhoto2 = person.get(i).getId(); break;
                 case 2:
-                    IdPhoto3 = person.get(i).getId();
-                    break;
+                    IdPhoto3 = person.get(i).getId(); break;
                 case 3:
-                    IdPhoto4 = person.get(i).getId();
-                    break;
+                    IdPhoto4 = person.get(i).getId(); break;
                 case 4:
-                    IdPhoto5 = person.get(i).getId();
-                    break;
+                    IdPhoto5 = person.get(i).getId(); break;
                 case 5:
-                    IdPhoto6 = person.get(i).getId();
-                    break;
+                    IdPhoto6 = person.get(i).getId(); break;
             }
         }
     }
@@ -671,13 +1104,11 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         String[] interestArray = currentInterest.split(",");
         for (String s : interestArray) {
             if (s.equals("Fotografía")) { check_pht = 0;
-                photo_preference.setBackgroundResource(R.drawable.border_green_round2);
-            }
+                photo_preference.setBackgroundResource(R.drawable.border_green_round2); }
             if (s.equals("Compras")) { check_shop = 0;
                 shop.setBackgroundResource(R.drawable.border_green_round2);}
             if (s.equals("Karaoke")) { check_kar = 0;
                 karaoke.setBackgroundResource(R.drawable.border_green_round2);}
-
             if (s.equals("Yoga")) { check_yoga = 0;
                 yoga.setBackgroundResource(R.drawable.border_green_round2);}
             if (s.equals("Cocina")) { check_cook = 0;
@@ -704,6 +1135,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
     }
 
     public void orientationListEdit(){
+        orientation_list.add(0,"- - - -");
         orientation_list.add("Heterosexual");
         orientation_list.add("Gay");
         orientation_list.add("Lesbiana");

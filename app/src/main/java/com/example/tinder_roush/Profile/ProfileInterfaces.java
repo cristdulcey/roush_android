@@ -4,11 +4,14 @@ import android.telecom.Call;
 
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Home.HomeInterfaces;
+import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
+import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ProfileInterfaces {
 
@@ -17,6 +20,7 @@ public interface ProfileInterfaces {
         void showData1(ProfileData data);
         void showInterest(ProfileData data);
         void showPhotos(ArrayList<CardPersonItem> person);
+        void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities);
 
     }
     interface activities2{
@@ -29,6 +33,10 @@ public interface ProfileInterfaces {
     }
 
     interface presenters{
+        void citiesPresenter();
+
+        void citiesSuccessful(ArrayList<CityData> cities);
+
         void ProfilePresenter();
         void ProfileInterestPresenter();
         void ProfileSuccessful(ProfileData data);
@@ -65,6 +73,7 @@ public interface ProfileInterfaces {
     }
 
     interface models{
+        void citiesModels(presenters presenter);
         void ProfileModel(presenters presenter);
         void ProfileInterestModel(presenters presenter);
         void ProfileEditModel(presenters presenter);
