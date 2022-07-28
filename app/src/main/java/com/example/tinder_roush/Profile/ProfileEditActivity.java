@@ -32,12 +32,14 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.MenuNavigation.MenuNavigation;
 import com.example.tinder_roush.NotificationSettings.NotificationSettingsActivity;
+import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
@@ -80,6 +82,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
     ImageButton photo1, photo2, photo3, photo4, photo5, photo6;
     TextView ageUser, password,distance, min_age, max_age;
     CardPersonItem cardPersonItem;
+    ChangePassword changePassword;
     String UrlPhotoProfile;
     EditText first_name, last_name, date_birth, job, email, about, address;
     public int RESULT_PHOTO = 100;
@@ -208,7 +211,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changePassword();
+                changePasswordDialog();
             }
         });
         //SPINNER
@@ -1149,17 +1152,61 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         presenter.changeDataPresenter(data);
     }
 
-    public void changePassword(){
-        Button notifications_settings, blocked_persons;
+    public void changePasswordDialog(){
+        Button accept_changes, cancel_changes;
+        ImageButton quit_changes;
+        EditText current_pass, new_pass, confirm_pass;
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         LinearLayout ll= (LinearLayout)inflater.inflate(R.layout.change_password, null, false);
-        notifications_settings = ll.findViewById(R.id.notifications_sett);
-        blocked_persons = ll.findViewById(R.id.blocked_persons);
+        accept_changes = ll.findViewById(R.id.accept_button_ch_pss);
+        cancel_changes = ll.findViewById(R.id.cancel_button_ch_pss);
+        quit_changes = ll.findViewById(R.id.close_change_pss);
+        current_pass = ll.findViewById(R.id.current_password_change);
+        new_pass = ll.findViewById(R.id.new_password_change);
+        confirm_pass = ll.findViewById(R.id.new_confirm_password_change);
         AlertDialog dialog = new AlertDialog.Builder(ProfileEditActivity.this).setView(ll).show();
         WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
         wmlp.gravity = Gravity.CENTER | Gravity.CENTER;
 
         dialog.getWindow().setAttributes(wmlp);
+
+        cancel_changes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { dialog.dismiss(); }
+        });
+        quit_changes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { dialog.dismiss(); }
+        });
+
+        accept_changes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (current_pass.getText().toString().isEmpty()){
+                    current_pass.setError(BaseContext.getContext().getString(R.string.message_empty_field));
+                    current_pass.requestFocus();
+                    return;
+                }
+                if (new_pass.getText().toString().isEmpty()){
+                    new_pass.setError(BaseContext.getContext().getString(R.string.message_empty_field));
+                    new_pass.requestFocus();
+                    return;
+                }
+                if (confirm_pass.getText().toString().isEmpty()){
+                    confirm_pass.setError(BaseContext.getContext().getString(R.string.message_empty_field));
+                    confirm_pass.requestFocus();
+                    return;
+                }
+                if (!new_pass.getText().toString().equals(confirm_pass.getText().toString())){
+                    Toast.makeText(BaseContext.getContext(), R.string.password_dont_match, Toast.LENGTH_SHORT).show();
+                    confirm_pass.requestFocus();
+                    return;
+                }
+                changePassword = new ChangePassword(current_pass.getText().toString(), new_pass.getText().toString());
+                presenter.changePasswordPresenter(changePassword);
+            }
+        });
+
     }
 
     public void changePhoto(){

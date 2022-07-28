@@ -7,11 +7,13 @@ import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Home.HomeInterfaces;
 import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
+import com.example.tinder_roush.Objects.TokenResponse;
 import com.example.tinder_roush.Register.RegisterInterfaces;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
@@ -402,6 +404,32 @@ public class ProfileModels implements ProfileInterfaces.models{
             @Override
             public void onFailure(Call<ProfileData> call, Throwable t) {
 
+            }
+        });
+    }
+
+    @Override
+    public void changePasswordModel(ProfileInterfaces.presenters presenter, ChangePassword data) {
+
+        Call<ChangePassword> call = apiAdapter.getApiService().changePassword(data.getCurrent_password(),data.getNew_password());
+        call.enqueue(new Callback<ChangePassword>() {
+            @Override
+            public void onResponse(Call<ChangePassword> call, Response<ChangePassword> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(BaseContext.getContext(), "Cambio de contraseña exitoso", Toast.LENGTH_SHORT).show();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Inténtalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<ChangePassword> call, Throwable t) {
             }
         });
     }

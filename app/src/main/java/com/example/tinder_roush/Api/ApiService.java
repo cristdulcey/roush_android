@@ -2,6 +2,7 @@ package com.example.tinder_roush.Api;
 
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.AccessTokenData;
+import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.HomeResponse;
@@ -125,5 +126,10 @@ public interface ApiService {
             @Field("username") String username
     );
 
-
+    @FormUrlEncoded
+    @PATCH("api/persons/change-password/")
+    Call<ChangePassword> changePassword(
+            @Field("current_password") String current_password,
+            @Field("new_password") String new_password
+    );
 }

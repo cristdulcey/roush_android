@@ -1,6 +1,7 @@
 package com.example.tinder_roush.Profile;
 
 import com.example.tinder_roush.Home.CardPersonItem;
+import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
@@ -158,6 +159,11 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     @Override
     public void changeDataPresenter(ProfileData data) {
         model.changeDataModel(this,data);
+    }
+
+    @Override
+    public void changePasswordPresenter(ChangePassword data) {
+        model.changePasswordModel(this,data);
     }
 
     @Override

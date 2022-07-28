@@ -4,6 +4,7 @@ import android.telecom.Call;
 
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Home.HomeInterfaces;
+import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
@@ -68,6 +69,7 @@ public interface ProfileInterfaces {
         //CHANGE PROFILE PHOTO
         void ProfileChangePhotoPresenters(CardPersonItem data);
         void changeDataPresenter(ProfileData data);
+        void changePasswordPresenter(ChangePassword data);
         void changeDataSuccessful();
         void changeProfilePhotosPresenter(String id);
         void changeInteresting();
@@ -94,6 +96,7 @@ public interface ProfileInterfaces {
 
        //Changes
         void changeDataModel(presenters presenter, ProfileData data);
+        void changePasswordModel(presenters presenter, ChangePassword data);
         void changePhotoModel(presenters presenter, CardPersonItem data);
         void changeGetAllPhotosModel(presenters presenter, String id);
         void postOtherPhotos(presenters presenter);
