@@ -30,13 +30,16 @@ public interface ProfileInterfaces {
         void successChangeProfile();
         void showInterest2(ProfileData data);
         void showPhotos2(ArrayList<CardPersonItem> person);
+        void addItemsSpinnerCity2(List<KeyPairBoolDataCustom> cities);
     }
 
     interface presenters{
         void citiesPresenter();
 
-        void citiesSuccessful(ArrayList<CityData> cities);
+        void citiesPresenterEdit();
 
+        void citiesSuccessful(ArrayList<CityData> cities);
+        void citiesSuccessfulEdit(ArrayList<CityData> cities);
         void ProfilePresenter();
         void ProfileInterestPresenter();
         void ProfileSuccessful(ProfileData data);
@@ -74,6 +77,7 @@ public interface ProfileInterfaces {
 
     interface models{
         void citiesModels(presenters presenter);
+        void citiesModels2(presenters presenter);
         void ProfileModel(presenters presenter);
         void ProfileInterestModel(presenters presenter);
         void ProfileEditModel(presenters presenter);

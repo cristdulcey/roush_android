@@ -25,6 +25,10 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     public void citiesPresenter() {
         model.citiesModels(this);
     }
+    @Override
+    public void citiesPresenterEdit() {
+        model.citiesModels2(this);
+    }
 
     @Override
     public void citiesSuccessful(ArrayList<CityData> cities) {
@@ -39,6 +43,21 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
             listArray0.add(h);
         }
         view.addItemsSpinnerCity(listArray0);
+    }
+
+    @Override
+    public void citiesSuccessfulEdit(ArrayList<CityData> cities) {
+        List<KeyPairBoolDataCustom> listArray0 = new ArrayList<>();
+        for (int i = 0; i < cities.size(); i++) {
+            CityData originsList = cities.get(i);
+            KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
+            h.setId(originsList.getId());
+            h.setExtra("lo que sea");
+            h.setName(originsList.getName());
+            h.setSelected(false);
+            listArray0.add(h);
+        }
+        view2.addItemsSpinnerCity2(listArray0);
     }
 
 

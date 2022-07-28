@@ -937,7 +937,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
         distance.setText(String.valueOf(data.getDistance())+"km");
-        distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
+        distance_range.setProgress(Integer.parseInt(data.getDistance()));
         city = data.getCity();
         min_age.setText(localData.getRegister("MIN_AGE"));
         max_age.setText(localData.getRegister("MAX_AGE"));

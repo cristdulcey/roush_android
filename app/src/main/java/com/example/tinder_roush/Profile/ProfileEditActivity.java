@@ -1,8 +1,11 @@
 package com.example.tinder_roush.Profile;
 
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.database.Cursor;
@@ -14,13 +17,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -29,9 +37,14 @@ import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.MenuNavigation.MenuNavigation;
+import com.example.tinder_roush.NotificationSettings.NotificationSettingsActivity;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
+import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
+import com.example.tinder_roush.Utils.SpinnerCustom;
+import com.example.tinder_roush.Utils.SpinnerListener;
+import com.google.android.material.slider.RangeSlider;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -39,7 +52,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class ProfileEditActivity extends AppCompatActivity implements ProfileInterfaces.activities2{
@@ -53,16 +68,20 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
     Button photo_preference, shop, karaoke, yoga, cook, tennis, sports, swim, art, travel, extreme, music, drink, games;
     Switch activateContent;
     ArrayList<String> orientation_list, zodiac_list;
+    List<KeyPairBoolDataCustom> allCities;
     Spinner orientation_spinner, zodiac_spinner;
+    SpinnerCustom spinnerCities;
+    SeekBar distance_range;
+    RangeSlider age_range;
     String orientation_select, zodiac_select;
-    String interesting, currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6, IdPhoto1, IdPhoto2, IdPhoto3,IdPhoto4, IdPhoto5, IdPhoto6;
+    String interesting, currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6, IdPhoto1, IdPhoto2, IdPhoto3,IdPhoto4, IdPhoto5, IdPhoto6, city;
     int check_pht, check_shop,check_kar,check_yoga,check_cook,check_tennis, check_sport, check_swim, check_art, check_travel, check_extr, check_music,check_drink,
             check_game, check_man, check_woman, check_both, check_other, check_chy, check_chn, check_chidf, check_py,check_pn, check_pidf, check_smy, check_smn, check_smidf;
     ImageButton photo1, photo2, photo3, photo4, photo5, photo6;
-    TextView ageUser;
+    TextView ageUser, password,distance, min_age, max_age;
     CardPersonItem cardPersonItem;
     String UrlPhotoProfile;
-    EditText first_name, last_name, date_birth, job, email, password, about, address;
+    EditText first_name, last_name, date_birth, job, email, about, address;
     public int RESULT_PHOTO = 100;
     public final int RESULT_PHOTO_1 = 101;
     public final int RESULT_PHOTO_2 = 102;
@@ -79,7 +98,9 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         listeners();
         orientationListEdit();
         zodiacListEdit();
+        presenter.citiesPresenterEdit();
         presenter.ProfileEditPresenter();
+        addSpinnerBefore();
         presenter.ProfilePhotoEditPresenter();
         presenter.ProfileEditInterestPresenter();
         presenter.ProfileEditPresenterGetPhotos();
@@ -92,6 +113,14 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         check_swim=1; check_art=1; check_travel = 1; check_extr = 1; check_music = 1; check_drink=1; check_game=1;
         check_man =1; check_woman =1; check_both =1; check_other =1; check_chy =1; check_chn =1; check_chidf =1;
         check_py =1; check_pn =1; check_pidf = 1; check_smy =1; check_smn=1; check_smidf=1;
+        distance_range = findViewById(R.id.distance_range_edit);
+        age_range = findViewById(R.id.age_range_edit);
+        distance_range.setMax(50);
+        age_range.setValues(18f,60f);
+        distance = findViewById(R.id.max_range_edit);
+        min_age = findViewById(R.id.min_age_edit);
+        max_age = findViewById(R.id.max_age_edit);
+        spinnerCities = findViewById(R.id.spinner_city_edit);
         interesting = "";
         UrlPhoto1 = ""; UrlPhoto2 = ""; UrlPhoto3 = ""; UrlPhoto4 = ""; UrlPhoto5 = ""; UrlPhoto6 = "";
         IdPhoto1 = ""; IdPhoto2 = ""; IdPhoto3 = ""; IdPhoto4 = "";IdPhoto5 = ""; IdPhoto6 = "";
@@ -176,43 +205,42 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
                 RESULT_PHOTO = RESULT_PHOTO_1;
                 getImageFromAlbum(); }
         });
+        password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changePassword();
+            }
+        });
         //SPINNER
         orientation_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            String textOrientation = "";
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 orientation_select = orientation_spinner.getSelectedItem().toString();
-                String textOrientation = "";
                 for (int o=0; o<5;o++){
-                    if (orientation_select.equals("Heterosexual")) {
-                        textOrientation = "HETERO";
-                        break;
-                    } if (orientation_select.equals("Gay")) {
-                        textOrientation = "GAY";
-                        break;
-                    } if (orientation_select.equals("Lesbiana")) {
-                        textOrientation = "LESBIAN";
-                        break;
-                    } if (orientation_select.equals("Bisexual")) {
-                        textOrientation = "BISEXUAL";
-                        break;
-                    }  if (orientation_select.equals("Otr@")) {
-                        textOrientation = "OTHER";
-                        break;
-                    }
+                    if (orientation_select.equals("- - - -")){ textOrientation=""; break;}
+                    if (orientation_select.equals("Heterosexual")) { textOrientation = "HETERO"; break; }
+                    if (orientation_select.equals("Gay")) { textOrientation = "GAY"; break; }
+                    if (orientation_select.equals("Lesbiana")) { textOrientation = "LESBIAN"; break; }
+                    if (orientation_select.equals("Bisexual")) { textOrientation = "BISEXUAL"; break; }
+                    if (orientation_select.equals("Otr@")) { textOrientation = "OTHER"; break; }
                 }
                 localData.register(textOrientation,"SEXUAL_ORIENTATION");
-                presenter.changePreferencesSearch();
+                if (!textOrientation.equals("")) {
+                    presenter.changePreferencesSearch();
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
 
         zodiac_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            String textZodiac = "";
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 zodiac_select = zodiac_spinner.getSelectedItem().toString();
-                String textZodiac = "";
                 for (int o=0; o<11;o++){
+                    if (zodiac_select.equals("Es indiferente")){ textZodiac=""; break;}
                     if (zodiac_select.equals("Aries")) { textZodiac = "ARIES"; break; }
                     if (zodiac_select.equals("Tauro")) { textZodiac = "TAURUS"; break; }
                     if (zodiac_select.equals("Gémisis")) { textZodiac = "GEMINI"; break; }
@@ -227,10 +255,47 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
                     if (zodiac_select.equals("Piscis")) { textZodiac = "PISCES"; break; }
                 }
                 localData.register(textZodiac,"ZODIAC_SIGN");
-                presenter.changePreferencesSearch();
+                if (!textZodiac.equals("")){
+                    presenter.changePreferencesSearch();
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
+        });
+
+        distance_range.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                distance.setText(""+progress+"km" );
+                localData.register(String.valueOf(progress),"DISTANCE_RANGE");
+                presenter.changePreferencesSearch();
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
+
+        age_range.addOnSliderTouchListener(new RangeSlider.OnSliderTouchListener() {
+            @Override
+            public void onStartTrackingTouch(@NonNull RangeSlider slider) { }
+            @Override
+            public void onStopTrackingTouch(@NonNull RangeSlider slider) {
+                List<Float> values = slider.getValues();
+                int year = Calendar.getInstance().get(Calendar.YEAR);
+                float minf = Collections.min(values);
+                float maxf = Collections.max(values);
+                int min = (int) minf; localData.register(String.valueOf(min), "MIN_AGE");
+                int max = (int) maxf; localData.register(String.valueOf(max), "MAX_AGE");
+                min_age.setText(String.valueOf(min)); max_age.setText(String.valueOf(max));
+                int date_start = year-min;
+                int date_finish = year-max;
+                localData.register(String.valueOf(date_start),"DATE_START");
+                localData.register(String.valueOf(date_finish),"DATE_FINISH");
+
+                presenter.changePreferencesSearch();
+            }
         });
 
         //SEARCH
@@ -928,7 +993,11 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         about.setText(data.getAbout());
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
-
+        distance.setText(String.valueOf(data.getDistance())+"km");
+        distance_range.setProgress(Integer.parseInt(data.getDistance()));
+        city = data.getCity();
+        min_age.setText(localData.getRegister("MIN_AGE"));
+        max_age.setText(localData.getRegister("MAX_AGE"));
         //SEARCH
         for (int i =0; i<4; i++){
             if (data.getSearch().equals("MAN")){
@@ -1055,6 +1124,22 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
                 smoker_idf.setTextColor(Color.GRAY);
             }
         }
+
+        ArrayList<String> orientation = new ArrayList<>();
+        orientation.add(0,""); orientation.add("HETERO"); orientation.add("GAY"); orientation.add("LESBIAN"); orientation.add("BISEXUAL"); orientation.add("OTHER");
+        int posOrientation = 0;
+        for (int i = 0; i < orientation.size(); i++) {
+            if (orientation.get(i).equals(data.getSexual_orientation()) && !orientation.get(i).equals("- - - -")) { posOrientation = i; break; }
+        } orientation_spinner.setSelection(posOrientation);
+
+        ArrayList<String> zodiac = new ArrayList<>();
+        zodiac.add(0,""); zodiac.add("ARIES"); zodiac.add("TAURUS"); zodiac.add("GEMINI"); zodiac.add("CANCER"); zodiac.add("LEO"); zodiac.add("VIRGO");
+        zodiac.add("LIBRA"); zodiac.add("SCORPIO"); zodiac.add("SAGITTARIUS"); zodiac.add("CAPRICORN"); zodiac.add("AQUARIUS"); zodiac.add("PISCES");
+        int posZodiac = 0;
+        for (int i = 0; i < zodiac.size(); i++) {
+            if (zodiac.get(i).equals(data.getZodiac_sign()) && !zodiac.get(i).equals("Es indiferente")) { posZodiac = i; break; }
+        } zodiac_spinner.setSelection(posZodiac);
+
     }
 
     @Override
@@ -1063,6 +1148,20 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
                 last_name.getText().toString(), email.getText().toString(),date_birth.getText().toString(),about.getText().toString(),job.getText().toString());
         presenter.changeDataPresenter(data);
     }
+
+    public void changePassword(){
+        Button notifications_settings, blocked_persons;
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout ll= (LinearLayout)inflater.inflate(R.layout.change_password, null, false);
+        notifications_settings = ll.findViewById(R.id.notifications_sett);
+        blocked_persons = ll.findViewById(R.id.blocked_persons);
+        AlertDialog dialog = new AlertDialog.Builder(ProfileEditActivity.this).setView(ll).show();
+        WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
+        wmlp.gravity = Gravity.CENTER | Gravity.CENTER;
+
+        dialog.getWindow().setAttributes(wmlp);
+    }
+
     public void changePhoto(){
         cardPersonItem = new CardPersonItem(currentPhotoPath);
         presenter.ProfileChangePhotoPresenters(cardPersonItem);
@@ -1082,18 +1181,12 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             Picasso.get().load(url).fit().centerCrop().into(photos[i]);
 
             switch (i){
-                case 0:
-                    IdPhoto1 = person.get(i).getId(); break;
-                case 1:
-                    IdPhoto2 = person.get(i).getId(); break;
-                case 2:
-                    IdPhoto3 = person.get(i).getId(); break;
-                case 3:
-                    IdPhoto4 = person.get(i).getId(); break;
-                case 4:
-                    IdPhoto5 = person.get(i).getId(); break;
-                case 5:
-                    IdPhoto6 = person.get(i).getId(); break;
+                case 0: IdPhoto1 = person.get(i).getId(); break;
+                case 1: IdPhoto2 = person.get(i).getId(); break;
+                case 2: IdPhoto3 = person.get(i).getId(); break;
+                case 3: IdPhoto4 = person.get(i).getId(); break;
+                case 4: IdPhoto5 = person.get(i).getId(); break;
+                case 5: IdPhoto6 = person.get(i).getId(); break;
             }
         }
     }
@@ -1163,6 +1256,32 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         ArrayAdapter<String> zodiacArrayAdapter = new ArrayAdapter<>(BaseContext.getContext(), R.layout.spinner_custom_textview_orientation, zodiac_list);
         zodiacArrayAdapter.setDropDownViewResource(R.layout.spinner_custom_textview_orientation);
         zodiac_spinner.setAdapter(zodiacArrayAdapter);
+    }
+
+    public void addSpinnerBefore(){
+        List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
+        KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
+        h.setId("0");
+        h.setExtra("--");
+        h.setName("cargando");
+        h.setSelected(false);
+        listArray1.add(h);
+        addItemsSpinnerCity2(listArray1);
+    }
+
+    //Spinner Ciudades
+    public void addItemsSpinnerCity2(List<KeyPairBoolDataCustom> cities){
+        allCities = cities;
+        spinnerCities.setSearchEnabled(true);
+        spinnerCities.setSearchHint("");
+        spinnerCities.setItems(cities, new SpinnerListener() {
+            @Override
+            public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
+                city=selectedItem.getId();
+            }
+            @Override
+            public void onClear() { }
+        });
     }
 
 }

@@ -63,6 +63,34 @@ public class ProfileModels implements ProfileInterfaces.models{
         });
     }
 
+    @Override
+    public void citiesModels2(ProfileInterfaces.presenters presenter) {
+        Call<CityResponse> call = apiAdapter.getApiService().cities();
+        call.enqueue(new Callback<CityResponse>() {
+            @Override
+            public void onResponse(Call<CityResponse> call, Response<CityResponse> response) {
+                if (response.isSuccessful()){
+                    CityResponse cities = response.body();
+                    presenter.citiesSuccessfulEdit(cities.getCities());
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CityResponse> call, Throwable t) {
+                Log.e("error ciudades",call.toString());
+            }
+        });
+    }
+
     //DATA USER
     @Override
     public void ProfileModel(ProfileInterfaces.presenters presenter) {

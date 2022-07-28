@@ -110,6 +110,14 @@
     <string name="no">No</string>
     <string name="indiferent">Indiferente</string>
 
+    <!--Strings Change Password-->
+    <string name="change_password_title"><b>Cambiar contraseña</b></string>
+    <string name="current_password"><b>Ingresa tu contraseña actual</b></string>
+    <string name="new_password"><b>Escribe tu nueva contraseña</b></string>
+    <string name="new_password_confirm"><b>Confirma tu nueva contraseña</b></string>
+    <string name="accept"><b>Aceptar</b></string>
+    <string name="cancel"><b>Cancelar</b></string>
+
     <!--Strings Notifications Settings-->
     <string name="title_notifications"><b>Notificaciones</b></string>
     <string name="deactivate_notifications"><b>Desactivar todas</b></string>
