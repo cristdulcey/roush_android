@@ -572,7 +572,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           //     presenter.changeProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_3;
                 getImageFromAlbum();
             }
@@ -580,7 +579,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-         //       presenter.changeProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_4;
                 getImageFromAlbum();
             }
@@ -588,7 +586,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //    presenter.changeProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_5;
                 getImageFromAlbum();
             }
@@ -596,7 +593,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         photo6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //    presenter.changeProfilePhotosPresenter();
                 RESULT_PHOTO = RESULT_PHOTO_6;
                 getImageFromAlbum();
             }

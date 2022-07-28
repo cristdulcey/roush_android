@@ -526,21 +526,27 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="70dp"
+                                android:layout_marginRight="85dp"
                                 android:text="18 años"/>
                             <TextView
                                 android:id="@+id/min_age_profile"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="30dp" />
-                            <TextView
-                                android:id="@+id/max_age_profile"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_marginRight="20dp" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="70dp"
+                                android:text="a"/>
+                            <TextView
+                                android:id="@+id/max_age_profile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="85dp"
                                 android:text="60 años"/>
                         </LinearLayout>
                     </LinearLayout>
