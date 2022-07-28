@@ -41,6 +41,22 @@ public class ProfileData {
     @Expose
     private String search;
 
+    @SerializedName("year_start")
+    @Expose
+    private String year_start;
+
+    @SerializedName("year_finish")
+    @Expose
+    private String year_finish;
+
+    @SerializedName("distance")
+    @Expose
+    private String distance;
+
+    @SerializedName("position")
+    @Expose
+    private String position;
+
     @SerializedName("about")
     @Expose
     private String about;
@@ -93,9 +109,9 @@ public class ProfileData {
         this.city = city;
     }
 
-    public ProfileData(String id, String username, String first_name, String last_name, String email, String address,
-                       String date_birth, String gender, String search, String about, String job, String interesting, String city,
-                       String sexual_orientation, String with_children, String with_pets, String zodiac_sign, String smoker) {
+    public ProfileData(String id, String username, String first_name, String last_name, String email, String address, String date_birth, String gender,
+                       String search, String year_start, String year_finish, String distance, String position, String about, String job, String interesting,
+                       String city, String sexual_orientation, String with_children, String with_pets, String zodiac_sign, String smoker) {
         this.id = id;
         this.username = username;
         this.first_name = first_name;
@@ -105,6 +121,10 @@ public class ProfileData {
         this.date_birth = date_birth;
         this.gender = gender;
         this.search = search;
+        this.year_start = year_start;
+        this.year_finish = year_finish;
+        this.distance = distance;
+        this.position = position;
         this.about = about;
         this.job = job;
         this.interesting = interesting;
@@ -268,5 +288,37 @@ public class ProfileData {
 
     public void setSmoker(String smoker) {
         this.smoker = smoker;
+    }
+
+    public String getYear_start() {
+        return year_start;
+    }
+
+    public void setYear_start(String year_start) {
+        this.year_start = year_start;
+    }
+
+    public String getYear_finish() {
+        return year_finish;
+    }
+
+    public void setYear_finish(String year_finish) {
+        this.year_finish = year_finish;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

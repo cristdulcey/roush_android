@@ -1,9 +1,11 @@
 package com.example.tinder_roush.Profile;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -34,24 +37,25 @@ import android.widget.Toast;
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
-import com.example.tinder_roush.Login.LoginInterfaces;
 import com.example.tinder_roush.MenuNavigation.MenuNavigation;
 import com.example.tinder_roush.NotificationSettings.NotificationSettingsActivity;
 import com.example.tinder_roush.Objects.ProfileData;
-import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.R;
-import com.example.tinder_roush.Register.RegisterPresenters;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
 import com.example.tinder_roush.Utils.SpinnerListener;
+import com.google.android.material.slider.RangeSlider;
+import com.google.android.material.slider.Slider;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -65,10 +69,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     Button photo_preference, shop, karaoke, yoga, cook, tennis, sports, swim, art, travel, extreme, music, drink, games;
     Switch activateContent;
     SeekBar distance_range;
+    RangeSlider age_range;
     String interesting, currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6, IdPhoto1, IdPhoto2, IdPhoto3,IdPhoto4, IdPhoto5, IdPhoto6, city;
     int check_pht, check_shop,check_kar,check_yoga,check_cook,check_tennis, check_sport, check_swim, check_art, check_travel, check_extr, check_music,check_drink, check_game,
             check_man, check_woman, check_both, check_other, check_chy, check_chn, check_chidf, check_py,check_pn, check_pidf, check_smy, check_smn, check_smidf;
     ArrayList<String> orientation_list, zodiac_list;
+    List<KeyPairBoolDataCustom> allCities;
     Spinner orientation_spinner, zodiac_spinner;
     SpinnerCustom spinnerCities;
     String orientation_select, zodiac_select;
@@ -81,9 +87,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
     public final int RESULT_PHOTO_4 = 104;
     public final int RESULT_PHOTO_5 = 105;
     public final int RESULT_PHOTO_6 = 106;
-   // int REQUEST_CODE = 200;
     String idImage;
-    TextView first_name, last_name, date_birth, job, email, password, about, address, ageUser, distance;
+    TextView first_name, last_name, date_birth, job, email, password, about, address, ageUser, distance, min_age, max_age;
     ProfilePresenters presenter;
 
     @Override
@@ -91,15 +96,15 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         initObjects();
-        addSpinnerBefore();
         listeners();
         orientationList();
         zodiacList();
+        presenter.citiesPresenter();
         presenter.ProfilePresenter();
+        addSpinnerBefore();
         presenter.ProfileInterestPresenter();
         presenter.ProfilePhotoUserPresenter();
         presenter.ProfilePresenterGetPhotos();
-        presenter.citiesPresenter();
     }
 
     private void initObjects() {
@@ -108,8 +113,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         check_man =1; check_woman =1; check_both =1; check_other =1; check_chy =1; check_chn =1; check_chidf =1;
         check_py =1; check_pn =1; check_pidf = 1; check_smy =1; check_smn=1; check_smidf=1;
         distance_range = findViewById(R.id.distance_range_profile);
+        age_range = findViewById(R.id.age_range_profile);
         distance_range.setMax(50);
+        age_range.setValues(18f,60f);
         distance = findViewById(R.id.max_range_profile);
+        min_age = findViewById(R.id.min_age_profile);
+        max_age = findViewById(R.id.max_age_profile);
         orientation_spinner = findViewById(R.id.spinner_my_orientation);
         zodiac_spinner = findViewById(R.id.spinner_zodiac);
         spinnerCities = findViewById(R.id.spinner_city_profile);
@@ -203,25 +212,21 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 orientation_select = orientation_spinner.getSelectedItem().toString();
                 for (int o=0; o<5;o++){
-                    if (orientation_select.equals("Heterosexual")) {
-                        textOrientation = "HETERO"; break;
-                    } if (orientation_select.equals("Gay")) {
-                        textOrientation = "GAY"; break;
-                    } if (orientation_select.equals("Lesbiana")) {
-                        textOrientation = "LESBIAN"; break;
-                    } if (orientation_select.equals("Bisexual")) {
-                        textOrientation = "BISEXUAL"; break;
-                    }  if (orientation_select.equals("Otr@")) {
-                        textOrientation = "OTHER"; break;
-                    }
+                    if (orientation_select.equals("- - - -")){ textOrientation=""; break;}
+                    if (orientation_select.equals("Heterosexual")) { textOrientation = "HETERO"; break; }
+                    if (orientation_select.equals("Gay")) { textOrientation = "GAY"; break; }
+                    if (orientation_select.equals("Lesbiana")) { textOrientation = "LESBIAN"; break; }
+                    if (orientation_select.equals("Bisexual")) { textOrientation = "BISEXUAL"; break; }
+                    if (orientation_select.equals("Otr@")) { textOrientation = "OTHER"; break; }
                 }
                 localData.register(textOrientation,"SEXUAL_ORIENTATION");
-                if (!textOrientation.equals("")){
+                if (!textOrientation.equals("")) {
                     presenter.changePreferencesSearch();
                 }
             }
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) { }
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
 
         zodiac_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -230,6 +235,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 zodiac_select = zodiac_spinner.getSelectedItem().toString();
                 for (int o=0; o<11;o++){
+                    if (zodiac_select.equals("Es indiferente")){ textZodiac=""; break;}
                     if (zodiac_select.equals("Aries")) { textZodiac = "ARIES"; break; }
                     if (zodiac_select.equals("Tauro")) { textZodiac = "TAURUS"; break; }
                     if (zodiac_select.equals("Gémisis")) { textZodiac = "GEMINI"; break; }
@@ -257,7 +263,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 distance.setText(""+progress+"km" );
                 localData.register(String.valueOf(progress),"DISTANCE_RANGE");
-          //      presenter.changePreferencesSearch();
+                presenter.changePreferencesSearch();
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) { }
@@ -265,6 +271,28 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) { }
         });
+
+        age_range.addOnSliderTouchListener(new RangeSlider.OnSliderTouchListener() {
+            @Override
+            public void onStartTrackingTouch(@NonNull RangeSlider slider) { }
+            @Override
+            public void onStopTrackingTouch(@NonNull RangeSlider slider) {
+                List<Float> values = slider.getValues();
+                int year = Calendar.getInstance().get(Calendar.YEAR);
+                float minf = Collections.min(values);
+                float maxf = Collections.max(values);
+                int min = (int) minf; localData.register(String.valueOf(min), "MIN_AGE");
+                int max = (int) maxf; localData.register(String.valueOf(max), "MAX_AGE");
+                min_age.setText(String.valueOf(min)); max_age.setText(String.valueOf(max));
+                int date_start = year-min;
+                int date_finish = year-max;
+                localData.register(String.valueOf(date_start),"DATE_START");
+                localData.register(String.valueOf(date_finish),"DATE_FINISH");
+
+                presenter.changePreferencesSearch();
+            }
+        });
+
 
         //SEARCH
         manPreference.setOnClickListener(new View.OnClickListener() {
@@ -912,6 +940,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         address.setText(data.getAddress());
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
+        distance.setText(String.valueOf(data.getDistance())+"km");
+        distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
+        city = data.getCity();
+        min_age.setText(localData.getRegister("MIN_AGE"));
+        max_age.setText(localData.getRegister("MAX_AGE"));
         //SEARCH
         for (int i =0; i<4; i++){
             if (data.getSearch().equals("MAN")){
@@ -1043,21 +1076,23 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         orientation.add(0,""); orientation.add("HETERO"); orientation.add("GAY"); orientation.add("LESBIAN"); orientation.add("BISEXUAL"); orientation.add("OTHER");
         int posOrientation = 0;
         for (int i = 0; i < orientation.size(); i++) {
-            if (orientation.get(i).equals(data.getSexual_orientation())) {
-                posOrientation = i; break; }
-        }
-        orientation_spinner.setSelection(posOrientation);
+            if (orientation.get(i).equals(data.getSexual_orientation()) && !orientation.get(i).equals("- - - -")) { posOrientation = i; break; }
+        } orientation_spinner.setSelection(posOrientation);
 
         ArrayList<String> zodiac = new ArrayList<>();
         zodiac.add(0,""); zodiac.add("ARIES"); zodiac.add("TAURUS"); zodiac.add("GEMINI"); zodiac.add("CANCER"); zodiac.add("LEO"); zodiac.add("VIRGO");
         zodiac.add("LIBRA"); zodiac.add("SCORPIO"); zodiac.add("SAGITTARIUS"); zodiac.add("CAPRICORN"); zodiac.add("AQUARIUS"); zodiac.add("PISCES");
         int posZodiac = 0;
         for (int i = 0; i < zodiac.size(); i++) {
-            if (zodiac.get(i).equals(data.getZodiac_sign())) {
-                posZodiac = i; break; }
-        }
-        zodiac_spinner.setSelection(posZodiac);
+            if (zodiac.get(i).equals(data.getZodiac_sign()) && !zodiac.get(i).equals("Es indiferente")) { posZodiac = i; break; }
+        } zodiac_spinner.setSelection(posZodiac);
 
+//        int posCities = 0;
+//        for (int i = 0; i < allCities.size(); i++) {
+//            if (allCities.get(i).getId().equals(data.getCity())) {
+//                posCities = i;
+//                break; }
+//        }spinnerCities.setSelection(posCities);
     }
 
     @Override
@@ -1189,18 +1224,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                 Picasso.get().load(url).fit().centerCrop().into(photos[i]);
 
                 switch (i){
-                    case 0:
-                        IdPhoto1 = person.get(i).getId(); break;
-                    case 1:
-                        IdPhoto2 = person.get(i).getId(); break;
-                    case 2:
-                        IdPhoto3 = person.get(i).getId(); break;
-                    case 3:
-                        IdPhoto4 = person.get(i).getId(); break;
-                    case 4:
-                        IdPhoto5 = person.get(i).getId(); break;
-                    case 5:
-                        IdPhoto6 = person.get(i).getId(); break;
+                    case 0: IdPhoto1 = person.get(i).getId(); break;
+                    case 1: IdPhoto2 = person.get(i).getId(); break;
+                    case 2: IdPhoto3 = person.get(i).getId(); break;
+                    case 3: IdPhoto4 = person.get(i).getId(); break;
+                    case 4: IdPhoto5 = person.get(i).getId(); break;
+                    case 5: IdPhoto6 = person.get(i).getId(); break;
                 }
             }
     }
@@ -1242,7 +1271,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     //Spinner Ciudades
     public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities){
-
+        allCities = cities;
         spinnerCities.setSearchEnabled(true);
         spinnerCities.setSearchHint("");
         spinnerCities.setItems(cities, new SpinnerListener() {
@@ -1251,9 +1280,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                 city=selectedItem.getId();
             }
             @Override
-            public void onClear() {
-
-            }
+            public void onClear() { }
         });
     }
 }

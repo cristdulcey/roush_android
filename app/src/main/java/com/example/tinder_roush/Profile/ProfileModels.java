@@ -567,7 +567,9 @@ public class ProfileModels implements ProfileInterfaces.models{
         String withPets = localData.getRegister("PETS_PREFERENCE");
         String smoker = localData.getRegister("SMOKER_PREFERENCE");
         String zodiacSign = localData.getRegister("ZODIAC_SIGN");
-      //  String distance = localData.getRegister("DISTANCE_RANGE");
+        String distance = localData.getRegister("DISTANCE_RANGE");
+        String year_start = localData.getRegister("DATE_START");
+        String year_finish = localData.getRegister("DATE_FINISH");
 
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("search", null, RequestBody.create(MediaType.parse("text/plain"), preferenceGender));
@@ -576,7 +578,9 @@ public class ProfileModels implements ProfileInterfaces.models{
         request.addFormDataPart("with_pets", null, RequestBody.create(MediaType.parse("text/plain"), withPets));
         request.addFormDataPart("smoker", null, RequestBody.create(MediaType.parse("text/plain"), smoker));
         request.addFormDataPart("zodiac_sign", null, RequestBody.create(MediaType.parse("text/plain"), zodiacSign));
-       // request.addFormDataPart("distance", null, RequestBody.create(MediaType.parse("text/plain"), distance));
+        request.addFormDataPart("distance", null, RequestBody.create(MediaType.parse("text/plain"), distance));
+        request.addFormDataPart("year_start", null, RequestBody.create(MediaType.parse("text/plain"), year_start));
+        request.addFormDataPart("year_finish", null, RequestBody.create(MediaType.parse("text/plain"), year_finish));
         MultipartBody body = request.build();
 
         Call<ProfileData> call = apiAdapter.getApiService2().updateInterest(localData.getRegister("ID_USERCURRENT"),body);
