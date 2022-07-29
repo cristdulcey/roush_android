@@ -411,13 +411,14 @@ public class ProfileModels implements ProfileInterfaces.models{
     @Override
     public void changePasswordModel(ProfileInterfaces.presenters presenter, ChangePassword data) {
 
-        Call<ChangePassword> call = apiAdapter.getApiService().changePassword(data.getCurrent_password(),data.getNew_password());
+        Call<ChangePassword> call = apiAdapter.getApiService2().changePassword(data.getCurrent_password(), data.getNew_password());
         call.enqueue(new Callback<ChangePassword>() {
             @Override
             public void onResponse(Call<ChangePassword> call, Response<ChangePassword> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(BaseContext.getContext(), "Cambio de contraseña exitoso", Toast.LENGTH_SHORT).show();
-                }else {
+                }else{
+                    Toast.makeText(BaseContext.getContext(), "Inténtalo nuevamente", Toast.LENGTH_SHORT).show();
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Inténtalo nuevamente";
                     try {
@@ -428,8 +429,10 @@ public class ProfileModels implements ProfileInterfaces.models{
                     presenter.ProfileError(response_user);
                 }
             }
+
             @Override
             public void onFailure(Call<ChangePassword> call, Throwable t) {
+
             }
         });
     }

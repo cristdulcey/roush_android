@@ -1204,6 +1204,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
                 }
                 changePassword = new ChangePassword(current_pass.getText().toString(), new_pass.getText().toString());
                 presenter.changePasswordPresenter(changePassword);
+                dialog.dismiss();
             }
         });
 
