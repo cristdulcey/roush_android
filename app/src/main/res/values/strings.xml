@@ -54,8 +54,9 @@
     <string name="map_filter">Mapa</string>
     <string name="save_filters">Guardar cambios</string>
     <string name="you_are_here">Estás aquí...</string>
-    <string name="clear_filters">Limpiar filtros</string>
+    <string name="clear_filters">Borrar filtros</string>
     <string name="distance_filter">Rango distancia que quiero ver</string>
+    <string name="gender_preference_filter"><b>Preferencia de género</b></string>
 
     <!--Strings Likes-->
     <string name="like_title">Me gusta</string>

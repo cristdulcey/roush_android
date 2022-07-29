@@ -262,8 +262,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 distance.setText(""+progress+"km" );
-                localData.register(String.valueOf(progress),"DISTANCE_RANGE");
-                presenter.changePreferencesSearch();
+                if (progress!=0){
+                    localData.register(String.valueOf(progress),"DISTANCE_RANGE");
+                    presenter.changePreferencesSearch();
+                }else {
+                    localData.register(String.valueOf(1),"DISTANCE_RANGE");
+                }
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) { }
@@ -361,7 +365,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         otherPreference.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check_both == 1){
+                if(check_other == 1){
                     otherPreference.setBackgroundResource(R.drawable.border_rigth_green);
                     otherPreference.setTextColor(Color.WHITE);
                     manPreference.setBackgroundResource(R.drawable.border_left_white);
@@ -372,10 +376,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
                     bothPreference.setTextColor(Color.GRAY);
                     String Text = "BOTH";
                     localData.register(Text,"GENDER_PREFERENCE");
-                    check_both = 0;
+                    check_other = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    check_both = 1;
+                    check_other = 1;
                 }
             }
         });
@@ -937,7 +941,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
         distance.setText(String.valueOf(data.getDistance())+"km");
-        distance_range.setProgress(Integer.parseInt(data.getDistance()));
+       // distance_range.setProgress(Integer.parseInt(data.getDistance()));
+        distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
         city = data.getCity();
         min_age.setText(localData.getRegister("MIN_AGE"));
         max_age.setText(localData.getRegister("MAX_AGE"));
