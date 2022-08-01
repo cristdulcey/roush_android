@@ -36,6 +36,7 @@ import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
+import com.example.tinder_roush.Utils.SpinnerListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.slider.RangeSlider;
 import com.squareup.picasso.Picasso;

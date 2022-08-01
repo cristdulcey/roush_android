@@ -3,9 +3,14 @@ package com.example.tinder_roush.Home;
 import android.view.View;
 
 import com.example.tinder_roush.Objects.CityData;
+import com.example.tinder_roush.Objects.HomeData;
+import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
+import com.example.tinder_roush.Profile.ProfileInterfaces;
+import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface HomeInterfaces {
 
