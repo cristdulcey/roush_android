@@ -1,10 +1,12 @@
 package com.example.tinder_roush.Home;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
@@ -31,6 +33,62 @@ public class HomeModels implements HomeInterfaces.models{
         this.apiAdapter = new ApiAdapter();
         this.localData = new LocalData();
     }
+
+    @Override
+    public void citiesModels(HomeInterfaces.presenters presenter) {
+        Call<CityResponse> call = apiAdapter.getApiService().cities();
+        call.enqueue(new Callback<CityResponse>() {
+            @Override
+            public void onResponse(Call<CityResponse> call, Response<CityResponse> response) {
+                if (response.isSuccessful()){
+                    CityResponse cities = response.body();
+                    presenter.citiesSuccessful(cities.getCities());
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.HomeError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CityResponse> call, Throwable t) {
+                Log.e("error ciudades",call.toString());
+            }
+        });
+    }
+
+    @Override
+    public void HomeFilterUserPreferences(View view, HomeInterfaces.presenters presenter) {
+        Call<ProfileData> call = apiAdapter.getApiService2().current_user();
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    presenter.HomeFilterSuccessful(view,response.body());
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.HomeError(response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
+                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     //POST MATCH
     @Override
     public void HomeModelMatch(HomeInterfaces.presenters presenter) {

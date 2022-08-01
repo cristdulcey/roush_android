@@ -1,12 +1,16 @@
 package com.example.tinder_roush.Home;
 
+import android.view.View;
 import android.widget.Toast;
 
+import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Utils.BaseContext;
+import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomePresenters implements HomeInterfaces.presenters{
 
@@ -16,6 +20,36 @@ public class HomePresenters implements HomeInterfaces.presenters{
     public HomePresenters(HomeInterfaces.fragment view) {
         this.view = view;
         this.model = new HomeModels();
+    }
+
+    @Override
+    public void citiesPresenter() {
+        model.citiesModels(this);
+    }
+
+    @Override
+    public void citiesSuccessful(ArrayList<CityData> cities) {
+        List<KeyPairBoolDataCustom> listArray0 = new ArrayList<>();
+        for (int i = 0; i < cities.size(); i++) {
+            CityData originsList = cities.get(i);
+            KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
+            h.setId(originsList.getId());
+            h.setExtra("lo que sea");
+            h.setName(originsList.getName());
+            h.setSelected(false);
+            listArray0.add(h);
+        }
+        //view.addItemsSpinnerCity(listArray0);
+    }
+
+    @Override
+    public void getUserPreferencesFilter(View view) {
+        model.HomeFilterUserPreferences(view,this);
+    }
+
+    @Override
+    public void HomeFilterSuccessful(View v,ProfileData data) {
+        view.filters(v, data);
     }
 
     @Override

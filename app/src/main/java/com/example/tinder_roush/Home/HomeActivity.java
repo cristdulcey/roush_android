@@ -21,12 +21,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
+import com.example.tinder_roush.Utils.BaseContext;
+import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
+import com.example.tinder_roush.Utils.SpinnerListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.slider.RangeSlider;
 import com.squareup.picasso.Picasso;
@@ -48,8 +53,11 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     ImageButton match, filter, swipe, like;
     ImageView goToProfile;
     Context context;
+    String city;
     HomePresenters presenter;
     List<CardPersonItem> cardPersonItems = new ArrayList<>();
+    List<KeyPairBoolDataCustom> allCities;
+    SpinnerCustom spinnerCities;
     CardStackView cardStackView;
     LocalData localData;
     int check_man, check_woman, check_both, check_other;
@@ -69,6 +77,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         initObjets(view);
         presenter.HomePersonCurrent();
         presenter.HomePhotoUser();
+        presenter.citiesPresenter();
         listeners();
         swipeCards();
         return view;
@@ -158,6 +167,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         presenter = new HomePresenters(this);
         match = view.findViewById(R.id.match_button);
         swipe = view.findViewById(R.id.swipe_button);
+//        spinnerCities = view.findViewById(R.id.spinner_city_filter_home);
         filter = view.findViewById(R.id.filter_home);
         goToProfile = view.findViewById(R.id.profile_from_home);
         localData = new LocalData();
@@ -183,7 +193,8 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filters(view);
+                presenter.getUserPreferencesFilter(view);
+               // filters(view);
             }
         });
 
@@ -195,17 +206,16 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         });
     }
 
-    public void filters(View view){
+    public void filters(View view, ProfileData data){
         Button clear_filter, save_filters, manPreference, womanPreference, bothPreference, otherPreference;
         SeekBar distance_range; RangeSlider age_range;
-        TextView min_age, max_age, distance; SpinnerCustom spinnerCities;
+        TextView min_age, max_age, distance;
         check_man =1; check_woman =1; check_both = 1; check_other =1;
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context, R.style.BottomSheetDialogTheme);
         View view_dg = LayoutInflater.from(context).inflate(R.layout.bottom_dialog_filter, (LinearLayout)view.findViewById(R.id.dialog_filter_container));
         clear_filter =view_dg.findViewById(R.id.clear_filter);
         save_filters =view_dg.findViewById(R.id.save_filters);
         distance_range = view_dg.findViewById(R.id.range_distance_filter);
-        spinnerCities = view_dg.findViewById(R.id.spinner_city_filter_home);
         age_range = view_dg.findViewById(R.id.age_range_filter);
         distance_range.setMax(50);
         age_range.setValues(18f,60f);
@@ -216,13 +226,13 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         womanPreference = view_dg.findViewById(R.id.filter_woman_home);
         bothPreference = view_dg.findViewById(R.id.filter_both_home);
         otherPreference = view_dg.findViewById(R.id.filter_other_home);
+
         //RANGE FILTERS
         distance_range.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 distance.setText(""+progress+"km" );
                 localData.register(String.valueOf(progress),"DISTANCE_RANGE");
-                //presenter.changePreferencesSearch();
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) { }
@@ -246,7 +256,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 int date_finish = year-max;
                 localData.register(String.valueOf(date_start),"DATE_START");
                 localData.register(String.valueOf(date_finish),"DATE_FINISH");
-               // presenter.changePreferencesSearch();
             }
         });
         //SEARCH
@@ -343,12 +352,85 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         save_filters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(BaseContext.getContext(),"Filtros actualizados", Toast.LENGTH_SHORT).show();
                 bottomSheetDialog.dismiss();
             }
         });
+
+        distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
+        min_age.setText(localData.getRegister("MIN_AGE"));
+        max_age.setText(localData.getRegister("MAX_AGE"));
+        for (int i =0; i<4; i++){
+            if (data.getSearch().equals("MAN")){
+                manPreference.setBackgroundResource(R.drawable.border_left_green);
+                manPreference.setTextColor(Color.WHITE);
+                localData.register("MAN","GENDER_PREFERENCE");
+                break;
+            }else{
+                manPreference.setBackgroundResource(R.drawable.border_left_white);
+                manPreference.setTextColor(Color.GRAY);
+                //localData.register("","GENDER_PREFERENCE");
+            }
+            if (data.getSearch().equals("WOMAN")){
+                womanPreference.setBackgroundResource(R.drawable.border_green);
+                womanPreference.setTextColor(Color.WHITE);
+                localData.register("WOMAN","GENDER_PREFERENCE");
+                break;
+            }else {
+                womanPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                womanPreference.setTextColor(Color.GRAY);
+                //   localData.register("","GENDER_PREFERENCE");
+            }
+            if (data.getSearch().equals("BOTH")){
+                bothPreference.setBackgroundResource(R.drawable.border_green);
+                bothPreference.setTextColor(Color.WHITE);
+                localData.register("BOTH","GENDER_PREFERENCE");
+                break;
+            }else {
+                bothPreference.setBackgroundResource(R.drawable.border_gray_transparent);
+                bothPreference.setTextColor(Color.GRAY);
+                // localData.register("","GENDER_PREFERENCE");
+            }
+            if (data.getSearch().equals("OTHER")){
+                otherPreference.setBackgroundResource(R.drawable.border_rigth_green);
+                otherPreference.setTextColor(Color.WHITE);
+                localData.register("OTHER","GENDER_PREFERENCE");
+                break;
+            }else {
+                otherPreference.setBackgroundResource(R.drawable.border_rigth_white);
+                otherPreference.setTextColor(Color.GRAY);
+                // localData.register("","GENDER_PREFERENCE");
+            }
+        }
         bottomSheetDialog.setContentView(view_dg);
         bottomSheetDialog.show();
     }
+//
+//    public void addSpinnerBefore(){
+//        List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
+//        KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
+//        h.setId("0");
+//        h.setExtra("--");
+//        h.setName("cargando");
+//        h.setSelected(false);
+//        listArray1.add(h);
+//        addItemsSpinnerCity(listArray1);
+//    }
+//
+//    //Spinner Ciudades
+//    public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities){
+//        allCities = cities;
+//        spinnerCities.setSearchEnabled(true);
+//        spinnerCities.setSearchHint("");
+//        spinnerCities.setItems(cities, new SpinnerListener() {
+//            @Override
+//            public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
+//                city=selectedItem.getId();
+//            }
+//            @Override
+//            public void onClear() { }
+//        });
+//    }
 
     //Methods
     public void performMatchSuccess() {

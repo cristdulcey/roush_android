@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 
 import android.os.Bundle;
@@ -1168,6 +1169,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
         wmlp.gravity = Gravity.CENTER | Gravity.CENTER;
 
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setAttributes(wmlp);
 
         cancel_changes.setOnClickListener(new View.OnClickListener() {
