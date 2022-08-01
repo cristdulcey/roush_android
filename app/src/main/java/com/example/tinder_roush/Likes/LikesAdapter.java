@@ -23,23 +23,18 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         this.context = context;
         this.listLikes = listLikes;
     }
-//    public LikesAdapter (ArrayList<LikesData> listLikes) {
-//        this.listLikes = listLikes;
-//    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemLikes = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_like_list,null, false);
         return new ViewHolder(itemLikes);
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String name = listLikes.get(position).getTextname();
         holder.person_name.setText(name);
-        holder.liketo.setText("te dio me gusta");
     }
 
     @Override
@@ -53,7 +48,6 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            liketo = itemView.findViewById(R.id.text1_like);
             person_name = itemView.findViewById(R.id.text2_like);
         }
     }

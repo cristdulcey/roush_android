@@ -1,22 +1,18 @@
 package com.example.tinder_roush.Likes;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tinder_roush.Objects.LikesData;
 import com.example.tinder_roush.Profile.ProfileActivity;
@@ -111,16 +107,9 @@ public class LikesActivity extends Fragment {
         startActivity(intent);
     }
 
-//    public void recyclerLikes(ArrayList<LikesData> listLikes){
-//        likesAdapter = new LikesAdapter(BaseContext.getContext(), listLikes);
-//        recyclerView.setAdapter(likesAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(BaseContext.getContext(), LinearLayoutManager.VERTICAL,false));
-//    }
-//    public void setLikesInfo(){
-//        listLikes.add(new LikesData("Alguien"));
-//        listLikes.add(new LikesData("Juan"));
-//        listLikes.add(new LikesData("Camila"));
-//        listLikes.add(new LikesData("Andres"));
-//        listLikes.add(new LikesData("Lauren"));
-//    }
+    public void recyclerLikes(ArrayList<LikesData> listLikes){
+        likesAdapter = new LikesAdapter(BaseContext.getContext(), listLikes);
+        recyclerViewLikes.setAdapter(likesAdapter);
+        recyclerViewLikes.setLayoutManager(new LinearLayoutManager(BaseContext.getContext(), LinearLayoutManager.VERTICAL,false));
+    }
 }
