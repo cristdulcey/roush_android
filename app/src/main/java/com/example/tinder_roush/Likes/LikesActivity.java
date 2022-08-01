@@ -3,6 +3,7 @@ package com.example.tinder_roush.Likes;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,7 @@ public class LikesActivity extends Fragment {
 
     private RecyclerView recyclerViewLikes;
     private LikesAdapter likesAdapter;
+    int check_lg,check_lr;
     ImageView goProfile;
     Button given, received;
     public LikesActivity() {
@@ -47,6 +49,7 @@ public class LikesActivity extends Fragment {
     }
 
     private void initObjects(View view) {
+        check_lg =1; check_lr=1;
         given = view.findViewById(R.id.given_likes_button);
         received = view.findViewById(R.id.received_likes_button);
         goProfile = view.findViewById(R.id.profile_from_likes);
@@ -56,30 +59,41 @@ public class LikesActivity extends Fragment {
 
     public void listeners(){
         given.setOnClickListener(new View.OnClickListener() {
-        @SuppressLint("ResourceAsColor")
         @Override
             public void onClick(View view) {
+            if(check_lg == 1){
                 given.setBackgroundResource(R.drawable.border_left_green);
+                given.setTextColor(Color.WHITE);
                 received.setBackgroundResource(R.drawable.border_rigth_white);
-                given.setTextColor(R.color.gray);
+                received.setTextColor(Color.GRAY);
                 LikesGivenReceivedFragment LikesGivenReceived = new LikesGivenReceivedFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.view_likes, LikesGivenReceived);
                 transaction.commit();
+                check_lg = 0;
+            }else{
+                check_lg = 1;
+            }
             }
         });
 
         received.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                given.setBackgroundResource(R.drawable.border_left_white);
-                received.setBackgroundResource(R.drawable.border_rigth_green);
-                given.setTextColor(R.color.white);
-                LikesGivenReceivedFragment LikesGivenReceived = new LikesGivenReceivedFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.view_likes, LikesGivenReceived);
-                transaction.commit();
+                if(check_lr == 1){
+                    given.setBackgroundResource(R.drawable.border_left_white);
+                    given.setTextColor(Color.GRAY);
+                    received.setBackgroundResource(R.drawable.border_rigth_green);
+                    received.setTextColor(Color.WHITE);
+                    LikesGivenReceivedFragment LikesGivenReceived = new LikesGivenReceivedFragment();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.view_likes, LikesGivenReceived);
+                    transaction.commit();
+                    check_lr = 0;
+                }
+                else{
+                    check_lr = 1;
+                }
             }
         });
 

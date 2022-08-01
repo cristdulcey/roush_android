@@ -224,42 +224,86 @@ public class RegisterModels implements RegisterInterfaces.models{
         files.add(fileImage6);
 
         for (int i = 0; i<files.size();i++){
-            final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
-            request.addFormDataPart("person", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("id")));
-            request.addFormDataPart("image", files.get(i).getName(),RequestBody.create(MediaType.parse("image/*"),  files.get(i)));
-            MultipartBody body=request.build();
+            if (i==0){
+                final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+                request.addFormDataPart("person", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("id")));
+                request.addFormDataPart("image", files.get(i).getName(),RequestBody.create(MediaType.parse("image/*"),  files.get(i)));
+                request.addFormDataPart("principal",null,RequestBody.create(MediaType.parse("text/plain"), String.valueOf(true)));
+                MultipartBody body=request.build();
 
-            Call<Register3Data> call = apiAdapter.getApiService2().addPhoto(body);
-            try {
-                call.enqueue(new Callback<Register3Data>() {
-                    @Override
-                    public void onResponse(Call<Register3Data> call, Response<Register3Data> response) {
-                        Log.d("tag", "onResponse: " + response.message().toString());
-                        if (response.isSuccessful()){
-                            localData.deletePhoto();
-                            localData.CreateUser();
-                            //presenter.sendRegisterFinal();
-                        }else {
-                            CustomErrorResponse custom_error = new CustomErrorResponse();
-                            String response_user = "Intentalo nuevamente";
-                            if (response.raw().code()==400){
-                                Log.d("tag", "apns");
+                Call<Register3Data> call = apiAdapter.getApiService2().addPhoto(body);
+                try {
+                    call.enqueue(new Callback<Register3Data>() {
+                        @Override
+                        public void onResponse(Call<Register3Data> call, Response<Register3Data> response) {
+                            Log.d("tag", "onResponse: " + response.message().toString());
+                            if (response.isSuccessful()){
+                                localData.deletePhoto();
+                                localData.CreateUser();
+                                //presenter.sendRegisterFinal();
+                            }else {
+                                CustomErrorResponse custom_error = new CustomErrorResponse();
+                                String response_user = "Intentalo nuevamente";
+                                if (response.raw().code()==400){
+                                    Log.d("tag", "apns");
+                                }
+                                try {
+                                    response_user = custom_error.returnMessageError(response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                presenter.onErrorPresenterRegister(response_user);
                             }
-                            try {
-                                response_user = custom_error.returnMessageError(response.errorBody().string());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            presenter.onErrorPresenterRegister(response_user);
                         }
-                    }
-                    @Override
-                    public void onFailure(Call<Register3Data> call, Throwable t) {
-                        Log.d("tag", "onResponse: " + t.getMessage());
-                    }
-                });
-            } catch (Exception e) {
-                Log.d("tag", "onCreate: " + e.getMessage());
+                        @Override
+                        public void onFailure(Call<Register3Data> call, Throwable t) {
+                            Log.d("tag", "onResponse: " + t.getMessage());
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.d("tag", "onCreate: " + e.getMessage());
+                }
+            }else{
+                boolean principal = false;
+                final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+                request.addFormDataPart("person", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("id")));
+                request.addFormDataPart("image", files.get(i).getName(),RequestBody.create(MediaType.parse("image/*"),  files.get(i)));
+                request.addFormDataPart("principal",null,RequestBody.create(MediaType.parse("text/plain"), String.valueOf(false)));
+
+                MultipartBody body=request.build();
+
+                Call<Register3Data> call = apiAdapter.getApiService2().addPhoto(body);
+                try {
+                    call.enqueue(new Callback<Register3Data>() {
+                        @Override
+                        public void onResponse(Call<Register3Data> call, Response<Register3Data> response) {
+                            Log.d("tag", "onResponse: " + response.message().toString());
+                            if (response.isSuccessful()){
+                                localData.deletePhoto();
+                                localData.CreateUser();
+                                //presenter.sendRegisterFinal();
+                            }else {
+                                CustomErrorResponse custom_error = new CustomErrorResponse();
+                                String response_user = "Intentalo nuevamente";
+                                if (response.raw().code()==400){
+                                    Log.d("tag", "apns");
+                                }
+                                try {
+                                    response_user = custom_error.returnMessageError(response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                presenter.onErrorPresenterRegister(response_user);
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<Register3Data> call, Throwable t) {
+                            Log.d("tag", "onResponse: " + t.getMessage());
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.d("tag", "onCreate: " + e.getMessage());
+                }
             }
         }
         presenter.sendRegisterFinal();

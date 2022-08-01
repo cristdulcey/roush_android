@@ -12,6 +12,7 @@ public interface LocalDataInterface {
     String getAccess();
     void register(String data, String key);
     void CreateUser();
+
     void wizard();
     Boolean getwizard();
     String getToken();

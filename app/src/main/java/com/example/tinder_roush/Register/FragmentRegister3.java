@@ -48,6 +48,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
     String currentPhotoPath, UrlPhoto1, UrlPhoto2, UrlPhoto3, UrlPhoto4, UrlPhoto5, UrlPhoto6, idPerson;
     Register3Data register3Data;
     RegisterPresenters presenter;
+    boolean principal;
     public int RESULT_PHOTO = 100;
     public final int RESULT_PHOTO_1 = 101;
     public final int RESULT_PHOTO_2 = 102;
@@ -81,6 +82,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
         UrlPhoto4 = "";
         UrlPhoto5 = "";
         UrlPhoto6 = "";
+        principal = true;
         back_to_r2 = view.findViewById(R.id.back_r3_button);
         next_r4 = view.findViewById(R.id.next_r3_button);
         photo1 = view.findViewById(R.id.photo_1_register);
@@ -171,62 +173,51 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
 
         if (requestCode == RESULT_PHOTO_1 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
-           // File  = new File(localData.getRegister("SELFIE"));
             currentPhotoPath = getPath(selectedImage);
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo1.setImageBitmap(bitmap);
             UrlPhoto1 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image1");
-//            register3();
             Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_2 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
-
             currentPhotoPath = getPath(selectedImage);
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo2.setImageBitmap(bitmap);
             UrlPhoto2 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image2");
             Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
-
         }
         if (requestCode == RESULT_PHOTO_3 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
-
             currentPhotoPath = getPath(selectedImage);
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo3.setImageBitmap(bitmap);
             UrlPhoto3 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image3");
             Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
-
         }
         if (requestCode == RESULT_PHOTO_4 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
-
             currentPhotoPath = getPath(selectedImage);
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo4.setImageBitmap(bitmap);
             UrlPhoto4 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image4");
             Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
-
         }
         if (requestCode == RESULT_PHOTO_5 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
-
             currentPhotoPath = getPath(selectedImage);
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo5.setImageBitmap(bitmap);
             UrlPhoto5 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image5");
             Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
-
         }
         if (requestCode == RESULT_PHOTO_6 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
-
             currentPhotoPath = getPath(selectedImage);
             Bitmap bitmap= BitmapFactory.decodeFile(currentPhotoPath);
             photo6.setImageBitmap(bitmap);

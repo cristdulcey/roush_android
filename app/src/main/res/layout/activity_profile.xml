@@ -53,6 +53,14 @@
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
 
+                    <ImageButton
+                        android:id="@+id/config_notifications"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/setting"/>
+
                 </LinearLayout>
 
                 <!--Photo profile-->
@@ -344,15 +352,18 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_man_profile"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_left_green"
                             android:text="@string/men"
+                            android:textColor="@color/white"
                             android:textSize="16sp"/>
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_woman_profile"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
@@ -360,7 +371,17 @@
                             android:textSize="16sp"/>
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_both_profile"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:textAllCaps="false"
+                            android:background="@drawable/border_gray_transparent"
+                            android:text="@string/both"
+                            android:textSize="16sp"/>
+
+                        <Button
+                            android:id="@+id/search_other_profile"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
@@ -399,16 +420,16 @@
                             android:layout_marginLeft="4dp"
                             android:src="@drawable/icon_location_green"
                             android:padding="8dp"/>
-                        <TextView
-                            android:id="@+id/city_field_profile"
+                        <com.example.tinder_roush.Utils.SpinnerCustom
+                            android:id="@+id/spinner_city_profile"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/match_city"
-                            android:textColor="@color/green1"
-                            android:textStyle="bold"
-                            android:background="@android:color/transparent"
-                            android:textSize="14sp" />
+                            android:layout_height="match_parent"
+                            android:paddingLeft="8dp"
+                            android:layout_gravity="top"
+                            app:textColor="@color/green2"
+                            android:paddingHorizontal="8dp"
+                            app:highlightColor="@color/green2"
+                            android:background="@android:color/transparent"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -435,10 +456,12 @@
                         android:orientation="vertical">
 
                         <SeekBar
+                            android:id="@+id/distance_range_profile"
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_marginTop="10dp"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -448,13 +471,17 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="110dp"
                                 android:text="0km"/>
+                            <TextView
+                                android:id="@+id/max_range_profile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="110dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="110dp"
-                                android:text="40km"/>
+                                android:text="50km"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -483,11 +510,13 @@
                         android:layout_marginBottom="20dp"
                         android:orientation="vertical">
 
-                        <SeekBar
+                        <com.google.android.material.slider.RangeSlider
+                            android:id="@+id/age_range_profile"
                             android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_gravity="center"/>
+                            android:layout_height="wrap_content"
+                            android:valueFrom="18.0"
+                            android:valueTo="60.0"
+                            android:theme="@style/MyMaterialTheme"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -497,12 +526,27 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="110dp"
+                                android:layout_marginRight="85dp"
                                 android:text="18 años"/>
+                            <TextView
+                                android:id="@+id/min_age_profile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="110dp"
+                                android:text="a"/>
+                            <TextView
+                                android:id="@+id/max_age_profile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="85dp"
                                 android:text="60 años"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -531,14 +575,17 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/children_yes_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
+                            android:textColor="@color/white"
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/children_no_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -547,6 +594,7 @@
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/children_indifferent_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -579,14 +627,17 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/pets_yes_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/pets_no_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -595,6 +646,7 @@
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/pets_indifferent_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -625,24 +677,25 @@
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="40dp"
                         android:orientation="horizontal">
-
                         <Button
+                            android:id="@+id/smoker_yes_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
                             android:textSize="16sp"/>
-
                         <Button
+                            android:id="@+id/smoker_no_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
                             android:textSize="16sp"/>
-
                         <Button
+                            android:id="@+id/smoker_indifferent_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -736,8 +789,9 @@
                         android:id="@+id/photo_1_profile"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 
@@ -746,7 +800,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
@@ -767,7 +822,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
@@ -776,7 +832,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:src="@drawable/icon_camera"
                         android:background="@drawable/border_white_green_soft_round"
                         />
@@ -799,7 +856,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
@@ -808,7 +866,8 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 

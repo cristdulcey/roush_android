@@ -103,19 +103,35 @@
     <string name="no_longer_interested">Ya no me interesa</string>
     <string name="men">Hombre</string>
     <string name="women">Mujer</string>
+    <string name="both">Ambos</string>
     <string name="other">Otr@</string>
     <string name="ok">Ok</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
     <string name="indiferent">Indiferente</string>
 
-    <!--Strings Notifications-->
+    <!--Strings Change Password-->
+    <string name="change_password_title"><b>Cambiar contraseña</b></string>
+    <string name="current_password"><b>Ingresa tu contraseña actual</b></string>
+    <string name="new_password"><b>Escribe tu nueva contraseña</b></string>
+    <string name="new_password_confirm"><b>Confirma tu nueva contraseña</b></string>
+    <string name="accept"><b>Aceptar</b></string>
+    <string name="cancel"><b>Cancelar</b></string>
+
+    <!--Strings Notifications Settings-->
     <string name="title_notifications"><b>Notificaciones</b></string>
     <string name="deactivate_notifications"><b>Desactivar todas</b></string>
     <string name="message_receive_ntf">Cuando me llegue un mensaje</string>
     <string name="match_done_ntf">Cuando haga un match</string>
     <string name="like_received_ntf">Cuando me den \"Me gusta\"</string>
     <string name="cross_with_ntf">Cuando me cruce con alguien con la app</string>
+    <string name="notifications_setting">Notificaciones</string>
+    <string name="blocked_persons_sett">Personas bloqueadas</string>
+
+    <!--Strings Notifications-->
+    <string name="new_message_alert">Tienes un nuevo mensaje de</string>
+    <string name="new_match_alert">Hiciste match con</string>
+    <string name="new_cross_alert">Te cruzaste con</string>
 
     <!--Strings Blogs-->
     <string name="title_blog">Historias</string>
@@ -180,7 +196,7 @@
     <string name="button_swimming">Natación</string>
     <string name="button_art">Arte</string>
     <string name="button_travel">Viajar</string>
-    <string name="button_extreme">Extreme</string>
+    <string name="button_extreme">Extremo</string>
     <string name="button_music">Música</string>
     <string name="button_drink">Bebida</string>
     <string name="button_video_games">Videojuegos</string>

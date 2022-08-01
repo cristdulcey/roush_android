@@ -6,14 +6,20 @@ public class CardPersonItem {
 
     private String id, image;
     private ProfileData person;
+    private Boolean principal;
 
     public CardPersonItem() {
     }
 
-    public CardPersonItem(String id, ProfileData person, String image) {
+    public CardPersonItem(String image) {
+        this.image = image;
+    }
+
+    public CardPersonItem(String id, ProfileData person, String image, Boolean principal) {
         this.id = id;
         this.person = person;
         this.image = image;
+        this.principal = principal;
     }
 
     public String getId() {
@@ -38,5 +44,13 @@ public class CardPersonItem {
 
     public void setPerson(ProfileData person) {
         this.person = person;
+    }
+
+    public Boolean getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(Boolean principal) {
+        this.principal = principal;
     }
 }

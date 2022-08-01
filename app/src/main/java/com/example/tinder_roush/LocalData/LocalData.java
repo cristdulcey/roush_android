@@ -91,7 +91,6 @@ public class LocalData implements LocalDataInterface{
         return "";
     }
 
-
     @Override
     public void wizard() {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Tinder-roush", BaseContext.getContext().MODE_PRIVATE);

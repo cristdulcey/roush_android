@@ -66,6 +66,7 @@
                     app:cardCornerRadius="10dp">
 
                     <ImageView
+                        android:id="@+id/photo_profile_edit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="20dp"
@@ -181,7 +182,7 @@
                             android:textColor="@color/white"
                             android:text="@string/password_profile"
                             android:textSize="18sp"/>
-                        <EditText
+                        <TextView
                             android:id="@+id/edit_profile_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -228,10 +229,11 @@
                             android:textColor="@color/white"
                             android:text="@string/location_profile"
                             android:textSize="18sp"/>
-                        <TextView
+                        <EditText
                             android:id="@+id/profile_locations"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
                             android:text="Chapinero"
                             android:textColor="@color/white"
                             android:textSize="18sp"/>
@@ -323,7 +325,7 @@
                             android:src="@drawable/icon_orientation"
                             android:padding="8dp"/>
                         <Spinner
-                            android:id="@+id/spinner_my_orientation"
+                            android:id="@+id/spinner_my_orientation_edit"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:paddingLeft="2dp"
@@ -357,15 +359,18 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_man_edit"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_left_green"
                             android:text="@string/men"
+                            android:textColor="@color/white"
                             android:textSize="16sp"/>
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_woman_edit"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
@@ -373,7 +378,17 @@
                             android:textSize="16sp"/>
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:id="@+id/search_both_edit"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:textAllCaps="false"
+                            android:background="@drawable/border_gray_transparent"
+                            android:text="@string/both"
+                            android:textSize="16sp"/>
+
+                        <Button
+                            android:id="@+id/search_other_edit"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
@@ -411,16 +426,16 @@
                             android:layout_marginLeft="4dp"
                             android:src="@drawable/icon_location_green"
                             android:padding="8dp"/>
-                        <TextView
-                            android:id="@+id/city_field_profile"
+                        <com.example.tinder_roush.Utils.SpinnerCustom
+                            android:id="@+id/spinner_city_edit"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/match_city"
-                            android:textColor="@color/green1"
-                            android:textStyle="bold"
-                            android:background="@android:color/transparent"
-                            android:textSize="14sp" />
+                            android:layout_height="match_parent"
+                            android:paddingLeft="8dp"
+                            android:layout_gravity="top"
+                            app:textColor="@color/green2"
+                            android:paddingHorizontal="8dp"
+                            app:highlightColor="@color/green2"
+                            android:background="@android:color/transparent"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -447,6 +462,7 @@
                         android:orientation="vertical">
 
                         <SeekBar
+                            android:id="@+id/distance_range_edit"
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_marginTop="10dp"
@@ -460,13 +476,17 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="110dp"
                                 android:text="0km"/>
+                            <TextView
+                                android:id="@+id/max_range_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="110dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="110dp"
-                                android:text="40km"/>
+                                android:text="50km"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -495,11 +515,13 @@
                         android:layout_marginBottom="20dp"
                         android:orientation="vertical">
 
-                        <SeekBar
+                        <com.google.android.material.slider.RangeSlider
+                            android:id="@+id/age_range_edit"
                             android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_gravity="center"/>
+                            android:layout_height="wrap_content"
+                            android:valueFrom="18.0"
+                            android:valueTo="60.0"
+                            android:theme="@style/MyMaterialTheme"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -509,12 +531,27 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="110dp"
+                                android:layout_marginRight="85dp"
                                 android:text="18 años"/>
+                            <TextView
+                                android:id="@+id/min_age_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="110dp"
+                                android:text="a"/>
+                            <TextView
+                                android:id="@+id/max_age_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="85dp"
                                 android:text="60 años"/>
                         </LinearLayout>
 
@@ -543,14 +580,17 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/children_yes_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
+                            android:textColor="@color/white"
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/children_no_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -559,6 +599,7 @@
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/children_indifferent_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -578,7 +619,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
-                        android:text="@string/with_children"
+                        android:text="@string/with_pets"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="20sp"/>
@@ -590,14 +631,17 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/pets_yes_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/pets_no_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -606,6 +650,7 @@
                             android:textSize="16sp"/>
 
                         <Button
+                            android:id="@+id/pets_indifferent_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -638,22 +683,24 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/smoker_yes_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
                             android:textSize="16sp"/>
-
                         <Button
+                            android:id="@+id/smoker_no_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
                             android:textSize="16sp"/>
-
                         <Button
+                            android:id="@+id/smoker_indifferent_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -663,7 +710,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!--My orientation-->
+                <!--Zodiac sign-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -685,7 +732,7 @@
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
                         <Spinner
-                            android:id="@+id/spinner_zodiac"
+                            android:id="@+id/spinner_zodiac_edit"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:paddingLeft="2dp"
@@ -744,20 +791,22 @@
                     android:gravity="center">
 
                     <ImageButton
-                        android:id="@+id/photo_1_profile"
+                        android:id="@+id/photo_1_edit"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 
                     <ImageButton
-                        android:id="@+id/photo_2_profile"
+                        android:id="@+id/photo_2_edit"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
@@ -774,20 +823,22 @@
                     android:gravity="center">
 
                     <ImageButton
-                        android:id="@+id/photo_3_profile"
+                        android:id="@+id/photo_3_edit"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
                     <ImageButton
-                        android:id="@+id/photo_4_profile"
+                        android:id="@+id/photo_4_edit"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:src="@drawable/icon_camera"
                         android:background="@drawable/border_white_green_soft_round"
                         />
@@ -806,20 +857,22 @@
                     android:gravity="center">
 
                     <ImageButton
-                        android:id="@+id/photo_5_profile"
+                        android:id="@+id/photo_5_edit"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginRight="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
                     <ImageButton
-                        android:id="@+id/photo_6_profile"
+                        android:id="@+id/photo_6_edit"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginLeft="8dp"
-                        android:padding="40dp"
+                        android:scaleType="centerInside"
+                        android:padding="4dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 
@@ -872,7 +925,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button_photo_preference_profile"
+                        android:id="@+id/button_photo_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginRight="5dp"
@@ -883,7 +936,7 @@
                         android:drawableLeft="@drawable/camera_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
-                        android:id="@+id/button_shopping_preference_profile"
+                        android:id="@+id/button_shopping_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginLeft="5dp"
@@ -905,7 +958,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button_karaoke_preference_profile"
+                        android:id="@+id/button_karaoke_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginRight="5dp"
@@ -916,7 +969,7 @@
                         android:drawableLeft="@drawable/microphone"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
-                        android:id="@+id/button_yoga_preference_profile"
+                        android:id="@+id/button_yoga_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginLeft="5dp"
@@ -935,7 +988,7 @@
                     android:layout_height="60dp"
                     android:orientation="horizontal">
                     <Button
-                        android:id="@+id/button_cooking_preference_profile"
+                        android:id="@+id/button_cooking_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginRight="5dp"
@@ -946,7 +999,7 @@
                         android:drawableLeft="@drawable/food_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
-                        android:id="@+id/button_tennis_preference_profile"
+                        android:id="@+id/button_tennis_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginLeft="5dp"
@@ -966,7 +1019,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button_sports_preference_profile"
+                        android:id="@+id/button_sports_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginRight="5dp"
@@ -977,7 +1030,7 @@
                         android:drawableLeft="@drawable/sport_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
-                        android:id="@+id/button_swim_preference_profile"
+                        android:id="@+id/button_swim_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginLeft="5dp"
@@ -997,7 +1050,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button_art_preference_profile"
+                        android:id="@+id/button_art_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginRight="5dp"
@@ -1008,7 +1061,7 @@
                         android:drawableLeft="@drawable/art_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
-                        android:id="@+id/button_travel_preference_profile"
+                        android:id="@+id/button_travel_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginLeft="5dp"
@@ -1028,7 +1081,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button_extreme_preference_profile"
+                        android:id="@+id/button_extreme_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginRight="5dp"
@@ -1039,7 +1092,7 @@
                         android:drawableLeft="@drawable/parachute_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
-                        android:id="@+id/button_music_preference_profile"
+                        android:id="@+id/button_music_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginLeft="5dp"
@@ -1060,7 +1113,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button_drink_preference_profile"
+                        android:id="@+id/button_drink_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginRight="5dp"
@@ -1071,7 +1124,7 @@
                         android:drawableLeft="@drawable/wine_icon"
                         android:background="@drawable/border_green_soft_transparent_round"/>
                     <Button
-                        android:id="@+id/button_game_preference_profile"
+                        android:id="@+id/button_game_preference_edit"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
                         android:layout_marginLeft="5dp"

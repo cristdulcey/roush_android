@@ -40,9 +40,8 @@ public interface HomeInterfaces {
     interface models{
         //Get match and photos
         void HomeModelMatch(presenters presenter);
-
-        //Get photo current user
         void HomeModelPhoto(presenters presenter);
+        //Get photo current user
         void HomeModelPhotoUser(presenters presenter);
         void HomeModelPhotoUserSuccess(presenters presenter, CardPersonItem data);
 
