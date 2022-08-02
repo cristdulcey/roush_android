@@ -77,7 +77,6 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_likes_received"
-        android:layout_marginHorizontal="20dp"
         android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
