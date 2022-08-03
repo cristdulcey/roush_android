@@ -1,7 +1,9 @@
 package com.example.tinder_roush.Likes;
 
-import com.example.tinder_roush.Home.CardPersonItem;
+import android.widget.Toast;
+
 import com.example.tinder_roush.Objects.HomeData;
+import com.example.tinder_roush.Utils.BaseContext;
 
 import java.util.ArrayList;
 
@@ -16,14 +18,10 @@ public class LikesPresenters implements LikesInterfaces.presenters{
         this.model = new LikesModels();
     }
 
-
     @Override
     public void getLikesPresenter() {
         model.getLikesModel(this);
     }
-
-//    @Override
-//    public void getLikesReceivedPresenter() { }
 
     @Override
     public void getLikesSuccessful(ArrayList<HomeData> data) {
@@ -31,21 +29,8 @@ public class LikesPresenters implements LikesInterfaces.presenters{
     }
 
     @Override
-    public void getPhotosLikes() {
-        model.getPhotosLikeModel(this);
-    }
-
-    @Override
-    public void likesPhotosSuccess(CardPersonItem data) {
-
-    }
-
-//    @Override
-//    public void getLikesReceivedSuccessful(HomeData data) { }
-
-    @Override
     public void getLikesError(String message) {
-
+        Toast.makeText(BaseContext.getContext(),"No se pudo obtener", Toast.LENGTH_SHORT).show();
     }
 
 }

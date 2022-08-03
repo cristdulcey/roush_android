@@ -37,6 +37,14 @@ public class HomeData {
     @Expose
     private String person2_name;
 
+    @SerializedName("person1_image")
+    @Expose
+    private String person1_image;
+
+    @SerializedName("person2_image")
+    @Expose
+    private String person2_image;
+
 
     public HomeData(String id, String person1, String person2, String response_person1, String response_person2) {
         this.id = id;
@@ -49,8 +57,6 @@ public class HomeData {
         this.response_person1 = response_person1;
         this.response_person2 = response_person2;
     }
-
-
 
     public String getId() {
         return id;
@@ -114,5 +120,21 @@ public class HomeData {
 
     public void setPerson2_name(String person2_name) {
         this.person2_name = person2_name;
+    }
+
+    public String getPerson1_image() {
+        return person1_image;
+    }
+
+    public void setPerson1_image(String person1_image) {
+        this.person1_image = person1_image;
+    }
+
+    public String getPerson2_image() {
+        return person2_image;
+    }
+
+    public void setPerson2_image(String person2_image) {
+        this.person2_image = person2_image;
     }
 }

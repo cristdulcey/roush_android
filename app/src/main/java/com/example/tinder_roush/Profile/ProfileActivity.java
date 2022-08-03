@@ -1,11 +1,5 @@
 package com.example.tinder_roush.Profile;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -26,13 +19,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.LocalData.LocalData;
@@ -46,13 +43,11 @@ import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
 import com.example.tinder_roush.Utils.SpinnerListener;
 import com.google.android.material.slider.RangeSlider;
-import com.google.android.material.slider.Slider;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -911,7 +906,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 
     //GET PROFILE PHOTO
     @Override
-    public void getPhoto(CardPersonItem data) { Picasso.get().load(data.getImage()).fit().centerCrop().into(profile_photo); }
+    public void getPhoto(CardPersonItem data) {
+      //  Glide.with(this).load(data.getImage()).into(profile_photo);
+        Picasso.get().load(data.getImage()).fit().centerCrop().into(profile_photo); }
 
     //GET BASIC DATA
     public  int getEdad(Date birth_date, Date current_date) {

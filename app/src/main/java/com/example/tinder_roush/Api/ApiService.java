@@ -139,7 +139,7 @@ public interface ApiService {
             @Field("new_password") String new_password
     );
 
-    @GET("/api/persons-match/?response_person1=true")
+    @GET("/api/persons-match/?ordering=-created_at&response_person1=true")
     Call<LikesData> likes(
             @Query("id") String id
     );
