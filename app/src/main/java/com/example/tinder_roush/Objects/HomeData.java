@@ -58,8 +58,6 @@ public class HomeData {
         this.response_person2 = response_person2;
     }
 
-
-
     public String getId() {
         return id;
     }
