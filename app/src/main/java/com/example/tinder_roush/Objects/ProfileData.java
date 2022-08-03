@@ -109,6 +109,7 @@ public class ProfileData {
         this.city = city;
     }
 
+    //All data
     public ProfileData(String id, String username, String first_name, String last_name, String email, String address, String date_birth, String gender,
                        String search, String year_start, String year_finish, String distance, String position, String about, String job, String interesting,
                        String city, String sexual_orientation, String with_children, String with_pets, String zodiac_sign, String smoker) {
@@ -135,7 +136,7 @@ public class ProfileData {
         this.zodiac_sign = zodiac_sign;
         this.smoker = smoker;
     }
-
+    //Constructor update
     public ProfileData(String id, String first_name, String last_name, String email, String date_birth, String about, String job) {
         this.id = id;
         this.first_name = first_name;

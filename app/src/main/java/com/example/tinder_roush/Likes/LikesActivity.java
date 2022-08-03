@@ -1,39 +1,36 @@
 package com.example.tinder_roush.Likes;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.tinder_roush.Objects.LikesData;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 
 import java.util.ArrayList;
 
-public class LikesActivity extends Fragment {
+public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
 
-    private ArrayList<LikesData> listLikes;
-
+    private ArrayList<HomeData> listLikes;
     private RecyclerView recyclerViewLikes;
     private LikesAdapter likesAdapter;
     int check_lg,check_lr;
     ImageView goProfile;
     Button given, received;
+    LikesPresenters presenter;
+    LocalData localData;
     public LikesActivity() {
         // Required empty public constructor
     }
@@ -42,9 +39,8 @@ public class LikesActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_likes, container, false);
         initObjects(view);
+        presenter.getLikesPresenter();
         listeners();
-//        setLikesInfo();
-//        recyclerLikes();
         return view;
     }
 
@@ -54,6 +50,8 @@ public class LikesActivity extends Fragment {
         received = view.findViewById(R.id.received_likes_button);
         goProfile = view.findViewById(R.id.profile_from_likes);
         recyclerViewLikes = view.findViewById(R.id.recycler_likes_received);
+        presenter = new LikesPresenters(this);
+        localData = new LocalData();
         listLikes = new ArrayList<>();
     }
 
@@ -62,14 +60,11 @@ public class LikesActivity extends Fragment {
         @Override
             public void onClick(View view) {
             if(check_lg == 1){
+                presenter.getLikesPresenter();
                 given.setBackgroundResource(R.drawable.border_left_green);
                 given.setTextColor(Color.WHITE);
                 received.setBackgroundResource(R.drawable.border_rigth_white);
                 received.setTextColor(Color.GRAY);
-                LikesGivenReceivedFragment LikesGivenReceived = new LikesGivenReceivedFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.view_likes, LikesGivenReceived);
-                transaction.commit();
                 check_lg = 0;
             }else{
                 check_lg = 1;
@@ -81,14 +76,11 @@ public class LikesActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 if(check_lr == 1){
+                    presenter.getLikesPresenter();
                     given.setBackgroundResource(R.drawable.border_left_white);
                     given.setTextColor(Color.GRAY);
                     received.setBackgroundResource(R.drawable.border_rigth_green);
                     received.setTextColor(Color.WHITE);
-                    LikesGivenReceivedFragment LikesGivenReceived = new LikesGivenReceivedFragment();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.view_likes, LikesGivenReceived);
-                    transaction.commit();
                     check_lr = 0;
                 }
                 else{
@@ -111,16 +103,9 @@ public class LikesActivity extends Fragment {
         startActivity(intent);
     }
 
-//    public void recyclerLikes(ArrayList<LikesData> listLikes){
-//        likesAdapter = new LikesAdapter(BaseContext.getContext(), listLikes);
-//        recyclerView.setAdapter(likesAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(BaseContext.getContext(), LinearLayoutManager.VERTICAL,false));
-//    }
-//    public void setLikesInfo(){
-//        listLikes.add(new LikesData("Alguien"));
-//        listLikes.add(new LikesData("Juan"));
-//        listLikes.add(new LikesData("Camila"));
-//        listLikes.add(new LikesData("Andres"));
-//        listLikes.add(new LikesData("Lauren"));
-//    }
+    public void recyclerLikes(ArrayList<HomeData> listLikes){
+        likesAdapter = new LikesAdapter(BaseContext.getContext(), listLikes);
+        recyclerViewLikes.setAdapter(likesAdapter);
+        recyclerViewLikes.setLayoutManager(new LinearLayoutManager(BaseContext.getContext(), LinearLayoutManager.VERTICAL,false));
+    }
 }

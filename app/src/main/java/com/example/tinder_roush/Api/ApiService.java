@@ -6,6 +6,7 @@ import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.HomeResponse;
+import com.example.tinder_roush.Objects.LikesData;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
@@ -91,6 +92,11 @@ public interface ApiService {
             @Query("person") String person
     );
 
+    @GET("/api/persons-photo/?ordering=-principal")
+    Call<HomeResponse> likesPhotos(
+            @Query("person") String person
+    );
+
     @PATCH("api/persons/{id}/")
     Call<ProfileData> changeProfile(
             @Path("id") String id,
@@ -132,4 +138,10 @@ public interface ApiService {
             @Field("current_password") String current_password,
             @Field("new_password") String new_password
     );
+
+    @GET("/api/persons-match/?ordering=-created_at&response_person1=true")
+    Call<LikesData> likes(
+            @Query("id") String id
+    );
+
 }

@@ -1,10 +1,16 @@
 package com.example.tinder_roush.Home;
 
+import android.view.View;
+
+import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
+import com.example.tinder_roush.Profile.ProfileInterfaces;
+import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface HomeInterfaces {
 
@@ -13,10 +19,16 @@ public interface HomeInterfaces {
        void getUser(ProfileData data);
        void getUserPhoto(CardPersonItem person);
        void performMatchSuccess();
+       void filters(View view, ProfileData data);
+//       void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities);
     }
 
     interface presenters{
+        void citiesPresenter();
+        void citiesSuccessful(ArrayList<CityData> cities);
         //Get match and photos
+        void getUserPreferencesFilter(View view);
+        void HomeFilterSuccessful(View view,ProfileData data);
         void HomePresenterGetMatch();
         void HomePresenterGetPhotos();
         void HomePresenterSuccess(ArrayList<CardPersonItem> person);
@@ -38,6 +50,8 @@ public interface HomeInterfaces {
     }
 
     interface models{
+        void citiesModels(HomeInterfaces.presenters presenter);
+        void HomeFilterUserPreferences(View view,presenters presenter);
         //Get match and photos
         void HomeModelMatch(presenters presenter);
         void HomeModelPhoto(presenters presenter);

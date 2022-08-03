@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 
 import android.os.Bundle;
@@ -368,7 +369,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         otherPreference.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check_both == 1){
+                if(check_other == 1){
                     otherPreference.setBackgroundResource(R.drawable.border_rigth_green);
                     otherPreference.setTextColor(Color.WHITE);
                     manPreference.setBackgroundResource(R.drawable.border_left_white);
@@ -379,10 +380,10 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
                     bothPreference.setTextColor(Color.GRAY);
                     String Text = "BOTH";
                     localData.register(Text,"GENDER_PREFERENCE");
-                    check_both = 0;
+                    check_other = 0;
                     presenter.changePreferencesSearch();
                 }else{
-                    check_both = 1;
+                    check_other = 1;
                 }
             }
         });
@@ -1168,6 +1169,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
         wmlp.gravity = Gravity.CENTER | Gravity.CENTER;
 
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setAttributes(wmlp);
 
         cancel_changes.setOnClickListener(new View.OnClickListener() {
