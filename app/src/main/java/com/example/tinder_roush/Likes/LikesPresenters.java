@@ -47,6 +47,11 @@ public class LikesPresenters implements LikesInterfaces.presenters{
     }
 
     @Override
+    public void getAllLikesPresenter() {
+        model.getAllLikesModel(this);
+    }
+
+    @Override
     public void getLikesPresenter() {
         model.getLikesModel(this);
     }
