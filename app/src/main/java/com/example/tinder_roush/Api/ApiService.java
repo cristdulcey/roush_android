@@ -139,8 +139,17 @@ public interface ApiService {
             @Field("new_password") String new_password
     );
 
+    @GET("/api/persons-match/")
+    Call<HomeData> likes(
+    );
+
     @GET("/api/persons-match/?ordering=-created_at&response_person1=true")
-    Call<LikesData> likes(
+    Call<LikesData> likes_given(
+            @Query("id") String id
+    );
+
+    @GET("/api/persons-match/?ordering=-created_at&response_person2=true")
+    Call<LikesData> likes_received(
             @Query("id") String id
     );
 

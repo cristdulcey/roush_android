@@ -19,13 +19,28 @@ public class LikesPresenters implements LikesInterfaces.presenters{
     }
 
     @Override
+    public void getAllLikesPresenter() {
+        model.getAllLikesModel(this);
+    }
+
+    @Override
     public void getLikesPresenter() {
         model.getLikesModel(this);
     }
 
     @Override
+    public void getLikesReceivedPresenter() {
+        model.getLikesReceivedModel(this);
+    }
+
+    @Override
     public void getLikesSuccessful(ArrayList<HomeData> data) {
         view.recyclerLikes(data);
+    }
+
+    @Override
+    public void getLikesReceivedSuccessful(ArrayList<HomeData> data) {
+        view.recyclerLikesGiven(data);
     }
 
     @Override

@@ -1,7 +1,10 @@
 package com.example.tinder_roush.Likes;
 
+import android.util.Log;
+
 import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.LikesData;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
@@ -21,16 +24,18 @@ public class LikesModels implements LikesInterfaces.models{
         this.localData = new LocalData();
     }
 
+
     @Override
-    public void getLikesModel(LikesInterfaces.presenters presenter) {
-        Call<LikesData> call = apiAdapter.getApiService2().likes(localData.getRegister("ID_USERCURRENT"));
-        call.enqueue(new Callback<LikesData>() {
+    public void getAllLikesModel(LikesPresenters presenter) {
+        Call<HomeData> call = apiAdapter.getApiService2().likes();
+        call.enqueue(new Callback<HomeData>() {
             @Override
-            public void onResponse(Call<LikesData> call, Response<LikesData> response) {
-                if (response.isSuccessful()){
-                    LikesData list = response.body();
-                    presenter.getLikesSuccessful(list.getResults());
-                }else {
+            public void onResponse(Call<HomeData> call, Response<HomeData> response) {
+                if (response.isSuccessful()) {
+                    localData.register(response.body().getPerson1(),"PER_1");
+                    localData.register(response.body().getPerson2(),"PER_2");
+                    presenter.getLikesPresenter();
+                } else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Inténtalo nuevamente";
                     try {
@@ -43,9 +48,60 @@ public class LikesModels implements LikesInterfaces.models{
             }
 
             @Override
-            public void onFailure(Call<LikesData> call, Throwable t) {
+            public void onFailure(Call<HomeData> call, Throwable t) {
 
             }
         });
+    }
+
+    @Override
+    public void getLikesModel(LikesInterfaces.presenters presenter) {
+            Call<LikesData> call = apiAdapter.getApiService2().likes_given(localData.getRegister("PER_1"));
+            call.enqueue(new Callback<LikesData>() {
+                @Override
+                public void onResponse(Call<LikesData> call, Response<LikesData> response) {
+                    if (response.isSuccessful()) {
+                        LikesData list = response.body();
+                        presenter.getLikesSuccessful(list.getResults());
+                    } else {
+                        CustomErrorResponse custom_error = new CustomErrorResponse();
+                        String response_user = "Inténtalo nuevamente";
+                        try {
+                            response_user = custom_error.returnMessageError(response.errorBody().string());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        presenter.getLikesError(response_user);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LikesData> call, Throwable t) {
+
+                }
+            });
+    }
+
+    @Override
+    public void getLikesReceivedModel(LikesInterfaces.presenters presenter) {
+            Call<LikesData> call = apiAdapter.getApiService2().likes_received(localData.getRegister("PER_2"));
+            call.enqueue(new Callback<LikesData>() {
+                @Override
+                public void onResponse(Call<LikesData> call, Response<LikesData> response) {
+                    if (response.isSuccessful()) {
+                        LikesData list = response.body();
+                        presenter.getLikesReceivedSuccessful(list.getResults());
+                    } else {
+                        CustomErrorResponse custom_error = new CustomErrorResponse();
+                        String response_user = "Inténtalo nuevamente";
+                        try {
+                            response_user = custom_error.returnMessageError(response.errorBody().string());
+                        } catch (IOException e) { e.printStackTrace(); }
+                        presenter.getLikesError(response_user);
+                    }
+                }
+                @Override
+                public void onFailure(Call<LikesData> call, Throwable t) { }
+            });
     }
 }

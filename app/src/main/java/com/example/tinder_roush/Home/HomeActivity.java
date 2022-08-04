@@ -4,16 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DiffUtil;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -23,6 +16,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DiffUtil;
+
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
 import com.example.tinder_roush.Objects.ProfileData;
@@ -31,7 +29,6 @@ import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
-import com.example.tinder_roush.Utils.SpinnerListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.slider.RangeSlider;
 import com.squareup.picasso.Picasso;
@@ -226,7 +223,10 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         womanPreference = view_dg.findViewById(R.id.filter_woman_home);
         bothPreference = view_dg.findViewById(R.id.filter_both_home);
         otherPreference = view_dg.findViewById(R.id.filter_other_home);
-
+        List<Float> values = new ArrayList<Float>();
+        values.add(new Float(localData.getRegister("MIN_AGE")) );
+        values.add(new Float(localData.getRegister("MAX_AGE")));
+        age_range.setValues(values);
         //RANGE FILTERS
         distance_range.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

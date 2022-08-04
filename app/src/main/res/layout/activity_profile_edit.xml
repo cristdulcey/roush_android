@@ -69,7 +69,9 @@
                         android:id="@+id/photo_profile_edit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/photo_main"/>
+                        android:scaleType="centerInside"
+                        android:background="@color/gray"
+                        android:src="@drawable/icon_camera"/>
                 </androidx.cardview.widget.CardView>
 
                 <!--Info my profile-->
