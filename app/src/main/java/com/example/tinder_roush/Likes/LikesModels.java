@@ -1,7 +1,5 @@
 package com.example.tinder_roush.Likes;
 
-import android.util.Log;
-
 import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.HomeData;
