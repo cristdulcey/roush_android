@@ -70,6 +70,17 @@
     <string name="messages"><b>Mensajes</b></string>
     <string name="search_hint">Buscar por nombre</string>
 
+    <!--Strings Profile Other User-->
+    <string name="heterosexual"><b>Heterosexual</b></string>
+    <string name="gay"><b>Gay</b></string>
+    <string name="lesbian"><b>Lesbian</b></string>
+    <string name="bisexual"><b>Bisexual</b></string>
+    <string name="other_orientation"><b>Otr@</b></string>
+    <string name="kids"><b>Tiene hijos:</b></string>
+    <string name="pets"><b>Tiene mascotas:</b></string>
+    <string name="smoker_person"><b>Es fumador/@:</b></string>
+    <string name="zodiac_sign"><b>Preferencia de signo zodiacal:</b></string>
+
     <!--Strings Profile-->
     <string name="title_profile"><b>Perfil</b></string>
     <string name="profile_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
