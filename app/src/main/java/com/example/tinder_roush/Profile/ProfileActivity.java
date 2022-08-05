@@ -170,7 +170,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         email = findViewById(R.id.profile_email);
         password = findViewById(R.id.profile_password);
         buttonLogout = findViewById(R.id.log_out);
-        activateContent = findViewById(R.id.switch_activate_content);
+//        activateContent = findViewById(R.id.switch_activate_content);
         editDataProfile = findViewById(R.id.edit_profile_data);
         viewContentExcl = findViewById(R.id.view_content_button);
         //filters
@@ -251,9 +251,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             }
         });
 
-        activateContent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Toast.makeText(ProfileActivity.this, "Disponible próximamente", Toast.LENGTH_SHORT).show();
+//        activateContent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                Toast.makeText(ProfileActivity.this, "Disponible próximamente", Toast.LENGTH_SHORT).show();
 //                boolean valor;
 //                if(isChecked){
 //                    viewContentExcl.setVisibility(View.VISIBLE);
@@ -262,8 +262,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
 //                    viewContentExcl.setVisibility(View.INVISIBLE);
 //                    valor = false;
 //                }
-            }
-        });
+//            }
+//        });
 
         orientation_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             String textOrientation = "";

@@ -104,8 +104,8 @@ public class LikesModels implements LikesInterfaces.models{
 
                 }
             });
-        }else {
-            Call<LikesData> call = apiAdapter.getApiService2().likes_given(localData.getRegister("PER_2"));
+        } else {
+            Call<LikesData> call = apiAdapter.getApiService2().likes_given(localData.getRegister("PER_1"));
             call.enqueue(new Callback<LikesData>() {
                 @Override
                 public void onResponse(Call<LikesData> call, Response<LikesData> response) {
@@ -130,7 +130,6 @@ public class LikesModels implements LikesInterfaces.models{
                 }
             });
         }
-
     }
 
     @Override
@@ -155,8 +154,8 @@ public class LikesModels implements LikesInterfaces.models{
                 @Override
                 public void onFailure(Call<LikesData> call, Throwable t) { }
             });
-        }else {
-            Call<LikesData> call = apiAdapter.getApiService2().likes_received(localData.getRegister("PER_1"));
+        } else {
+            Call<LikesData> call = apiAdapter.getApiService2().likes_received(localData.getRegister("PER_2"));
             call.enqueue(new Callback<LikesData>() {
                 @Override
                 public void onResponse(Call<LikesData> call, Response<LikesData> response) {

@@ -34,12 +34,13 @@
         <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.2275" />
         <entry key="app/src/main/res/drawable/gradient_black.xml" value="0.274" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.315" />
+        <entry key="app/src/main/res/font/monserrat.xml" value="0.40625" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33968231643455615" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3292572463768116" />
         <entry key="app/src/main/res/layout/activity_match_success.xml" value="0.27355072463768115" />
         <entry key="app/src/main/res/layout/activity_notification_settings.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_other_profile.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.26770485724879495" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_profile_edit.xml" value="0.24334344455679138" />
         <entry key="app/src/main/res/layout/activity_profile_succes_change.xml" value="0.3619791666666667" />
         <entry key="app/src/main/res/layout/activity_recovery_password.xml" value="0.3292572463768116" />
@@ -83,6 +84,7 @@
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
