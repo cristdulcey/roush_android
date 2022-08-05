@@ -92,11 +92,6 @@ public interface ApiService {
             @Query("person") String person
     );
 
-    @GET("/api/persons-photo/?ordering=-principal")
-    Call<HomeResponse> likesPhotos(
-            @Query("person") String person
-    );
-
     @PATCH("api/persons/{id}/")
     Call<ProfileData> changeProfile(
             @Path("id") String id,
@@ -153,4 +148,9 @@ public interface ApiService {
             @Query("id") String id
     );
 
+    @GET("/api/persons-photo/")
+    Call<HomeResponse> profile(
+            @Query("person") String id,
+            @Query("principal") boolean principal
+    );
 }

@@ -10,7 +10,6 @@ import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
-import com.example.tinder_roush.Profile.ProfileInterfaces;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
@@ -189,7 +188,7 @@ public class HomeModels implements HomeInterfaces.models{
                         if (!home_card_list.get(i).getPrincipal()) {
                             continue;
                         }
-                        presenter.HomePhotoUserSuccess(home_card_list.get(i));
+                        presenter.HomePhotoUserId(home_card_list.get(i));
                         break;
                     }
                 } else {

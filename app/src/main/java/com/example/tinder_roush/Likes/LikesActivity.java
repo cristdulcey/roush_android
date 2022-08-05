@@ -18,6 +18,7 @@ import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
         View view = inflater.inflate(R.layout.fragment_likes, container, false);
         initObjects(view);
         presenter.getAllLikesPresenter();
+        presenter.getPhotoProfile();
         listeners();
         return view;
     }
@@ -102,6 +104,11 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
         Intent intent = new Intent(BaseContext.getContext(), ProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void showPhotoProfile(String data) {
+        Picasso.get().load(data).fit().centerCrop().into(goProfile);
     }
 
     public void recyclerLikes(ArrayList<HomeData> listLikes){

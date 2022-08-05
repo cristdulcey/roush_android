@@ -7,13 +7,16 @@ import java.util.ArrayList;
 public interface LikesInterfaces {
 
     interface fragment{
+        void showPhotoProfile(String data);
         void recyclerLikes(ArrayList<HomeData> listLikes);
         void recyclerLikesGiven(ArrayList<HomeData> listLikes);
     }
 
     interface presenters{
-        void getAllLikesPresenter();
+        void getPhotoProfile();
+        void getPhotoProfileSuccess(String data);
 
+        void getAllLikesPresenter();
         void getLikesPresenter();
         void getLikesReceivedPresenter();
         void getLikesSuccessful(ArrayList<HomeData> data);
@@ -22,10 +25,9 @@ public interface LikesInterfaces {
     }
 
     interface models{
+        void getUserCurrentPhoto(presenters presenter);
         void getLikesModel(presenters presenter);
-
         void getLikesReceivedModel(presenters presenter);
-
         void getAllLikesModel(LikesPresenters likesPresenters);
     }
 }
