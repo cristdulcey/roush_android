@@ -35,8 +35,9 @@
                 android:layout_width="140dp"
                 android:layout_height="25dp"
                 android:layout_marginHorizontal="6dp"
+                android:fontFamily="@font/monserrat_medium"
                 android:layout_gravity="center"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textColor="@color/black"
                 android:text="@string/your_given_likes"/>
 
@@ -46,16 +47,18 @@
                 android:layout_height="25dp"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
+                android:fontFamily="@font/monserrat_semibold"
                 android:layout_marginHorizontal="2dp"
                 android:textStyle="bold"
-                android:textSize="15sp"/>
+                android:textSize="13sp"/>
 
             <TextView
                 android:id="@+id/text_hour_like"
                 android:layout_width="50dp"
                 android:layout_height="25dp"
                 android:layout_marginHorizontal="5dp"
-                android:textSize="14sp"
+                android:fontFamily="@font/monserrat_medium"
+                android:textSize="12sp"
                 android:layout_gravity="center|end"
                 android:textColor="@color/gray"
                 android:text="10min"

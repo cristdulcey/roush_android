@@ -32,17 +32,19 @@
             android:layout_width="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_height="25dp"
+            android:fontFamily="@font/monserrat_semibold"
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/text2_like_received"
             android:layout_width="140dp"
             android:layout_height="25dp"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_gravity="center"
+            android:fontFamily="@font/monserrat_semibold"
             android:textColor="@color/black"
             android:text="@string/your_received_likes"/>
 
@@ -51,7 +53,8 @@
             android:layout_width="50dp"
             android:layout_height="25dp"
             android:layout_gravity="center|end"
-            android:textSize="14sp"
+            android:fontFamily="@font/monserrat_medium"
+            android:textSize="12sp"
             android:textColor="@color/gray"
             android:text="10min"/>
 

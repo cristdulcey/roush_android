@@ -17,7 +17,6 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,7 +24,6 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -172,7 +170,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         buttonLogout = findViewById(R.id.log_out);
 //        activateContent = findViewById(R.id.switch_activate_content);
         editDataProfile = findViewById(R.id.edit_profile_data);
-        viewContentExcl = findViewById(R.id.view_content_button);
+//        viewContentExcl = findViewById(R.id.view_content_button);
         //filters
         orientation_list = new ArrayList<>();
         zodiac_list = new ArrayList<>();
@@ -1081,10 +1079,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         min_age.setText(localData.getRegister("MIN_AGE"));
         max_age.setText(localData.getRegister("MAX_AGE"));
         List<Float> values = new ArrayList<Float>();
-        values.add(new Float(localData.getRegister("MIN_AGE")) );
+        values.add(new Float(localData.getRegister("MIN_AGE")));
         values.add(new Float(localData.getRegister("MAX_AGE")));
         age_range.setValues(values);
-        //SEARCH
+//        //SEARCH
         for (int i = 0; i < 4; i++) {
             if (data.getSearch().equals("MAN")) {
                 manPreference.setBackgroundResource(R.drawable.border_left_green);

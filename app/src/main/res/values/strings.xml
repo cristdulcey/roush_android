@@ -57,6 +57,7 @@
     <string name="clear_filters">Borrar filtros</string>
     <string name="distance_filter">Rango distancia que quiero ver</string>
     <string name="gender_preference_filter"><b>Preferencia de género</b></string>
+    <string name="want_to_see"><b>Quiero visualizar por...</b></string>
 
     <!--Strings Likes-->
     <string name="like_title">Me gusta</string>

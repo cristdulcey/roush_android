@@ -98,11 +98,8 @@ public class LikesModels implements LikesInterfaces.models{
                         presenter.getLikesError(response_user);
                     }
                 }
-
                 @Override
-                public void onFailure(Call<LikesData> call, Throwable t) {
-
-                }
+                public void onFailure(Call<LikesData> call, Throwable t) {}
             });
         } else {
             Call<LikesData> call = apiAdapter.getApiService2().likes_given(localData.getRegister("PER_1"));
@@ -123,11 +120,8 @@ public class LikesModels implements LikesInterfaces.models{
                         presenter.getLikesError(response_user);
                     }
                 }
-
                 @Override
-                public void onFailure(Call<LikesData> call, Throwable t) {
-
-                }
+                public void onFailure(Call<LikesData> call, Throwable t) { }
             });
         }
     }

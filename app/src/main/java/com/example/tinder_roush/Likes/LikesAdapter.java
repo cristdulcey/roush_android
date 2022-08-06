@@ -56,10 +56,19 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String created = listLikes.get(position).getCreated_at();
-        String url = listLikes.get(position).getPerson2_image();
+
+        String url, name="";
+        if (listLikes.get(position).getPerson1().equals(localData.getRegister("PER_1"))){
+            url = listLikes.get(position).getPerson1_image();
+            name = listLikes.get(position).getPerson1_name();
+        }else {
+            url = listLikes.get(position).getPerson2_image();
+            name = listLikes.get(position).getPerson2_name();
+        }
         Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
-        holder.person_name.setText(listLikes.get(position).getPerson2_name());
-            Date current_date = cal.getTime();
+        holder.person_name.setText(name);
+
+        Date current_date = cal.getTime();
 
             try {
                 Date final_date = dateFormat.parse(created);

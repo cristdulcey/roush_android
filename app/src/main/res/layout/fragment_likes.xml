@@ -24,6 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
             android:text="@string/like_title"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -59,6 +60,7 @@
             android:id="@+id/given_likes_button"
             android:layout_width="135dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/monserrat_medium"
             android:text="@string/given_likes"
             android:background="@drawable/border_left_green"
             android:textAllCaps="false"
@@ -69,6 +71,7 @@
             android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:text="@string/received_likes"
+            android:fontFamily="@font/monserrat_medium"
             android:background="@drawable/border_rigth_white"
             android:textAllCaps="false"
             android:textColor="@color/gray"/>
@@ -80,12 +83,5 @@
         android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recycler_likes_received"-->
-<!--        android:padding="15dp"-->
-<!--        android:layout_marginTop="-225dp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"/>-->
 
 </LinearLayout>
