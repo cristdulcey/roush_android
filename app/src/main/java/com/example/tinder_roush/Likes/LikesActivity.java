@@ -64,7 +64,7 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
         @Override
             public void onClick(View view) {
             if(check_lg == 1){
-                presenter.getLikesPresenter();
+                presenter.getAllLikesPresenter();
                 given.setBackgroundResource(R.drawable.border_left_green);
                 given.setTextColor(Color.WHITE);
                 received.setBackgroundResource(R.drawable.border_rigth_white);
@@ -80,7 +80,7 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
             @Override
             public void onClick(View view) {
                 if(check_lr == 1){
-                    presenter.getLikesReceivedPresenter();
+                    presenter.getAllLikesRePresenter();
                     given.setBackgroundResource(R.drawable.border_left_white);
                     given.setTextColor(Color.GRAY);
                     received.setBackgroundResource(R.drawable.border_rigth_green);

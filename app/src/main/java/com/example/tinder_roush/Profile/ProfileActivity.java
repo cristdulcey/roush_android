@@ -1080,6 +1080,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
        // distance_range.setProgress(Integer.parseInt(data.getDistance()));
         distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
         city = data.getCity();
+        if (localData.getRegister("MIN_AGE").equals("")){
+            String min_a= "18";
+            localData.register(min_a,"MIN_AGE"); }
+        if (localData.getRegister("MAX_AGE").equals("")){
+            String max_a= "60";
+            localData.register(max_a,"MAX_AGE"); }
+
         min_age.setText(localData.getRegister("MIN_AGE"));
         max_age.setText(localData.getRegister("MAX_AGE"));
         List<Float> values = new ArrayList<Float>();

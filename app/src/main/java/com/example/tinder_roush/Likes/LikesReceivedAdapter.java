@@ -55,9 +55,20 @@ public class LikesReceivedAdapter extends RecyclerView.Adapter<LikesReceivedAdap
     @Override
     public void onBindViewHolder(@NonNull LikesReceivedAdapter.ViewHolder holder, int position) {
         String created = listLikesReceived.get(position).getCreated_at();
-        String url = listLikesReceived.get(position).getPerson2_image();
-        Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
-        holder.person_name.setText(listLikesReceived.get(position).getPerson2_name());
+
+        if (listLikesReceived.get(position).isResponse_person1()!=null || listLikesReceived.get(position).isResponse_person2()!=null) {
+            String url=""; String name="";
+            if (listLikesReceived.get(position).getPerson1().equals(localData.getRegister("ID_USERCURRENT")) && listLikesReceived.get(position).isResponse_person2().equals("true")) {
+                url = listLikesReceived.get(position).getPerson2_image();
+                name = listLikesReceived.get(position).getPerson2_name();
+            } else if (!listLikesReceived.get(position).getPerson1().equals(localData.getRegister("ID_USERCURRENT")) && listLikesReceived.get(position).isResponse_person1().equals("true")) {
+                url = listLikesReceived.get(position).getPerson1_image();
+                name = listLikesReceived.get(position).getPerson1_name();
+            }
+            Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
+            holder.person_name.setText(name);
+        }
+
         Date current_date = cal.getTime();
         try {
             Date final_date = dateFormat.parse(created);

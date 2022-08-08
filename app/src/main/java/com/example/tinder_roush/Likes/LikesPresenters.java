@@ -2,7 +2,7 @@ package com.example.tinder_roush.Likes;
 
 import android.widget.Toast;
 
-import com.example.tinder_roush.Home.CardPersonItem;
+import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Utils.BaseContext;
 
@@ -12,7 +12,7 @@ public class LikesPresenters implements LikesInterfaces.presenters{
 
     private LikesInterfaces.fragment view;
     private LikesModels model;
-    private LikesAdapter adapter;
+    LocalData localData = new LocalData();
 
     public LikesPresenters(LikesInterfaces.fragment view) {
         this.view = view;
@@ -25,11 +25,6 @@ public class LikesPresenters implements LikesInterfaces.presenters{
         model.getUserCurrentPhoto(this);
     }
 
-//    @Override
-//    public void getPhotoProfileId(String url) {
-//        model.getUserPhoto(this,url);
-//    }
-
     @Override
     public void getPhotoProfileSuccess(String data) {
         view.showPhotoProfile(data);
@@ -37,37 +32,23 @@ public class LikesPresenters implements LikesInterfaces.presenters{
 
     //Likes
     @Override
-    public void getAllLikesPresenter() {
-        model.getAllLikesModel(this);
+    public void getAllLikesRePresenter() {
+        model.getAllLikesReModel(this);
     }
 
     @Override
-    public void getAllLikesPresenter() {
-        model.getAllLikesModel(this);
-    }
-
-    @Override
-    public void getAllLikesPresenter() {
-        model.getAllLikesModel(this);
-    }
-
-    @Override
-    public void getLikesPresenter() {
-        model.getLikesModel(this);
-    }
-
-    @Override
-    public void getLikesReceivedPresenter() {
-        model.getLikesReceivedModel(this);
-    }
-
-    @Override
-    public void getLikesSuccessful(ArrayList<HomeData> data) {
+    public void getLikesPresenter(ArrayList<HomeData> data) {
+        ArrayList<HomeData> aux = new ArrayList<>();
+        for (int i =0; i <data.size(); i++){
+            if (data.get(i).getPerson1().equals(localData.getRegister("ID_USERCURRENT")) && data.get(i).isResponse_person1().equals("true")
+                ){
+                aux.add(data.get(i));
+            }
+        }
         view.recyclerLikes(data);
     }
 
-    @Override
-    public void getLikesReceivedSuccessful(ArrayList<HomeData> data) {
+    public void getLikesReceivedPresenter(ArrayList<HomeData> data) {
         view.recyclerLikesGiven(data);
     }
 
