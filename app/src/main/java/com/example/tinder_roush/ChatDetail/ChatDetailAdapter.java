@@ -1,8 +1,7 @@
-package com.example.tinder_roush.Chats;
+package com.example.tinder_roush.ChatDetail;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tinder_roush.Likes.LikesActivity;
+import com.example.tinder_roush.Likes.LikesPresenters;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.ChatData;
 import com.example.tinder_roush.R;
@@ -26,34 +27,29 @@ import java.util.Date;
 import java.util.Locale;
 
 
-public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder>{
+public class ChatDetailAdapter extends RecyclerView.Adapter<ChatDetailAdapter.ViewHolder>{
     private ArrayList<ChatData> listChats;
     Context context;
-    ChatsPresenters presenter;
+    LikesPresenters presenter;
     LocalData localData;
     DateFormat dateFormat;
     Calendar cal;
 
-    public ChatsAdapter(Context context, ArrayList<ChatData> listLikes) {
+    public ChatDetailAdapter(Context context, ArrayList<ChatData> listLikes) {
         this.context = context;
         this.listChats = listLikes;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemLikes = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_list,null);
+    public ChatDetailAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemLikes = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_like_list,null, false);
         initObjets();
-        int height = parent.getMeasuredHeight();
-        int width = parent.getMeasuredWidth();
-
-        itemLikes.setLayoutParams(new RecyclerView.LayoutParams(width, height));
-
-        return new ViewHolder(itemLikes);
+        return new ChatDetailAdapter.ViewHolder(itemLikes);
     }
 
     public void initObjets(){
-        presenter = new ChatsPresenters(new ChatsActivity());
+        presenter = new LikesPresenters(new LikesActivity());
         localData = new LocalData();
         dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSZZZZZ", Locale.getDefault());
         cal = Calendar.getInstance();
@@ -61,21 +57,19 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder>{
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull ChatsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ChatDetailAdapter.ViewHolder holder, int position) {
         String created = listChats.get(position).getCreated_at();
 
         String url, name="";
-        if (listChats.get(position).getMatch().getPerson1().equals(localData.getRegister("ID_USERCURRENT"))){
-            url = listChats.get(position).getMatch().getPerson2_image();
-            name = listChats.get(position).getMatch().getPerson2_name();
-        }else {
+        if (listChats.get(position).getMatch().getPerson1().equals(localData.getRegister("PER_1"))){
             url = listChats.get(position).getMatch().getPerson1_image();
             name = listChats.get(position).getMatch().getPerson1_name();
+        }else {
+            url = listChats.get(position).getMatch().getPerson2_image();
+            name = listChats.get(position).getMatch().getPerson2_name();
         }
-        Log.e("image chat user",url);
         Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
         holder.person_name.setText(name);
-        holder.person_message.setText("Test message");
 
         Date current_date = cal.getTime();
 
@@ -102,14 +96,12 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView image_person;
         private TextView person_name;
-        private TextView person_message;
         private TextView time;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            person_name = itemView.findViewById(R.id.text1_like);
-            person_message = itemView.findViewById(R.id.text2_like);
-            image_person = itemView.findViewById(R.id.chat_person_image);
+            person_name = itemView.findViewById(R.id.text2_like);
+            image_person = itemView.findViewById(R.id.like_person_image);
             time = itemView.findViewById(R.id.text_hour_like);
         }
     }

@@ -53,63 +53,76 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
         android:layout_marginHorizontal="50dp"
-        android:background="@drawable/border_gray_transparent_round">
+        android:background="@drawable/border_green_round2">
+        <androidx.cardview.widget.CardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_marginVertical="5dp"
-            android:layout_marginLeft="5dp"
-            android:src="@drawable/search"
-            android:padding="8dp"/>
+            <ImageView
+                android:id="@+id/like_person_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/photo_main"
+                tools:ignore="ContentDescription" />
+        </androidx.cardview.widget.CardView>
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="10dp"
-            android:layout_marginVertical="5dp"
-            android:background="@android:color/transparent"
-            android:textSize="16sp"
-            android:textColor="@color/gray1"
-            android:textColorHint="@color/gray1"
-            android:hint="@string/search_hint"/>
+            android:gravity="left|center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text1_like"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginHorizontal="6dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/your_given_likes"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text2_like"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_marginHorizontal="2dp"
+                android:fontFamily="@font/monserrat_semibold"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <!--Chats-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:text="@string/messages"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <!--Divider-->
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@color/gray1"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_chats"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="35dp"
-            android:layout_marginBottom="35dp"
-            />
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"/>
+
     </LinearLayout>
-
-
-
 
 </LinearLayout>
