@@ -1,20 +1,14 @@
 package com.example.tinder_roush.Profile;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
-
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -35,11 +29,14 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.MenuNavigation.MenuNavigation;
-import com.example.tinder_roush.NotificationSettings.NotificationSettingsActivity;
 import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.R;
@@ -1002,6 +999,11 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         city = data.getCity();
         min_age.setText(localData.getRegister("MIN_AGE"));
         max_age.setText(localData.getRegister("MAX_AGE"));
+        List<Float> values = new ArrayList<Float>();
+        values.add(new Float(localData.getRegister("MIN_AGE")) );
+        values.add(new Float(localData.getRegister("MAX_AGE")));
+        age_range.setValues(values);
+
         //SEARCH
         for (int i =0; i<4; i++){
             if (data.getSearch().equals("MAN")){

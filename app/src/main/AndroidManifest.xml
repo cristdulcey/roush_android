@@ -30,6 +30,9 @@
         android:theme="@style/Theme.Tinderroush"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".OtherProfile.OtherProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".NotificationSettings.NotificationSettingsActivity"
             android:exported="false" />
         <activity

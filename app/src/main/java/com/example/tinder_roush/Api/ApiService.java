@@ -3,6 +3,7 @@ package com.example.tinder_roush.Api;
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.ChangePassword;
+import com.example.tinder_roush.Objects.ChatResponse;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.HomeResponse;
@@ -92,11 +93,6 @@ public interface ApiService {
             @Query("person") String person
     );
 
-    @GET("/api/persons-photo/?ordering=-principal")
-    Call<HomeResponse> likesPhotos(
-            @Query("person") String person
-    );
-
     @PATCH("api/persons/{id}/")
     Call<ProfileData> changeProfile(
             @Path("id") String id,
@@ -139,9 +135,28 @@ public interface ApiService {
             @Field("new_password") String new_password
     );
 
+    @GET("/api/persons-match/")
+    Call<HomeData> likes(
+    );
+
     @GET("/api/persons-match/?ordering=-created_at&response_person1=true")
-    Call<LikesData> likes(
+    Call<LikesData> likes_given(
             @Query("id") String id
     );
 
+
+    @GET("/api/persons-chat/")
+    Call<ChatResponse> chats(
+    );
+
+    @GET("/api/persons-match/?ordering=-created_at&response_person2=true")
+    Call<LikesData> likes_received(
+            @Query("id") String id
+    );
+
+    @GET("/api/persons-photo/")
+    Call<HomeResponse> profile(
+            @Query("person") String id,
+            @Query("principal") boolean principal
+    );
 }

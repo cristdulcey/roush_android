@@ -1,23 +1,17 @@
-package com.example.tinder_roush.Chats;
+package com.example.tinder_roush.ChatDetail;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.tinder_roush.Likes.LikesAdapter;
-import com.example.tinder_roush.Likes.LikesPresenters;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.tinder_roush.Objects.ChatData;
-import com.example.tinder_roush.Objects.ChatResponse;
-import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
@@ -25,14 +19,15 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ChatsActivity extends Fragment implements ChatsInterfaces.fragment {
+public class ChatDetailActivity extends Fragment implements ChatDetailInterfaces.fragment {
 
-    private RecyclerView recyclerViewChats;
-    private ChatsAdapter chatsAdapter;
+    private RecyclerView recyclerViewChatsDetail;
+    private ChatDetailAdapter ChatDetailAdapter;
+    ImageView goMyProfile;
     ImageView goProfile;
-    ChatsPresenters presenter;
+    ChatDetailPresenters presenter;
 
-    public ChatsActivity() {
+    public ChatDetailActivity() {
         // Required empty public constructor
     }
     @Override
@@ -43,20 +38,15 @@ public class ChatsActivity extends Fragment implements ChatsInterfaces.fragment 
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        presenter.getChatsPresenter();
+    private void initObjects(View view) {
+        recyclerViewChatsDetail = view.findViewById(R.id.recycler_chats);
+        goMyProfile = view.findViewById(R.id.profile_from_chats);
+        presenter = new ChatDetailPresenters(this);
+//        presenter.getChatsDetailPresenter();
         presenter.getPhotoProfile();
     }
-
-    private void initObjects(View view) {
-        recyclerViewChats = view.findViewById(R.id.recycler_chats);
-        goProfile = view.findViewById(R.id.profile_from_chats);
-        presenter = new ChatsPresenters(this);
-    }
     public void listeners(){
-        goProfile.setOnClickListener(new View.OnClickListener() {
+        goMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 performToMyProfile();
@@ -71,10 +61,10 @@ public class ChatsActivity extends Fragment implements ChatsInterfaces.fragment 
     }
 
     @Override
-    public void recyclerChats(ArrayList<ChatData> listChats){
-        chatsAdapter = new ChatsAdapter(BaseContext.getContext(), listChats);
-        recyclerViewChats.setAdapter(chatsAdapter);
-        recyclerViewChats.setLayoutManager(new LinearLayoutManager(BaseContext.getContext(), LinearLayoutManager.VERTICAL,false));
+    public void recyclerChatsDetail(ArrayList<ChatData> listChatsDetail){
+        ChatDetailAdapter = new ChatDetailAdapter(BaseContext.getContext(), listChatsDetail);
+        recyclerViewChatsDetail.setAdapter(ChatDetailAdapter);
+        recyclerViewChatsDetail.setLayoutManager(new LinearLayoutManager(BaseContext.getContext(), LinearLayoutManager.VERTICAL,false));
     }
 
     public void performToMyProfile(){

@@ -18,6 +18,7 @@ import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
     private ArrayList<HomeData> listLikes;
     private RecyclerView recyclerViewLikes;
     private LikesAdapter likesAdapter;
+    private LikesReceivedAdapter likesReceivedAdapter;
     int check_lg,check_lr;
     ImageView goProfile;
     Button given, received;
@@ -39,7 +41,8 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_likes, container, false);
         initObjects(view);
-        presenter.getLikesPresenter();
+        presenter.getAllLikesPresenter();
+        presenter.getPhotoProfile();
         listeners();
         return view;
     }
@@ -49,7 +52,7 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
         given = view.findViewById(R.id.given_likes_button);
         received = view.findViewById(R.id.received_likes_button);
         goProfile = view.findViewById(R.id.profile_from_likes);
-        recyclerViewLikes = view.findViewById(R.id.recycler_likes_received);
+        recyclerViewLikes = view.findViewById(R.id.recycler_likes_given);
         presenter = new LikesPresenters(this);
         localData = new LocalData();
         listLikes = new ArrayList<>();
@@ -76,7 +79,7 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
             @Override
             public void onClick(View view) {
                 if(check_lr == 1){
-                    presenter.getLikesPresenter();
+                    presenter.getLikesReceivedPresenter();
                     given.setBackgroundResource(R.drawable.border_left_white);
                     given.setTextColor(Color.GRAY);
                     received.setBackgroundResource(R.drawable.border_rigth_green);
@@ -103,9 +106,19 @@ public class LikesActivity extends Fragment implements LikesInterfaces.fragment{
         startActivity(intent);
     }
 
+    @Override
+    public void showPhotoProfile(String data) {
+        Picasso.get().load(data).fit().centerCrop().into(goProfile);
+    }
+
     public void recyclerLikes(ArrayList<HomeData> listLikes){
         likesAdapter = new LikesAdapter(BaseContext.getContext(), listLikes);
         recyclerViewLikes.setAdapter(likesAdapter);
+        recyclerViewLikes.setLayoutManager(new LinearLayoutManager(BaseContext.getContext(), LinearLayoutManager.VERTICAL,false));
+    }
+    public void recyclerLikesGiven(ArrayList<HomeData> listLikes){
+        likesReceivedAdapter = new LikesReceivedAdapter(BaseContext.getContext(), listLikes);
+        recyclerViewLikes.setAdapter(likesReceivedAdapter);
         recyclerViewLikes.setLayoutManager(new LinearLayoutManager(BaseContext.getContext(), LinearLayoutManager.VERTICAL,false));
     }
 }

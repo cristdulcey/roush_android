@@ -57,6 +57,7 @@
     <string name="clear_filters">Borrar filtros</string>
     <string name="distance_filter">Rango distancia que quiero ver</string>
     <string name="gender_preference_filter"><b>Preferencia de género</b></string>
+    <string name="want_to_see"><b>Quiero visualizar por...</b></string>
 
     <!--Strings Likes-->
     <string name="like_title">Me gusta</string>
@@ -69,6 +70,17 @@
     <string name="title_chats"><b>Chats</b></string>
     <string name="messages"><b>Mensajes</b></string>
     <string name="search_hint">Buscar por nombre</string>
+
+    <!--Strings Profile Other User-->
+    <string name="heterosexual"><b>Heterosexual</b></string>
+    <string name="gay"><b>Gay</b></string>
+    <string name="lesbian"><b>Lesbian</b></string>
+    <string name="bisexual"><b>Bisexual</b></string>
+    <string name="other_orientation"><b>Otr@</b></string>
+    <string name="kids"><b>Tiene hijos:</b></string>
+    <string name="pets"><b>Tiene mascotas:</b></string>
+    <string name="smoker_person"><b>Es fumador/@:</b></string>
+    <string name="zodiac_sign"><b>Preferencia de signo zodiacal:</b></string>
 
     <!--Strings Profile-->
     <string name="title_profile"><b>Perfil</b></string>

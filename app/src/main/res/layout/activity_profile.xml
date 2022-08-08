@@ -28,7 +28,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="15dp"
                     android:layout_marginHorizontal="30dp"
                     android:orientation="horizontal"
                     android:layout_gravity="center">
@@ -43,13 +44,14 @@
                         android:src="@drawable/back_circle"/>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="24sp"
                         android:gravity="center"
                         android:text="@string/title_profile"
-                        android:textSize="24sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
 
@@ -67,7 +69,7 @@
                 <!--Photo profile-->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="40dp"
                     android:background="@color/black"
@@ -78,7 +80,8 @@
                     android:id="@+id/profile_photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black"
+                    android:scaleType="centerInside"
+                    android:background="@color/gray"
                     android:src="@drawable/icon_camera"/>
                 </androidx.cardview.widget.CardView>
 
@@ -100,22 +103,25 @@
                             android:id="@+id/user_profile_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginEnd="5dp"
                             android:text=""
-                            android:textSize="25sp"
+                            android:textSize="22sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
                         <TextView
                             android:id="@+id/user_profile_lastname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
                             android:text=""
-                            android:textSize="25sp"
+                            android:textSize="22sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
                             android:text=", "
                             android:textSize="25sp"
                             android:textColor="@color/white"
@@ -125,7 +131,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textSize="25sp"
+                            android:textSize="22sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -140,12 +146,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/montserrat_bold"
                             android:text="@string/profession"
                             android:textSize="18sp"/>
                         <TextView
                             android:id="@+id/profile_job"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:text=""
                             android:textColor="@color/white"
                             android:textSize="18sp"/>
@@ -160,13 +169,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@color/white"
+                            android:fontFamily="@font/montserrat_bold"
                             android:text="@string/email_profile"
                             android:textSize="18sp"/>
                         <TextView
                             android:id="@+id/profile_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:text=""
                             android:textColor="@color/white"
                             android:textSize="18sp"/>
@@ -182,12 +194,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/montserrat_bold"
                             android:text="@string/password_profile"
                             android:textSize="18sp"/>
                         <TextView
                             android:id="@+id/profile_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:text="*********"
                             android:textColor="@color/white"
                             android:textSize="18sp"/>
@@ -203,6 +218,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginEnd="5dp"
                             android:text="@string/date_birth_profile"
                             android:textSize="18sp"/>
                         <TextView
@@ -224,12 +241,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/montserrat_bold"
                             android:text="@string/location_profile"
                             android:textSize="18sp"/>
                         <TextView
                             android:id="@+id/profile_locations"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:text="Chapinero"
                             android:textColor="@color/white"
                             android:textSize="18sp"/>
@@ -256,6 +276,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/description"
                         android:textColor="@color/white"
                         android:textSize="18dp"/>
@@ -263,6 +284,7 @@
                         android:id="@+id/text_description_profile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/monserrat_medium"
                         android:textColor="@color/white"
                         android:text=""
                         android:textSize="16sp"/>
@@ -275,9 +297,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="20dp"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/montserrat_bold"
                     android:background="@drawable/border_green_white_round"
                     android:text="@string/edit_data_profile"
                     android:textSize="18sp"
+                    android:textColor="@color/green4"
                     android:textAllCaps="false"/>
             </LinearLayout>
 
@@ -299,10 +323,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/my_orientation_text"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -326,7 +351,7 @@
                             android:layout_gravity="center"
                             android:paddingHorizontal="8dp"
                             android:spinnerMode="dropdown"
-                            android:background="@android:color/transparent"/>
+                            />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -341,10 +366,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/gender_preferences"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -357,37 +383,44 @@
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@drawable/border_left_green"
                             android:text="@string/men"
                             android:textColor="@color/white"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/search_woman_profile"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/women"
-                            android:textSize="16sp"/>
+                            android:textColor="@color/gray"
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/search_both_profile"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/both"
-                            android:textSize="16sp"/>
+                            android:textColor="@color/gray"
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/search_other_profile"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:textColor="@color/gray"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@drawable/border_rigth_white"
                             android:text="@string/other"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -403,13 +436,14 @@
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
                         android:text="@string/search_location"
+                        android:fontFamily="@font/montserrat_bold"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
-                        android:layout_height="48dp"
+                        android:layout_height="80dp"
                         android:layout_marginRight="38dp"
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
@@ -417,8 +451,8 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="38dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginLeft="4dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_gravity="center"
                             android:src="@drawable/icon_location_green"
                             android:padding="8dp"/>
                         <com.example.tinder_roush.Utils.SpinnerCustom
@@ -426,7 +460,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:paddingLeft="8dp"
-                            android:layout_gravity="top"
+                            android:gravity="center"
                             app:textColor="@color/green2"
                             android:paddingHorizontal="8dp"
                             app:highlightColor="@color/green2"
@@ -444,10 +478,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/max_distance"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -498,10 +533,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/max_age"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -520,35 +556,54 @@
                             android:theme="@style/MyMaterialTheme"/>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center">
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                                    android:text="18 años"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="85dp"
-                                android:text="18 años"/>
-                            <TextView
-                                android:id="@+id/min_age_profile"
-                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+                                <TextView
+                                    android:id="@+id/min_age_profile"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="5dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="a"/>
+                                <TextView
+                                    android:id="@+id/max_age_profile"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="20dp" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="a"/>
-                            <TextView
-                                android:id="@+id/max_age_profile"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="85dp"
-                                android:text="60 años"/>
+                                android:layout_weight="1"
+                                android:gravity="end">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="60 años"/>
+                            </LinearLayout>
+
+
+
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -564,10 +619,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/with_children"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -582,8 +638,9 @@
                             android:textAllCaps="false"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
+                            android:fontFamily="@font/monserrat_medium"
                             android:textColor="@color/white"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/children_no_profile"
@@ -592,7 +649,8 @@
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
-                            android:textSize="16sp"/>
+                            android:fontFamily="@font/monserrat_medium"
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/children_indifferent_profile"
@@ -601,7 +659,8 @@
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
                             android:text="@string/indiferent"
-                            android:textSize="16sp"/>
+                            android:fontFamily="@font/monserrat_medium"
+                            android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -616,10 +675,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/with_pets"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -635,7 +695,8 @@
                             android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
-                            android:textSize="16sp"/>
+                            android:fontFamily="@font/monserrat_medium"
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/pets_no_profile"
@@ -644,7 +705,8 @@
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
-                            android:textSize="16sp"/>
+                            android:fontFamily="@font/monserrat_medium"
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/pets_indifferent_profile"
@@ -653,7 +715,8 @@
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
                             android:text="@string/indiferent"
-                            android:textSize="16sp"/>
+                            android:fontFamily="@font/monserrat_medium"
+                            android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -663,15 +726,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:layout_marginVertical="10dp"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/smoker"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -684,17 +750,19 @@
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
                         <Button
                             android:id="@+id/smoker_no_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
                         <Button
                             android:id="@+id/smoker_indifferent_profile"
                             android:layout_width="wrap_content"
@@ -702,7 +770,8 @@
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
                             android:text="@string/indiferent"
-                            android:textSize="16sp"/>
+                            android:fontFamily="@font/monserrat_medium"
+                            android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -716,10 +785,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/zodiac_preferences"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -736,7 +806,7 @@
                             android:layout_gravity="center"
                             android:paddingHorizontal="8dp"
                             android:spinnerMode="dropdown"
-                            android:background="@android:color/transparent"/>
+                            />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -760,10 +830,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/montserrat_bold"
                     android:gravity="center"
                     android:layout_marginHorizontal="20dp"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
                     android:text="@string/upload_photos"/>
 
@@ -772,14 +843,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/monserrat_medium"
                     android:text="@string/text_register3"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:textSize="15sp"/>
+                    android:textSize="14sp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="140dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginHorizontal="30dp"
                     android:orientation="horizontal"
@@ -788,30 +860,29 @@
 
                     <ImageButton
                         android:id="@+id/photo_1_profile"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:layout_marginRight="8dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 
                     <ImageButton
                         android:id="@+id/photo_2_profile"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginLeft="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
-
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="140dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:orientation="horizontal"
@@ -820,31 +891,29 @@
 
                     <ImageButton
                         android:id="@+id/photo_3_profile"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginRight="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
                     <ImageButton
                         android:id="@+id/photo_4_profile"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginLeft="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:src="@drawable/icon_camera"
                         android:background="@drawable/border_white_green_soft_round"
                         />
-
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="140dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginBottom="20dp"
@@ -854,21 +923,21 @@
 
                     <ImageButton
                         android:id="@+id/photo_5_profile"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginRight="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
                     <ImageButton
                         android:id="@+id/photo_6_profile"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginLeft="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 
@@ -883,81 +952,81 @@
                 android:layout_marginHorizontal="40dp"
                 android:background="@color/gray1"/>
 
-            <!--Exclusive content-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            &lt;!&ndash;Exclusive content&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <!--title exclusive content-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="18sp"
-                    android:text="@string/exclusive_content"
-                    android:textColor="@color/black" />
-                <!--switch exclusive content-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+<!--                &lt;!&ndash;title exclusive content&ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginHorizontal="20dp"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:text="@string/exclusive_content"-->
+<!--                    android:textColor="@color/black" />-->
+<!--                &lt;!&ndash;switch exclusive content&ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="20dp"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="20dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/active_exclusive_content"
-                            android:textColor="@color/black"/>
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/active_exclusive_content"-->
+<!--                            android:textColor="@color/black"/>-->
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="40dp"
-                            android:text="@string/text_exclusive_content"
-                            android:textColor="@color/black"/>
+<!--                        <TextView-->
+<!--                            android:layout_width="220dp"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:text="@string/text_exclusive_content"-->
+<!--                            android:textColor="@color/black"/>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                    <Switch
-                        android:id="@+id/switch_activate_content"
-                        android:layout_width="60dp"
-                        android:layout_gravity="center|right"
-                        android:layout_height="wrap_content"/>
+<!--                    <Switch-->
+<!--                        android:id="@+id/switch_activate_content"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_gravity="center|right"-->
+<!--                        android:layout_height="wrap_content"/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <!--button view exclusive content-->
-                <Button
-                    android:id="@+id/view_content_button"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:layout_gravity="center"
-                    android:text="@string/view_content_"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
-                    android:visibility="invisible"
-                    android:background="@drawable/border_green_round"/>
+<!--                &lt;!&ndash;button view exclusive content&ndash;&gt;-->
+<!--                <Button-->
+<!--                    android:id="@+id/view_content_button"-->
+<!--                    android:layout_width="200dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="@string/view_content_"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:visibility="invisible"-->
+<!--                    android:background="@drawable/border_green_round"/>-->
 
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="2dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginHorizontal="40dp"
-                    android:background="@color/gray1"/>
-            </LinearLayout>
+<!--                <View-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="2dp"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    android:layout_marginHorizontal="40dp"-->
+<!--                    android:background="@color/gray1"/>-->
+<!--            </LinearLayout>-->
 
             <!--Interestings-->
             <LinearLayout
@@ -977,6 +1046,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/montserrat_bold"
                     android:text="@string/title_interestings"
                     android:textColor="@color/white"
                     android:gravity="center"
@@ -988,6 +1058,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/monserrat_medium"
                     android:text="@string/subtitle_interestings"
                     android:textColor="@color/white"
                     android:gravity="center"
@@ -1007,24 +1078,26 @@
                         android:id="@+id/button_photo_preference_profile"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
-                        android:layout_marginRight="5dp"
-                        android:paddingLeft="8dp"
+                        android:layout_marginEnd="5dp"
+                        android:paddingStart="8dp"
                         android:text="@string/button_photography"
                         android:textAllCaps="false"
                         android:textColor="@color/green2"
-                        android:drawableLeft="@drawable/camera_icon"
-                        android:background="@drawable/border_green_soft_transparent_round"/>
+                        android:drawableStart="@drawable/camera_icon"
+                        android:background="@drawable/border_green_soft_transparent_round"
+                        tools:ignore="RtlSymmetry" />
                     <Button
                         android:id="@+id/button_shopping_preference_profile"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
-                        android:layout_marginLeft="5dp"
-                        android:paddingLeft="8dp"
+                        android:layout_marginStart="5dp"
+                        android:paddingStart="8dp"
                         android:text="@string/button_shopping"
                         android:textAllCaps="false"
                         android:textColor="@color/green2"
-                        android:drawableLeft="@drawable/market_icon"
-                        android:background="@drawable/border_green_soft_transparent_round"/>
+                        android:drawableStart="@drawable/market_icon"
+                        android:background="@drawable/border_green_soft_transparent_round"
+                        tools:ignore="RtlSymmetry" />
 
 
                 </LinearLayout>
@@ -1040,24 +1113,26 @@
                         android:id="@+id/button_karaoke_preference_profile"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
-                        android:layout_marginRight="5dp"
-                        android:paddingLeft="8dp"
+                        android:layout_marginEnd="5dp"
+                        android:paddingStart="8dp"
                         android:text="@string/button_karaoke"
                         android:textAllCaps="false"
                         android:textColor="@color/green2"
-                        android:drawableLeft="@drawable/microphone"
-                        android:background="@drawable/border_green_soft_transparent_round"/>
+                        android:drawableStart="@drawable/microphone"
+                        android:background="@drawable/border_green_soft_transparent_round"
+                        tools:ignore="RtlSymmetry" />
                     <Button
                         android:id="@+id/button_yoga_preference_profile"
                         android:layout_width="120dp"
                         android:layout_height="48dp"
-                        android:layout_marginLeft="5dp"
-                        android:paddingLeft="8dp"
+                        android:layout_marginStart="5dp"
+                        android:paddingStart="8dp"
                         android:text="@string/button_yoga"
                         android:textAllCaps="false"
                         android:textColor="@color/green2"
-                        android:drawableLeft="@drawable/yoga_icon"
-                        android:background="@drawable/border_green_soft_transparent_round"/>
+                        android:drawableStart="@drawable/yoga_icon"
+                        android:background="@drawable/border_green_soft_transparent_round"
+                        tools:ignore="RtlSymmetry" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1227,12 +1302,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="@string/no_longer_interested"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
             <!--Logout-->
             <Button
@@ -1243,6 +1319,7 @@
                 android:layout_marginVertical="20dp"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:fontFamily="@font/montserrat_bold"
                 android:textAllCaps="false"
                 android:text="@string/log_out_text"
                 android:textColor="@color/white"
@@ -1258,6 +1335,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:fontFamily="@font/montserrat_bold"
                 android:textAllCaps="false"
                 android:text="@string/kill_account_text"
                 android:textColor="@color/green3"

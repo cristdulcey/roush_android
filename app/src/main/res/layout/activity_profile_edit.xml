@@ -49,10 +49,19 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="@string/title_profile"
+                        android:fontFamily="@font/montserrat_bold"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
 
+                    <ImageButton
+                        android:id="@+id/config_notifications_edit"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="-50dp"
+                        android:padding="10dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/setting"/>
                 </LinearLayout>
 
                 <!--Photo profile-->
@@ -69,7 +78,9 @@
                         android:id="@+id/photo_profile_edit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/photo_main"/>
+                        android:scaleType="centerInside"
+                        android:background="@color/gray"
+                        android:src="@drawable/icon_camera"/>
                 </androidx.cardview.widget.CardView>
 
                 <!--Info my profile-->
@@ -90,10 +101,11 @@
                             android:id="@+id/edit_user_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="2dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginEnd="5dp"
                             android:background="@android:color/transparent"
                             android:text=""
-                            android:textSize="25sp"
+                            android:textSize="22sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
                         <EditText
@@ -101,7 +113,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textSize="25sp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textSize="22sp"
                             android:textColor="@color/white"
                             android:background="@android:color/transparent"
                             android:textStyle="bold"/>
@@ -131,18 +144,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="2dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@color/white"
                             android:text="@string/profession"
                             android:textSize="18sp"/>
+
                         <EditText
                             android:id="@+id/edit_job"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:background="@android:color/transparent"
+                            android:fontFamily="@font/monserrat_medium"
                             android:text="Diseñadora"
                             android:textColor="@color/white"
-                            android:textSize="18sp"/>
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <!--email-->
@@ -154,7 +170,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="2dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@color/white"
                             android:text="@string/email_profile"
                             android:textSize="18sp"/>
@@ -162,6 +179,7 @@
                             android:id="@+id/edit_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@android:color/transparent"
                             android:text="alguien@gmail.com"
                             android:textColor="@color/white"
@@ -177,7 +195,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="2dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@color/white"
                             android:text="@string/password_profile"
                             android:textSize="18sp"/>
@@ -185,6 +204,7 @@
                             android:id="@+id/edit_profile_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@android:color/transparent"
                             android:text="*********"
                             android:textColor="@color/white"
@@ -201,7 +221,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="2dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@color/white"
                             android:text="@string/date_birth_profile"
                             android:textSize="18sp"/>
@@ -209,6 +230,7 @@
                             android:id="@+id/date_birth_profile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@android:color/transparent"
                             android:text=""
                             android:textColor="@color/white"
@@ -224,7 +246,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="2dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@color/white"
                             android:text="@string/location_profile"
                             android:textSize="18sp"/>
@@ -232,6 +255,7 @@
                             android:id="@+id/profile_locations"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@android:color/transparent"
                             android:text="Chapinero"
                             android:textColor="@color/white"
@@ -260,6 +284,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/description"
+                        android:fontFamily="@font/montserrat_bold"
                         android:textColor="@color/white"
                         android:textSize="18dp"/>
                     <EditText
@@ -267,6 +292,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/monserrat_medium"
                         android:background="@android:color/transparent"
                         android:text="@string/profile_description"
                         android:textSize="16sp"/>
@@ -279,6 +305,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="20dp"
                     android:layout_gravity="center"
+                    android:textColor="@color/green4"
+                    android:fontFamily="@font/montserrat_bold"
                     android:background="@drawable/border_green_white_round"
                     android:text="@string/save_data_profile"
                     android:textSize="18sp"
@@ -304,10 +332,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/my_orientation_text"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -345,11 +374,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
+                        android:fontFamily="@font/montserrat_bold"
                         android:layout_gravity="center"
                         android:text="@string/gender_preferences"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -405,15 +435,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
+                        android:fontFamily="@font/montserrat_bold"
                         android:layout_gravity="center"
                         android:text="@string/search_location"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
-                        android:layout_height="48dp"
+                        android:layout_height="80dp"
                         android:layout_marginRight="38dp"
                         android:layout_marginLeft="38dp"
                         android:background="@drawable/border_green_soft_transparent_round">
@@ -421,8 +452,8 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="38dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginLeft="4dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_gravity="center"
                             android:src="@drawable/icon_location_green"
                             android:padding="8dp"/>
                         <com.example.tinder_roush.Utils.SpinnerCustom
@@ -430,7 +461,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:paddingLeft="8dp"
-                            android:layout_gravity="top"
+                            android:gravity="center"
                             app:textColor="@color/green2"
                             android:paddingHorizontal="8dp"
                             app:highlightColor="@color/green2"
@@ -447,11 +478,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
+                        android:fontFamily="@font/montserrat_bold"
                         android:layout_gravity="center"
                         android:text="@string/max_distance"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20sp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -500,11 +532,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
+                        android:fontFamily="@font/montserrat_bold"
                         android:layout_gravity="center"
                         android:text="@string/max_age"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20sp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -567,10 +600,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/with_children"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20sp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -583,28 +617,31 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
                             android:textColor="@color/white"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/children_no_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/children_indifferent_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
                             android:text="@string/indiferent"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -617,11 +654,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
+                        android:fontFamily="@font/montserrat_bold"
                         android:layout_gravity="center"
                         android:text="@string/with_pets"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20sp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -633,29 +671,32 @@
                             android:id="@+id/pets_yes_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/pets_no_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:textAllCaps="false"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
 
                         <Button
                             android:id="@+id/pets_indifferent_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
                             android:text="@string/indiferent"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -670,10 +711,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="@string/smoker"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20sp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -686,26 +728,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/monserrat_medium"
                             android:textColor="@color/white"
                             android:background="@drawable/border_left_green"
                             android:text="@string/yes"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
                         <Button
                             android:id="@+id/smoker_no_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/monserrat_medium"
                             android:background="@drawable/border_gray_transparent"
                             android:text="@string/no"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
                         <Button
                             android:id="@+id/smoker_indifferent_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/monserrat_medium"
                             android:textAllCaps="false"
                             android:background="@drawable/border_rigth_white"
                             android:text="@string/indiferent"
-                            android:textSize="16sp"/>
+                            android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -718,11 +763,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
+                        android:fontFamily="@font/montserrat_bold"
                         android:layout_gravity="center"
                         android:text="@string/zodiac_preferences"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20sp"/>
+                        android:textSize="18sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -765,6 +811,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:textColor="@color/black"
@@ -775,6 +822,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/monserrat_medium"
                     android:text="@string/text_register3"
                     android:textColor="@color/black"
                     android:gravity="center"
@@ -782,30 +830,30 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="140dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginHorizontal="30dp"
                     android:orientation="horizontal"
                     android:layout_gravity="center"
                     android:gravity="center">
-
+<!--rounded-->
                     <ImageButton
                         android:id="@+id/photo_1_edit"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera" />
 
                     <ImageButton
                         android:id="@+id/photo_2_edit"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
@@ -814,7 +862,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="140dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:orientation="horizontal"
@@ -823,21 +871,21 @@
 
                     <ImageButton
                         android:id="@+id/photo_3_edit"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginRight="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:background="@drawable/border_white_green_soft_round"
                         android:src="@drawable/icon_camera"/>
 
                     <ImageButton
                         android:id="@+id/photo_4_edit"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginLeft="8dp"
                         android:scaleType="centerInside"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:src="@drawable/icon_camera"
                         android:background="@drawable/border_white_green_soft_round"
                         />
@@ -847,7 +895,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="140dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginBottom="20dp"
@@ -857,8 +905,8 @@
 
                     <ImageButton
                         android:id="@+id/photo_5_edit"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginRight="8dp"
                         android:scaleType="centerInside"
                         android:padding="4dp"
@@ -867,8 +915,8 @@
 
                     <ImageButton
                         android:id="@+id/photo_6_edit"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_marginLeft="8dp"
                         android:scaleType="centerInside"
                         android:padding="4dp"
@@ -896,6 +944,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
+                    android:fontFamily="@font/montserrat_bold"
                     android:layout_marginLeft="20dp"
                     android:text="@string/title_interestings"
                     android:textColor="@color/white"
@@ -906,6 +955,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/monserrat_medium"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
                     android:text="@string/subtitle_interestings"
@@ -1144,86 +1194,87 @@
                 android:layout_marginHorizontal="40dp"
                 android:background="@color/gray1"/>
             <!--Exclusive content-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <!--title exclusive content-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="18sp"
-                    android:text="@string/exclusive_content"
-                    android:textColor="@color/black" />
-                <!--switch exclusive content-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="20dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+<!--                &lt;!&ndash;title exclusive content&ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginHorizontal="20dp"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:text="@string/exclusive_content"-->
+<!--                    android:textColor="@color/black" />-->
+<!--                &lt;!&ndash;switch exclusive content&ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="20dp"-->
+<!--                    android:layout_marginVertical="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="20dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/active_exclusive_content"
-                            android:textColor="@color/black"/>
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/active_exclusive_content"-->
+<!--                            android:textColor="@color/black"/>-->
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="40dp"
-                            android:text="@string/text_exclusive_content"
-                            android:textColor="@color/black"/>
+<!--                        <TextView-->
+<!--                            android:layout_width="220dp"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:text="@string/text_exclusive_content"-->
+<!--                            android:textColor="@color/black"/>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                    <Switch
-                        android:id="@+id/switch_activate_content"
-                        android:layout_width="60dp"
-                        android:layout_gravity="center|right"
-                        android:layout_height="50dp"/>
+<!--                    <Switch-->
+<!--                        android:id="@+id/switch_activate_content"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_gravity="center|right"-->
+<!--                        android:layout_height="50dp"/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <!--button view exclusive content-->
+<!--                &lt;!&ndash;button view exclusive content&ndash;&gt;-->
 
-                <Button
-                    android:id="@+id/view_content_button"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:layout_gravity="center"
-                    android:text="@string/view_content_"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
-                    android:visibility="invisible"
-                    android:background="@drawable/border_green_round"/>
+<!--                <Button-->
+<!--                    android:id="@+id/view_content_button"-->
+<!--                    android:layout_width="200dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="@string/view_content_"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:visibility="invisible"-->
+<!--                    android:background="@drawable/border_green_round"/>-->
 
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="2dp"
-                    android:layout_marginVertical="20dp"
-                    android:layout_marginHorizontal="40dp"
-                    android:background="@color/gray1"/>
+<!--                <View-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="2dp"-->
+<!--                    android:layout_marginVertical="20dp"-->
+<!--                    android:layout_marginHorizontal="40dp"-->
+<!--                    android:background="@color/gray1"/>-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="@string/no_longer_interested"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -1238,6 +1289,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginVertical="20dp"
+                android:fontFamily="@font/montserrat_bold"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textAllCaps="false"
@@ -1256,6 +1308,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textAllCaps="false"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="@string/kill_account_text"
                 android:textColor="@color/green3"
                 android:textSize="15sp"
