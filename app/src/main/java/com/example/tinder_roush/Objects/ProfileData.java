@@ -137,11 +137,12 @@ public class ProfileData {
         this.smoker = smoker;
     }
     //Constructor update
-    public ProfileData(String id, String first_name, String last_name, String email, String date_birth, String about, String job) {
+    public ProfileData(String id, String first_name, String last_name, String email,String address, String date_birth, String about, String job) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
+        this.address = address;
         this.date_birth = date_birth;
         this.about = about;
         this.job = job;

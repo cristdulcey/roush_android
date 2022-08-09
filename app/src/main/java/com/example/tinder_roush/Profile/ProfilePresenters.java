@@ -4,7 +4,6 @@ import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.ProfileData;
-import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
@@ -185,6 +184,21 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
     @Override
     public void changeInteresting() {
         model.changeInteresting(this);
+    }
+
+    @Override
+    public void changeOrientation() {
+        model.changeOrientationModel(this);
+    }
+
+    @Override
+    public void changeZodiac() {
+        model.changeZodiacModel(this);
+    }
+
+    @Override
+    public void changeCity() {
+        model.changeCityModel(this);
     }
 
     @Override

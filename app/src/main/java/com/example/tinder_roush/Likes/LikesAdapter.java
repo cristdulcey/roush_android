@@ -58,7 +58,6 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String created = listLikes.get(position).getCreated_at();
 
-
         String url = "";
         String name = "";
         if (listLikes.get(position).getPerson1().equals(localData.getRegister("ID_USERCURRENT"))) {

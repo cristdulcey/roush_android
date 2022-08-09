@@ -274,34 +274,16 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 orientation_select = orientation_spinner.getSelectedItem().toString();
                 for (int o = 0; o < 5; o++) {
-                    if (orientation_select.equals("- - - -")) {
-                        textOrientation = "";
-                        break;
-                    }
-                    if (orientation_select.equals("Heterosexual")) {
-                        textOrientation = "HETERO";
-                        break;
-                    }
-                    if (orientation_select.equals("Gay")) {
-                        textOrientation = "GAY";
-                        break;
-                    }
-                    if (orientation_select.equals("Lesbiana")) {
-                        textOrientation = "LESBIAN";
-                        break;
-                    }
-                    if (orientation_select.equals("Bisexual")) {
-                        textOrientation = "BISEXUAL";
-                        break;
-                    }
-                    if (orientation_select.equals("Otr@")) {
-                        textOrientation = "OTHER";
-                        break;
-                    }
+                    if (orientation_select.equals("- - - -")) { textOrientation = "";break; }
+                    if (orientation_select.equals("Heterosexual")) { textOrientation = "HETERO";break; }
+                    if (orientation_select.equals("Gay")) { textOrientation = "GAY";break; }
+                    if (orientation_select.equals("Lesbiana")) { textOrientation = "LESBIAN";break; }
+                    if (orientation_select.equals("Bisexual")) { textOrientation = "BISEXUAL";break; }
+                    if (orientation_select.equals("Otr@")) { textOrientation = "OTHER";break; }
                 }
-                localData.register(textOrientation, "SEXUAL_ORIENTATION");
-                if (!textOrientation.equals("")) {
-                    presenter.changePreferencesSearch();
+                if (!textOrientation.equals("") && !textOrientation.equals(localData.getRegister("ORIENTATION_SELECTED"))) {
+                    localData.register(textOrientation, "SEXUAL_ORIENTATION");
+                    presenter.changeOrientation();
                 }
             }
 
@@ -317,62 +299,23 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 zodiac_select = zodiac_spinner.getSelectedItem().toString();
                 for (int o = 0; o < 11; o++) {
-                    if (zodiac_select.equals("Es indiferente")) {
-                        textZodiac = "";
-                        break;
-                    }
-                    if (zodiac_select.equals("Aries")) {
-                        textZodiac = "ARIES";
-                        break;
-                    }
-                    if (zodiac_select.equals("Tauro")) {
-                        textZodiac = "TAURUS";
-                        break;
-                    }
-                    if (zodiac_select.equals("Gémisis")) {
-                        textZodiac = "GEMINI";
-                        break;
-                    }
-                    if (zodiac_select.equals("Cáncer")) {
-                        textZodiac = "CANCER";
-                        break;
-                    }
-                    if (zodiac_select.equals("Leo")) {
-                        textZodiac = "LEO";
-                        break;
-                    }
-                    if (zodiac_select.equals("Virgo")) {
-                        textZodiac = "VIRGO";
-                        break;
-                    }
-                    if (zodiac_select.equals("Libra")) {
-                        textZodiac = "LIBRA";
-                        break;
-                    }
-                    if (zodiac_select.equals("Escorpio")) {
-                        textZodiac = "SCORPIO";
-                        break;
-                    }
-                    if (zodiac_select.equals("Sagitario")) {
-                        textZodiac = "SAGITTARIUS";
-                        break;
-                    }
-                    if (zodiac_select.equals("Capricornio")) {
-                        textZodiac = "CAPRICORN";
-                        break;
-                    }
-                    if (zodiac_select.equals("Acuario")) {
-                        textZodiac = "AQUARIUS";
-                        break;
-                    }
-                    if (zodiac_select.equals("Piscis")) {
-                        textZodiac = "PISCES";
-                        break;
-                    }
+                    if (zodiac_select.equals("Es indiferente")) { textZodiac = "";break; }
+                    if (zodiac_select.equals("Aries")) { textZodiac = "ARIES";break; }
+                    if (zodiac_select.equals("Tauro")) { textZodiac = "TAURUS";break; }
+                    if (zodiac_select.equals("Gémisis")) { textZodiac = "GEMINI";break; }
+                    if (zodiac_select.equals("Cáncer")) { textZodiac = "CANCER";break; }
+                    if (zodiac_select.equals("Leo")) { textZodiac = "LEO";break; }
+                    if (zodiac_select.equals("Virgo")) { textZodiac = "VIRGO";break; }
+                    if (zodiac_select.equals("Libra")) { textZodiac = "LIBRA";break; }
+                    if (zodiac_select.equals("Escorpio")) { textZodiac = "SCORPIO";break; }
+                    if (zodiac_select.equals("Sagitario")) { textZodiac = "SAGITTARIUS";break; }
+                    if (zodiac_select.equals("Capricornio")) { textZodiac = "CAPRICORN";break; }
+                    if (zodiac_select.equals("Acuario")) { textZodiac = "AQUARIUS";break; }
+                    if (zodiac_select.equals("Piscis")) { textZodiac = "PISCES";break; }
                 }
-                localData.register(textZodiac, "ZODIAC_SIGN");
-                if (!textZodiac.equals("")) {
-                    presenter.changePreferencesSearch();
+                if (!textZodiac.equals("") && !textZodiac.equals(localData.getRegister("ZODIAC_SELECTED"))) {
+                    localData.register(textZodiac, "ZODIAC_SIGN");
+                    presenter.changeZodiac();
                 }
             }
 
@@ -1066,7 +1009,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         }
         Calendar cal = Calendar.getInstance();
         Date current_date = cal.getTime();
-
+        String orientation_show = data.getSexual_orientation();
+        localData.register(orientation_show, "ORIENTATION_SELECTED");
+        String zodiac_show = data.getZodiac_sign();
+        localData.register(zodiac_show,"ZODIAC_SELECTED");
         first_name.setText(data.getFirst_name());
         last_name.setText(data.getLast_name());
         date_birth.setText(data.getDate_birth());
@@ -1081,10 +1027,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
         city = data.getCity();
         if (localData.getRegister("MIN_AGE").equals("")){
-            String min_a= "18";
+            String min_a= "22";
             localData.register(min_a,"MIN_AGE"); }
         if (localData.getRegister("MAX_AGE").equals("")){
-            String max_a= "60";
+            String max_a= "45";
             localData.register(max_a,"MAX_AGE"); }
 
         min_age.setText(localData.getRegister("MIN_AGE"));
@@ -1267,12 +1213,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         zodiac_spinner.setSelection(posZodiac);
         citySelected = data.getCity();
         presenter.citiesPresenter();
-//        int posCities = 0;
-//        for (int i = 0; i < allCities.size(); i++) {
-//            if (allCities.get(i).getId().equals(data.getCity())) {
-//                posCities = i;
-//                break; }
-//        }spinnerCities.setSelection(posCities);
     }
 
     @Override
@@ -1503,8 +1443,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         for (int i = 0; i < cities.size(); i++) {
             if (cities.get(i).getId().equals(citySelected)) {
                 cities.get(i).setSelected(true);
-                break;
-            }
+                break; }
         }
         allCities = cities;
         spinnerCities.setSearchEnabled(true);
@@ -1513,11 +1452,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             @Override
             public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                 city = selectedItem.getId();
+                localData.register(city,"CITY_UPDATE");
+                presenter.changeCity();
             }
-
             @Override
-            public void onClear() {
-            }
+            public void onClear() { }
         });
     }
 }
