@@ -18,6 +18,7 @@ public interface LikesInterfaces {
         void getAllLikesPresenter();
         void getAllLikesRePresenter();
         void getLikesPresenter(ArrayList<HomeData> listLikes);
+        void getLikesReceivedPresenter(ArrayList<HomeData> listLikes);
         void getLikesError(String message);
     }
 

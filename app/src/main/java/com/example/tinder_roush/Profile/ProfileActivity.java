@@ -29,10 +29,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
@@ -1023,8 +1019,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         ageUser.setText(String.valueOf(getEdad(birth_date, current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
         distance.setText(String.valueOf(data.getDistance())+"km");
-       // distance_range.setProgress(Integer.parseInt(data.getDistance()));
-        distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
+        distance_range.setProgress(Integer.parseInt(data.getDistance()));
+      //  distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
         city = data.getCity();
         if (localData.getRegister("MIN_AGE").equals("")){
             String min_a= "22";
