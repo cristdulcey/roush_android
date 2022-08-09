@@ -1,6 +1,7 @@
 package com.example.tinder_roush.Likes;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,17 +57,26 @@ public class LikesReceivedAdapter extends RecyclerView.Adapter<LikesReceivedAdap
     public void onBindViewHolder(@NonNull LikesReceivedAdapter.ViewHolder holder, int position) {
         String created = listLikesReceived.get(position).getCreated_at();
 
-        if (listLikesReceived.get(position).isResponse_person1()!=null || listLikesReceived.get(position).isResponse_person2()!=null) {
-            String url=""; String name="";
-            if (listLikesReceived.get(position).getPerson1().equals(localData.getRegister("ID_USERCURRENT")) && listLikesReceived.get(position).isResponse_person2().equals("true")) {
-                url = listLikesReceived.get(position).getPerson2_image();
-                name = listLikesReceived.get(position).getPerson2_name();
-            } else if (!listLikesReceived.get(position).getPerson1().equals(localData.getRegister("ID_USERCURRENT")) && listLikesReceived.get(position).isResponse_person1().equals("true")) {
-                url = listLikesReceived.get(position).getPerson1_image();
-                name = listLikesReceived.get(position).getPerson1_name();
+        String url = "";
+        String name = "";
+        if (listLikesReceived.get(position).getPerson2().equals(localData.getRegister("ID_USERCURRENT"))) {
+            url = listLikesReceived.get(position).getPerson1_image();
+            name = listLikesReceived.get(position).getPerson1_name();
+            try {
+                Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
+                holder.person_name.setText(name);
+            }catch (Exception e){
+                Log.e("ERROR GET IMAGE_LIKE", e.toString());
             }
-            Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
-            holder.person_name.setText(name);
+        } else if (!listLikesReceived.get(position).getPerson2().equals(localData.getRegister("ID_USERCURRENT"))) {
+            url = listLikesReceived.get(position).getPerson2_image();
+            name = listLikesReceived.get(position).getPerson2_name();
+            try {
+                Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
+                holder.person_name.setText(name);
+            }catch (Exception e){
+                Log.e("ERROR GET IMAGE_LIKE", e.toString());
+            }
         }
 
         Date current_date = cal.getTime();

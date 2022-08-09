@@ -1,5 +1,6 @@
 package com.example.tinder_roush.Likes;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.tinder_roush.LocalData.LocalData;
@@ -40,16 +41,48 @@ public class LikesPresenters implements LikesInterfaces.presenters{
     public void getLikesPresenter(ArrayList<HomeData> data) {
         ArrayList<HomeData> aux = new ArrayList<>();
         for (int i =0; i <data.size(); i++){
-            if (data.get(i).getPerson1().equals(localData.getRegister("ID_USERCURRENT")) && data.get(i).isResponse_person1().equals("true")
-                ){
-                aux.add(data.get(i));
+            if (!localData.getRegister("ID_USERCURRENT").equals(data.get(i).getPerson1())){
+                try {
+                    if (data.get(i).isResponse_person2() == true){
+                        aux.add(data.get(i));
+                    }
+                }catch (Exception exception){
+                    Log.e("Error", exception.toString());
+                }
+            }else if (localData.getRegister("ID_USERCURRENT").equals(data.get(i).getPerson1())){
+                try {
+                    if (data.get(i).isResponse_person1() == true){
+                        aux.add(data.get(i));
+                    }
+                }catch (Exception exception){
+                    Log.e("Error", exception.toString());
+                }
             }
         }
-        view.recyclerLikes(data);
+        view.recyclerLikes(aux);
     }
 
     public void getLikesReceivedPresenter(ArrayList<HomeData> data) {
-        view.recyclerLikesGiven(data);
+        ArrayList<HomeData> aux = new ArrayList<>();
+        for (int i =0; i <data.size(); i++){
+            if (!localData.getRegister("ID_USERCURRENT").equals(data.get(i).getPerson2())){
+                try {
+                    if (data.get(i).isResponse_person2() == true){
+                        aux.add(data.get(i));
+                    }
+                }catch (Exception exception){
+                    Log.e("Error", exception.toString());
+                }
+            }else if (localData.getRegister("ID_USERCURRENT").equals(data.get(i).getPerson2())){
+                try {
+                    if (data.get(i).isResponse_person1() == true){
+                        aux.add(data.get(i));
+                    }
+                }catch (Exception exception){
+                    Log.e("Error", exception.toString());
+                }
+            }
+        }view.recyclerLikesGiven(aux);
     }
 
     @Override

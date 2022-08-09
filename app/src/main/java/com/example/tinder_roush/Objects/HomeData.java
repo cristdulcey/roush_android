@@ -19,11 +19,11 @@ public class HomeData {
 
     @SerializedName("response_person1")
     @Expose
-    private String response_person1;
+    private boolean response_person1;
 
     @SerializedName("response_person2")
     @Expose
-    private String response_person2;
+    private boolean response_person2;
 
     @SerializedName("created_at")
     @Expose
@@ -45,17 +45,17 @@ public class HomeData {
     @Expose
     private String person2_image;
 
-
-    public HomeData(String id, String person1, String person2, String response_person1, String response_person2) {
+    public HomeData(String id, String person1, String person2, boolean response_person1, boolean response_person2, String created_at, String person1_name, String person2_name, String person1_image, String person2_image) {
         this.id = id;
         this.person1 = person1;
         this.person2 = person2;
         this.response_person1 = response_person1;
         this.response_person2 = response_person2;
-    }
-    public HomeData(String response_person1, String response_person2) {
-        this.response_person1 = response_person1;
-        this.response_person2 = response_person2;
+        this.created_at = created_at;
+        this.person1_name = person1_name;
+        this.person2_name = person2_name;
+        this.person1_image = person1_image;
+        this.person2_image = person2_image;
     }
 
     public String getId() {
@@ -82,19 +82,19 @@ public class HomeData {
         this.person2 = person2;
     }
 
-    public String isResponse_person1() {
+    public boolean isResponse_person1() {
         return response_person1;
     }
 
-    public void setResponse_person1(String response_person1) {
+    public void setResponse_person1(boolean response_person1) {
         this.response_person1 = response_person1;
     }
 
-    public String isResponse_person2() {
+    public boolean isResponse_person2() {
         return response_person2;
     }
 
-    public void setResponse_person2(String response_person2) {
+    public void setResponse_person2(boolean response_person2) {
         this.response_person2 = response_person2;
     }
 
