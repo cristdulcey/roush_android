@@ -101,12 +101,14 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 if(direction == Direction.Right){
                     presenter.HomeResponseMatchTrue();
                     paginate();
-                    presenter.HomePresenterGetMatch();
+                    //presenter.HomePresenterPostMatch();
+                    //presenter.HomePresenterGetMatch();
                 }
                 if(direction == Direction.Left){
                     presenter.HomeResponseMatchFalse();
                     paginate();
-                    presenter.HomePresenterGetMatch();
+                  //  presenter.HomePresenterGetMatch();
+                    //presenter.HomePresenterPostMatch();
                 }
 //                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
 //                    paginate();

@@ -29,7 +29,7 @@
 
         <TextView
             android:id="@+id/person_give_me_like"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_marginStart="6dp"
             android:layout_height="25dp"
             android:fontFamily="@font/monserrat_semibold"
@@ -40,9 +40,8 @@
 
         <TextView
             android:id="@+id/text2_like_received"
-            android:layout_width="165dp"
+            android:layout_width="120dp"
             android:layout_height="25dp"
-            android:layout_weight="1"
             android:textSize="13sp"
             android:layout_marginStart="8dp"
             android:layout_gravity="center"

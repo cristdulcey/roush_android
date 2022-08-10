@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.HomeData;
-import androidx.fragment.app.FragmentTransaction;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;

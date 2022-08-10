@@ -98,6 +98,8 @@ public class HomeModels implements HomeInterfaces.models{
             @Override
             public void onResponse(Call<HomeData> call, Response<HomeData> response) {
                 if (response.isSuccessful()){
+                    String id_match = response.body().getId();
+                    localData.register(id_match,"ID_MATCH");
                     presenter.HomePresenterGetMatch();
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
@@ -127,10 +129,9 @@ public class HomeModels implements HomeInterfaces.models{
                     MatchResponse card_list = response.body();
                     ArrayList<HomeData> matchs = new ArrayList<>();
                     for (int i =0; i<card_list.getCount(); i++){
-                        if (!card_list.getResults().get(i).isResponse_person1() && !card_list.getResults().get(i).isResponse_person2()) {
+                        if (card_list.getResults().get(i).isResponse_person1() && card_list.getResults().get(i).isResponse_person2()) {
                             continue;
                         }else{
-                            if (card_list.getResults().get(i).getPerson1()==localData.getRegister("ID_USERCURRENT"))
                             matchs.add(card_list.getResults().get(i));
                         }
                     }
@@ -167,7 +168,7 @@ public class HomeModels implements HomeInterfaces.models{
                 @Override
                 public void onResponse(Call<HomeData> call, Response<HomeData> response) {
                     if (response.isSuccessful()){
-                        if (response.body().isResponse_person1() == (response.body().isResponse_person2())){
+                        if ((response.body().isResponse_person1()==true) == ((response.body().isResponse_person2())==true)){
                             presenter.HomeBackResponseMatchSuccess();
                         }else {
                            Log.e("USER_CURRENT_ANSWER",response.toString());

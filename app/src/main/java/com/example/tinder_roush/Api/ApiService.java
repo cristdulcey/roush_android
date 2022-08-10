@@ -84,7 +84,7 @@ public interface ApiService {
     Call<HomeData> post_persons_match(
     );
 
-    @GET("/api/persons-match/")
+    @GET("/api/persons-match/?ordering=-created_at")
     Call<MatchResponse> persons_match(
     );
 
