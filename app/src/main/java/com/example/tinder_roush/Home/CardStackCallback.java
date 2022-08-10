@@ -2,13 +2,15 @@ package com.example.tinder_roush.Home;
 
 import androidx.recyclerview.widget.DiffUtil;
 
+import com.example.tinder_roush.Objects.HomeData;
+
 import java.util.List;
 
 public class CardStackCallback extends DiffUtil.Callback {
 
-    private List<CardPersonItem> old, fresh;
+    private List<HomeData> old, fresh;
 
-    public CardStackCallback(List<CardPersonItem> old, List<CardPersonItem> fresh) {
+    public CardStackCallback(List<HomeData> old, List<HomeData> fresh) {
         this.old = old;
         this.fresh = fresh;
     }
@@ -25,7 +27,7 @@ public class CardStackCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return old.get(oldItemPosition).getImage() == fresh.get(newItemPosition).getImage();
+        return old.get(oldItemPosition).getPerson1_image() == fresh.get(newItemPosition).getPerson2_image();
     }
 
     @Override

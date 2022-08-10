@@ -9,11 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,10 +22,10 @@ import java.util.Locale;
 
 public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPersonAdapter.ViewHolder> {
 
-    private List<CardPersonItem> cardPersonItems;
+    private List<HomeData> cardPersonItems;
     Calendar cal;
 
-    public CardStackPersonAdapter(List<CardPersonItem> cardPersonItems) {
+    public CardStackPersonAdapter(List<HomeData> cardPersonItems) {
         this.cardPersonItems = cardPersonItems;
     }
 
@@ -61,27 +61,32 @@ public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPerson
             age_person = itemView.findViewById(R.id.card_person_age);
         }
 
-        public void setData(CardPersonItem data) {
+        public void setData(HomeData data) {
             Date current_date = cal.getTime();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             Date birth_date = null;
-            try {
-                birth_date = dateFormat.parse(data.getPerson().getDate_birth());
-                age_person.setText(String.valueOf(getEdad(birth_date,current_date)));
-                Picasso.get().load(data.getImage()).fit().centerCrop().into(image_person);
-                name_person.setText(data.getPerson().getFirst_name());
-                job.setText(data.getPerson().getJob());
-            } catch (
-                    ParseException e) { e.printStackTrace();
-            }
+//            try {
+//               // birth_date = dateFormat.parse(data.getPerson().getDate_birth());
+//                //age_person.setText(String.valueOf(getEdad(birth_date,current_date)));
+////                Picasso.get().load(data.getImage()).fit().centerCrop().into(image_person);
+////                name_person.setText(data.getPerson().getFirst_name());
+////                job.setText(data.getPerson().getJob());
+//
+//            } catch (
+//                    ParseException e) { e.printStackTrace();
+//            }
+            age_person.setText("26");
+            Picasso.get().load(data.getPerson1_image()).fit().centerCrop().into(image_person);
+            name_person.setText(data.getPerson1_name());
+            job.setText("Pianista");
         }
     }
 
-    public List<CardPersonItem> getCardPersonItems() {
+    public List<HomeData> getCardPersonItems() {
         return cardPersonItems;
     }
 
-    public void setCardPersonItems(List<CardPersonItem> cardPersonItems) {
+    public void setCardPersonItems(List<HomeData> cardPersonItems) {
         this.cardPersonItems = cardPersonItems;
     }
 

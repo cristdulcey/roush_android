@@ -8,7 +8,7 @@ import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
-import com.example.tinder_roush.Objects.HomeResponse;
+import com.example.tinder_roush.Objects.MatchResponse;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
@@ -33,6 +33,7 @@ public class HomeModels implements HomeInterfaces.models{
         this.localData = new LocalData();
     }
 
+    //CITIES
     @Override
     public void citiesModels(HomeInterfaces.presenters presenter) {
         Call<CityResponse> call = apiAdapter.getApiService().cities();
@@ -61,6 +62,7 @@ public class HomeModels implements HomeInterfaces.models{
         });
     }
 
+    //FILTERS
     @Override
     public void HomeFilterUserPreferences(View view, HomeInterfaces.presenters presenter) {
         Call<ProfileData> call = apiAdapter.getApiService2().current_user();
@@ -90,16 +92,13 @@ public class HomeModels implements HomeInterfaces.models{
 
     //POST MATCH
     @Override
-    public void HomeModelMatch(HomeInterfaces.presenters presenter) {
-        Call<HomeData> call = apiAdapter.getApiService2().persons_match();
+    public void HomeModelPostMatch(HomeInterfaces.presenters presenter) {
+        Call<HomeData> call = apiAdapter.getApiService2().post_persons_match();
         call.enqueue(new Callback<HomeData>() {
             @Override
             public void onResponse(Call<HomeData> call, Response<HomeData> response) {
                 if (response.isSuccessful()){
-                    localData.register(response.body().getId(),"ID_MATCH");
-                    localData.register(response.body().getPerson1(),"PERSON1");
-                    localData.register(response.body().getPerson2(),"PERSON2");
-                        presenter.HomePresenterGetPhotos();
+                    presenter.HomePresenterGetMatch();
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -118,105 +117,24 @@ public class HomeModels implements HomeInterfaces.models{
         });
     }
 
-    //GET PHOTOS MATCH
     @Override
-    public void HomeModelPhoto(HomeInterfaces.presenters presenter) {
-            if (localData.getRegister("ID_USERCURRENT").equals(localData.getRegister("PERSON2"))){
-                Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("PERSON1"));
-                call.enqueue(new Callback<HomeResponse>() {
-                    @Override
-                    public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
-                        if (response.isSuccessful()) {
-                            HomeResponse home_card_list = null;
-                            home_card_list = response.body();
-                            presenter.HomePresenterSuccess(home_card_list.getResults());
-                        } else {
-                            CustomErrorResponse custom_error = new CustomErrorResponse();
-                            String response_user = "Intentalo nuevamente";
-                            try {
-                                response_user = custom_error.returnMessageError(response.errorBody().string());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            presenter.HomeError(response_user);
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<HomeResponse> call, Throwable t) {
-                        Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }else{
-                Call<HomeResponse> call = apiAdapter.getApiService2().persons_photo(localData.getRegister("PERSON2"));
-                call.enqueue(new Callback<HomeResponse>() {
-                    @Override
-                    public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
-                        if (response.isSuccessful()) {
-                            HomeResponse home_card_list = null;
-                            home_card_list = response.body();
-                            presenter.HomePresenterSuccess(home_card_list.getResults());
-                        } else {
-                            CustomErrorResponse custom_error = new CustomErrorResponse();
-                            String response_user = "Intentalo nuevamente";
-                            try {
-                                response_user = custom_error.returnMessageError(response.errorBody().string());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            presenter.HomeError(response_user);
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<HomeResponse> call, Throwable t) {
-                        Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-    }
-
-    //GET PHOTOS CURRENT USER
-    @Override
-    public void HomeModelPhotoUser(HomeInterfaces.presenters presenter) {
-        Call<HomeResponse> call = apiAdapter.getApiService2().persons_user_photo(localData.getRegister("ID_USERCURRENT"));
-        call.enqueue(new Callback<HomeResponse>() {
+    public void HomeModelMatch(HomeInterfaces.presenters presenter) {
+        Call<MatchResponse> call = apiAdapter.getApiService2().persons_match();
+        call.enqueue(new Callback<MatchResponse>() {
             @Override
-            public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
-                if (response.isSuccessful()) {
-                    int total_photos = response.body().getCount();
-                    ArrayList<CardPersonItem> home_card_list = response.body().getResults();
-                    for (int i=0; i<=total_photos;i++){
-                        if (!home_card_list.get(i).getPrincipal()) {
-                            continue;
-                        }
-                        presenter.HomePhotoUserId(home_card_list.get(i));
-                        break;
-                    }
-                } else {
-                    CustomErrorResponse custom_error = new CustomErrorResponse();
-                    String response_user = "Intentalo nuevamente";
-                    try {
-                        response_user = custom_error.returnMessageError(response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    presenter.HomeError(response_user);
-                }
-            }
-            @Override
-            public void onFailure(Call<HomeResponse> call, Throwable t) {
-                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    @Override
-    public void HomeModelPhotoUserSuccess(HomeInterfaces.presenters presenter, CardPersonItem data) {
-        Call<CardPersonItem> call = apiAdapter.getApiService2().profile_photo(data.getId(), data.getPrincipal());
-        call.enqueue(new Callback<CardPersonItem>() {
-            @Override
-            public void onResponse(Call<CardPersonItem> call, Response<CardPersonItem> response) {
+            public void onResponse(Call<MatchResponse> call, Response<MatchResponse> response) {
                 if (response.isSuccessful()){
-                    presenter.HomePhotoUserSuccess(response.body());
+                    MatchResponse card_list = response.body();
+                    ArrayList<HomeData> matchs = new ArrayList<>();
+                    for (int i =0; i<card_list.getCount(); i++){
+                        if (!card_list.getResults().get(i).isResponse_person1() && !card_list.getResults().get(i).isResponse_person2()) {
+                            continue;
+                        }else{
+                            if (card_list.getResults().get(i).getPerson1()==localData.getRegister("ID_USERCURRENT"))
+                            matchs.add(card_list.getResults().get(i));
+                        }
+                    }
+                    presenter.HomePresenterSuccess(matchs);
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -228,9 +146,8 @@ public class HomeModels implements HomeInterfaces.models{
                     presenter.HomeError(response_user);
                 }
             }
-
             @Override
-            public void onFailure(Call<CardPersonItem> call, Throwable t) {
+            public void onFailure(Call<MatchResponse> call, Throwable t) {
                 Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -253,7 +170,7 @@ public class HomeModels implements HomeInterfaces.models{
                         if (response.body().isResponse_person1() == (response.body().isResponse_person2())){
                             presenter.HomeBackResponseMatchSuccess();
                         }else {
-                            presenter.HomeResponseMatchSuccess();
+                           Log.e("USER_CURRENT_ANSWER",response.toString());
                         }
                     }else {
                         CustomErrorResponse custom_error = new CustomErrorResponse();
@@ -282,7 +199,7 @@ public class HomeModels implements HomeInterfaces.models{
                 @Override
                 public void onResponse(Call<HomeData> call, Response<HomeData> response) {
                     if (response.isSuccessful()){
-                            presenter.HomeResponseMatchSuccess();
+                        Log.e("USER_CURRENT_ANSWER",response.toString());
                     }else {
                         CustomErrorResponse custom_error = new CustomErrorResponse();
                         String response_user = "Intentalo nuevamente";
@@ -314,7 +231,7 @@ public class HomeModels implements HomeInterfaces.models{
                 @Override
                 public void onResponse(Call<HomeData> call, Response<HomeData> response) {
                     if (response.isSuccessful()){
-                            presenter.HomeResponseMatchSuccess();
+                        Log.e("USER_CURRENT_ANSWER",response.toString());
                     }else {
                         CustomErrorResponse custom_error = new CustomErrorResponse();
                         String response_user = "Intentalo nuevamente";
@@ -342,7 +259,7 @@ public class HomeModels implements HomeInterfaces.models{
                 @Override
                 public void onResponse(Call<HomeData> call, Response<HomeData> response) {
                     if (response.isSuccessful()){
-                        presenter.HomeResponseMatchSuccess();
+                        Log.e("USER_CURRENT_ANSWER",response.toString());
                     }else {
                         CustomErrorResponse custom_error = new CustomErrorResponse();
                         String response_user = "Intentalo nuevamente";

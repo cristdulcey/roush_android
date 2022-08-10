@@ -1018,8 +1018,14 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         address.setText(data.getAddress());
         ageUser.setText(String.valueOf(getEdad(birth_date, current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
-        distance.setText(String.valueOf(data.getDistance())+"km");
-        distance_range.setProgress(Integer.parseInt(data.getDistance()));
+        if (data.getDistance()==null){
+            distance.setText("10km");
+            distance_range.setProgress(10);
+        }else {
+            distance.setText(String.valueOf(data.getDistance())+"km");
+            distance_range.setProgress(Integer.parseInt(data.getDistance()));
+        }
+
       //  distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
         city = data.getCity();
         if (localData.getRegister("MIN_AGE").equals("")){

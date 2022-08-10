@@ -8,6 +8,7 @@ import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.LikesData;
+import com.example.tinder_roush.Objects.MatchResponse;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Objects.Register4Data;
@@ -80,7 +81,11 @@ public interface ApiService {
     );
 
     @POST("/api/persons-match/")
-    Call<HomeData> persons_match(
+    Call<HomeData> post_persons_match(
+    );
+
+    @GET("/api/persons-match/")
+    Call<MatchResponse> persons_match(
     );
 
     @GET("/api/persons-photo/?limit=1")

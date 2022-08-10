@@ -1,12 +1,10 @@
 package com.example.tinder_roush.Home;
 
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.ProfileData;
-import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
@@ -42,6 +40,7 @@ public class HomePresenters implements HomeInterfaces.presenters{
         //view.addItemsSpinnerCity(listArray0);
     }
 
+    //FILTER
     @Override
     public void getUserPreferencesFilter(View view) {
         model.HomeFilterUserPreferences(view,this);
@@ -53,35 +52,22 @@ public class HomePresenters implements HomeInterfaces.presenters{
     }
 
     @Override
+    public void HomePresenterPostMatch() {
+        model.HomeModelPostMatch(this);
+    }
+
+    //GET MATCH
+    @Override
     public void HomePresenterGetMatch() {
         model.HomeModelMatch(this);
     }
 
     @Override
-    public void HomePresenterGetPhotos() {
-        model.HomeModelPhoto(this);
-    }
-
-    @Override
-    public void HomePresenterSuccess(ArrayList<CardPersonItem> person) {
+    public void HomePresenterSuccess(ArrayList<HomeData> person) {
         view.addList(person);
     }
 
-    @Override
-    public void HomePhotoUser() {
-        model.HomeModelPhotoUser(this);
-    }
-
-    @Override
-    public void HomePhotoUserId(CardPersonItem person) {
-       model.HomeModelPhotoUserSuccess(this, person);
-    }
-
-    @Override
-    public void HomePhotoUserSuccess(CardPersonItem person) {
-        view.getUserPhoto(person);
-    }
-
+    //MATCH RESPONSES
     @Override
     public void HomeResponseMatchTrue() {
         model.HomeModelResponseMatchTrue(this);
@@ -93,15 +79,11 @@ public class HomePresenters implements HomeInterfaces.presenters{
     }
 
     @Override
-    public void HomeResponseMatchSuccess() {
-     //   Toast.makeText(BaseContext.getContext(), "Match request", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     public void HomeBackResponseMatchSuccess() {
         view.performMatchSuccess();
     }
 
+    //GET USER CURRENT DATA
     @Override
     public void HomePersonCurrent() {
         model.HomeModelPersonCurrent(this);
@@ -111,7 +93,6 @@ public class HomePresenters implements HomeInterfaces.presenters{
     public void HomePersonCurrentSuccess(ProfileData data) {
         view.getUser(data);
     }
-
 
     @Override
     public void HomeError(String message) {

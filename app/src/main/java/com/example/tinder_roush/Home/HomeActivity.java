@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
+import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.OtherProfile.OtherProfileActivity;
 import com.example.tinder_roush.Profile.ProfileActivity;
@@ -53,7 +54,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     Context context;
     String city;
     HomePresenters presenter;
-    List<CardPersonItem> cardPersonItems = new ArrayList<>();
+    List<HomeData> cardPersonItems = new ArrayList<>();
     List<KeyPairBoolDataCustom> allCities;
     SpinnerCustom spinnerCities;
     CardStackView cardStackView;
@@ -74,7 +75,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         //  adapterCardPerson = new CardStackPersonAdapter(addList());
         initObjets(view);
         presenter.HomePersonCurrent();
-        presenter.HomePhotoUser();
+       // presenter.HomePhotoUser();
         presenter.citiesPresenter();
         listeners();
         swipeCards();
@@ -85,7 +86,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     public void onStart() {
         super.onStart();
         if (wait_response == false){
-            presenter.HomePresenterGetMatch();
+            presenter.HomePresenterPostMatch();
             wait_response = true;
         }
     }
@@ -133,7 +134,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
 
     private void paginate() {
-        List<CardPersonItem> old = adapterCardPerson.getCardPersonItems();
+        List<HomeData> old = adapterCardPerson.getCardPersonItems();
 //        List<CardPersonItem> fresh = new ArrayList<>(addList());
         CardStackCallback callback = new CardStackCallback(old, cardPersonItems);
         DiffUtil.DiffResult hasil = DiffUtil.calculateDiff(callback);
@@ -141,7 +142,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         hasil.dispatchUpdatesTo(adapterCardPerson);
     }
 
-    public void addList(ArrayList<CardPersonItem> person) {
+    public void addList(ArrayList<HomeData> person) {
         adapterCardPerson = new CardStackPersonAdapter(person);
         cardStackView.setLayoutManager(managerCard);
         cardStackView.setAdapter(adapterCardPerson);

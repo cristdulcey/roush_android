@@ -998,8 +998,13 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         address.setText(data.getAddress());
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
-        distance.setText(String.valueOf(data.getDistance())+"km");
-        distance_range.setProgress(Integer.parseInt(data.getDistance()));
+        if (data.getDistance()==null){
+            distance.setText("10km");
+            distance_range.setProgress(10);
+        }else {
+            distance.setText(String.valueOf(data.getDistance())+"km");
+            distance_range.setProgress(Integer.parseInt(data.getDistance()));
+        }
         city = data.getCity();
         min_age.setText(localData.getRegister("MIN_AGE"));
         max_age.setText(localData.getRegister("MAX_AGE"));
