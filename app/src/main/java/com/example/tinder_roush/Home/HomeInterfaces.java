@@ -13,9 +13,10 @@ public interface HomeInterfaces {
     interface fragment{
        void addList(ArrayList<HomeData> person);
        void getUser(ProfileData data);
-       void getUserPhoto(CardPersonItem person);
+       void getUserPhoto(String person);
        void performMatchSuccess();
        void filters(View view, ProfileData data);
+   //    void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities);
     }
 
     interface presenters{
@@ -24,11 +25,10 @@ public interface HomeInterfaces {
         //Get match and photos
         void getUserPreferencesFilter(View view);
         void HomeFilterSuccessful(View view,ProfileData data);
-
+        void HomePhotoUser();
+        void getPhotoProfileSuccess(String data);
 
         void HomePresenterPostMatch();
-        void HomePresenterGetMatch();
-       // void HomePresenterGetPhotos();
         void HomePresenterSuccess(ArrayList<HomeData> person);
 
         //Get response match
@@ -46,13 +46,13 @@ public interface HomeInterfaces {
         void HomeFilterUserPreferences(View view,presenters presenter);
         //Get match and photos
         void HomeModelPostMatch(presenters presenter);
-        void HomeModelMatch(presenters presenter);
 
         //Get response match
         void HomeModelResponseMatchTrue(presenters presenter);
         void HomeModelResponseMatchFalse(presenters presenter);
         void HomeModelPersonCurrent(presenters presenter);
 
+        void getUserCurrentPhoto(presenters presenter);
     }
 
 }

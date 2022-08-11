@@ -31,6 +31,7 @@ import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
+import com.example.tinder_roush.Utils.SpinnerListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.slider.RangeSlider;
 import com.squareup.picasso.Picasso;
@@ -52,13 +53,14 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     ImageButton match, filter, swipe, like;
     ImageView goToProfile;
     Context context;
-    String city;
+    String citySelected, city;
     HomePresenters presenter;
     List<HomeData> cardPersonItems = new ArrayList<>();
     List<KeyPairBoolDataCustom> allCities;
     SpinnerCustom spinnerCities;
     CardStackView cardStackView;
     LocalData localData;
+    TextView city_match;
     int check_man, check_woman, check_both, check_other;
     Boolean wait_response = false;
     public HomeActivity() {
@@ -75,8 +77,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         //  adapterCardPerson = new CardStackPersonAdapter(addList());
         initObjets(view);
         presenter.HomePersonCurrent();
-       // presenter.HomePhotoUser();
-        presenter.citiesPresenter();
+        presenter.HomePhotoUser();
         listeners();
         swipeCards();
         return view;
@@ -101,14 +102,12 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 if(direction == Direction.Right){
                     presenter.HomeResponseMatchTrue();
                     paginate();
-                    //presenter.HomePresenterPostMatch();
-                    //presenter.HomePresenterGetMatch();
+                    presenter.HomePresenterPostMatch();
                 }
                 if(direction == Direction.Left){
                     presenter.HomeResponseMatchFalse();
                     paginate();
-                  //  presenter.HomePresenterGetMatch();
-                    //presenter.HomePresenterPostMatch();
+                    presenter.HomePresenterPostMatch();
                 }
 //                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
 //                    paginate();
@@ -159,8 +158,8 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
 
     @Override
-    public void getUserPhoto(CardPersonItem person) {
-        Picasso.get().load(person.getImage()).fit().centerCrop().into(goToProfile);
+    public void getUserPhoto(String person) {
+        Picasso.get().load(person).fit().centerCrop().into(goToProfile);
     }
 
     private void initObjets(View view) {
@@ -168,7 +167,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         presenter = new HomePresenters(this);
         match = view.findViewById(R.id.match_button);
         swipe = view.findViewById(R.id.swipe_button);
-//        spinnerCities = view.findViewById(R.id.spinner_city_filter_home);
+        city_match = view.findViewById(R.id.city_matchs);
         filter = view.findViewById(R.id.filter_home);
         goToProfile = view.findViewById(R.id.profile_from_home);
         localData = new LocalData();
@@ -180,7 +179,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
             public void onClick(View view) {
                 presenter.HomeResponseMatchTrue();
                 paginate();
-                presenter.HomePresenterGetMatch();
+                presenter.HomePresenterPostMatch();
             }
         });
         swipe.setOnClickListener(new View.OnClickListener() {
@@ -188,14 +187,14 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
             public void onClick(View view) {
                 presenter.HomeResponseMatchFalse();
                 paginate();
-                presenter.HomePresenterGetMatch();
+                presenter.HomePresenterPostMatch();
             }
         });
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 presenter.getUserPreferencesFilter(view);
-               // filters(view);
+               // presenter.citiesPresenter();
             }
         });
 
@@ -215,6 +214,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
 
     public void filters(View view, ProfileData data){
+       // addSpinnerBefore();
         Button clear_filter, save_filters, manPreference, womanPreference, bothPreference, otherPreference;
         SeekBar distance_range; RangeSlider age_range;
         TextView min_age, max_age, distance;
@@ -223,6 +223,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         View view_dg = LayoutInflater.from(context).inflate(R.layout.bottom_dialog_filter, (LinearLayout)view.findViewById(R.id.dialog_filter_container));
         clear_filter =view_dg.findViewById(R.id.clear_filter);
         save_filters =view_dg.findViewById(R.id.save_filters);
+        spinnerCities = view.findViewById(R.id.spinner_city_filter_home);
         distance_range = view_dg.findViewById(R.id.range_distance_filter);
         age_range = view_dg.findViewById(R.id.age_range_filter);
         distance_range.setMax(50);
@@ -413,10 +414,11 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 // localData.register("","GENDER_PREFERENCE");
             }
         }
+
         bottomSheetDialog.setContentView(view_dg);
         bottomSheetDialog.show();
     }
-//
+
 //    public void addSpinnerBefore(){
 //        List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
 //        KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
@@ -430,18 +432,25 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
 //
 //    //Spinner Ciudades
 //    public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities){
+//        for (int i = 0; i < cities.size(); i++) {
+//            if (cities.get(i).getId().equals(citySelected)) {
+//                cities.get(i).setSelected(true);
+//                break; }
+//        }
 //        allCities = cities;
 //        spinnerCities.setSearchEnabled(true);
 //        spinnerCities.setSearchHint("");
 //        spinnerCities.setItems(cities, new SpinnerListener() {
 //            @Override
 //            public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
-//                city=selectedItem.getId();
+//                city = selectedItem.getId();
+//                localData.register(city,"CITY_UPDATE");
 //            }
 //            @Override
 //            public void onClear() { }
 //        });
 //    }
+
 
     //Methods
     public void performMatchSuccess() {
