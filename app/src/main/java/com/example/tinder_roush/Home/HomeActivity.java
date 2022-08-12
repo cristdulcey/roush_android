@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -28,7 +27,6 @@ import com.example.tinder_roush.Objects.ProfileData;
 import com.example.tinder_roush.OtherProfile.OtherProfileActivity;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
-import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -193,8 +191,8 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.getUserPreferencesFilter(view);
-               // presenter.citiesPresenter();
+                filters(view);
+               // presenter.getUserPreferencesFilter(view);
             }
         });
 
@@ -213,8 +211,9 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         });
     }
 
-    public void filters(View view, ProfileData data){
-       // addSpinnerBefore();
+    public void filters(View view){
+        presenter.citiesPresenter();
+        addSpinnerBefore();
         Button clear_filter, save_filters, manPreference, womanPreference, bothPreference, otherPreference;
         SeekBar distance_range; RangeSlider age_range;
         TextView min_age, max_age, distance;
@@ -223,7 +222,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         View view_dg = LayoutInflater.from(context).inflate(R.layout.bottom_dialog_filter, (LinearLayout)view.findViewById(R.id.dialog_filter_container));
         clear_filter =view_dg.findViewById(R.id.clear_filter);
         save_filters =view_dg.findViewById(R.id.save_filters);
-        spinnerCities = view.findViewById(R.id.spinner_city_filter_home);
+        spinnerCities = view_dg.findViewById(R.id.spinner_city_filter_home);
         distance_range = view_dg.findViewById(R.id.range_distance_filter);
         age_range = view_dg.findViewById(R.id.age_range_filter);
         distance_range.setMax(50);
@@ -355,25 +354,12 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 }
             }
         });
-        clear_filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomSheetDialog.dismiss();
-            }
-        });
-        save_filters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(BaseContext.getContext(),"Filtros actualizados", Toast.LENGTH_SHORT).show();
-                bottomSheetDialog.dismiss();
-            }
-        });
 
         distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
         min_age.setText(localData.getRegister("MIN_AGE"));
         max_age.setText(localData.getRegister("MAX_AGE"));
         for (int i =0; i<4; i++){
-            if (data.getSearch().equals("MAN")){
+            if (localData.getRegister("GENDER_PREFERENCE").equals("MAN")){
                 manPreference.setBackgroundResource(R.drawable.border_left_green);
                 manPreference.setTextColor(Color.WHITE);
                 localData.register("MAN","GENDER_PREFERENCE");
@@ -383,7 +369,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 manPreference.setTextColor(Color.GRAY);
                 //localData.register("","GENDER_PREFERENCE");
             }
-            if (data.getSearch().equals("WOMAN")){
+            if (localData.getRegister("GENDER_PREFERENCE").equals("WOMAN")){
                 womanPreference.setBackgroundResource(R.drawable.border_green);
                 womanPreference.setTextColor(Color.WHITE);
                 localData.register("WOMAN","GENDER_PREFERENCE");
@@ -393,7 +379,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 womanPreference.setTextColor(Color.GRAY);
                 //   localData.register("","GENDER_PREFERENCE");
             }
-            if (data.getSearch().equals("BOTH")){
+            if (localData.getRegister("GENDER_PREFERENCE").equals("BOTH")){
                 bothPreference.setBackgroundResource(R.drawable.border_green);
                 bothPreference.setTextColor(Color.WHITE);
                 localData.register("BOTH","GENDER_PREFERENCE");
@@ -403,7 +389,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 bothPreference.setTextColor(Color.GRAY);
                 // localData.register("","GENDER_PREFERENCE");
             }
-            if (data.getSearch().equals("OTHER")){
+            if (localData.getRegister("GENDER_PREFERENCE").equals("OTHER")){
                 otherPreference.setBackgroundResource(R.drawable.border_rigth_green);
                 otherPreference.setTextColor(Color.WHITE);
                 localData.register("OTHER","GENDER_PREFERENCE");
@@ -415,23 +401,39 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
             }
         }
 
+        clear_filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+        save_filters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.changeFilterPresenter();
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+
         bottomSheetDialog.setContentView(view_dg);
         bottomSheetDialog.show();
     }
 
-//    public void addSpinnerBefore(){
-//        List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
-//        KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
-//        h.setId("0");
-//        h.setExtra("--");
-//        h.setName("cargando");
-//        h.setSelected(false);
-//        listArray1.add(h);
-//        addItemsSpinnerCity(listArray1);
-//    }
-//
-//    //Spinner Ciudades
-//    public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities){
+
+    public void addSpinnerBefore(){
+        List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
+        KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
+        h.setId("0");
+        h.setExtra("--");
+        h.setName("cargando");
+        h.setSelected(false);
+        listArray1.add(h);
+        addItemsSpinnerCity(listArray1);
+    }
+
+    @Override
+    public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities) {
 //        for (int i = 0; i < cities.size(); i++) {
 //            if (cities.get(i).getId().equals(citySelected)) {
 //                cities.get(i).setSelected(true);
@@ -449,8 +451,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
 //            @Override
 //            public void onClear() { }
 //        });
-//    }
-
+    }
 
     //Methods
     public void performMatchSuccess() {
