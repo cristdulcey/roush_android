@@ -1474,9 +1474,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             @Override
             public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                 city = selectedItem.getId();
+                localData.register(city,"CITY_ID");
                 String city_sel = selectedItem.getName();
                 localData.register(city_sel,"CITY_SELECT");
-                localData.register(city,"CITY_UPDATE");
                 presenter.changeCity();
             }
             @Override

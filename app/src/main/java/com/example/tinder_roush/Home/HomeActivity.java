@@ -29,6 +29,7 @@ import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
+import com.example.tinder_roush.Utils.SpinnerListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.slider.RangeSlider;
 import com.squareup.picasso.Picasso;
@@ -73,6 +74,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         context = view.getContext();
         //  adapterCardPerson = new CardStackPersonAdapter(addList());
         initObjets(view);
+        presenter.citiesPresenter();
         presenter.HomePersonCurrent();
         presenter.HomePhotoUser();
         listeners();
@@ -98,13 +100,14 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
             public void onCardSwiped(Direction direction) {
                 if(direction == Direction.Right){
                     presenter.HomeResponseMatchTrue();
-                    paginate();
                     presenter.HomePresenterPostMatch();
+                    paginate();
+
                 }
                 if(direction == Direction.Left){
                     presenter.HomeResponseMatchFalse();
-                    paginate();
                     presenter.HomePresenterPostMatch();
+                    paginate();
                 }
 //                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
 //                    paginate();
@@ -161,6 +164,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
 
     private void initObjets(View view) {
+        citySelected = "";
         cardStackView = view.findViewById(R.id.card_stack_view);
         presenter = new HomePresenters(this);
         match = view.findViewById(R.id.match_button);
@@ -202,7 +206,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 performMyProfile();
             }
         });
-
         cardStackView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -212,8 +215,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
 
     public void filters(View view){
-        presenter.citiesPresenter();
-        addSpinnerBefore();
         Button clear_filter, save_filters, manPreference, womanPreference, bothPreference, otherPreference;
         SeekBar distance_range; RangeSlider age_range;
         TextView min_age, max_age, distance;
@@ -354,7 +355,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 }
             }
         });
-
+        citySelected = localData.getRegister("CITY_ID");
         distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
         min_age.setText(localData.getRegister("MIN_AGE"));
         max_age.setText(localData.getRegister("MAX_AGE"));
@@ -414,43 +415,31 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                 bottomSheetDialog.dismiss();
             }
         });
-
+        for (int i = 0; i < allCities.size(); i++) {
+            if (allCities.get(i).getId().equals(citySelected)) {
+                allCities.get(i).setSelected(true);
+                break; }
+        }
+        spinnerCities.setItems(allCities, new SpinnerListener() {
+            @Override
+            public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
+                city = selectedItem.getId();
+                String city_sel = selectedItem.getName();
+                localData.register(city_sel,"CITY_SELECT");
+                localData.register(city,"CITY_ID");
+            }
+            @Override
+            public void onClear() {
+            }
+        });
 
         bottomSheetDialog.setContentView(view_dg);
         bottomSheetDialog.show();
     }
 
-
-    public void addSpinnerBefore(){
-        List<KeyPairBoolDataCustom> listArray1 = new ArrayList<>();
-        KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
-        h.setId("0");
-        h.setExtra("--");
-        h.setName("cargando");
-        h.setSelected(false);
-        listArray1.add(h);
-        addItemsSpinnerCity(listArray1);
-    }
-
     @Override
     public void addItemsSpinnerCity(List<KeyPairBoolDataCustom> cities) {
-//        for (int i = 0; i < cities.size(); i++) {
-//            if (cities.get(i).getId().equals(citySelected)) {
-//                cities.get(i).setSelected(true);
-//                break; }
-//        }
-//        allCities = cities;
-//        spinnerCities.setSearchEnabled(true);
-//        spinnerCities.setSearchHint("");
-//        spinnerCities.setItems(cities, new SpinnerListener() {
-//            @Override
-//            public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
-//                city = selectedItem.getId();
-//                localData.register(city,"CITY_UPDATE");
-//            }
-//            @Override
-//            public void onClear() { }
-//        });
+         allCities = cities;
     }
 
     //Methods

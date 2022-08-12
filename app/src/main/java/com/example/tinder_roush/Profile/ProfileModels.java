@@ -722,7 +722,7 @@ public class ProfileModels implements ProfileInterfaces.models{
 
     @Override
     public void changeCityModel(ProfileInterfaces.presenters presenter) {
-        String city = localData.getRegister("CITY_UPDATE");
+        String city = localData.getRegister("CITY_ID");
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("city", null, RequestBody.create(MediaType.parse("text/plain"), city));
         MultipartBody body = request.build();

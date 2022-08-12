@@ -94,12 +94,14 @@ public class HomeModels implements HomeInterfaces.models{
     public void updateFilterModel(HomeInterfaces.presenters presenter) {
         String preferenceGender = localData.getRegister("GENDER_PREFERENCE");
         String distance = localData.getRegister("DISTANCE_RANGE");
+        String city = localData.getRegister("CITY_ID");
         String year_start = localData.getRegister("DATE_START");
         String year_finish = localData.getRegister("DATE_FINISH");
 
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("search", null, RequestBody.create(MediaType.parse("text/plain"), preferenceGender));
         request.addFormDataPart("distance", null, RequestBody.create(MediaType.parse("text/plain"), distance));
+        request.addFormDataPart("city", null, RequestBody.create(MediaType.parse("text/plain"), city));
         request.addFormDataPart("year_start", null, RequestBody.create(MediaType.parse("text/plain"), year_start));
         request.addFormDataPart("year_finish", null, RequestBody.create(MediaType.parse("text/plain"), year_finish));
         MultipartBody body = request.build();

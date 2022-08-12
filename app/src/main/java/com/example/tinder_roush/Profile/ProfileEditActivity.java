@@ -1346,8 +1346,10 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             @Override
             public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                 city=selectedItem.getId();
-                localData.register(city,"CITY_UPDATE");
-                presenter.changePreferencesSearch();
+                localData.register(city,"CITY_ID");
+                String city_sel = selectedItem.getName();
+                localData.register(city_sel,"CITY_SELECT");
+                presenter.changeCity();
             }
             @Override
             public void onClear() { }

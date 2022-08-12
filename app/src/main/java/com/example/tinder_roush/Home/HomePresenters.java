@@ -37,8 +37,7 @@ public class HomePresenters implements HomeInterfaces.presenters{
             h.setSelected(false);
             listArray0.add(h);
         }
-
-      //  view.addItemsSpinnerCity(listArray0);
+        view.addItemsSpinnerCity(listArray0);
     }
 
 //    //FILTER
