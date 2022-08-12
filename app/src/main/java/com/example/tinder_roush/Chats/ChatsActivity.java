@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.tinder_roush.ChatDetail.ChatDetailActivity;
 import com.example.tinder_roush.Likes.LikesAdapter;
 import com.example.tinder_roush.Likes.LikesPresenters;
 import com.example.tinder_roush.Objects.ChatData;
@@ -21,6 +22,7 @@ import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
+import com.example.tinder_roush.Utils.RecyclerTouchListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -52,6 +54,19 @@ public class ChatsActivity extends Fragment implements ChatsInterfaces.fragment 
 
     private void initObjects(View view) {
         recyclerViewChats = view.findViewById(R.id.recycler_chats);
+        recyclerViewChats.addOnItemTouchListener(new RecyclerTouchListener(BaseContext.getContext(), recyclerViewChats, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(BaseContext.getContext(), ChatDetailActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                Log.e("click long",String.valueOf(position));
+            }
+        }));
         goProfile = view.findViewById(R.id.profile_from_chats);
         presenter = new ChatsPresenters(this);
     }
