@@ -3,12 +3,6 @@ package com.example.tinder_roush.Register;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.util.Log;
 import android.util.Patterns;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,15 +20,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Login.LoginActivities;
 import com.example.tinder_roush.Objects.Register1Data;
-import com.example.tinder_roush.Objects.UserData;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 import com.example.tinder_roush.Utils.SpinnerCustom;
 import com.example.tinder_roush.Utils.SpinnerListener;
-import com.example.tinder_roush.Wizard.OnboardingActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -58,6 +55,7 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
     RegisterPresenters presenter;
     String date_select, city, gender_select;
     TextView date_birth;
+    LocalData localData;
 
     public FragmentRegister1() {
         // Required empty public constructor
@@ -102,6 +100,7 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
             layout_date_calendar = view.findViewById(R.id.layout_date_calendar);
             confirm_password = view.findViewById(R.id.confirm_password_register);
             date_select = "";
+            localData = new LocalData();
             presenter=new RegisterPresenters(this, null, null, null);
             city = "";
             gender_list = new ArrayList<>();
@@ -300,6 +299,8 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
                 @Override
                 public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                     city=selectedItem.getId();
+                    String city_sel = selectedItem.getName();
+                    localData.register(city_sel,"CITY_SELECT");
                 }
                 @Override
                 public void onClear() {
