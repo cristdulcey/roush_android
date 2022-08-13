@@ -1,7 +1,5 @@
 package com.example.tinder_roush.Home;
 
-import android.view.View;
-
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.CityData;
 import com.example.tinder_roush.Objects.HomeData;
@@ -39,19 +37,19 @@ public class HomePresenters implements HomeInterfaces.presenters{
             h.setSelected(false);
             listArray0.add(h);
         }
-       // view.addItemsSpinnerCity(listArray0);
+        view.addItemsSpinnerCity(listArray0);
     }
 
-    //FILTER
-    @Override
-    public void getUserPreferencesFilter(View view) {
-        model.HomeFilterUserPreferences(view,this);
-    }
-
-    @Override
-    public void HomeFilterSuccessful(View v,ProfileData data) {
-        view.filters(v, data);
-    }
+//    //FILTER
+//    @Override
+//    public void getUserPreferencesFilter(View view) {
+//        model.HomeFilterUserPreferences(view,this);
+//    }
+//
+//    @Override
+//    public void HomeFilterSuccessful(View v,ProfileData data) {
+//        view.filters(v, data);
+//    }
 
     @Override
     public void HomePhotoUser() {
@@ -71,6 +69,11 @@ public class HomePresenters implements HomeInterfaces.presenters{
     @Override
     public void HomePresenterSuccess(ArrayList<HomeData> person) {
         view.addList(person);
+    }
+
+    @Override
+    public void changeFilterPresenter() {
+        model.updateFilterModel(this);
     }
 
     //MATCH RESPONSES

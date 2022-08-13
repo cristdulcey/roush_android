@@ -299,8 +299,9 @@ public class FragmentRegister1 extends Fragment implements RegisterInterfaces.fr
                 @Override
                 public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                     city=selectedItem.getId();
-                    String city_sel = selectedItem.getName();
-                    localData.register(city_sel,"CITY_SELECT");
+                    localData.register(city,"CITY_ID");
+                    String city_sel_nom = selectedItem.getName();
+                    localData.register(city_sel_nom,"CITY_SELECT");
                 }
                 @Override
                 public void onClear() {

@@ -146,4 +146,9 @@ public interface ApiService {
             @Query("person") String id,
             @Query("principal") boolean principal
     );
+
+    @GET("/api/persons-photo/")
+    Call<HomeResponse> other_profile(
+            @Query("person") String id
+    );
 }

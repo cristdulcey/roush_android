@@ -1,5 +1,6 @@
 package com.example.tinder_roush.Home;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.HomeData;
+import com.example.tinder_roush.OtherProfile.OtherProfileActivity;
 import com.example.tinder_roush.R;
+import com.example.tinder_roush.Utils.BaseContext;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -51,13 +54,26 @@ public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPerson
         localData.register(per1, "PERSON1");
         localData.register(per2, "PERSON2");
         holder.setData(cardPersonItems.get(position));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                performOtherProfile();
+            }
+        });
+    }
+
+    public void performOtherProfile(){
+        Intent intent = new Intent(BaseContext.getContext(), OtherProfileActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        BaseContext.getContext().startActivity(intent);
     }
 
     @Override
     public int getItemCount() {
         return cardPersonItems.size();
     }
-
+    
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView image_person;

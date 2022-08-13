@@ -1,7 +1,6 @@
 package com.example.tinder_roush.Home;
 
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.tinder_roush.Api.ApiAdapter;
@@ -49,45 +48,13 @@ public class HomeModels implements HomeInterfaces.models{
                     String response_user = "Intentalo nuevamente";
                     try {
                         response_user = custom_error.returnMessageError(response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    } catch (IOException e) { e.printStackTrace(); }
                     presenter.HomeError(response_user);
                 }
             }
-
             @Override
             public void onFailure(Call<CityResponse> call, Throwable t) {
-                Log.e("error ciudades",call.toString());
-            }
-        });
-    }
-
-    //FILTERS
-    @Override
-    public void HomeFilterUserPreferences(View view, HomeInterfaces.presenters presenter) {
-        Call<ProfileData> call = apiAdapter.getApiService2().current_user();
-        call.enqueue(new Callback<ProfileData>() {
-            @Override
-            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
-                if (response.isSuccessful()){
-                    presenter.HomeFilterSuccessful(view,response.body());
-                }else {
-                    CustomErrorResponse custom_error = new CustomErrorResponse();
-                    String response_user = "Intentalo nuevamente";
-                    try {
-                        response_user = custom_error.returnMessageError(response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    presenter.HomeError(response_user);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ProfileData> call, Throwable t) {
-                Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-            }
+                Log.e("error ciudades",call.toString()); }
         });
     }
 
@@ -119,6 +86,45 @@ public class HomeModels implements HomeInterfaces.models{
             @Override
             public void onFailure(Call<HomeData> call, Throwable t) {
                 Toast.makeText(BaseContext.getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void updateFilterModel(HomeInterfaces.presenters presenter) {
+        String preferenceGender = localData.getRegister("GENDER_PREFERENCE");
+        String distance = localData.getRegister("DISTANCE_RANGE");
+        String city = localData.getRegister("CITY_ID");
+        String year_start = localData.getRegister("DATE_START");
+        String year_finish = localData.getRegister("DATE_FINISH");
+
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("search", null, RequestBody.create(MediaType.parse("text/plain"), preferenceGender));
+        request.addFormDataPart("distance", null, RequestBody.create(MediaType.parse("text/plain"), distance));
+        request.addFormDataPart("city", null, RequestBody.create(MediaType.parse("text/plain"), city));
+        request.addFormDataPart("year_start", null, RequestBody.create(MediaType.parse("text/plain"), year_start));
+        request.addFormDataPart("year_finish", null, RequestBody.create(MediaType.parse("text/plain"), year_finish));
+        MultipartBody body = request.build();
+
+        Call<ProfileData> call = apiAdapter.getApiService2().updateInterest(localData.getRegister("ID_USERCURRENT"),body);
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(BaseContext.getContext(), "Filtros actualizados", Toast.LENGTH_SHORT).show();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.HomeError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
             }
         });
     }
@@ -303,5 +309,4 @@ public class HomeModels implements HomeInterfaces.models{
             public void onFailure(Call<HomeResponse> call, Throwable t) { }
         });
     }
-
-    }
+}
