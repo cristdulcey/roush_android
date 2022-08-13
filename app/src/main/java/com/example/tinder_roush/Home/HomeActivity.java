@@ -24,7 +24,6 @@ import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.MatchSuccess.MatchSuccess;
 import com.example.tinder_roush.Objects.HomeData;
 import com.example.tinder_roush.Objects.ProfileData;
-import com.example.tinder_roush.OtherProfile.OtherProfileActivity;
 import com.example.tinder_roush.Profile.ProfileActivity;
 import com.example.tinder_roush.R;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
@@ -66,19 +65,19 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
 
     private CardStackLayoutManager managerCard;
-    private CardStackPersonAdapter adapterCardPerson;
+    public CardStackPersonAdapter adapterCardPerson;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_match_, container, false);
         context = view.getContext();
-        //  adapterCardPerson = new CardStackPersonAdapter(addList());
         initObjets(view);
+      //  presenter.HomePresenterPostMatch();
         presenter.citiesPresenter();
         presenter.HomePersonCurrent();
         presenter.HomePhotoUser();
-        listeners();
         swipeCards();
+        listeners();
         return view;
     }
 
@@ -109,16 +108,15 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
                     presenter.HomePresenterPostMatch();
                     paginate();
                 }
-//                if(managerCard.getTopPosition() == adapterCardPerson.getItemCount() - 5){
-//                    paginate();
-//                }
             }
             @Override
             public void onCardRewound() { }
             @Override
             public void onCardCanceled() { }
             @Override
-            public void onCardAppeared(View view, int position) { TextView tv = view.findViewById(R.id.card_person_name); }
+            public void onCardAppeared(View view, int position) {
+                TextView tv = view.findViewById(R.id.card_person_name);
+            }
             @Override
             public void onCardDisappeared(View view, int position) { TextView tv = view.findViewById(R.id.card_person_name); }
         });
@@ -136,7 +134,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
 
     private void paginate() {
         List<HomeData> old = adapterCardPerson.getCardPersonItems();
-//        List<CardPersonItem> fresh = new ArrayList<>(addList());
         CardStackCallback callback = new CardStackCallback(old, cardPersonItems);
         DiffUtil.DiffResult hasil = DiffUtil.calculateDiff(callback);
         adapterCardPerson.setCardPersonItems(cardPersonItems);
@@ -148,7 +145,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         cardStackView.setLayoutManager(managerCard);
         cardStackView.setAdapter(adapterCardPerson);
         cardStackView.setItemAnimator(new DefaultItemAnimator());
-//        return cardPersonItems;
     }
 
     @Override
@@ -196,7 +192,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
             @Override
             public void onClick(View view) {
                 filters(view);
-               // presenter.getUserPreferencesFilter(view);
             }
         });
 
@@ -204,12 +199,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
             @Override
             public void onClick(View view) {
                 performMyProfile();
-            }
-        });
-        cardStackView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                performOtherProfile();
             }
         });
     }
@@ -450,12 +439,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
     }
     public void performMyProfile(){
         Intent intent = new Intent(context, ProfileActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
-
-    public void performOtherProfile(){
-        Intent intent = new Intent(context, OtherProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
