@@ -45,6 +45,23 @@ public class HomeData {
     @Expose
     private String person2_image;
 
+
+    @SerializedName("person1_job")
+    @Expose
+    private String person1_job;
+
+    @SerializedName("person2_job")
+    @Expose
+    private String person2_job;
+
+    @SerializedName("person1_date_birth")
+    @Expose
+    private String person1_date_birth;
+
+    @SerializedName("person2_date_birth")
+    @Expose
+    private String person2_date_birth;
+
     public HomeData(String id, String person1, String person2, boolean response_person1, boolean response_person2, String created_at, String person1_name, String person2_name, String person1_image, String person2_image) {
         this.id = id;
         this.person1 = person1;
@@ -56,6 +73,23 @@ public class HomeData {
         this.person2_name = person2_name;
         this.person1_image = person1_image;
         this.person2_image = person2_image;
+    }
+
+    public HomeData(String id, String person1, String person2, boolean response_person1, boolean response_person2, String created_at, String person1_name, String person2_name, String person1_image, String person2_image, String person1_job, String person2_job, String person1_date_birth, String person2_date_birth) {
+        this.id = id;
+        this.person1 = person1;
+        this.person2 = person2;
+        this.response_person1 = response_person1;
+        this.response_person2 = response_person2;
+        this.created_at = created_at;
+        this.person1_name = person1_name;
+        this.person2_name = person2_name;
+        this.person1_image = person1_image;
+        this.person2_image = person2_image;
+        this.person1_job = person1_job;
+        this.person2_job = person2_job;
+        this.person1_date_birth = person1_date_birth;
+        this.person2_date_birth = person2_date_birth;
     }
 
     public String getId() {
@@ -136,5 +170,37 @@ public class HomeData {
 
     public void setPerson2_image(String person2_image) {
         this.person2_image = person2_image;
+    }
+
+    public String getPerson1_job() {
+        return person1_job;
+    }
+
+    public void setPerson1_job(String person1_job) {
+        this.person1_job = person1_job;
+    }
+
+    public String getPerson2_job() {
+        return person2_job;
+    }
+
+    public void setPerson2_job(String person2_job) {
+        this.person2_job = person2_job;
+    }
+
+    public String getPerson1_date_birth() {
+        return person1_date_birth;
+    }
+
+    public void setPerson1_date_birth(String person1_date_birth) {
+        this.person1_date_birth = person1_date_birth;
+    }
+
+    public String getPerson2_date_birth() {
+        return person2_date_birth;
+    }
+
+    public void setPerson2_date_birth(String person2_date_birth) {
+        this.person2_date_birth = person2_date_birth;
     }
 }

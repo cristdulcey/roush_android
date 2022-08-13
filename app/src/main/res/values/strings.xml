@@ -48,6 +48,8 @@
     <string name="button_chat">Quiero saludarl@</string>
     <string name="button_later">Más tarde</string>
 
+    <string name="no_users">Lo sentimos no hay más usuarios disponibles</string>
+
     <!--Strings Filters-->
     <string name="see_filter">Vista por:</string>
     <string name="person_filter">Persona</string>

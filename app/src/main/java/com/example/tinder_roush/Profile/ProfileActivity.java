@@ -1018,9 +1018,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         address.setText(data.getAddress());
         ageUser.setText(String.valueOf(getEdad(birth_date, current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
-        distance.setText(String.valueOf(data.getDistance())+"km");
-        distance_range.setProgress(Integer.parseInt(data.getDistance()));
-      //  distance_range.setProgress(Integer.parseInt(localData.getRegister("DISTANCE_RANGE")));
+        if (data.getDistance()==null){
+            distance.setText("10km");
+            distance_range.setProgress(10);
+        }else {
+            distance.setText(String.valueOf(data.getDistance())+"km");
+            distance_range.setProgress(Integer.parseInt(data.getDistance()));
+        }
         city = data.getCity();
         if (localData.getRegister("MIN_AGE").equals("")){
             String min_a= "22";
@@ -1037,6 +1041,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         age_range.setValues(values);
 //        //SEARCH
         for (int i = 0; i < 4; i++) {
+            if (data.getSearch().isEmpty()){
+                data.setSearch("MAN");
+                break;
+            }
             if (data.getSearch().equals("MAN")) {
                 manPreference.setBackgroundResource(R.drawable.border_left_green);
                 manPreference.setTextColor(Color.WHITE);
@@ -1080,6 +1088,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         }
         //CHILDREN
         for (int i = 0; i < 3; i++) {
+            if (data.getWith_children().isEmpty()){
+                data.setSearch("YES");
+                break;
+            }
             if (data.getWith_children().equals("YES")) {
                 children_y.setBackgroundResource(R.drawable.border_left_green);
                 children_y.setTextColor(Color.WHITE);
@@ -1110,6 +1122,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         }
         //PETS
         for (int i = 0; i < 3; i++) {
+            if (data.getWith_pets()==null){
+                pets_y.setBackgroundResource(R.drawable.border_left_green);
+                pets_y.setTextColor(Color.WHITE);
+                localData.register("YES", "PETS_PREFERENCE");
+                data.setSearch("YES");
+                break;
+            }
             if (data.getWith_pets().equals("YES")) {
                 pets_y.setBackgroundResource(R.drawable.border_left_green);
                 pets_y.setTextColor(Color.WHITE);
@@ -1140,6 +1159,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
         }
         //SMOKER
         for (int i = 0; i < 3; i++) {
+            if (data.getSmoker()==null){
+                smoker_y.setBackgroundResource(R.drawable.border_left_green);
+                smoker_y.setTextColor(Color.WHITE);
+                localData.register("YES", "SMOKER_PREFERENCE");
+                data.setSearch("YES");
+                break;
+            }
             if (data.getSmoker().equals("YES")) {
                 smoker_y.setBackgroundResource(R.drawable.border_left_green);
                 smoker_y.setTextColor(Color.WHITE);
@@ -1448,6 +1474,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileInterfa
             @Override
             public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                 city = selectedItem.getId();
+                String city_sel = selectedItem.getName();
+                localData.register(city_sel,"CITY_SELECT");
                 localData.register(city,"CITY_UPDATE");
                 presenter.changeCity();
             }

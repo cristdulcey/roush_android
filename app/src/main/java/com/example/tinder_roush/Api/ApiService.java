@@ -80,12 +80,7 @@ public interface ApiService {
     );
 
     @POST("/api/persons-match/")
-    Call<HomeData> persons_match(
-    );
-
-    @GET("/api/persons-photo/?limit=1")
-    Call<HomeResponse> persons_photo(
-            @Query("person") String person
+    Call<HomeData> post_persons_match(
     );
 
     @GET("/api/persons-photo/?ordering=-principal")
@@ -142,14 +137,8 @@ public interface ApiService {
     Call<LikesData> likesR(
     );
 
-
     @GET("/api/persons-chat/")
     Call<ChatResponse> chats(
-    );
-
-    @GET("/api/persons-match/?ordering=-created_at&response_person2=true")
-    Call<LikesData> likes_received(
-            @Query("id") String id
     );
 
     @GET("/api/persons-photo/")
