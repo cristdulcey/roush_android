@@ -55,14 +55,16 @@ public class ChatsModels implements ChatsInterfaces.models {
     }
 
     @Override
-    public void getChatsModel(ChatsInterfaces.presenters presenter) {
+    public void getChatsModel(ChatsInterfaces.presenters presenter, String search) {
 
-        Call<ChatResponse> call = apiAdapter.getApiService2().chats();
+        Call<ChatResponse> call = apiAdapter.getApiService2().chats(search);
         call.enqueue(new Callback<ChatResponse>() {
             @Override
             public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
+//                Log.e("ChatResponse",response.toString());
                 if (response.isSuccessful()) {
                     ChatResponse list = response.body();
+
                     presenter.getChatsSuccessful(list.getChats());
                 } else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
@@ -78,6 +80,7 @@ public class ChatsModels implements ChatsInterfaces.models {
 
             @Override
             public void onFailure(Call<ChatResponse> call, Throwable t) {
+//                Log.e("onFailure",call.toString());
             }
         });
 

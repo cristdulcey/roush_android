@@ -3,6 +3,7 @@ package com.example.tinder_roush.ChatDetail;
 import android.widget.Toast;
 
 import com.example.tinder_roush.Objects.ChatData;
+import com.example.tinder_roush.Objects.ChatDetailData;
 import com.example.tinder_roush.Utils.BaseContext;
 
 import java.util.ArrayList;
@@ -32,12 +33,12 @@ public class ChatDetailPresenters implements ChatDetailInterfaces.presenters{
 
     //Likes
     @Override
-    public void getChatDetailPresenter() {
-        model.getChatsModel(this);
+    public void getChatDetailPresenter(String id_chat) {
+        model.getChatsModel(this, id_chat);
     }
 
     @Override
-    public void getChatsSuccessful(ArrayList<ChatData> data) {
+    public void getChatsSuccessful(ArrayList<ChatDetailData> data) {
         view.recyclerChatsDetail(data);
     }
 

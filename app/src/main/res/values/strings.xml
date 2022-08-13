@@ -72,6 +72,8 @@
     <string name="title_chats"><b>Chats</b></string>
     <string name="messages"><b>Mensajes</b></string>
     <string name="search_hint">Buscar por nombre</string>
+    <string name="name">Nombre</string>
+    <string name="message_send">Escribe tu mensaje</string>
 
     <!--Strings Profile Other User-->
     <string name="heterosexual"><b>Heterosexual</b></string>

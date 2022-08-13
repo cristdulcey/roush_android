@@ -28,7 +28,7 @@ public class LoginPresenters implements LoginInterfaces.presenters{
 
     @Override
     public void loginError(String message) {
-        Log.e("Error Login", message);
+//        Log.e("Error Login", message);
         Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_SHORT).show();
     }
 

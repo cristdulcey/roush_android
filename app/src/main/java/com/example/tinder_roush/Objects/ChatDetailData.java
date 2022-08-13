@@ -4,11 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ChatDetailData {
-    @SerializedName("person_id")
-    @Expose
-    private String person_id;
 
-    @SerializedName("person")
+    @SerializedName("sender")
     @Expose
     private String person;
 
@@ -16,23 +13,14 @@ public class ChatDetailData {
     @Expose
     private String message;
 
-    @SerializedName("created_at")
+    @SerializedName("date")
     @Expose
     private String created_at;
 
-    public ChatDetailData(String person_id, String person, String message, String created_at) {
-        this.person_id = person_id;
+    public ChatDetailData(String person, String message, String created_at) {
         this.person = person;
         this.message = message;
         this.created_at = created_at;
-    }
-
-    public String getPerson_id() {
-        return person_id;
-    }
-
-    public void setPerson_id(String person_id) {
-        this.person_id = person_id;
     }
 
     public String getPerson() {

@@ -2,6 +2,7 @@ package com.example.tinder_roush.ChatDetail;
 
 import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.LocalData.LocalData;
+import com.example.tinder_roush.Objects.ChatData;
 import com.example.tinder_roush.Objects.ChatResponse;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
@@ -49,15 +50,15 @@ public class ChatDetailModels implements ChatDetailInterfaces.models {
     }
 
     @Override
-    public void getChatsModel(ChatDetailInterfaces.presenters presenter) {
+    public void getChatsModel(ChatDetailInterfaces.presenters presenter,String id_chat) {
 
-        Call<ChatResponse> call = apiAdapter.getApiService2().chats();
-        call.enqueue(new Callback<ChatResponse>() {
+        Call<ChatData> call = apiAdapter.getApiService2().chats_detail(id_chat);
+        call.enqueue(new Callback<ChatData>() {
             @Override
-            public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
+            public void onResponse(Call<ChatData> call, Response<ChatData> response) {
                 if (response.isSuccessful()) {
-                    ChatResponse list = response.body();
-                    presenter.getChatsSuccessful(list.getChats());
+                    ChatData list = response.body();
+                    presenter.getChatsSuccessful(list.getChat());
                 } else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Inténtalo nuevamente";
@@ -71,7 +72,7 @@ public class ChatDetailModels implements ChatDetailInterfaces.models {
             }
 
             @Override
-            public void onFailure(Call<ChatResponse> call, Throwable t) {
+            public void onFailure(Call<ChatData> call, Throwable t) {
             }
         });
 

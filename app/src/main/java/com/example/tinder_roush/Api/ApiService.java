@@ -3,6 +3,7 @@ package com.example.tinder_roush.Api;
 import com.example.tinder_roush.Home.CardPersonItem;
 import com.example.tinder_roush.Objects.AccessTokenData;
 import com.example.tinder_roush.Objects.ChangePassword;
+import com.example.tinder_roush.Objects.ChatData;
 import com.example.tinder_roush.Objects.ChatResponse;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeData;
@@ -139,6 +140,12 @@ public interface ApiService {
 
     @GET("/api/persons-chat/")
     Call<ChatResponse> chats(
+            @Query("search") String id
+    );
+
+    @GET("/api/persons-chat/{id}")
+    Call<ChatData> chats_detail(
+            @Path("id") String id
     );
 
     @GET("/api/persons-photo/")

@@ -54,7 +54,8 @@ public class HomeModels implements HomeInterfaces.models{
             }
             @Override
             public void onFailure(Call<CityResponse> call, Throwable t) {
-                Log.e("error ciudades",call.toString()); }
+//                Log.e("error ciudades",call.toString());
+            }
         });
     }
 
@@ -132,7 +133,7 @@ public class HomeModels implements HomeInterfaces.models{
     //RESPONSE MATCH
     @Override
     public void HomeModelResponseMatchTrue(HomeInterfaces.presenters presenter) {
-        Log.e("user_current",localData.getRegister("ID_USERCURRENT"));
+//        Log.e("user_current",localData.getRegister("ID_USERCURRENT"));
         if (localData.getRegister("ID_USERCURRENT").equals(localData.getRegister("PERSON2"))){
             final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
             request.addFormDataPart("response_person2", null, RequestBody.create(MediaType.parse("text/plain"),"true"));
