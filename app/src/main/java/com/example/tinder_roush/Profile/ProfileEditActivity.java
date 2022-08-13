@@ -81,7 +81,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
     TextView ageUser, password,distance, min_age, max_age;
     CardPersonItem cardPersonItem;
     ChangePassword changePassword;
-    String UrlPhotoProfile;
+    String UrlPhotoProfile, citySelected;
     EditText first_name, last_name, date_birth, job, email, about, address;
     public int RESULT_PHOTO = 100;
     public final int RESULT_PHOTO_1 = 101;
@@ -108,6 +108,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
     }
 
     private void initObjects() {
+        citySelected = "";
         orientation_spinner = findViewById(R.id.spinner_my_orientation_edit);
         zodiac_spinner = findViewById(R.id.spinner_zodiac_edit);
         check_pht = 1; check_shop = 1; check_kar = 1; check_yoga = 1; check_cook = 1; check_tennis = 1;check_sport = 1;
@@ -167,6 +168,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         last_name = findViewById(R.id.edit_profile_lastname);
         date_birth = findViewById(R.id.date_birth_profile);
         ageUser = findViewById(R.id.user_edit_profile_age);
+        address = findViewById(R.id.profile_locations);
         job = findViewById(R.id.edit_job);
         about = findViewById(R.id.edit_description_profile);
         email = findViewById(R.id.edit_email);
@@ -227,7 +229,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
                     if (orientation_select.equals("Otr@")) { textOrientation = "OTHER"; break; }
                 }
                 localData.register(textOrientation,"SEXUAL_ORIENTATION");
-                if (!textOrientation.equals("")) {
+                if (!textOrientation.equals("") && !textOrientation.equals(localData.getRegister("ORIENTATION_SELECTED"))) {
                     presenter.changePreferencesSearch();
                 }
             }
@@ -985,13 +987,15 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
         catch (ParseException e) { e.printStackTrace(); }
         Calendar cal = Calendar.getInstance();
         Date current_date = cal.getTime();
-
+        String orientation_show = data.getSexual_orientation();
+        localData.register(orientation_show, "ORIENTATION_SELECTED");
         first_name.setText(data.getFirst_name());
         last_name.setText(data.getLast_name());
         date_birth.setText(data.getDate_birth());
         email.setText(data.getEmail());
         job.setText(data.getJob());
         about.setText(data.getAbout());
+        address.setText(data.getAddress());
         ageUser.setText(String.valueOf(getEdad(birth_date,current_date)));
         localData.register(String.valueOf(data.getId()), "ID_USERCURRENT");
         distance.setText(String.valueOf(data.getDistance())+"km");
@@ -1146,12 +1150,13 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             if (zodiac.get(i).equals(data.getZodiac_sign()) && !zodiac.get(i).equals("Es indiferente")) { posZodiac = i; break; }
         } zodiac_spinner.setSelection(posZodiac);
 
-    }
+        citySelected = data.getCity();
+        presenter.citiesPresenterEdit();    }
 
     @Override
     public void changeProfileData() {
         ProfileData data = new ProfileData(localData.getRegister("ID_USERCURRENT"),first_name.getText().toString(),
-                last_name.getText().toString(), email.getText().toString(),date_birth.getText().toString(),about.getText().toString(),job.getText().toString());
+                last_name.getText().toString(), email.getText().toString(), address.getText().toString(),date_birth.getText().toString(),about.getText().toString(),job.getText().toString());
         presenter.changeDataPresenter(data);
     }
 
@@ -1323,6 +1328,12 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
 
     //Spinner Ciudades
     public void addItemsSpinnerCity2(List<KeyPairBoolDataCustom> cities){
+        for (int i = 0; i < cities.size(); i++) {
+            if (cities.get(i).getId().equals(citySelected)) {
+                cities.get(i).setSelected(true);
+                break;
+            }
+        }
         allCities = cities;
         spinnerCities.setSearchEnabled(true);
         spinnerCities.setSearchHint("");
@@ -1330,6 +1341,8 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             @Override
             public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                 city=selectedItem.getId();
+                localData.register(city,"CITY_UPDATE");
+                presenter.changePreferencesSearch();
             }
             @Override
             public void onClear() { }

@@ -250,7 +250,7 @@ public class HomeModels implements HomeInterfaces.models{
                 @Override
                 public void onResponse(Call<HomeData> call, Response<HomeData> response) {
                     if (response.isSuccessful()){
-                        if (response.body().isResponse_person1().equals(response.body().isResponse_person2())){
+                        if (response.body().isResponse_person1() == (response.body().isResponse_person2())){
                             presenter.HomeBackResponseMatchSuccess();
                         }else {
                             presenter.HomeResponseMatchSuccess();

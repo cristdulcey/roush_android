@@ -135,13 +135,11 @@ public interface ApiService {
             @Field("new_password") String new_password
     );
 
-    @GET("/api/persons-match/")
-    Call<HomeData> likes(
+    @GET("/api/persons-match/?ordering=-created_at")
+    Call<LikesData> likes(
     );
-
-    @GET("/api/persons-match/?ordering=-created_at&response_person1=true")
-    Call<LikesData> likes_given(
-            @Query("id") String id
+    @GET("/api/persons-match/?ordering=-created_at")
+    Call<LikesData> likesR(
     );
 
 

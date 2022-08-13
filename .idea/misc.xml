@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< master
         <entry key="app/src/main/res/drawable-v24/border_green_round2.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/border_gray_transparent_round.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/border_green.xml" value="0.166" />
@@ -22,4 +23,94 @@
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+=======
+        <entry key="../../.gradle/caches/transforms-3/c027761c3a6bb7422a4c8c34c6c22b77/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/drawable-v24/border_gray_round.xml" value="0.315" />
+        <entry key="app/src/main/res/drawable-v24/border_gray_transparent.xml" value="0.315" />
+        <entry key="app/src/main/res/drawable-v24/border_green_round2.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable-v24/border_green_soft_round.xml" value="0.3365" />
+        <entry key="app/src/main/res/drawable-v24/border_white_green_round.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.315" />
+        <entry key="app/src/main/res/drawable/background_ch_pss.xml" value="0.3415" />
+        <entry key="app/src/main/res/drawable/border_bottom_green.xml" value="0.3765" />
+        <entry key="app/src/main/res/drawable/border_gray_transparent.xml" value="0.3765" />
+        <entry key="app/src/main/res/drawable/border_gray_transparent_round.xml" value="0.335" />
+        <entry key="app/src/main/res/drawable/border_green.xml" value="0.335" />
+        <entry key="app/src/main/res/drawable/border_green_round.xml" value="0.3765" />
+        <entry key="app/src/main/res/drawable/border_green_soft_green_round.xml" value="0.276" />
+        <entry key="app/src/main/res/drawable/border_green_soft_transparent_round.xml" value="0.315" />
+        <entry key="app/src/main/res/drawable/border_green_transparent_round.xml" value="0.315" />
+        <entry key="app/src/main/res/drawable/border_green_white.xml" value="0.315" />
+        <entry key="app/src/main/res/drawable/border_green_white_round.xml" value="0.315" />
+        <entry key="app/src/main/res/drawable/border_left_green.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/border_left_white.xml" value="0.313" />
+        <entry key="app/src/main/res/drawable/border_red_round.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/border_red_transparent.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/border_rigth_green.xml" value="0.313" />
+        <entry key="app/src/main/res/drawable/border_rigth_white.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/border_white_green_soft_round.xml" value="0.3765" />
+        <entry key="app/src/main/res/drawable/border_white_round.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/border_white_transparent.xml" value="0.2275" />
+        <entry key="app/src/main/res/drawable/border_white_transpatent_round.xml" value="0.2275" />
+        <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.2275" />
+        <entry key="app/src/main/res/drawable/gradient_black.xml" value="0.274" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.315" />
+        <entry key="app/src/main/res/font/monserrat.xml" value="0.40625" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33968231643455615" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/activity_match_success.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/activity_notification_settings.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_other_profile.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_profile_edit.xml" value="0.24334344455679138" />
+        <entry key="app/src/main/res/layout/activity_profile_succes_change.xml" value="0.3619791666666667" />
+        <entry key="app/src/main/res/layout/activity_recovery_password.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/activity_succes_register.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/alert_dialog_listview_search.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/bottom_dialog_filter.xml" value="0.3279495239257812" />
+        <entry key="app/src/main/res/layout/card_person.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/change_password.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/dialog_calendar.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/dialog_settings.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_blog.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_chats.xml" value="0.3328804347826087" />
+        <entry key="app/src/main/res/layout/fragment_given_likes.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/fragment_likes.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/fragment_likes_given.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/fragment_likes_given_received.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/fragment_likes_received.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/fragment_match_.xml" value="0.5562403697996918" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_notifications_config.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_onboarding1.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/fragment_onboarding2.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/fragment_onboarding3.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/fragment_received_likes.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/fragment_register_1.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/fragment_register_2.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/fragment_register_3.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/fragment_register_4.xml" value="0.27355072463768115" />
+        <entry key="app/src/main/res/layout/item_like_list.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/item_like_received_list.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/item_listview_single.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/likes_adapter.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/likes_view.xml" value="0.3292572463768116" />
+        <entry key="app/src/main/res/layout/menu_navigation.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/layout/spinner_custom_textview.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/spinner_custom_textview_gender.xml" value="0.4391727493917275" />
+        <entry key="app/src/main/res/layout/spinner_custom_textview_orientation.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/support_simple_spinner_dropdown_item.xml" value="2.0130813953488373" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/xml/provider_path.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+>>>>>>> Modificaciones visuales del filtro
 </project>

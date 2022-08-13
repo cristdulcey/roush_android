@@ -2,6 +2,7 @@ package com.example.tinder_roush.Likes;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,16 +58,27 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String created = listLikes.get(position).getCreated_at();
 
-        String url, name="";
-        if (listLikes.get(position).getPerson1().equals(localData.getRegister("PER_1"))){
-            url = listLikes.get(position).getPerson1_image();
-            name = listLikes.get(position).getPerson1_name();
-        }else {
+        String url = "";
+        String name = "";
+        if (listLikes.get(position).getPerson1().equals(localData.getRegister("ID_USERCURRENT"))) {
             url = listLikes.get(position).getPerson2_image();
             name = listLikes.get(position).getPerson2_name();
+            try {
+                Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
+                holder.person_name.setText(name);
+            }catch (Exception e){
+                Log.e("ERROR GET IMAGE_LIKE", e.toString());
+            }
+        } else if (!listLikes.get(position).getPerson1().equals(localData.getRegister("ID_USERCURRENT"))) {
+            url = listLikes.get(position).getPerson1_image();
+            name = listLikes.get(position).getPerson1_name();
+            try {
+                Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
+                holder.person_name.setText(name);
+            }catch (Exception e){
+                Log.e("ERROR GET IMAGE_LIKE", e.toString());
+            }
         }
-        Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
-        holder.person_name.setText(name);
 
         Date current_date = cal.getTime();
 

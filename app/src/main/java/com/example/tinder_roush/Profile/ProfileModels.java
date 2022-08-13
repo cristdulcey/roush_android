@@ -5,16 +5,11 @@ import android.widget.Toast;
 
 import com.example.tinder_roush.Api.ApiAdapter;
 import com.example.tinder_roush.Home.CardPersonItem;
-import com.example.tinder_roush.Home.HomeInterfaces;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.CityResponse;
 import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
-import com.example.tinder_roush.Objects.Register3Data;
-import com.example.tinder_roush.Objects.Register4Data;
-import com.example.tinder_roush.Objects.TokenResponse;
-import com.example.tinder_roush.Register.RegisterInterfaces;
 import com.example.tinder_roush.Utils.BaseContext;
 import com.example.tinder_roush.Utils.CustomErrorResponse;
 
@@ -377,6 +372,7 @@ public class ProfileModels implements ProfileInterfaces.models{
         request.addFormDataPart("first_name", null, RequestBody.create(MediaType.parse("text/plain"),data.getFirst_name()));
         request.addFormDataPart("last_name", null, RequestBody.create(MediaType.parse("text/plain"),data.getLast_name()));
         request.addFormDataPart("email", null, RequestBody.create(MediaType.parse("text/plain"),data.getEmail()));
+        request.addFormDataPart("address", null, RequestBody.create(MediaType.parse("text/plain"),data.getAddress()));
         request.addFormDataPart("date_birth", null, RequestBody.create(MediaType.parse("text/plain"),data.getDate_birth()));
         request.addFormDataPart("about", null, RequestBody.create(MediaType.parse("text/plain"),data.getAbout()));
         request.addFormDataPart("job", null, RequestBody.create(MediaType.parse("text/plain"),data.getJob()));
@@ -621,22 +617,18 @@ public class ProfileModels implements ProfileInterfaces.models{
     @Override
     public void changePreferencesSearch(ProfileInterfaces.presenters presenter) {
         String preferenceGender = localData.getRegister("GENDER_PREFERENCE");
-        String sexualOrientation = localData.getRegister("SEXUAL_ORIENTATION");
         String withChildren = localData.getRegister("CHILDREN_PREFERENCE");
         String withPets = localData.getRegister("PETS_PREFERENCE");
         String smoker = localData.getRegister("SMOKER_PREFERENCE");
-        String zodiacSign = localData.getRegister("ZODIAC_SIGN");
         String distance = localData.getRegister("DISTANCE_RANGE");
         String year_start = localData.getRegister("DATE_START");
         String year_finish = localData.getRegister("DATE_FINISH");
 
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("search", null, RequestBody.create(MediaType.parse("text/plain"), preferenceGender));
-        request.addFormDataPart("sexual_orientation", null, RequestBody.create(MediaType.parse("text/plain"), sexualOrientation));
         request.addFormDataPart("with_children", null, RequestBody.create(MediaType.parse("text/plain"), withChildren));
         request.addFormDataPart("with_pets", null, RequestBody.create(MediaType.parse("text/plain"), withPets));
         request.addFormDataPart("smoker", null, RequestBody.create(MediaType.parse("text/plain"), smoker));
-        request.addFormDataPart("zodiac_sign", null, RequestBody.create(MediaType.parse("text/plain"), zodiacSign));
         request.addFormDataPart("distance", null, RequestBody.create(MediaType.parse("text/plain"), distance));
         request.addFormDataPart("year_start", null, RequestBody.create(MediaType.parse("text/plain"), year_start));
         request.addFormDataPart("year_finish", null, RequestBody.create(MediaType.parse("text/plain"), year_finish));
@@ -648,7 +640,100 @@ public class ProfileModels implements ProfileInterfaces.models{
             @Override
             public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(BaseContext.getContext(), "Datos actualizados", Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(BaseContext.getContext(), "Datos actualizados", Toast.LENGTH_SHORT).show();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
+            }
+        });
+    }
+
+    @Override
+    public void changeOrientationModel(ProfileInterfaces.presenters presenter) {
+        String sexualOrientation = localData.getRegister("SEXUAL_ORIENTATION");
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("sexual_orientation", null, RequestBody.create(MediaType.parse("text/plain"), sexualOrientation));
+        MultipartBody body = request.build();
+
+        Call<ProfileData> call = apiAdapter.getApiService2().updateInterest(localData.getRegister("ID_USERCURRENT"),body);
+
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(BaseContext.getContext(), "Orientación actualizada", Toast.LENGTH_SHORT).show();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
+            }
+        });
+    }
+
+    @Override
+    public void changeZodiacModel(ProfileInterfaces.presenters presenter) {
+        String zodiacSign = localData.getRegister("ZODIAC_SIGN");
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("zodiac_sign", null, RequestBody.create(MediaType.parse("text/plain"), zodiacSign));
+        MultipartBody body = request.build();
+
+        Call<ProfileData> call = apiAdapter.getApiService2().updateInterest(localData.getRegister("ID_USERCURRENT"),body);
+
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(BaseContext.getContext(), "Signo actualizado", Toast.LENGTH_SHORT).show();
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    presenter.ProfileError(response_user);
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
+            }
+        });
+    }
+
+    @Override
+    public void changeCityModel(ProfileInterfaces.presenters presenter) {
+        String city = localData.getRegister("CITY_UPDATE");
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("city", null, RequestBody.create(MediaType.parse("text/plain"), city));
+        MultipartBody body = request.build();
+
+        Call<ProfileData> call = apiAdapter.getApiService2().updateInterest(localData.getRegister("ID_USERCURRENT"),body);
+
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(BaseContext.getContext(), "Ciudad actualizada", Toast.LENGTH_SHORT).show();
                 }else {
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";

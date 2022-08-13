@@ -1,14 +1,9 @@
 package com.example.tinder_roush.Profile;
 
-import android.telecom.Call;
-
 import com.example.tinder_roush.Home.CardPersonItem;
-import com.example.tinder_roush.Home.HomeInterfaces;
 import com.example.tinder_roush.Objects.ChangePassword;
 import com.example.tinder_roush.Objects.CityData;
-import com.example.tinder_roush.Objects.HomeResponse;
 import com.example.tinder_roush.Objects.ProfileData;
-import com.example.tinder_roush.Objects.Register3Data;
 import com.example.tinder_roush.Utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
@@ -73,6 +68,9 @@ public interface ProfileInterfaces {
         void changeDataSuccessful();
         void changeProfilePhotosPresenter(String id);
         void changeInteresting();
+        void changeOrientation();
+        void changeZodiac();
+        void changeCity();
         void changePreferencesSearch();
         void changeDataError(String message);
     }
@@ -102,6 +100,9 @@ public interface ProfileInterfaces {
         void postOtherPhotos(presenters presenter);
         void changeInteresting(presenters presenter);
         void changePreferencesSearch(presenters presenter);
+        void changeOrientationModel(presenters presenter);
+        void changeZodiacModel(presenters presenter);
+        void changeCityModel(presenters presenter);
     }
 
 }

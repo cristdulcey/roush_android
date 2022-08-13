@@ -67,7 +67,7 @@
                 <!--Photo profile-->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="40dp"
                     android:background="@color/black"

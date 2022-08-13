@@ -232,7 +232,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.fragment{
         bothPreference = view_dg.findViewById(R.id.filter_both_home);
         otherPreference = view_dg.findViewById(R.id.filter_other_home);
         List<Float> values = new ArrayList<Float>();
-        values.add(new Float(localData.getRegister("MIN_AGE")) );
+        values.add(new Float(localData.getRegister("MIN_AGE")));
         values.add(new Float(localData.getRegister("MAX_AGE")));
         age_range.setValues(values);
         //RANGE FILTERS

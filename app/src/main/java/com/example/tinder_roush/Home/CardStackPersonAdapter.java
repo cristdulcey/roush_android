@@ -23,6 +23,7 @@ import java.util.Locale;
 public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPersonAdapter.ViewHolder> {
 
     private List<CardPersonItem> cardPersonItems;
+    Calendar cal;
 
     public CardStackPersonAdapter(List<CardPersonItem> cardPersonItems) {
         this.cardPersonItems = cardPersonItems;
@@ -32,6 +33,7 @@ public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPerson
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        cal = Calendar.getInstance();
         View view = inflater.inflate(R.layout.card_person, parent, false);
         return new ViewHolder(view);
     }
@@ -60,21 +62,18 @@ public class CardStackPersonAdapter extends RecyclerView.Adapter<CardStackPerson
         }
 
         public void setData(CardPersonItem data) {
-
+            Date current_date = cal.getTime();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             Date birth_date = null;
             try {
                 birth_date = dateFormat.parse(data.getPerson().getDate_birth());
+                age_person.setText(String.valueOf(getEdad(birth_date,current_date)));
+                Picasso.get().load(data.getImage()).fit().centerCrop().into(image_person);
+                name_person.setText(data.getPerson().getFirst_name());
+                job.setText(data.getPerson().getJob());
             } catch (
-                    ParseException e) {
-                e.printStackTrace();
+                    ParseException e) { e.printStackTrace();
             }
-            Calendar cal = Calendar.getInstance();
-            Date current_date = cal.getTime();
-            Picasso.get().load(data.getImage()).fit().centerCrop().into(image_person);
-            name_person.setText(data.getPerson().getFirst_name());
-            job.setText(data.getPerson().getJob());
-            age_person.setText(String.valueOf(getEdad(birth_date,current_date)));
         }
     }
 

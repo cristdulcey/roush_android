@@ -15,19 +15,16 @@ public interface LikesInterfaces {
     interface presenters{
         void getPhotoProfile();
         void getPhotoProfileSuccess(String data);
-
         void getAllLikesPresenter();
-        void getLikesPresenter();
-        void getLikesReceivedPresenter();
-        void getLikesSuccessful(ArrayList<HomeData> data);
-        void getLikesReceivedSuccessful(ArrayList<HomeData> data);
+        void getAllLikesRePresenter();
+        void getLikesPresenter(ArrayList<HomeData> listLikes);
+        void getLikesReceivedPresenter(ArrayList<HomeData> listLikes);
         void getLikesError(String message);
     }
 
     interface models{
+        void getAllLikesReModel(LikesPresenters presenter);
         void getUserCurrentPhoto(presenters presenter);
-        void getLikesModel(presenters presenter);
-        void getLikesReceivedModel(presenters presenter);
         void getAllLikesModel(LikesPresenters likesPresenters);
     }
 }
