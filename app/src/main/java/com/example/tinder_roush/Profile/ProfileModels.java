@@ -55,7 +55,7 @@ public class ProfileModels implements ProfileInterfaces.models{
 
             @Override
             public void onFailure(Call<CityResponse> call, Throwable t) {
-                Log.e("error ciudades",call.toString());
+//                Log.e("error ciudades",call.toString());
             }
         });
     }
@@ -83,7 +83,7 @@ public class ProfileModels implements ProfileInterfaces.models{
 
             @Override
             public void onFailure(Call<CityResponse> call, Throwable t) {
-                Log.e("error ciudades",call.toString());
+//                Log.e("error ciudades",call.toString());
             }
         });
     }

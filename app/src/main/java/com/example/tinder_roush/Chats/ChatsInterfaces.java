@@ -16,13 +16,13 @@ public interface ChatsInterfaces {
     interface presenters{
         void getPhotoProfile();
         void getPhotoProfileSuccess(String data);
-        void getChatsPresenter();
+        void getChatsPresenter(String search);
         void getChatsSuccessful(ArrayList<ChatData> data);
         void getLikesError(String message);
     }
 
     interface models{
         void getUserCurrentPhoto(presenters presenter);
-        void getChatsModel(presenters presenter);
+        void getChatsModel(presenters presenter, String search);
     }
 }

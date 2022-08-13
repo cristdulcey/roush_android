@@ -38,7 +38,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         listeners();
 
         if (!localData.getAccess().isEmpty()){
-            Log.e("token", localData.getAccess());
+//            Log.e("token", localData.getAccess());
             presenter.verifyTokenPresenter();
         }
     }

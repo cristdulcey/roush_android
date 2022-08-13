@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -63,7 +64,8 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ChatsAdapter.ViewHolder holder, int position) {
         String created = listChats.get(position).getCreated_at();
-
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        holder.itemView.setLayoutParams(params);
         String url, name="";
         if (listChats.get(position).getMatch().getPerson1().equals(localData.getRegister("ID_USERCURRENT"))){
             url = listChats.get(position).getMatch().getPerson2_image();
@@ -72,10 +74,15 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder>{
             url = listChats.get(position).getMatch().getPerson1_image();
             name = listChats.get(position).getMatch().getPerson1_name();
         }
-        Log.e("image chat user",url);
+//        Log.e("image chat user",url);
         Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
         holder.person_name.setText(name);
-        holder.person_message.setText("Test message");
+        if(listChats.get(position).getChat().size()>0){
+            holder.person_message.setText(listChats.get(position).getChat().get(0).getMessage());
+        }else {
+            holder.person_message.setText("Sin mensajes");
+        }
+
 
         Date current_date = cal.getTime();
 

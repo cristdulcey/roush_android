@@ -68,6 +68,7 @@
             android:padding="8dp"/>
 
         <EditText
+            android:id="@+id/search_chat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"

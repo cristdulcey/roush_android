@@ -910,7 +910,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             UrlPhoto1 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
             changePhoto();
-            Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
             presenter.changeProfilePhotosPresenter(IdPhoto1);
         }
         if (requestCode == RESULT_PHOTO_2 && resultCode == RESULT_OK) {
@@ -920,7 +920,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             photo2.setImageBitmap(bitmap);
             UrlPhoto2 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
-            Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
             presenter.changeProfilePhotosPresenter(IdPhoto2);
         }
         if (requestCode == RESULT_PHOTO_3 && resultCode == RESULT_OK) {
@@ -930,7 +930,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             photo3.setImageBitmap(bitmap);
             UrlPhoto3 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
-            Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
             presenter.changeProfilePhotosPresenter(IdPhoto3);
         }
         if (requestCode == RESULT_PHOTO_4 && resultCode == RESULT_OK) {
@@ -941,7 +941,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             UrlPhoto4 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
             presenter.changeProfilePhotosPresenter(IdPhoto4);
-            Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_5 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -951,7 +951,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             UrlPhoto5 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
             presenter.changeProfilePhotosPresenter(IdPhoto5);
-            Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_6 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -961,7 +961,7 @@ public class ProfileEditActivity extends AppCompatActivity implements ProfileInt
             UrlPhoto6 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image");
             presenter.changeProfilePhotosPresenter(IdPhoto6);
-            Log.e("PATH PICKED IMAGE_6", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_6", currentPhotoPath);
         }
     }
 

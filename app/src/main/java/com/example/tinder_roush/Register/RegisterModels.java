@@ -99,7 +99,7 @@ public class RegisterModels implements RegisterInterfaces.models{
 
             @Override
             public void onFailure(Call<CityResponse> call, Throwable t) {
-                Log.e("error ciudades",call.toString());
+//                Log.e("error ciudades",call.toString());
             }
         });
     }

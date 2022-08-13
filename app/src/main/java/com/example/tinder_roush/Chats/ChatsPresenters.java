@@ -1,5 +1,6 @@
 package com.example.tinder_roush.Chats;
 
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -34,8 +35,8 @@ public class ChatsPresenters implements ChatsInterfaces.presenters{
 
     //Likes
     @Override
-    public void getChatsPresenter() {
-        model.getChatsModel(this);
+    public void getChatsPresenter(String search) {
+        model.getChatsModel(this,search);
     }
 
     @Override

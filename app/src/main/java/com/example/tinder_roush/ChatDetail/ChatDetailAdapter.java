@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import com.example.tinder_roush.Likes.LikesActivity;
 import com.example.tinder_roush.Likes.LikesPresenters;
 import com.example.tinder_roush.LocalData.LocalData;
 import com.example.tinder_roush.Objects.ChatData;
+import com.example.tinder_roush.Objects.ChatDetailData;
 import com.example.tinder_roush.R;
 import com.squareup.picasso.Picasso;
 
@@ -28,30 +30,52 @@ import java.util.Locale;
 
 
 public class ChatDetailAdapter extends RecyclerView.Adapter<ChatDetailAdapter.ViewHolder>{
-    private ArrayList<ChatData> listChats;
+    private ArrayList<ChatDetailData> listChats;
     Context context;
     LikesPresenters presenter;
     LocalData localData;
     DateFormat dateFormat;
     Calendar cal;
 
-    public ChatDetailAdapter(Context context, ArrayList<ChatData> listLikes) {
+    private static final int TYPE_ONE = 1;
+    private static final int TYPE_TWO = 2;
+
+
+    public ChatDetailAdapter(Context context, ArrayList<ChatDetailData> listLikes) {
         this.context = context;
         this.listChats = listLikes;
+        this.localData = new LocalData();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        ChatDetailData item = listChats.get(position);
+        if (item.getPerson().equals(localData.getRegister("ID_USERCURRENT"))) {
+            return TYPE_ONE;
+        } else {
+            return TYPE_TWO;
+        }
     }
 
     @NonNull
     @Override
     public ChatDetailAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemLikes = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_like_list,null, false);
-        initObjets();
-        return new ChatDetailAdapter.ViewHolder(itemLikes);
+        if (viewType == TYPE_ONE) {
+            View itemLikes = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_detail,null, false);
+            initObjets();
+            return new ChatDetailAdapter.ViewHolder(itemLikes);
+        } else {
+            View itemLikes = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_detail_left,null, false);
+            initObjets();
+            return new ChatDetailAdapter.ViewHolder(itemLikes);
+        }
+
     }
 
     public void initObjets(){
         presenter = new LikesPresenters(new LikesActivity());
         localData = new LocalData();
-        dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSZZZZZ", Locale.getDefault());
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSZZZZZ", Locale.getDefault());
         cal = Calendar.getInstance();
     }
 
@@ -59,20 +83,13 @@ public class ChatDetailAdapter extends RecyclerView.Adapter<ChatDetailAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ChatDetailAdapter.ViewHolder holder, int position) {
         String created = listChats.get(position).getCreated_at();
-
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        holder.itemView.setLayoutParams(params);
         String url, name="";
-        if (listChats.get(position).getMatch().getPerson1().equals(localData.getRegister("PER_1"))){
-            url = listChats.get(position).getMatch().getPerson1_image();
-            name = listChats.get(position).getMatch().getPerson1_name();
-        }else {
-            url = listChats.get(position).getMatch().getPerson2_image();
-            name = listChats.get(position).getMatch().getPerson2_name();
-        }
-        Picasso.get().load(url).fit().centerCrop().into(holder.image_person);
-        holder.person_name.setText(name);
-
+        holder.text_message.setText(listChats.get(position).getMessage());
+//
         Date current_date = cal.getTime();
-
+//
         try {
             Date final_date = dateFormat.parse(created);
             long difDates = (current_date.getTime()-final_date.getTime());
@@ -95,14 +112,14 @@ public class ChatDetailAdapter extends RecyclerView.Adapter<ChatDetailAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView image_person;
-        private TextView person_name;
+        private TextView text_message;
         private TextView time;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            person_name = itemView.findViewById(R.id.text2_like);
-            image_person = itemView.findViewById(R.id.like_person_image);
-            time = itemView.findViewById(R.id.text_hour_like);
+            text_message = itemView.findViewById(R.id.text1_like);
+            image_person = itemView.findViewById(R.id.chat_person_image);
+            time = itemView.findViewById(R.id.text2_like);
         }
     }
 }

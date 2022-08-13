@@ -54,6 +54,9 @@
             android:name=".Register.SuccesRegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".ChatDetail.ChatDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".Wizard.OnboardingActivity"
             android:exported="true"
             android:theme="@style/SplashScreen">

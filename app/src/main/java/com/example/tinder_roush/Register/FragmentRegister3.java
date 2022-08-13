@@ -178,7 +178,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo1.setImageBitmap(bitmap);
             UrlPhoto1 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image1");
-            Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_1", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_2 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -187,7 +187,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo2.setImageBitmap(bitmap);
             UrlPhoto2 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image2");
-            Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_2", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_3 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -196,7 +196,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo3.setImageBitmap(bitmap);
             UrlPhoto3 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image3");
-            Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_3", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_4 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -205,7 +205,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo4.setImageBitmap(bitmap);
             UrlPhoto4 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image4");
-            Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_4", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_5 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -214,7 +214,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo5.setImageBitmap(bitmap);
             UrlPhoto5 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image5");
-            Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_5", currentPhotoPath);
         }
         if (requestCode == RESULT_PHOTO_6 && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -223,7 +223,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
             photo6.setImageBitmap(bitmap);
             UrlPhoto6 = currentPhotoPath;
             localData.register(currentPhotoPath, "Image6");
-            Log.e("PATH PICKED IMAGE_6", currentPhotoPath);
+//            Log.e("PATH PICKED IMAGE_6", currentPhotoPath);
 
         }
     }
@@ -259,7 +259,7 @@ public class FragmentRegister3 extends Fragment implements RegisterInterfaces.fr
         int storagePermission2 = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE);
 
         if (storagePermission == PackageManager.PERMISSION_GRANTED && storagePermission2 == PackageManager.PERMISSION_GRANTED){
-            Log.e("Permiso", String.valueOf(storagePermission));
+//            Log.e("Permiso", String.valueOf(storagePermission));
         }else {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
         }

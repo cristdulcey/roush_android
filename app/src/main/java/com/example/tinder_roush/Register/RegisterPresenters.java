@@ -96,7 +96,7 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
 
     @Override
     public void loginError(String message) {
-        Log.e("Error Login", message);
+//        Log.e("Error Login", message);
         Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
